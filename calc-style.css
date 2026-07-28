@@ -1,0 +1,88 @@
+/* =========================================================================
+   INDEPENDENT COCKPIT CALCULATOR THEME SHEET (calc-style.css)
+   ========================================================================= */
+:root {
+    --primary-blue: #0B5EB4;
+    --steel-slate: #4A5A6A;
+    --midnight-navy: #111C24;
+    --white: #FFFFFF;
+}
+
+/* Ensure the background canvas handles the contrast correctly */
+body {
+    background-color: var(--midnight-navy);
+    color: #00FF66;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0;
+    margin: 0;
+}
+
+/* The Central Black HUD Wrapper Console */
+.hud-simulator-wrapper {
+    background-color: #0b1116; 
+    color: #00FF66; 
+    padding: 30px; 
+    border-radius: 12px;
+    max-width: 850px; 
+    margin: 100px auto 40px; /* 100px top space clears the white fixed navbar completely */
+    border: 2px solid #1a3322;
+    box-shadow: 0 10px 40px rgba(11, 94, 180, 0.25);
+    box-sizing: border-box;
+}
+
+/* Navigation Header Inside the HUD box */
+.hud-header { 
+    display: flex; 
+    justify-content: space-between; 
+    border-bottom: 1px dashed #00FF66; 
+    padding-bottom: 15px; 
+    margin-bottom: 25px; 
+}
+.hud-title { 
+    font-size: 1.4rem; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+}
+
+/* Telemetry Digital Metric Bar */
+.hud-telemetry-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px; 
+    background: rgba(0, 255, 102, 0.03); 
+    padding: 15px; 
+    border: 1px solid #1a3322; 
+    border-radius: 6px; 
+    margin-bottom: 20px; 
+}
+.telemetry-item { font-size: 0.9rem; color: var(--steel-slate); }
+.telemetry-item span { font-size: 1.2rem; font-weight: bold; display: block; margin-top: 5px; }
+
+/* The Viewport Frame around the radar graphic */
+.canvas-container { 
+    position: relative; 
+    background-color: #05080a; 
+    border: 2px solid #00FF66; 
+    border-radius: 6px; 
+    overflow: hidden; 
+    margin-bottom: 25px; 
+}
+#rfCanvas { display: block; width: 100%; height: auto; }
+
+/* Grid System for the Slider Decks */
+.hud-control-matrix { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); 
+    gap: 20px; 
+    color: var(--white); 
+}
+.hud-slider-group { 
+    background: rgba(255, 255, 255, 0.02); 
+    padding: 15px; 
+    border-radius: 6px; 
+    border: 1px solid rgba(0, 255, 102, 0.1); 
+}
+.hud-slider-group label { display: block; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 8px; font-weight: bold; }
+.hud-slider { width: 100%; accent-color: #00FF66; margin-bottom: 10px; cursor: pointer; }
+.hud-select { background:#05080a; color:#00FF66; border:1px solid #1a3322; padding:8px; width:100%; border-radius:4px; font-family:inherit; outline:none; cursor:pointer; margin-bottom: 10px; }

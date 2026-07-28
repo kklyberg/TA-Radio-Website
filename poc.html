@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARC | Interactive PTToC Scenario Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="icon" href="data:,">
+    <style>
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; background-color: #ffffff; min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.1); z-index: 2000; border-top: 3px solid #0b5eb4; border-radius: 0 0 4px 4px;
+        }
+        .dropdown-content a {
+            color: #0e1a24; padding: 12px 16px; text-decoration: none; display: block; font-weight: 700; font-size: 0.88rem; text-align: left; border-bottom: 1px solid #f1f5f9;
+        }
+        .dropdown-content a:hover { background-color: #f8fafc; color: #0b5eb4; }
+        .dropdown:hover .dropdown-content { display: block !important; }
+        @media (max-width: 900px) { .diagram-flex-box { flex-direction: column !important; } }
+    </style>
+</head>
+<body style="padding-top: 110px; background-color: #f8fafc; margin: 0; font-family: 'Segoe UI', system-ui, sans-serif;">
+
+    <!-- Top Navigation Header Menu -->
+    <header class="main-header" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.08); background-color: #ffffff !important; border-bottom: 3px solid #0b5eb4; display: flex; flex-direction: column;">
+        <div style="background-color: #0e1a24; color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 600; padding: 8px 0; border-bottom: 1px solid rgba(11, 94, 180, 0.3); width: 100%;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; box-sizing: border-box;">
+                <div><i class="fa-solid fa-location-dot" style="color: #00FF66; margin-right: 4px;"></i> 30+ Years of Certified Wireless Expertise | 700 S John Rodes Blvd, Melbourne, FL 32904</div>
+                <div><a href="tel:3217254824" style="color: #00FFFF; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 600;"><i class="fa-solid fa-phone-volume"></i> (321) 725-4824</a></div>
+            </div>
+        </div>
+        <div style="padding: 12px 0; width: 100%; background-color: #ffffff !important; box-sizing: border-box;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
+                <div class="logo"><img src="tarc-logo.png" alt="Company Logo" style="height: 50px; width: auto; display: block; cursor: pointer;" onclick="window.location.href='index.html';"></div>
+                <nav class="nav-links" style="display: flex; align-items: center;">
+                    <a href="index.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Home</a>
+                    <div class="dropdown" style="margin-left: 20px;">
+                        <a href="#" style="color: #0e1a24; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 4px;">Brand Showrooms <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="catalog.html?brand=kenwood"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Kenwood Catalog</a>
+                            <a href="catalog.html?brand=icom"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Icom Catalog</a>
+                            <a href="catalog.html?brand=hytera"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Hytera Catalog</a>
+                            <a href="catalog.html?brand=motorola"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Motorola Catalog</a>
+                            <a href="catalog.html?brand=ritron"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Ritron Catalog</a>
+                        </div>
+                    </div>
+                    <a href="index.html#industries" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Industries</a>
+                    <a href="calculator.html" class="nav-calc-link" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;"><i class="fa-solid fa-tower-broadcast"></i> RF Sim</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Framework -->
+    <main class="container" style="max-width: 1200px; margin: 40px auto; padding: 0 20px; box-sizing: border-box; text-align: center;">
+        <span style="color: #0b5eb4; font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 5px;"><i class="fa-solid fa-diagram-project"></i> SYSTEM ARCHITECTURE</span>
+        <h1 style="color: #0e1a24; font-size: 2.2rem; font-weight: 900; margin: 0 0 35px 0; text-transform: uppercase; letter-spacing: -0.5px;">Choose Your Integration Scenario</h1>
+
+        <!-- Interaction Buttons -->
+        <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; width: 100%;">
+            <button id="tabBtnBasic" onclick="switchPocScenario('basic')" style="padding: 12px 24px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; border-radius: 4px; border: 2px solid #0b5eb4; background: #0b5eb4; color: #ffffff; cursor: pointer; transition: all 0.2s;">Basic (RoIP Gateway)</button>
+            <button id="tabBtnIntermediate" onclick="switchPocScenario('intermediate')" style="padding: 12px 24px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; border-radius: 4px; border: 2px solid #cbd5e1; background: #ffffff; color: #475569; cursor: pointer; transition: all 0.2s;">Intermediate (IP Network)</button>
+            <button id="tabBtnAdvanced" onclick="switchPocScenario('advanced')" style="padding: 12px 24px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; border-radius: 4px; border: 2px solid #cbd5e1; background: #ffffff; color: #475569; cursor: pointer; transition: all 0.2s;">Advanced (Direct ISSI/AIS)</button>
+        </div>
+
+        <!-- Text Box Display Panel -->
+        <div id="scenarioDisplayCard" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 35px; text-align: left; box-sizing: border-box; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.02); margin-bottom: 25px;">
+            <!-- Content renders here live -->
+        </div>
+
+        <!-- Solid Black Presentation Row Container for the Images -->
+        <div style="background: #000000; border-radius: 6px; padding: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
+            <div style="width: 100%; max-width: 960px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+                <img id="pocConnectionImageBanner" src="images/connect-basic-template.png" alt="Kenwood System Link Map" style="width: 100%; height: auto; max-height: 280px; object-fit: contain; display: block; margin: 0 auto;">
+            </div>
+        </div>
+    </main>
+    <!-- Automated Image Router Script -->
+    <script>
+        const pocScenarioDatabase = {
+            basic: {
+                title: "Basic Integration: Radio over IP (RoIP) Gateway Architecture",
+                summary: "Expanding local radio sites by bridging physical RF assets straight into standard broadband applications via structural gateways [source: 1.3.1].",
+                bullets: [
+                    "A physical 4-wire or VOX RoIP gateway interfaces with local base stations [source: 0.1.1].",
+                    "The Common Air Interface (CAI) safely handles any analog or digital format [source: 1.3.1].",
+                    "Best suited for blending conventional talkgroups with mobile cell teams [source: 1.3.1]."
+                ],
+                imagePath: "images/connect-basic-template.png"
+            },
+            intermediate: {
+                title: "Intermediate Integration: Direct IP Backbone Network Gateway",
+                summary: "Connecting data-enabled PTToC smartphone clients directly into complex corporate trunking sites or IP dispatch networks [source: 0.1.1].",
+                bullets: [
+                    "The advanced gateway links directly into the system's private backend IP line [source: 0.1.1].",
+                    "Prevents talkgroup signaling contention between systems under load [source: 0.1.1].",
+                    "Delivers higher overall system capacity and supports advanced tracking features [source: 0.1.1]."
+                ],
+                imagePath: "images/connect-intermediate-template.png"
+            },
+            advanced: {
+                title: "Advanced Integration: Native Digital Cloud ISSI / AIS Handshake",
+                summary: "Direct server-to-server cloud linking for large multi-agency profiles or enterprise tier systems [source: 0.1.1].",
+                bullets: [
+                    "Native software connection utilizes P25 ISSI and DMR AIS lines [source: 0.1.1].",
+                    "Maintains complete end-to-end voice path encryption protocols perfectly [source: 0.1.1].",
+                    "Bypasses 3rd-party gateway boxes entirely, reducing line access latency [source: 0.1.1]."
+                ],
+                imagePath: "images/connect-advanced-template.png"
+            }
+        };
+
+        function switchPocScenario(tierKey) {
+            const data = pocScenarioDatabase[tierKey];
+            if (!data) return;
+
+            // 1. Render bullet items
+            let bulletsMarkup = "";
+            data.bullets.forEach(b => {
+                bulletsMarkup += `<li style="margin-bottom:12px; font-size:0.92rem; line-height:1.5; color:#475569; text-align:left;"><i class="fa-solid fa-circle-check" style="color:#16a34a; margin-right:8px;"></i> ${b}</li>`;
+            });
+
+            // 2. Render summary texts
+            const textPanel = document.getElementById("scenarioDisplayCard");
+            if (textPanel) {
+                textPanel.innerHTML = `
+                    <div style="width:100%; box-sizing:border-box;">
+                        <h3 style="color:#0e1a24; font-size:1.35rem; font-weight:800; margin:0 0 10px 0; text-transform:uppercase; text-align:left;">${data.title}</h3>
+                        <p style="color:#1e293b; font-weight:600; font-size:0.95rem; margin:0 0 20px 0; line-height:1.5; text-align:left;">${data.summary}</p>
+                        <ul style="list-style:none; padding:0; margin:0; text-align:left;">${bulletsMarkup}</ul>
+                    </div>`;
+            }
+
+            // 3. Swap image path flawlessly [source: 1.4.1]
+            const targetBannerNode = document.getElementById("pocConnectionImageBanner");
+            if (targetBannerNode) {
+                targetBannerNode.src = data.imagePath;
+                targetBannerNode.alt = `Kenwood ${tierKey.toUpperCase()} Network Link System Specs`;
+            }
+
+            // 4. Handle active button colors
+            const buttons = { basic: "tabBtnBasic", intermediate: "tabBtnIntermediate", advanced: "tabBtnAdvanced" };
+            Object.keys(buttons).forEach(k => {
+                const btn = document.getElementById(buttons[k]);
+                if (!btn) return;
+                if (k === tierKey) {
+                    btn.style.background = "#0b5eb4";
+                    btn.style.color = "#ffffff";
+                    btn.style.borderColor = "#0b5eb4";
+                } else {
+                    btn.style.background = "#ffffff";
+                    btn.style.color = "#475569";
+                    btn.style.borderColor = "#cbd5e1";
+                }
+            });
+        }
+
+        // Run instantly upon page loading
+        window.addEventListener("DOMContentLoaded", () => {
+            switchPocScenario('basic');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARC Link Sim | RF Path Loss Simulation Console</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="calc-style.css">
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body style="padding-top: 96px; background-color: #0b1116;">
+
+    <!-- Professional Fixed Top Corporate Navigation Bar -->
+    <header class="main-header" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.05); background-color: var(--white);">
+        <div style="background-color: var(--midnight-navy); color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 600; padding: 6px 0; border-bottom: 1px solid rgba(11, 94, 180, 0.3);">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <div>
+                    <i class="fa-solid fa-location-dot" style="color: #00FF66; margin-right: 4px;"></i> 
+                    T.A. Radio Communication | 700 S John Rodes Blvd, Melbourne, FL 32904
+                </div>
+                <div>
+                    <a href="tel:3217254824" style="color: #00FFFF; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                        <i class="fa-solid fa-phone-volume"></i> (321) 725-4824
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div style="padding: 10px 0;">
+            <div class="container header-container" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="logo">
+                    <a href="index.html"><img src="tarc-logo.png" alt="T.A. Radio Communication Logo" style="height: 50px; width: auto; display: block;"></a>
+                </div>
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#catalog">Product Catalog</a>
+                    <a href="index.html#industries">Industries Served</a>
+                    <a href="calculator.html" class="nav-calc-link"><i class="fa-solid fa-tower-broadcast"></i> RF Link Sim</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN TWO-COLUMN SPLIT ECOSYSTEM -->
+    <main style="max-width: 1400px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px;">
+        
+             <!-- LEFT COLUMN: TECHNICAL WIRELESS FIELD ENGINEERING NOTEBOOK (INVERTED HIGH-CONTRAST) -->
+        <section style="background: #ffffff; border: 2px solid #e2e8f0; border-radius: 6px; padding: 35px; color: #0e1a24; text-align: left; font-family: 'Consolas', 'Courier New', monospace, sans-serif; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+            
+            <div style="border-bottom: 2px solid #0b5eb4; padding-bottom: 15px; margin-bottom: 25px;">
+                <span style="color: #0b5eb4; font-size: 0.72rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 4px;"><i class="fa-solid fa-clipboard-list"></i> FIELD MEMO // CONFIG-084</span>
+                <h1 style="font-size: 1.8rem; font-weight: 800; color: #0e1a24; margin: 0; line-height: 1.1; letter-spacing: -0.5px; font-family: inherit;">RF Link Budget & Horizon Bounds</h1>
+            </div>
+            
+            <p style="color: #475569; font-size: 0.92rem; line-height: 1.6; margin-bottom: 20px;">
+                <strong>1.0 SURFACE CURVATURE CONSTRAINTS (LOS):</strong> Commercial two-way radio frequencies propagate via straight-line geometric paths (Line-of-Sight). Consumer marketing materials often advertise "30-mile handheld ranges," which violates basic earth geometry. Handheld nodes operating at typical ground heights (h = 5 ft) encounter a physical horizon limitation at ~3.1 miles. Transmissions extending beyond this point overshoot the curvature of the earth and dissipate into space.
+            </p>
+
+            <!-- Clutter Path Attenuation Block -->
+            <div style="background: #fdf2f2; border-left: 4px solid #ff5555; padding: 15px; border-radius: 4px; margin-bottom: 25px;">
+                <h4 style="color: #b91c1c; font-size: 0.88rem; font-weight: bold; margin: 0 0 6px 0; text-transform: uppercase;"><i class="fa-solid fa-chart-line-down"></i> 1.1 Obstruction & Path Attenuation Log</h4>
+                <p style="color: #475569; font-size: 0.85rem; margin-bottom: 0; line-height: 1.5;">
+                    Linear RF power (Wattage) cannot bend around solid geographical or structural barriers. Dense pine canopy, concrete urban grids, and corrugated steel blocks act as heavy attenuation filters. A 5W transceiver achieving 10+ miles over unobstructed salt water will experience a link budget collapse to <strong>&lt; 0.8 miles</strong> inside heavy commercial concrete infrastructure.
+                </p>
+            </div>
+
+            <h3 style="font-size: 1.05rem; font-weight: bold; color: #0b5eb4; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;"><i class="fa-solid fa-gears"></i> 2.0 Calculation Methodology</h3>
+            <ol style="color: #475569; font-size: 0.88rem; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; margin-bottom: 35px; line-height: 1.5;">
+                <li><strong>Band Selection:</strong> VHF provides superior knife-edge diffraction around foliage; UHF cuts through dense structural concrete walls; 800MHz is optimized for trunked public safety grids.</li>
+                <li><strong>Elevation Mapping:</strong> Adjust the TX/RX sliders to lengthen the geometric radio horizon limit via the formula: d = √(2×h1) + √(2×h2).</li>
+                <li><strong>Clutter Profile Selection:</strong> Applies the Log-Distance Path Loss exponent matrix against free-space attenuation baselines.</li>
+                <li><strong>Infrastructure Link:</strong> Toggles a middle-bridge repeater node to establish independent dual-path link calculations (Leg A + Leg B).</li>
+            </ol>
+
+            <div style="background: #f0f7ff; border-left: 4px solid #0b5eb4; padding: 15px; border-radius: 4px;">
+                <h4 style="color: #0b5eb4; font-size: 0.88rem; font-weight: bold; margin: 0 0 6px 0; text-transform: uppercase;"><i class="fa-solid fa-calculator"></i> Engineering Axiom</h4>
+                <p style="color: #475569; font-size: 0.85rem; margin-bottom: 0; line-height: 1.5;">
+                    When dealing with negative link margins, increasing terminal wattage power outputs provides diminishing returns. <strong>Antenna radiation height is the primary system vector.</strong> Raising a structural mast by 20 feet recovers more decibel margin than quadrupling terminal amplifier wattage.
+                </p>
+            </div>
+        </section>
+
+        
+        <!-- RIGHT COLUMN: THE INTERACTIVE PHYSICS SIMULATION CONSOLE -->
+        <section id="tarcCalcHUDBox" style="background: #111c24; border: 2px solid #1a2936; border-radius: 8px; padding: 30px; color: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
+            
+            <!-- Dynamic Telemetry Readout Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 15px; margin-bottom: 25px;">
+                <div style="background: #0b1116; padding: 12px; border-radius: 4px; text-align: center; border-bottom: 2px solid var(--primary-blue);">
+                    <div style="font-size: 0.72rem; color: var(--steel-slate); font-weight: bold; text-transform: uppercase;">TX Alt</div>
+                    <div id="telemetryTx" style="font-size: 1.15rem; font-weight: 900; color: #fff; margin-top: 3px;">5 FT</div>
+                </div>
+                <div style="background: #0b1116; padding: 12px; border-radius: 4px; text-align: center; border-bottom: 2px solid #00FF66;">
+                    <div style="font-size: 0.72rem; color: var(--steel-slate); font-weight: bold; text-transform: uppercase;">System ERP</div>
+                    <div id="telemetryERP" style="font-size: 1.15rem; font-weight: 900; color: #00FF66; margin-top: 3px;">5.0 W</div>
+                </div>
+                <div style="background: #0b1116; padding: 12px; border-radius: 4px; text-align: center; border-bottom: 2px solid #00FFFF;">
+                    <div style="font-size: 0.72rem; color: var(--steel-slate); font-weight: bold; text-transform: uppercase;">LOS Horizon</div>
+                    <div id="telemetryLOS" style="font-size: 1.15rem; font-weight: 900; color: #00FFFF; margin-top: 3px;">0.0 MILES</div>
+                </div>
+                <div style="background: #0b1116; padding: 12px; border-radius: 4px; text-align: center; border-bottom: 2px solid #ffaa00;">
+                    <div style="font-size: 0.72rem; color: var(--steel-slate); font-weight: bold; text-transform: uppercase;">Usable Range</div>
+                    <div id="telemetryRange" style="font-size: 1.15rem; font-weight: 900; color: #ffaa00; margin-top: 3px;">0.0 MILES</div>
+                </div>
+            </div>
+
+            <!-- Visual Physics Display Canvases -->
+            <div style="background: #05080a; border-radius: 6px; overflow: hidden; border: 1px solid #1a2936; margin-bottom: 25px; position: relative;">
+                <canvas id="rfSkylineCanvas" width="600" height="200" style="display: block; width: 100%; height: auto; background: #05080a;"></canvas>
+                <canvas id="rfSpectrumCanvas" width="600" height="60" style="display: block; width: 100%; height: auto; background: #020405; border-top: 1px solid #0b1116;"></canvas>
+            </div>
+
+            <!-- Interactive Hardware Configuration Input Controls -->
+            <div style="display: flex; flex-direction: column; gap: 15px; text-align: left;">
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div>
+                        <label style="display:block; font-size:0.75rem; font-weight:bold; color:var(--steel-slate); text-transform:uppercase; margin-bottom:5px;">Radio RF Band</label>
+                        <select id="rfBand" style="width:100%; background:#0b1116; border:1px solid #1a2936; color:#fff; padding:10px; border-radius:4px; outline:none;">
+                            <option value="vhf">VHF Low-Band (154 MHz) - Rural</option>
+                            <option value="uhf" selected>UHF High-Band (460 MHz) - City</option>
+                            <option value="800">800 MHz Safety-Band (855 MHz)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:0.75rem; font-weight:bold; color:var(--steel-slate); text-transform:uppercase; margin-bottom:5px;">Terrain Profile</label>
+                        <select id="terrainType" style="width:100%; background:#0b1116; border:1px solid #1a2936; color:#fff; padding:10px; border-radius:4px; outline:none;">
+                            <option value="open">Open Flat Plains (Line-of-Sight)</option>
+                            <option value="suburban">Suburban Residential / Light Foliage</option>
+                            <option value="foliage">Dense Forest / Heavy Canopy</option>
+                            <option value="urban">Dense Urban Grid / Concrete Walls</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div>
+                        <label style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:bold; color:var(--steel-slate); text-transform:uppercase; margin-bottom:5px;">TX Mast Height: <span id="lblTxAlt" style="color:#00FFFF;">5</span> FT</label>
+                        <input type="range" id="hudTxHeight" min="5" max="300" value="5" style="width:100%; accent-color:var(--primary-blue);">
+                    </div>
+                    <div>
+                        <label style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:bold; color:var(--steel-slate); text-transform:uppercase; margin-bottom:5px;">RX Mast Height: <span id="lblRxAlt" style="color:#00FFFF;">5</span> FT</label>
+                        <input type="range" id="hudRxHeight" min="5" max="300" value="5" style="width:100%; accent-color:var(--primary-blue);">
+                    </div>
+                </div>
+
+                <div>
+                    <label style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:bold; color:var(--steel-slate); text-transform:uppercase; margin-bottom:5px;">Transmitter Wattage Power: <span id="lblPower" style="color:#00FF66;">5</span> WATTS</label>
+                    <input type="range" id="rfPower" min="1" max="50" value="5" style="width:100%; accent-color:#00FF66;">
+                </div>
+
+                <div>
+                    <label style="display:flex; align-items:center; gap:8px; font-weight:bold; font-size:0.88rem; color:#00FFFF; cursor:pointer; margin-bottom: 5px;">
+                        <input type="checkbox" id="useRepeater" style="width:16px; height:16px; accent-color:#00FFFF;">
+                        Simulate TARC Repeater Hub Architecture Deployment
+                    </label>
+                    
+                    <div id="repeaterControlDeck" style="display:none; flex-direction:column; gap:15px; background:rgba(0,0,0,0.2); padding:15px; border-radius:4px; border:1px solid rgba(0,255,255,0.1); margin-top:10px; width:100%; box-sizing:border-box;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div>
+                                <label style="display:flex; justify-content:space-between; font-size:0.72rem; font-weight:bold; color:var(--steel-slate); text-transform:uppercase; margin-bottom:5px;">Tower Height: <span id="lblRepAlt" style="color:#00FFFF;">100</span> FT</label>
+                                <input type="range" id="hudRepHeight" min="30" max="500" value="100" style="width:100%; accent-color:#00FFFF;">
+                            </div>
+                            <div>
+                                <label style="display:flex; justify-content:space-between; font-size:0.72rem; font-weight:bold; color:var(--steel-slate); text-transform:uppercase; margin-bottom:5px;">Repeater Power: <span id="lblRepPower" style="color:#00FF66;">40</span> W</label>
+                                <input type="range" id="rfRepPower" min="10" max="100" value="40" style="width:100%; accent-color:#00FF66;">
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div>
+                                <label style="display:block; font-size:0.72rem; font-weight:bold; color:var(--steel-slate); text-transform:uppercase; margin-bottom:5px;">Feedline Cable Type</label>
+                                <select id="coaxType" style="width:100%; background:#0b1116; border:1px solid #1a2936; color:#fff; padding:8px; border-radius:4px; outline:none;">
+                                    <option value="rg58">RG-58 Standard Coax (High Loss)</option>
+                                    <option value="rg213" selected>RG-213 Industrial Coax (Medium Loss)</option>
+                                    <option value="heliax">1/2" Pro Heliax Solid Copper (Low Loss)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="display:block; font-size:0.72rem; font-weight:bold; color:var(--steel-slate); text-transform:uppercase; margin-bottom:5px;">Tower Base Antenna Type</label>
+                                <select id="antennaType" style="width:100%; background:#0b1116; border:1px solid #1a2936; color:#fff; padding:8px; border-radius:4px; outline:none;">
+                                    <option value="unity">Unity Gain Omni Antenna (0 dBd)</option>
+                                    <option value="omni3">Premium Omni-Directional (3 dBd Gain)</option>
+                                    <option value="omni6" selected>Station High-Gain Omni (6 dBd Gain)</option>
+                                    <option value="yagi9">Directional Yagi Array (9 dBd Gain)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div id="tarcAdvisoryBox" style="background: rgba(5, 8, 10, 0.6); padding: 15px; border-radius: 4px; border: 1px dashed rgba(11, 94, 180, 0.4); display: none; margin-top: 5px;">
+                    <p id="tarcAdvisoryText" style="margin: 0; font-size: 0.82rem; color: #cbd5e1; line-height: 1.4;"></p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="calc-engine.js"></script>
+</body>
+</html>

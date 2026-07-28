@@ -1,0 +1,611 @@
+/* =========================================================================
+   T.A. RADIO COMMUNICATION ELECTRIFIED HIGH-LUMINOSITY THEME (PART 1)
+   ========================================================================= */
+:root {
+    /* The exact, deep ink-blue background color sampled from the outer edges of your logo */
+    --logo-edge-dark: #0a0e14;     
+    --electric-blue: #0b5eb4;       /* Core corporate electric blue */
+    --electric-cyan: #00ffff;       /* High-voltage radioactive cyan */
+    --pure-white: #ffffff;          /* Crisp text white */
+    --subtext-silver: #5a6e72;      /* High-utility paragraph gray */
+    --midnight-navy: #0e1a24;       /* Sharp text visibility navy */
+    --light-clean-bg: #f8fafc;     /* Clean corporate light-mode backing */
+}
+
+body { 
+    background-color: var(--light-clean-bg); 
+    color: var(--midnight-navy); 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding-top: 110px;            /* FIXED: Balanced cushion space to clear the taller nested navbar layout */
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- MASTER CORPORATE FIXED NAVIGATION DECK (OPAQUE CORRECTION) --- */
+.main-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    background-color: var(--white) !important; /* FIXED: Absolute opaque solid backing blocks all transparency leak */
+    border-bottom: 3px solid var(--electric-blue);
+    display: flex;
+    flex-direction: column;         /* Integrates your contact bar and menu cleanly into one structural block */
+}
+
+.nav-links a {
+    color: var(--midnight-navy);
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 20px;
+    font-size: 0.92rem;
+    transition: color 0.2s;
+}
+.nav-links a:hover {
+    color: var(--electric-blue);
+}
+
+/* --- THE SEAMLESS HIGH-LUMINOSITY HERO BLENDER ENGINE (CENTERED) --- */
+#home.hero-section {
+    background-color: var(--logo-edge-dark) !important;
+    background-image: radial-gradient(
+        circle at center,
+        rgba(10, 14, 20, 0.05) 0%,    
+        rgba(10, 14, 20, 0.45) 50%,   
+        rgba(10, 14, 20, 0.98) 100%   
+    ), 
+    url('tarc-logo1.png');
+    
+    background-repeat: no-repeat !important;
+    background-position: center 62% !important;
+    background-size: min(85vw, 620px) auto !important; 
+    box-shadow: inset 0 -50px 80px rgba(0, 255, 255, 0.12);
+    
+    height: 70vh;
+    display: flex;
+    align-items: flex-start;                    
+    justify-content: center;
+    text-align: center;            /* FIXED: Spatially forces all child headers to center-align automatically */
+    overflow: hidden;
+    padding-top: 35px;
+}
+
+.hero-content {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;           /* FIXED: Center anchors your text blocks inside your responsive viewport container */
+    justify-content: center;
+    text-align: center;            /* FIXED: Forces perfect symmetry on paragraph rows text wraps */
+}
+
+.hero-content h1 {
+    font-size: 3.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--pure-white);
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 0 15px rgba(0, 255, 255, 0.4);
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+
+.hero-content p {
+    font-size: 1.15rem;
+    max-width: 850px;
+    color: #f1f5f9;
+    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.95);
+    font-weight: 500;
+    text-align: center;            /* FIXED: Clean layout symmetry across your glowing logo waveforms */
+}
+
+/* =========================================================================
+   CLEAN COCKPIT MARKETPLACE GRID & ACCESSORY PILLS (PART 2)
+   ========================================================================= */
+
+/* --- AUTHORIZED PRODUCT CATALOG CONTROLS --- */
+.catalog-section {
+    padding: 80px 0;
+    background-color: var(--light-clean-bg);
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 8px;
+    text-align: left;
+}
+.section-subtitle {
+    font-size: 1.05rem;
+    color: var(--subtext-silver);
+    margin-bottom: 35px;
+    text-align: left;
+}
+/* =========================================================================
+ * CATALOG VIEW GRID CARD IMAGE CONTAINER FIX
+ * ========================================================================= */
+.product-card .image-container {
+    width: 100%;          /* Locks the visual container width mapping grid */
+    height: 200px;        /* Fixes a universal row card box height barrier */
+    display: flex;        /* Centers elements cleanly along the grid axes */
+    align-items: center;  /* Prevents vertical column tracking offsets */
+    justify-content: center;
+    background-color: #f8f9fa; /* Safe default background behind transparent images */
+    overflow: hidden;     /* Clips any accidental overflow clipping borders */
+    border-radius: 8px;   /* Matches card design rounded grid styles */
+}
+
+.product-card .image-container img {
+    max-width: 100%;      /* Restricts item from bleeding past card borders */
+    max-height: 100%;     /* Restricts item from bleeding down vertical columns */
+    width: auto;          /* Automatically balances fluid pixel structures */
+    height: auto;
+    object-fit: contain;  /* FORCE SHRINKS THE IMAGE TO FIT WITH ZERO STRETCHING! */
+    padding: 10px;        /* Adds safe breathable negative space cushioning */
+}
+
+/* The Clean Unified Filter Hub Blueprint Container */
+.search-filter-container {
+    background: var(--pure-white);
+    border: 2px solid rgba(11, 94, 180, 0.12);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+/* The Interactive Selector Pills (Tuned to Your Corporate Blue) */
+.pill-btn {
+    background: var(--pure-white);
+    border: 2px solid var(--electric-blue);
+    color: var(--electric-blue);
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.pill-btn:hover, .pill-btn.active {
+    background: var(--electric-blue);
+    color: var(--pure-white);
+}
+
+/* --- THE HARDWARE GRID (GRID BOUNDARIES RE-ESTABLISHED) --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* The Balanced Product Layout Card (Brand Anchored on Top) */
+.api-product-card {
+    background: var(--pure-white) !important;
+    border: 1px solid #e2e8f0;
+    border-top: 4px solid var(--electric-blue); /* Crown border matches your logo's corporate blue */
+    border-radius: 6px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+.api-product-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--electric-blue);
+    box-shadow: 0 10px 25px rgba(11, 94, 180, 0.1);
+}
+
+/* --- HEAVY SOLID FILL VIBRANT ACTION BUTTONS --- */
+.btn-primary {
+    background: var(--electric-blue) !important;
+    color: var(--pure-white) !important; /* Heavy solid fill forces crisp, white legibility instantly */
+    border: none;
+    padding: 12px 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-primary:hover {
+    background: #094b91 !important;
+}
+
+.btn-secondary {
+    background: #00b3b3 !important; /* Rich solid high-contrast electric cyan fill */
+    color: #0f172a !important;      /* Deep contrast dark text matches the button background beautifully */
+    border: none;
+    padding: 10px 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-secondary:hover {
+    background: #009999 !important;
+}
+
+/* --- INDUSTRIES SERVER GRID PORTS --- */
+.industries-section {
+    padding: 80px 0;
+    background-color: #f1f5f9; /* Soft ice background row alternative */
+    border-top: 1px solid #e2e8f0;
+}
+.card-interactive {
+    background: var(--pure-white);
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 35px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+}
+.card-interactive:hover {
+    border-color: #00b3b3;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 179, 179, 0.08);
+}
+.card-icon {
+    font-size: 2.2rem;
+    color: var(--electric-blue);
+    margin-bottom: 15px;
+}
+/* =========================================================================
+   DE-BOXED UNIFIED MARKETPLACE PILL TUNERS (PART 2)
+   ========================================================================= */
+
+/* Elegant open-canvas input field focus animations */
+#catalogSearch:focus {
+    border-color: var(--electric-blue) !important;
+    box-shadow: 0 0 15px rgba(11, 94, 180, 0.08);
+    background-color: var(--white) !important;
+}
+
+/* Polished light-mode interactive filter buttons */
+.pill-btn {
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    color: #475569;
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s ease-in-out;
+}
+
+/* Hover thresholds */
+.pill-btn:hover {
+    border-color: var(--electric-blue);
+    color: var(--electric-blue);
+    background-color: #f8fafc;
+}
+
+/* Active clamping states */
+.pill-btn.active {
+    background-color: var(--electric-blue) !important;
+    border-color: var(--electric-blue) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(11, 94, 180, 0.15);
+}
+
+/* Dedicated styling layer explicitly formatting your top manufacturer tags */
+.brand-pill {
+    border: 2px solid var(--electric-blue);
+    color: var(--electric-blue);
+    background-color: #ffffff;
+}
+.brand-pill:hover, .brand-pill.active {
+    background-color: var(--electric-blue) !important;
+    color: #ffffff !important;
+}
+/* =========================================================================
+   NAVBAR BRAND SHOWROOMS AUTOMATED HOVER CONTROLLER
+   ========================================================================= */
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+/* ==========================================================================
+   FIXED HYTERA PORTAL LAYOUT REGULATOR BLOCK
+   ========================================================================== */
+
+/* Core structural cleanup */
+.unit {
+    box-sizing: border-box;
+    display: block;
+    width: 100% !important;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+/* Forces the container to treat raw text as standard paragraph blocks */
+.unit.unit50 {
+    width: 100% !important;
+    display: block !important;
+    white-space: normal !important; /* Overrides accidental line break formats */
+    word-break: break-word;
+    color: #475569;
+    font-size: 0.95rem;
+    line-height: 1.6; /* Uniform line spacing */
+}
+
+/* Cleans up and spaces out the dealer portal h2 headers */
+.unit.unit50 h2 {
+    color: #0e1a24;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: -0.3px;
+    display: block;
+    width: 100%;
+}
+/* ==========================================================================
+   MANUFACTURER SPECIFICATION GRID REGULATOR MATRIX
+   ========================================================================== */
+
+/* 1. Sub-Section Headers Spacing (General, Receiver, Transmitter) */
+#technical-panel h3 {
+    color: #0e1a24;
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin: 25px 0 12px 0;
+    text-transform: uppercase;
+    border-bottom: 2px solid #0b5eb4;
+    padding-bottom: 4px;
+    letter-spacing: -0.3px;
+}
+
+/* 2. Definition List Wrapper Grid Configuration */
+#technical-panel dl {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    background: #ffffff;
+}
+
+/* 3. Property Label Boxes (The left column) */
+#technical-panel dt {
+    background: #f8fafc;
+    color: #0e1a24;
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e2e8f0;
+    margin: 0;
+}
+
+/* 4. Value Parameter Boxes (The right column) */
+#technical-panel dd {
+    color: #334155;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e2e8f0;
+    margin: 0;
+}
+
+/* Remove bottom borders from the last row items cleanly to prevent double lines */
+#technical-panel dt:last-of-type,
+#technical-panel dd:last-of-type {
+    border-bottom: none;
+}
+
+/* Responsive adjustment for small tablet and smartphone screens */
+@media (max-width: 768px) {
+    #technical-panel dl { grid-template-columns: 1fr !important; }
+    #technical-panel dt { border-bottom: none; padding-bottom: 2px; }
+}
+.product-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin: 40px 0;
+}
+
+.main-product-image {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.brand-tag {
+    display: inline-block;
+    background: #f1f5f9;
+    color: var(--electric-blue);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.price-section .price {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--electric-blue);
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.features li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: #e2e8f0;
+    border: 1px solid #e2e8f0;
+}
+
+.spec-row {
+    background: white;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .product-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.product-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin: 40px 0;
+}
+
+.main-product-image {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.brand-tag {
+    display: inline-block;
+    background: #f1f5f9;
+    color: var(--electric-blue);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.price-section .price {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--electric-blue);
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.features li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: #e2e8f0;
+    border: 1px solid #e2e8f0;
+}
+
+.spec-row {
+    background: white;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .product-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.recommended-accessories {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.accessories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 15px;
+}
+
+.accessory-item {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+}
+
+.accessory-item h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.05rem;
+}
+
+.accessory-item button {
+    margin-top: 10px;
+    width: 100%;
+}
+.recommended-accessories {
+    margin-top: 30px;
+}
+
+.accessories-grid-under-image {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.accessory-item {
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+/* =========================================================================
+ * FIXED: UNIFIED PRODUCT MATRIX GRAPHICS CONFIGURATION (IMAGE BALANCER EFFECT)
+ * ========================================================================= */
+.product-grid-card, .catalog-item-card, .accessory-item, .api-product-card { 
+    display: flex !important; 
+    flex-direction: column !important; 
+    height: 100% !important; 
+}
+
+/* Enforces responsive containment bounds instead of hard stretching */
+.product-grid-card img, .catalog-item-card img, .accessory-item img, .image-container img { 
+    max-width: 95% !important;        /* Limits device chassis from hitting side walls */
+    max-height: 95% !important;       /* DYNAMICALLY FORCES WHIP ANTENNAS TO SHRINK TO BOX HEIGHT */
+    width: auto !important;           /* Blocks aggressive horizontal stretching distortions */
+    height: auto !important;          /* Blocks aggressive vertical stretching distortions */
+    object-fit: contain !important;    /* SCALES ENTIRE OBJECT TO SHOW 100% VISUAL CHASSIS */
+    margin: 0 auto !important; 
+    display: block !important; 
+}

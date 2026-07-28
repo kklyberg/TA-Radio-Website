@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipment Specifications & Procurement Console</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cloudflare.com">
+  <style>
+    .dropdown { position: relative; display: inline-block; }
+    .dropdown-content { display: none; position: absolute; background-color: #ffffff; min-width: 200px; box-shadow: 0px 8px 16px rgba(0,0,0,0.1); z-index: 2000; border-top: 3px solid #0b5eb4; border-radius: 0 0 4px 4px; }
+    .dropdown-content a { color: #0e1a24; padding: 12px 16px; text-decoration: none; display: block; font-weight: 700; font-size: 0.88rem; text-align: left; border-bottom: 1px solid #f1f5f9; }
+    .dropdown-content a:hover { background-color: #f8fafc; color: #0b5eb4; }
+    .dropdown:hover .dropdown-content { display: block !important; }
+    .procure-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem; margin-top: 10px; }
+    .procure-table th { padding: 12px 8px; border-bottom: 2px solid #cbd5e1; color: #475569; font-weight: 700; }
+    .procure-table td { padding: 12px 8px; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
+    .btn-primary:hover { background: #094a8f !important; }
+    .btn-secondary:hover { background: #f1f5f9 !important; }
+  </style>
+</head>
+<body id="top-viewport" style="padding-top: 110px; background-color: #f8fafc; margin: 0; font-family: 'Segoe UI', system-ui, sans-serif;"> 
+  
+  <!-- Fixed Corporate Header Assembly Component --> 
+  <header class="main-header" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.08); background-color: #ffffff; display: flex; flex-direction: column;"> 
+    
+    <!-- FIXED TOP UTILITY STRIP --> 
+    <div style="background-color: #0e1a24 !important; color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 600; padding: 8px 0; border-bottom: 1px solid rgba(11, 94, 180, 0.3); width: 100%;"> 
+      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; box-sizing: border-box;"> 
+        <div><i class="fa-solid fa-location-dot" style="color: #00FF66; margin-right: 4px;"></i> 30+ Years of Certified Wireless Expertise | 700 S John Rodes Blvd, Melbourne, FL 32904</div> 
+        <div><a href="tel:3217254824" style="color: #00FFFF; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 600;"><i class="fa-solid fa-phone-volume"></i> (321) 725-4824</a></div> 
+      </div> 
+    </div> 
+
+    <div style="padding: 12px 0; width: 100%; background-color: #ffffff !important; box-sizing: border-box;"> 
+      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; gap: 20px; box-sizing: border-box;"> 
+        
+        <!-- Left Branding Module Group --> 
+        <div style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;"> 
+          <img src="tarc-logo.png" alt="TARC Logo" style="height: 50px; width: auto; display: block; cursor: pointer;" onclick="window.location.href='index.html';"> 
+          <div style="text-align: left; line-height: 1.2;"> 
+            <h1 style="margin: 0; font-size: 1.15rem; font-weight: 900; color: #0e1a24; text-transform: uppercase; letter-spacing: -0.3px;">T.A. Radio</h1> 
+            <span style="font-size: 0.65rem; color: #0b5eb4; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; display: block;">Communications</span> 
+          </div> 
+        </div> 
+
+        <!-- CENTER PLACEMENT: Unified Global Product Search Input Field --> 
+        <div style="flex: 1; max-width: 420px; position: relative; display: flex; align-items: center;"> 
+          <input type="text" id="navbarGlobalSearchInput" placeholder="Search models, brands, accessories..." style="width: 100%; padding: 8px 35px 8px 12px; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 0.85rem; color: #0e1a24; box-sizing: border-box; background: #f8fafc; transition: all 0.2s ease;"> 
+          <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 12px; color: #94a3b8; font-size: 0.85rem; pointer-events: none;"></i> 
+        </div> 
+
+        <!-- Right Side Primary Navigation Anchors links --> 
+        <nav class="nav-links" style="display: flex; align-items: center; flex-shrink: 0;"> 
+          <a href="index.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Home</a> 
+          <div class="dropdown" style="margin-left: 20px;"> 
+            <a href="#" style="color: #0b5eb4; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 4px;">Brand Showrooms <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></a> 
+            <div class="dropdown-content"> 
+              <a href="catalog.html?brand=kenwood"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Kenwood Catalog</a> 
+              <a href="catalog.html?brand=icom"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Icom Catalog</a> 
+              <a href="catalog.html?brand=hytera"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Hytera Catalog</a> 
+              <a href="catalog.html?brand=motorola"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Motorola Catalog</a> 
+              <a href="catalog.html?brand=ritron"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Ritron Catalog</a> 
+            </div> 
+          </div> 
+          <a href="index.html#industries" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Industries</a> 
+          <a href="calculator.html" class="nav-calc-link" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;"><i class="fa-solid fa-tower-broadcast" style="color: #0b5eb4;"></i> RF Sim</a> 
+          <a href="#" id="cartToggleBtn" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 25px; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-cart-shopping" style="color: #0b5eb4;"></i> Cart (<span id="cartCountBadge" style="font-weight: 800; color: #16a34a;">0</span>)</a> 
+        </nav> 
+      </div> 
+    </div> 
+  </header>
+
+<main style="padding: 60px 0; background-color: #ffffff;">
+  <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;">
+    
+    <!-- Splitting Layout Panel Frame Layout -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 50px; align-items: start; margin-bottom: 60px;">
+      
+                <!-- LEFT COLUMN: Handles Media Panel, Inclusions, and your specTable Data -->
+        <div style="display: flex; flex-direction: column; gap: 30px; box-sizing: border-box;">
+          
+<!-- Upgraded Product Media Showcase Component (Double Padding Fixed) -->
+<div id="product-media-panel" style="background: rgba(0,0,0,0.01); border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px; box-sizing: border-box;">
+    
+    <!-- FIXED: This is now the ONLY frame container. No double nesting or heavy padding squeezes. -->
+    <div id="productImageZoomFrame" style="width: 100%; height: 380px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; cursor: zoom-in; background-color: #ffffff; background-repeat: no-repeat; background-position: center center; background-size: contain; box-sizing: border-box;">
+        
+        <!-- FIXED: Removed restrictive inline constraints so the flat image looks full and crisp initially -->
+        <img id="primaryProductImg" src="images/radio-placeholder.png" alt="Hardware view..." style="width: auto; height: auto; max-width: 95%; max-height: 95%; object-fit: contain; transition: opacity 0.15s ease; pointer-events: none; display: block; margin: 0 auto;">
+        
+    </div>
+
+    <!-- The integrated Lens script engine tracking coordinates natively remains perfectly intact -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const frame = document.getElementById("productImageZoomFrame");
+            const image = document.getElementById("primaryProductImg");
+
+            if (!frame || !image) return;
+
+            frame.addEventListener("mousemove", (e) => {
+                const rect = frame.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const xPercent = (x / rect.width) * 100;
+                const yPercent = (y / rect.height) * 100;
+
+                frame.style.backgroundImage = `url('${image.src}')`;
+                frame.style.backgroundSize = "220%"; // 2.2x magnification pass
+                frame.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
+                image.style.opacity = "0";
+            });
+
+            frame.addEventListener("mouseleave", () => {
+                frame.style.backgroundImage = "none";
+                image.style.opacity = "1";
+            });
+        });
+    </script>
+</div>
+
+
+
+
+
+
+
+          <!-- FIXED OVERVIEW BLOCK: Placed perfectly right below your image frame -->
+          <div id="productShortDescriptionBox" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 25px; text-align: left; display: none; line-height: 1.6; font-size: 0.92rem; color: #334155; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+            <strong style="color: #0e1a24; font-size: 0.88rem; font-weight: 800; text-transform: uppercase; display: block; margin-bottom: 12px; letter-spacing: 0.5px; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px;"><i class="fa-solid fa-align-left" style="color:#0b5eb4;"></i> Product Overview:</strong>
+            <!-- Uses pre-wrap to automatically maintain multiple paragraph carriage return line breaks safely -->
+            <p id="productShortDescriptionLine" style="margin: 0; white-space: pre-wrap; font-family: inherit; color: #475569;"></p>
+          </div>
+
+          <!-- Standard Box Package Includes Card -->
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 25px; text-align: left;">
+            <h4 style="color: #0e1a24; font-size: 0.88rem; font-weight: 800; text-transform: uppercase; margin: 0 0 12px 0; letter-spacing: 0.5px; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px;"><i class="fa-solid fa-box-open" style="color:#0b5eb4;"></i> Standard Box Package Includes:</h4>
+            <ul id="productIncludesList" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;"></ul>
+          </div>
+
+
+      <!-- TECHNICAL SPECIFICATIONS TABLE CORE ELEMENT MATRIX -->
+      <div id="product-custom-sub-content" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 25px; text-align: left; display: none; line-height: 1.6; font-size: 0.92rem; color: #334155; box-shadow: 0 2px 8px rgba(0,0,0,0.02);"></div>
+    
+    </div> <!-- This single tag closes ONLY the Left Column container perfectly -->
+
+      <!-- RIGHT COLUMN: Handles Text Metadata, Buttons, and now Accessories -->
+      <div style="text-align: left; box-sizing: border-box; display: flex; flex-direction: column; gap: 25px;">
+        <div>
+          <div id="productBrandBadge" style="background: rgba(11, 94, 180, 0.08); color: #0b5eb4; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(11, 94, 180, 0.2); display: inline-block; margin-bottom: 12px;">CERTIFIED HARDWARE</div>
+          <h1 id="productModelTitle" style="color: #0e1a24; font-size: 2.2rem; font-weight: 900; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: -0.5px;">Loading Model...</h1>
+          <span id="productTypeSub" style="color: #0b5eb4; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 15px;">System Node</span>
+          <div id="productPriceTag" style="font-size: 1.8rem; font-weight: 900; color: #16a34a; margin-bottom: 20px;">$0.00</div>
+          
+		  <!-- DYNAMIC RECOVERY VARIANT SELECTOR MENU -->
+<div style="margin: 15px 0; padding: 12px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+  <label for="variantSelectorDropdown" style="display:block; font-size:0.75rem; font-weight:800; text-transform:uppercase; color:#475569; margin-bottom:6px;">Select Model Configuration Suffix:</label>
+  <select id="variantSelectorDropdown" onchange="switchProductVariantView(this.value)" style="width:100%; padding:8px; border-radius:4px; border:1px solid #cbd5e1; font-weight:700; color:#0f172a; background:#ffffff; cursor:pointer; font-size:0.9rem;"></select>
+</div>
+
+		  
+          <div style="border-top: 1px solid #e2e8f0; padding-top: 20px; margin-bottom: 25px;">
+            <h4 style="color: #0e1a24; font-size: 0.88rem; font-weight: 800; text-transform: uppercase; margin: 0 0 15px 0; letter-spacing: 0.5px;"><i class="fa-solid fa-list-check" style="color:#0b5eb4;"></i> General Features Matrix:</h4>
+            <ul id="productFeaturesList" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;"></ul>
+          </div>
+          
+          <div id="productCartActionBox"></div>
+        </div>
+
+        <!-- NEW PLACEMENT: Accessories Terminal moved right here under the action buttons -->
+        <div style="border-top: 2px solid #e2e8f0; padding-top: 25px; text-align: left; width: 100%;">
+          <span style="color: #0b5eb4; font-size: 0.72rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 5px;"><i class="fa-solid fa-sliders"></i> CUSTOM BUNDLING TERMINAL</span>
+          <h2 style="color: #0e1a24; font-size: 1.4rem; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: -0.5px;">Associated System Options & Accessories</h2>
+          
+          <div id="accessory-table-container" style="width: 100%; box-sizing: border-box;">
+            <!-- Accessory card rows will inject live right inside this slot -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+</main>
+
+  <!-- Category Stacking Container Module Matrix -->
+  <!-- SECURE COMPLIANT SHOPPING CART DRAWER SUB-MANIFEST OVERLAYS -->
+  <div id="fleetCartDrawer" style="position: fixed; top: 0; right: -400px; width: 380px; height: 100%; background: #ffffff; border-left: 3px solid #0b5eb4; box-shadow: -15px 0 40px rgba(14, 26, 36, 0.25); z-index: 3000; transition: right 0.3s ease; box-sizing: border-box; display: flex; flex-direction: column;">
+    <div style="background: #0e1a24; padding: 20px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0b5eb4;">
+      <div style="text-align: left;">
+        <h3 style="color: #ffffff; font-size: 0.95rem; font-weight: 800; letter-spacing: 1px; margin: 0; text-transform: uppercase;"><i class="fa-solid fa-shield-halved" style="color: #00FF66; margin-right: 5px;"></i> SECURE CHECKOUT</h3>
+      </div>
+      <span id="closeCartBtn" style="color: #ffffff; cursor: pointer; font-size: 1.5rem; font-weight: 900; opacity: 0.7;">&times;</span>
+    </div>
+    <div id="cartItemsList" style="flex: 1; padding: 20px 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background-color: #f8fafc; box-sizing: border-box;"></div>
+    <div style="background: #ffffff; padding: 20px 15px; border-top: 2px solid #e2e8f0; display: flex; flex-direction: column; gap: 15px;">
+      <div style="display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; border-bottom: 1px dashed #cbd5e1; padding-bottom: 12px; text-align: left;">
+        <div style="display: flex; justify-content: space-between; color: #5a6e72; font-weight: 600;"><span>Total Order Volume:</span><span id="cartTotalItemsCount" style="color: #0e1a24; font-weight: 800;">0 Units</span></div>
+        <div style="display: flex; justify-content: space-between; font-size: 1.05rem; color: #0e1a24; font-weight: 800; margin-top: 4px;"><span>Subtotal:</span><span id="cartEstimatedTotalValue" style="color: #16a34a;">$0.00</span></div>
+      </div>
+      <button class="btn-primary" style="width: 100%; font-weight: 800; text-transform: uppercase; padding: 14px 20px; background: #0b5eb4; color: #ffffff; border: none; border-radius: 4px; cursor: pointer;" onclick="startStripeCheckout()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+<script>
+    let masterSheetFullFeed = [];
+    let secureStorefrontCart = [];
+    let activeRouteModelToken = "";
+    let currentProduct = null;
+
+    const LIVE_STREAM_URL = "https://script.google.com/macros/s/AKfycbw1M3qP6Lkebhy14vbMcCXESzB-N2QEFf2NHGHSuItlVn1sNP35Efa9uGdlRXEeF-m8DA/exec";
+
+    // 1. PARAMETER ROUTER
+    function initializeProductShowcaseRoute() {
+      const urlParamsSearch = new URLSearchParams(window.location.search);
+      const passedModel = urlParamsSearch.get("model") || "";
+      activeRouteModelToken = passedModel.trim();
+      if (activeRouteModelToken === "") {
+        window.location.href = "index.html";
+        return;
+      }
+      fetchFullCatalogFeed();
+    }
+
+    // 2. DATA FETCH
+    async function fetchFullCatalogFeed() {
+      const STORAGE_CACHE_KEY = "tarc_inventory_cache_feed";
+      const CACHE_TIMESTAMP_KEY = "tarc_inventory_cache_timestamp";
+      const TEN_MINUTES_IN_MS = 10 * 60 * 1000;
+
+      const cachedDataString = localStorage.getItem(STORAGE_CACHE_KEY);
+      const cachedTimestampString = localStorage.getItem(CACHE_TIMESTAMP_KEY);
+      const currentTimeStamp = Date.now();
+
+      if (cachedDataString && cachedTimestampString) {
+        if ((currentTimeStamp - parseInt(cachedTimestampString)) < TEN_MINUTES_IN_MS) {
+          masterSheetFullFeed = JSON.parse(cachedDataString);
+          executeSpecificationsRouteAndDraw();
+          return;
+        }
+      }
+
+      try {
+        console.log("📡 CONNECTING: Syncing database feed...");
+        const networkResponse = await fetch(LIVE_STREAM_URL);
+        if (!networkResponse.ok) throw new Error("Database handshake timeout.");
+        
+        masterSheetFullFeed = await networkResponse.json();
+        
+        localStorage.setItem(STORAGE_CACHE_KEY, JSON.stringify(masterSheetFullFeed));
+        localStorage.setItem(CACHE_TIMESTAMP_KEY, currentTimeStamp.toString());
+        
+        executeSpecificationsRouteAndDraw();
+      } catch (err) {
+        console.error("❌ Fetch error:", err);
+        if (cachedDataString) {
+          masterSheetFullFeed = JSON.parse(cachedDataString);
+          executeSpecificationsRouteAndDraw();
+        } else {
+          document.getElementById("productModelTitle").innerText = "Connection Offline";
+        }
+      }
+    }
+
+    // 3. MAIN EXECUTION
+    function executeSpecificationsRouteAndDraw() {
+      currentProduct = masterSheetFullFeed.find(radioItem => {
+        const rowModelString = (radioItem.model || radioItem.Model || "").toString().trim().toLowerCase();
+        return rowModelString === activeRouteModelToken.toLowerCase();
+      });
+
+      if (!currentProduct) {
+        document.getElementById("productModelTitle").innerText = "Model Record Not Found";
+        console.warn("Model not found:", activeRouteModelToken);
+        return;
+      }
+
+      buildMainProductDetails(currentProduct);
+      buildAssociatedAccessories(currentProduct);
+      populateVariantDropdown(currentProduct, masterSheetFullFeed);
+    }
+
+    // GENERIC VARIANT DROPDOWN - No hardcoding needed for most cases
+function populateVariantDropdown(radioItem, fullInventoryList) {
+  const dropdownMenu = document.getElementById("variantSelectorDropdown");
+  if (!dropdownMenu) {
+    console.warn("⚠️ variantSelectorDropdown element not found");
+    return;
+  }
+
+  dropdownMenu.innerHTML = '<option value="">Loading variants...</option>';
+
+  const masterPool = fullInventoryList || [];
+  if (!radioItem || masterPool.length === 0) {
+    dropdownMenu.innerHTML = '<option value="">No variants available</option>';
+    return;
+  }
+
+  const exactModelName = String(radioItem.model || radioItem.Model || "").trim().toLowerCase();
+
+  // === GENERIC ROOT DETECTION ===
+  let currentRoot = String(radioItem["root-model"] || radioItem.rootModel || radioItem.rootmodel || "").trim().toLowerCase();
+
+  // If no root-model column, try to intelligently extract root from model name
+  if (!currentRoot) {
+    // Common patterns: remove suffix after last letter+number (e.g. NX-1300DU → NX-1300)
+    const rootMatch = exactModelName.match(/^([a-z0-9]+-\d+[a-z0-9]*)/i);
+    if (rootMatch) {
+      currentRoot = rootMatch[1];
+    } else {
+      // Fallback: take everything before the last non-alphanumeric
+      currentRoot = exactModelName.split(/[^a-z0-9]/i)[0];
+    }
+  }
+
+  if (!currentRoot) {
+    dropdownMenu.innerHTML = `<option value="${exactModelName}" selected>${exactModelName} (Single variant)</option>`;
+    return;
+  }
+
+  console.log(`🔍 Using root group: ${currentRoot} for model ${exactModelName}`);
+
+  // Filter siblings using the root
+  const sisterConfigs = masterPool.filter(config => {
+    const configType = String(config.type || config.Type || "").trim().toLowerCase();
+    if (configType === "accessory") return false;
+
+    const configRoot = String(config["root-model"] || config.rootModel || config.rootmodel || "").trim().toLowerCase();
+    const configModel = String(config.model || config.Model || "").trim().toLowerCase();
+
+    // Match by root-model column OR by model prefix
+    return (configRoot && configRoot === currentRoot) ||
+           configModel.startsWith(currentRoot);
+  });
+
+  dropdownMenu.innerHTML = "";
+
+  if (sisterConfigs.length <= 1) {
+    dropdownMenu.innerHTML = `<option value="${exactModelName}" selected>${exactModelName} (Only option)</option>`;
+    return;
+  }
+
+  sisterConfigs.forEach(sister => {
+    const sisterModel = String(sister.model || sister.Model || "").trim();
+    const shortDesc = String(sister["short-description"] || sister["short-Description"] || sister.shortDescription || "").trim();
+
+    const option = document.createElement("option");
+    option.value = sisterModel;
+    option.textContent = `${sisterModel} ${shortDesc ? `— (${shortDesc})` : ""}`;
+    if (sisterModel.toLowerCase() === exactModelName) option.selected = true;
+    dropdownMenu.appendChild(option);
+  });
+
+  console.log(`✅ Populated ${sisterConfigs.length} variants for root "${currentRoot}"`);
+}
+    // 5. VARIANT CHANGE HANDLER
+    window.switchProductVariantView = function(newModel) {
+      if (!newModel) return;
+      window.location.href = `product.html?model=${encodeURIComponent(newModel)}`;
+    };
+
+    // 6. BUILD MAIN PRODUCT DETAILS
+    function buildMainProductDetails(radioItem) {
+      let rawPriceValue = radioItem.price || radioItem.Price || 0;
+      let priceValue = parseFloat(rawPriceValue) || 0;
+      let priceDisplayString = priceValue > 0 ? `$${priceValue.toFixed(2)}` : "Contact for Bulk Quote";
+
+      let targetFolderPrefix = "";
+      let exactBrandName = (radioItem.brand || radioItem.Brand || "Kenwood").toString().trim();
+      const checkBrandLower = exactBrandName.toLowerCase();
+
+      if (checkBrandLower.includes("kenwood")) targetFolderPrefix = "kenwood/";
+      else if (checkBrandLower.includes("icom")) targetFolderPrefix = "icom/";
+      else if (checkBrandLower.includes("motorola")) targetFolderPrefix = "Motorola/";
+      else if (checkBrandLower.includes("ritron")) targetFolderPrefix = "ritron/";
+      else if (checkBrandLower.includes("hytera")) targetFolderPrefix = "hytera/";
+
+      let rawImageValue = radioItem.image || radioItem.Image || "";
+      let cleanFileNameString = rawImageValue.toString().trim();
+      if (cleanFileNameString.includes("/")) cleanFileNameString = cleanFileNameString.split("/").pop();
+
+      let fallbackImageSource = cleanFileNameString !== "" ? `${targetFolderPrefix}images/${cleanFileNameString}` : "images/radio-placeholder.png";
+
+      let exactModelName = radioItem.model || radioItem.Model || "Commercial Tier";
+      let exactTypeName = radioItem.type || radioItem.Type || "Wireless Component";
+      let rawFeatures = radioItem.features || radioItem.Features || "";
+
+      document.title = `${exactBrandName} ${exactModelName} | Procurement Matrix`;
+      if (document.getElementById("productBrandBadge")) document.getElementById("productBrandBadge").innerHTML = `<i class="fa-solid fa-award"></i> CERTIFIED ${exactBrandName.toUpperCase()} ASSET`;
+      if (document.getElementById("productModelTitle")) document.getElementById("productModelTitle").innerText = exactModelName;
+      if (document.getElementById("productTypeSub")) document.getElementById("productTypeSub").innerText = exactTypeName;
+      if (document.getElementById("productPriceTag")) document.getElementById("productPriceTag").innerText = priceDisplayString;
+      if (document.getElementById("primaryProductImg")) document.getElementById("primaryProductImg").src = fallbackImageSource;
+
+      // Features list
+      const specGridListNode = document.getElementById("productFeaturesList");
+      if (specGridListNode && rawFeatures) {
+        specGridListNode.innerHTML = "";
+        let cleanFeaturesString = rawFeatures.toString().replace(/[\[\]]/g, '').replace(/["']/g, '');
+        let featuresArray = cleanFeaturesString.split(",").map(f => f.trim());
+        featuresArray.forEach(itemText => {
+          if (itemText !== "") {
+            const specRow = document.createElement("li");
+            specRow.style.cssText = "margin-bottom:10px; display:flex; align-items:start; gap:8px; font-size:0.92rem; color:#334155; text-align:left; line-height:1.4;";
+            specRow.innerHTML = `<i class="fa-solid fa-circle-check" style="color:#0b5eb4; margin-top:3px; font-size:0.85rem; flex-shrink:0;"></i> <span>${itemText}</span>`;
+            specGridListNode.appendChild(specRow);
+          }
+        });
+      }
+
+            // PAINT BOX PACKAGE CONTENTS INCLUSIONS LIST
+      const includesListNode = document.getElementById("productIncludesList");
+      if (includesListNode) {
+        includesListNode.innerHTML = "";
+        let rawIncludes = radioItem.includes || radioItem.Includes || "";
+        if (rawIncludes) {
+          let cleanTextString = rawIncludes.toString().replace(/[\[\]]/g, '').replace(/["']/g, '');
+          let inclusionsArray = cleanTextString.split(",").map(item => item.trim());
+          inclusionsArray.forEach(itemText => {
+            if (itemText !== "") {
+              const rowLi = document.createElement("li");
+              rowLi.style.cssText = "display:flex; align-items:center; gap:8px; font-size:0.88rem; color:#334155; font-weight:600;";
+              rowLi.innerHTML = `<i class="fa-solid fa-square-plus" style="color:#16a34a; font-size:0.95rem;"></i> <span>${itemText}</span>`;
+              includesListNode.appendChild(rowLi);
+            }
+          });
+        } else {
+          includesListNode.innerHTML = `<li style="font-size:0.85rem; color:#64748b; font-style:italic;">Refer to product datasheet for standard box contents.</li>`;
+        }
+      }
+
+      // SHORT DESCRIPTION MULTI-PARAGRAPH INGESTION ENGINE
+      const shortDescContainerNode = document.getElementById("productShortDescriptionBox");
+      const shortDescTextLineNode = document.getElementById("productShortDescriptionLine");
+      if (shortDescContainerNode && shortDescTextLineNode) {
+        let rawShortDescText = radioItem["short-description"] || radioItem["short-Description"] || radioItem.shortDescription || "";
+        let cleanShortDesc = rawShortDescText.toString().trim();
+        if (cleanShortDesc !== "") {
+          shortDescTextLineNode.innerHTML = cleanShortDesc;
+          shortDescContainerNode.style.display = "block";
+        } else {
+          shortDescContainerNode.style.display = "none";
+        }
+      }
+
+      // DYNAMIC SPEC TABLE ENGINE MATRIX
+      const specTableContainerNode = document.getElementById("product-custom-sub-content");
+      if (specTableContainerNode) {
+        let rawTableDataStrings = radioItem.specTable || radioItem.spectable || radioItem.SpecTable || "";
+        let parsedSpecObject = null;
+
+        if (typeof rawTableDataStrings === "object" && rawTableDataStrings !== null) {
+          parsedSpecObject = rawTableDataStrings;
+        } else if (typeof rawTableDataStrings === "string" && rawTableDataStrings.trim() !== "") {
+          try {
+            parsedSpecObject = JSON.parse(rawTableDataStrings.trim());
+          } catch (e) {
+            try {
+              parsedSpecObject = JSON.parse(rawTableDataStrings.replace(/'/g, '"'));
+            } catch (err) {
+              parsedSpecObject = null;
+            }
+          }
+        }
+
+        if (parsedSpecObject && Object.keys(parsedSpecObject).length > 0) {
+          let builtTableHTML = `<table style="width:100%; border-collapse:collapse; margin-top:15px; border:1px solid #e2e8f0; font-size:0.92rem; text-align:left;"><thead><tr style="background:#0e1a24; color:#ffffff;"><th style="padding:12px; font-weight:800; width:40%;">Technical Parameter</th><th style="padding:12px; font-weight:800; width:60%;">Verified Specification</th></tr></thead><tbody>`;
+          let rowIndexCounter = 0;
+          for (const [parameterKey, specificationValue] of Object.entries(parsedSpecObject)) {
+            let rowBgColor = rowIndexCounter % 2 === 0 ? "#ffffff" : "#f8fafc";
+            builtTableHTML += `<tr style="background:${rowBgColor}; border-bottom:1px solid #e2e8f0;"><td style="padding:12px; font-weight:700; color:#0e1a24; border-right:1px solid #e2e8f0;">${parameterKey}</td><td style="padding:12px; font-weight:600; color:#475569;">${specificationValue}</td></tr>`;
+            rowIndexCounter++;
+          }
+          builtTableHTML += `</tbody></table>`;
+          specTableContainerNode.innerHTML = builtTableHTML;
+          specTableContainerNode.style.display = "block";
+        } else {
+          specTableContainerNode.style.display = "none";
+        }
+      }
+
+      // ACTION CONTROL MATRIX
+      let downloadPdfBtnHTML = "";
+      let specSheetPathLink = radioItem.specLink || radioItem.speclink || radioItem.SpecLink || "";
+      if (specSheetPathLink && specSheetPathLink.trim() !== "") {
+        let cleanPdfNameString = specSheetPathLink.trim().split("/").pop();
+        downloadPdfBtnHTML = `<a href="${targetFolderPrefix}specs/${cleanPdfNameString}" target="_blank" class="btn-secondary" style="display:block; text-align:center; padding:14px; font-size:0.88rem; font-weight:900; text-decoration:none; border-radius:4px; border:1px solid #cbd5e1; color:#475569; background:#ffffff; margin-top:8px;"><i class="fa-solid fa-file-pdf" style="color:#ef4444;"></i> Specification Data Sheet</a>`;
+      }
+      if (document.getElementById("productCartActionBox")) {
+        document.getElementById("productCartActionBox").innerHTML = `
+          <button class="btn-primary" style="width:100%; font-size:0.95rem; font-weight:900; background:#0b5eb4; color:#ffffff; padding:14px; border:none; border-radius:4px; cursor:pointer;" onclick="injectItemIntoSecureCart('${exactModelName}', '${exactBrandName}', '${exactTypeName}', ${priceValue}, '${fallbackImageSource}')">
+            <i class="fa-solid fa-cart-plus"></i> Buy Now / Add to Cart
+          </button>
+          ${downloadPdfBtnHTML}`;
+      }
+    }
+
+
+   function buildAssociatedAccessories(radioItem) {
+  const targetContainer = document.getElementById("accessory-table-container") || document.getElementById("left-column-optional-grid");
+  if (!targetContainer) {
+    console.error("❌ Heading zone container element is completely missing from your HTML structure layout.");
+    return;
+  }
+  
+  targetContainer.innerHTML = `<div id="left-column-optional-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 20px; width: 100%; margin-top: 20px;"></div>`;
+  const optionalGridNode = document.getElementById("left-column-optional-grid");
+  
+  const targetBrandLower = (radioItem.brand || radioItem.Brand || "").toString().trim().toLowerCase();
+  
+      // FIXED COREREFERENCE: Synchronized directly against your standard catalog column tags
+    const totalAccessoriesInSheet = masterSheetFullFeed.filter(item => {
+      const itemType = (item.type || item.Type || "").toString().trim().toLowerCase();
+      return itemType.includes("battery") || itemType.includes("charger") || itemType.includes("antenna") || itemType.includes("microphone") || itemType.includes("audio") || itemType.includes("hardware");
+    });
+
+
+  // Grab the list of part numbers written directly inside this specific radio row
+  const radioOptionalPartsText = (radioItem.compatibleModels || radioItem.compatiblemodels || radioItem.CompatibleModels || "").toString().trim().toLowerCase();
+  
+  let matchingAccessoriesList = [];
+
+  if (radioOptionalPartsText !== "") {
+    // Split the comma-separated parts list into a clean array
+    const targetPartsArray = radioOptionalPartsText.split(",").map(p => p.trim());
+
+    // Filter master rows to find accessories matching those exact part numbers
+    matchingAccessoriesList = masterSheetFullFeed.filter(item => {
+      const checkBrandLower = (item.brand || item.Brand || "").toString().trim().toLowerCase();
+      const belongsToSameBrand = checkBrandLower === targetBrandLower || checkBrandLower.includes(targetBrandLower);
+      if (!belongsToSameBrand) return false;
+
+      // Pull the accessory model / part number name
+      const accessoryPartClean = (item.model || item.Model || "").toString().trim().toLowerCase();
+      if (accessoryPartClean === "") return false;
+
+      const strippedAccessory = accessoryPartClean.replace(/[^a-z0-9]/g, "");
+
+      // Match against the parts array we pulled from the radio row
+      return targetPartsArray.some(targetPart => {
+        const strippedTarget = targetPart.replace(/[^a-z0-9]/g, "");
+        return targetPart === accessoryPartClean || strippedTarget === strippedAccessory;
+      });
+    });
+  }
+  if (matchingAccessoriesList.length === 0) {
+    optionalGridNode.innerHTML = `
+      <div style="grid-column: 1/-1; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 6px; padding: 20px; text-align: left; font-size: 0.9rem; color: #b45309; line-height: 1.5; font-weight: 600;">
+        <i class="fa-solid fa-triangle-exclamation"></i> <strong>DATA PATH DIAGNOSTIC:</strong><br>
+        • System downloaded total row items from spreadsheet: <strong>${masterSheetFullFeed.length} rows</strong><br>
+        • Total rows marked as an 'Accessory' type column: <strong>${totalAccessoriesInSheet.length} items</strong><br>
+        • Total matches found linking to accessory models listed in "compatibleModels": <strong>0 matches</strong><br><br>
+        <span style="font-size: 0.82rem; font-weight: 500; color: #78350f;">To fix this: Open your Google Sheet, select this radio model's row, and verify that its <code>compatibleModels</code> column contains a comma-separated list of your accessory part numbers (e.g., <code>PS22002(L), SM09D1, GPS04, POA44</code>).</span>
+      </div>`;
+    return;
+  }
+
+  // PAINTER ENGINE: Draws the visual cards cleanly if the data rows match up
+                  matchingAccessoriesList.forEach(acc => {
+            const accCard = document.createElement("div");
+            accCard.style.cssText = "background:#ffffff; border:1px solid #e2e8f0; border-radius:4px; padding:12px; text-align:center;";
+            
+            const accModelName = acc.model || acc.Model || "System Upgrade";
+            const accBrandName = acc.brand || acc.Brand || "Kenwood";
+            const accTypeName = acc.type || acc.Type || "accessory";
+            const currentImgFileString = acc.image || acc.Image || "images/radio-placeholder.png";
+
+            // 👉 SURGICAL MATCHING: Reads your actual spreadsheet decimal column strings safely
+            const accPriceValue = parseFloat(acc.price || acc.Price || 0);
+
+            // 👉 SURGICAL NAVIGATION LINK: Generates the link parameter destination smoothly
+            const secureProductPageDestinationUrl = `product.html?model=${encodeURIComponent(accModelName.trim())}`;
+
+            accCard.innerHTML = `
+              <a href="${secureProductPageDestinationUrl}" style="text-decoration:none; display:block; margin-bottom:8px;">
+                <div style="width:100%; height:90px; display:flex; align-items:center; justify-content:center; margin-bottom:8px; background:#f8fafc; border-radius:3px; padding:4px;">
+                  <img src="${currentImgFileString}" alt="${accModelName}" style="max-width:100%; max-height:100%; object-fit:contain;">
+                </div>
+                <h4 style="font-size:0.85rem; margin:0 0 4px 0; color:#0b5eb4; font-weight:700; text-decoration:none;">${accModelName}</h4>
+              </a>
+              <p style="font-size:0.8rem; margin:0 0 4px 0; color:#64748b; font-weight:500;">Part #: ${accModelName}</p>
+              <p style="font-size:0.85rem; margin:0 0 8px 0; color:#0e1a24; font-weight:700;">$${accPriceValue.toFixed(2)}</p>
+              <button style="background:#16a34a; color:#ffffff; border:none; padding:6px 8px; border-radius:3px; font-size:0.75rem; cursor:pointer; font-weight:700;" onclick="injectItemIntoSecureCart('${accModelName}', '${accBrandName}', '${accTypeName}', ${accPriceValue}, '${currentImgFileString}')">Add to Fleet</button>
+            `;
+            
+            optionalGridNode.appendChild(accCard);
+          });
+
+}
+
+
+
+    // 8. CART FUNCTIONS
+    window.injectItemIntoSecureCart = function(model, brand, type, price, img) {
+      const cachedCartData = localStorage.getItem("tarc_active_user_cart");
+      if (cachedCartData) {
+        try { secureStorefrontCart = JSON.parse(cachedCartData); } catch(e) {}
+      }
+      const match = secureStorefrontCart.find(c => c.model === model);
+      if (match) {
+        match.qty += 1;
+      } else {
+        secureStorefrontCart.push({ model, brand, type, price, image: img, qty: 1 });
+      }
+      localStorage.setItem("tarc_active_user_cart", JSON.stringify(secureStorefrontCart));
+      refreshSecureEcomConsole();
+      document.getElementById("fleetCartDrawer").style.right = "0px";
+    };
+
+    window.modifyCartItemQuantity = function(idx, delta) {
+      if (!secureStorefrontCart[idx]) return;
+      if (delta === -99) {
+        secureStorefrontCart.splice(idx, 1);
+      } else {
+        secureStorefrontCart[idx].qty += delta;
+        if (secureStorefrontCart[idx].qty <= 0) secureStorefrontCart.splice(idx, 1);
+      }
+      localStorage.setItem("tarc_active_user_cart", JSON.stringify(secureStorefrontCart));
+      refreshSecureEcomConsole();
+    };
+
+async function startStripeCheckout() {
+  const cart = JSON.parse(localStorage.getItem("tarc_active_user_cart") || "[]");
+
+  if (cart.length === 0) {
+    alert("Cart is empty");
+    return;
+  }
+
+  const items = cart.map(item => ({
+    model: item.model,
+    quantity: item.qty
+  }));
+
+  try {
+    const response = await fetch('https://ta-radio-website-production.up.railway.app/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items })
+    });
+
+    const data = await response.json();
+
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert(data.error || "Something went wrong");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Could not connect to payment server");
+  }
+}
+
+   function refreshSecureEcomConsole() {
+  // Load cart from localStorage
+  const cachedCartData = localStorage.getItem("tarc_active_user_cart");
+  if (cachedCartData) {
+    try {
+      secureStorefrontCart = JSON.parse(cachedCartData);
+    } catch (e) {
+      secureStorefrontCart = [];
+    }
+  } else {
+    secureStorefrontCart = [];
+  }
+
+  const cartList = document.getElementById("cartItemsList");
+  const cartCountBadge = document.getElementById("cartCountBadge");
+  const cartTotalItemsCount = document.getElementById("cartTotalItemsCount");
+  const cartEstimatedTotalValue = document.getElementById("cartEstimatedTotalValue");
+
+  if (!cartList) return;
+
+  // Clear current list
+  cartList.innerHTML = "";
+
+  let totalItems = 0;
+  let totalValue = 0;
+
+  if (secureStorefrontCart.length === 0) {
+    cartList.innerHTML = `<p style="text-align:center; color:#64748b; font-size:0.9rem; margin-top:40px;">Your cart is empty</p>`;
+  } else {
+    secureStorefrontCart.forEach((item, index) => {
+      totalItems += item.qty;
+      totalValue += item.price * item.qty;
+
+      const row = document.createElement("div");
+      row.style.cssText = "background:#ffffff; border:1px solid #e2e8f0; border-radius:6px; padding:12px; display:flex; gap:12px; align-items:center;";
+
+      row.innerHTML = `
+        <img src="${item.image || 'images/radio-placeholder.png'}" alt="${item.model}" style="width:60px; height:60px; object-fit:contain; background:#f8fafc; border-radius:4px;">
+        <div style="flex:1; text-align:left;">
+          <div style="font-weight:700; font-size:0.9rem; color:#0e1a24;">${item.model}</div>
+          <div style="font-size:0.8rem; color:#64748b;">${item.brand}</div>
+          <div style="font-size:0.9rem; font-weight:700; color:#16a34a; margin-top:4px;">$${(item.price * item.qty).toFixed(2)}</div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <button onclick="modifyCartItemQuantity(${index}, -1)" style="width:24px; height:24px; border:1px solid #cbd5e1; background:#f8fafc; border-radius:4px; cursor:pointer; font-weight:700;">−</button>
+            <span style="font-weight:700; min-width:20px; text-align:center;">${item.qty}</span>
+            <button onclick="modifyCartItemQuantity(${index}, 1)" style="width:24px; height:24px; border:1px solid #cbd5e1; background:#f8fafc; border-radius:4px; cursor:pointer; font-weight:700;">+</button>
+          </div>
+          <button onclick="modifyCartItemQuantity(${index}, -99)" style="font-size:0.7rem; color:#ef4444; background:none; border:none; cursor:pointer; margin-top:4px;">Remove</button>
+        </div>
+      `;
+
+      cartList.appendChild(row);
+    });
+  }
+
+  // Update badges and totals
+  if (cartCountBadge) cartCountBadge.textContent = totalItems;
+  if (cartTotalItemsCount) cartTotalItemsCount.textContent = totalItems + (totalItems === 1 ? " Unit" : " Units");
+  if (cartEstimatedTotalValue) cartEstimatedTotalValue.textContent = "$" + totalValue.toFixed(2);
+}
+    // 9. FINAL INITIALIZATION
+document.addEventListener("DOMContentLoaded", () => {
+  const trigger = document.getElementById("cartToggleBtn");
+  const dismiss = document.getElementById("closeCartBtn");
+  const drawer = document.getElementById("fleetCartDrawer");
+  const searchNode = document.getElementById("navbarGlobalSearchInput");
+
+  if (trigger && drawer) {
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+      drawer.style.right = "0px";
+      refreshSecureEcomConsole();          // ← added
+    });
+  }
+
+  if (dismiss && drawer) {
+    dismiss.addEventListener("click", () => {
+      drawer.style.right = "-400px";
+    });
+  }
+
+  if (searchNode) {
+    searchNode.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const queryTerm = e.target.value.toLowerCase().trim();
+        if (queryTerm) window.location.href = `catalog.html?search=${encodeURIComponent(queryTerm)}`;
+      }
+    });
+  }
+
+  // Load cart on page start
+  refreshSecureEcomConsole();             // ← added
+
+  // Calls your parameter router which automatically triggers your network data fetch strings safely
+  initializeProductShowcaseRoute();
+});
+
+</script>
+</body>
+</html>

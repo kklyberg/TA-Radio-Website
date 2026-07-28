@@ -1,0 +1,306 @@
+page,part_number,description,price,includes
+8,NX-5200K2,"VHF (136-174MHz), 6.0 Watts NXDN Conventional / TYPE-C (Gen1/Gen2) Trunking",1094.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+8,NX-5300K2,"UHF (450-520MHz), 5.0 Watts NXDN Conventional / TYPE-C (Gen1/Gen2) Trunking",1094.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+8,NX-5300K5,"UHF (380-470MHz), 5.0 Watts NXDN Conventional / TYPE-C (Gen1/Gen2) Trunking",1094.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+8,NX-5300K3,"UHF (450-520MHz), 5.0 Watts NXDN Conventional / TYPE-C (Gen1/Gen2) Trunking",1162.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+8,NX-5300K6,"UHF (380-470MHz), 5.0 Watts NXDN Conventional / TYPE-C (Gen1/Gen2) Trunking",1162.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+8,NX-5200-ISCK2,"VHF (136-174MHz), 6.0 Watts NXDN Conventional / TYPE-C (Gen1/Gen2) Trunking",1094.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+8,NX-5200-ISCK3,"VHF (136-174MHz), 6.0 Watts NXDN Conventional / TYPE-C (Gen1/Gen2) Trunking",1162.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+8,NX-5300-ISCK2,"UHF (450-520MHz), 5.0 Watts NXDN Conventional / TYPE-C (Gen1/Gen2) Trunking",1094.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+8,NX-5300-ISCK3,"UHF (450-520MHz), 5.0 Watts NXDN Conventional / TYPE-C (Gen1/Gen2) Trunking",1162.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+8,NX-5300-ISCK5,"UHF (380-470MHz), 5.0 Watts NXDN Conventional / TYPE-C (Gen1/Gen2) Trunking",1094.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+8,NX-5300-ISCK6,"UHF (380-470MHz), 5.0 Watts NXDN Conventional / TYPE-C (Gen1/Gen2) Trunking",1162.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+8,KWD-5001FP,License Key for Front Panel Programming,356.30,
+8,KWD-5002SD,License Key for microSD Memory Card Slot Activation,124.70,
+8,KWD-5003BT,License Key for Bluetooth Data (Required for Data Communication),41.70,
+8,KWD-5007RC,License Key for Remote Control by Subscriber Units,47.50,
+8,KWD-5101TR,License Key for P25 Phase 1 Trunking (requires KWD-5100CV),617.80,
+8,KWD-5102TR,License Key for P25 Phase 2 Trunking (requires KWD-5100CV & KWD-5101TR),475.20,
+8,KWD-5103RK,License Key for P25 OTAR (requires KWD-5106DT for a Trunking Operation),831.70,
+8,KWD-5105VT,License Key for P25 Conventional Voting Scan,142.70,
+8,KWD-5106DT,License Key for P25 Trunking OTAR / GPS / OTAP,213.80,
+8,KWD-5301TR,License Key for DMR Tier 3 Trunking (requires KWD-5300CV),158.30,
+8,KWD-5500EE,License Key for DMR ARC4 Enhanced Encryption,47.50,
+9,KRA-26M2,VHF helical antenna 162-174 MHz,22.00,
+9,KRA-26M3,VHF helical antenna 136-150 MHz,22.00,
+9,KRA-27M,UHF whip antenna 440-490 MHz,22.00,
+9,KRA-27M2,UHF whip antenna 470-520 MHz,22.00,
+9,KRA-27M3,UHF whip antenna 400-450 MHz,22.00,
+9,KRA-22M,VHF low-profile helical antenna 148-162 MHz,22.00,
+9,KRA-22M2,VHF low-profile helical antenna 162-174 MHz,22.00,
+9,KRA-22M3,VHF low-profile helical antenna 136-150 MHz,22.00,
+9,KRA-23M,UHF low-profile helical antenna 450-490 MHz,22.00,
+9,KRA-23M2,UHF low-profile helical antenna 470-520 MHz,22.00,
+9,KRA-23M3,UHF low-profile helical antenna 403-430 MHz,22.00,
+9,KRA-41M,VHF stubby antenna 148-162 MHz,18.30,
+9,KRA-41M2,VHF stubby antenna 162-174 MHz,18.30,
+9,KRA-41M3,VHF stubby antenna 136-150 MHz,18.30,
+9,KRA-42M,UHF stubby antenna 440-490 MHz,18.30,
+9,KRA-42M2,UHF stubby antenna 470-520 MHz,18.30,
+9,KRA-42M3,UHF stubby antenna 403-430 MHz,18.30,
+9,KRA-25,High gain VHF helically loaded whip antenna 148-162 MHz,46.00,
+9,KRA-28,Broad-band VHF helically loaded whip antenna 140-170 MHz,56.30,
+9,KRA-29,Broad Band UHF Whip Antenna 380-430 MHz,49.30,
+9,KNB-L1M,Li-ion 2000mAh (Compact Slim),158.30,
+9,KNB-L2M,Li-ion 2600mAh (Standard),185.80,
+9,KNB-L11M,Li-ion 3900mAh (High Capacity),240.50,
+9,KNB-L11,battery requires NX-5x00 firmware,5.12,
+9,KNB-L12M,Laminated Li-ion 3000mAh (High Capacity),210.00,
+9,KNB-L13M,Laminated Li-ion 4000mAh (High Capacity),266.00,
+9,KNB-LS5CU,CSA US Intrinsically Safe Battery Li-ion 2000mAh,280.00,
+9,KNB-LS7M,CSA US Intrinsically Safe Battery Li-ion 3800mAh,402.70,
+9,KBP-10,AA Alkaline Refillable Battery Pack (12 AA: 9V). Cells not included.,157.50,
+9,KNB-54N,KSC-52AK Rapid rate single unit charger for the KNB-L11/L12/L13 high capacity battery,107.00,
+9,KSC-52PAW,Charging pocket for KSC-526K and/or to convert the pocket style of a KSC-52 Single unit,12.00,
+10,KSC-526K,and/or to convert the pocket style of a KSC-52 Single unit,12.00,
+10,KMB-526K,Wall Mount Bracket for KSC-526K,91.50,
+10,KVC-52,Rapid rate DC vehicular charger adapter for the KSC-52BK/52AK chargers (chargers not,208.30,
+10,KVC-23A,"Rapid rate DC vehicular charger for TK-5x10/5x20, NX-5x00/x00/x10/x20, TK-x180, TK-x170,",402.70,
+10,KBH-8DS,Leather swivel belt loop with portable D-Ring attachment,35.20,
+10,KLH-6SW,Leather swivel belt loop / detachable swivel D-Ring back,29.50,
+10,KLH-137ST,Firemen's Heavy-Duty Leather Shoulder Strap for a Heavy-Duty Leather Case,49.30,
+10,KLH-200K3,Heavy duty leather carrying case for NX-5000 series with KNB-L1/L2/L3/LS5CU,59.20,
+10,KLH-201K3,(for both keypad models),90.00,
+10,KMC-70M,"MIL-SPEC, IP54/55/67/68* Speaker Mic with Active Noise Reduction",174.20,
+10,KMC-72W,"MIL-SPEC, IP54/55/67 Noise-cancelling Speaker Mic",133.80,
+10,KMC-49,"MIL-SPEC, Speaker Mic. with Antenna Connector",495.00,
+10,KEP-1,3.5mm earphone kit for KMC-41/42W/54W/70M/72W Speaker Mics,74.50,
+10,KEP-2,2.5mm earphone kit for KMC-49 Speaker Mic,74.50,
+10,KCT-51,Hirose 6-pin Adapter (adapts KVL/aftermarket audio acc. to portable connector),306.70,
+10,KHS-11BL,"2-wire palm mic w/earphone, universal connector (Black)",223.20,
+10,KHS-12BL,"3-wire mini lapel mic w/earphone, universal connector (Black)",283.70,
+10,KHS-14C,Lt. Wt. Single muff headset w/boom mic & In-line PTT,155.80,
+10,KHS-15DC-BH,Hvy-duty behind-the-headset w/boom mic & earcup-mounted PTT with NRR of 24dB,611.00,
+10,KHS-15D-OH,Hvy-duty noise reduction over-the-headset w/noise cancelling boom mic & PTT,522.80,
+11,SM1PB003,Sensear Non-IS BT Headband Single hearing protection IP54 with NRR of 27dB,775.00,
+11,SM1PE003,Sensear Non-IS BT Behind-the-Neck Single hearing protection IP54 with NRR of 24dB,775.00,
+11,SM1PH003,Sensear Non-IS BT Helmet Mount Single hearing protection IP54 with NRR of 23dB,775.00,
+11,KWD-AE31K,AES & DES Encryption Module (Multi-Key),737.20,
+11,KCT-48VU,External Vibration Unit,114.00,
+11,KPG-AE1K,AES/DES Encryption Software Key Loader for KWD-AE31K,649.10,
+11,KPG-DE1K,DES Encryption Software Key Loader for KWD-AE31K,436.50,
+11,KPG-36XM,Full Speed USB Programming interface cable,212.30,
+11,KPG-93,Encryption Key Loader Interface Cable for Motorola KVL-3000/3000 Plus/4000,374.20,
+11,KPG-93AUT,KVL-4000 Radio Authentication Cable,469.50,
+12,KWD-ASK-AK,Access Key for KPG-D1NK P25 trunked programming,280.00,
+12,KWD-ASK-MK,Master Key for activating KWD-ASK-AK Access Keys,668.50,
+12,OPTION,"KPG-CLN-14P Portable-to-Portable Cloning Cable (14P:14P), 1m",301.80,
+12,CHARGES,L-5001 Factory Activation of Radio Feature Licenses (per Radio),129.70,
+12,L-5002,NX-5200/5300/5400 Programming (with basic TX/RX check),40.50,
+12,L-5003,Install KWD-AE30K in NX-5000 series Portable,81.00,
+12,L-5004,Install KWD-AE31K in NX-5000 series Portable,81.00,
+12,L-5005,KPG-D1NK System Key File (SKF),142.20,
+12,L-5024,Assemble Yellow Housing KWD-YH-5000 with NX-5000 series Portable,28.80,
+12,L-5039,Configure NX-5200/5300/5400 for CSA US Intrinsically Safe,36.00,
+12,L-5051,P25 CAP Compliance of Non-Encrypted Radio - Disable Built-in DES,54.00,
+12,L-5077,FSFS++ Forest Service Feature Set - Factory Installation,64.80,
+13,L-1849,FSFS++ Forest Service Feature Set - Field Installation,1512.00,
+14,VOCODER,• Full Color,1.74,
+15,NX-5400-ISCK2,"700 / 800 MHz, 3.0 Watts NXDN Conventional / TYPE-C (Gen1/Gen2) Trunking",1094.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+15,KRA-36,700/800 MHz Stubby Antenna,33.50,
+16,KSC-52BK,Rapid rate single unit charger for KNB-L1/KNB-L2/KNB-L3/KNB-LS5/KNB-LS7/KNB-33L/PB-,107.00,
+20,FEATURES,•,153.60,
+20,NX-3200K2,"VHF (136-174MHz), 5.0 Watts, 512 CH, Standard Key Model",847.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+20,NX-3200K3,"VHF (136-174MHz), 5.0 Watts, 512 CH, Full Key Model",912.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+20,NX-3300K,"UHF (400-520MHz), 5.0 Watts, 64 CH, Basic Model",781.20,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+20,NX-3300K2,"UHF (400-520MHz), 5.0 Watts, 512 CH, Standard Key Model",847.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+20,NX-3300K3,"UHF (400-520MHz), 5.0 Watts, 512 CH, Full Key Model",912.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+21,NX-3200-ISCK,"VHF (136-174MHz), 5.0 Watts, 64 CH, Basic Model",781.20,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+21,NX-3200-ISCK2,"VHF (136-174MHz), 5.0 Watts, 512 CH, Standard Key Model",847.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+21,NX-3200-ISCK3,"VHF (136-174MHz), 5.0 Watts, 512 CH, Full Key Model",912.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+21,NX-3300-ISCK,"UHF (400-520MHz), 5.0 Watts, 64 CH, Basic Model",781.20,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+21,NX-3300-ISCK2,"UHF (400-520MHz), 5.0 Watts, 512 CH, Standard Key Model",847.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+21,NX-3300-ISCK3,"UHF (400-520MHz), 5.0 Watts, 512 CH, Full Key Model",912.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+21,KWD-3001FP,License Key for Front Panel Programming,148.50,
+21,KWD-3002BT,License Key for Bluetooth Data (Required for Data Communication),41.70,
+21,KWD-3302TR,License Key for DMR Tier 3 Trunking,118.80,
+21,KWD-3501TR,"License Key for Digital Trunking (Includes NXDN Type-C and Type-C Gen2, and Trunking 2.5)",49.50,
+21,KWD-3502EE,License Key for DMR ARC4 Enhanced Encryption,47.50,
+21,KWD-3503AE,License Key for AES/DES Encryption,534.70,
+21,KWD-3504RC,License Key for Remote Control by Subscriber Unit,47.50,
+21,KWD-3505DE,License Key for DES Encryption,118.80,
+22,KRA-26M,VHF helical antenna 146-162 MHz,22.00,
+22,KNB-57LAM,"2000 mAh, Li-ion battery, IP67, battery only, best for conventional mode operation",133.50,
+22,KNB-55LAM,"1480 mAh, Li-ion battery, IP67, battery only",84.70,
+22,KNB-56N,"1400 mAh, Ni-MH battery, IP67, battery only",107.00,
+22,KNB-79LCM,"CSA US Intrinsically Safe Battery Li-ion 2860mAh, IP67, battery only",216.70,
+22,KBP-5,AA Alkaline Refillable Battery Pack (6 AA; 9V) cells not included,72.20,
+22,KSC-25LSK,100~240 volt rapid rate single unit charger for,64.70,
+22,KSC-25SK,110 volt Rapid rate single unit charger for,83.20,
+22,KMB-16,Six Unit Charger Adapter for the KSC-16/20/24/25/25L chargers,249.50,
+22,KMB-23,Six Unit Charger Adapter for the KSC-16/20/24/25/25L/32 chargers,381.30,
+22,KVC-4,Vehicular charger adapter for the KSC-16/18/20/24/25SK chargers,156.20,
+23,KLH-206K,Heavy-Duty Leather Case w/Swivel Belt Loop for Basic Model,65.50,
+23,KLH-206K2,Heavy-Duty Leather Case w/Swivel Belt Loop for Standard Keypad Model,65.50,
+23,KLH-206K3,Heavy-Duty Leather Case w/Swivel Belt Loop for Full Keypad Model,65.50,
+23,KLH-207K,Nylon carrying case for Basic Model,35.20,
+23,KLH-207K2,Nylon carrying case for Standard Keypad Model,35.20,
+23,KLH-207K3,Nylon carrying case for Full Keypad Model,35.20,
+23,KMC-40,"MIL-SPEC, Speaker Mic. with Antenna Connector",495.00,
+24,L-961,"Assemble KMB-23 with six KSC-24/25/25L/32 (Rapid Rate, 120 Volt versions only)",18.00,
+24,L-5001,Factory Activation of Radio Feature Licenses (per Radio),129.70,
+24,L-5052,NX-3000 Series Portables Programming (with basic TX/RX check),40.50,
+24,L-5054,Installation AES/DES for NX-3000 Portable/Mobile,27.00,
+24,L-5062,Configure NX-3000 series for CSA US Intrinsically Safe,36.00,
+24,L-5068,Assemble Color Housing KWD-YH-3000U/P with NX-3000 series Portable,28.80,
+26,NX-3400-ISCK3,"800/900MHz, 3.0 Watts, 512 CH, Full Key Model, NXDN Conv & Trunking",1121.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+26,KWD-3301CV,License Key for DMR Tier 2 Conventional,49.50,
+26,KRA-38K,800/900 MHz Whip Antenna,46.80,
+26,KRA-39,900 MHz Stubby Antenna,33.50,
+31,NX-3220K2,"VHF (136-174MHz), 5.0 Watts, 260CH, Standard Key Model",731.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3220K3,"VHF (136-174MHz), 5.0 Watts, 260CH, Full Key Model",796.20,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3320K,"UHF (400-520MHz), 5.0 Watts, 64 CH, Basic Model",621.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3320K2,"UHF (400-520MHz), 5.0 Watts, 260CH, Standard Key Model",731.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3320K3,"UHF (400-520MHz), 5.0 Watts, 260CH, Full Key Model",796.20,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3220K2-TR,"VHF (136-174MHz), 5.0 Watts, 260CH, Standard Key Model",764.30,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3220K3-TR,"VHF (136-174MHz), 5.0 Watts, 260CH, Full Key Model",829.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3320K-TR,"UHF (400-520MHz), 5.0 Watts, 64 CH, Basic Model",654.30,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3320K2-TR,"UHF (400-520MHz), 5.0 Watts, 260CH, Standard Key Model",764.30,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3320K3-TR,"UHF (400-520MHz), 5.0 Watts, 260CH, Full Key Model",829.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3320K2-XLKVP,UHF Extra-Cap Li-Ion Value Pack : NX-3320K2+KNB-78L(2860mAh)+KSC-25LSK+KRA-27M,994.40,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3320K2LAKVP,UHF Hi-Cap Li-Ion Value Pack : NX-3320K2+KNB-57LAM(2000mAh)+KSC-25LSK+KRA-27M,951.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3220KSLAKVP,VHF Li-Ion Value Pack : NX-3220K+KNB-55LAM(1480mAh)+KSC-25LSK+KRA-26M,792.90,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3220K2SLAKVP,VHF Li-Ion Value Pack : NX-3220K2+KNB-55LAM(1480mAh)+KSC-25LSK+KRA-26M,902.90,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3220K3SLAKVP,VHF Li-Ion Value Pack : NX-3220K3+KNB-55LAM(1480mAh)+KSC-25LSK+KRA-26M,967.60,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3320KSLAKVP,UHF Li-Ion Value Pack : NX-3320K+KNB-55LAM(1480mAh)+KSC-25LSK+KRA-27M,792.90,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3320K2SLAKVP,UHF Li-Ion Value Pack : NX-3320K2+KNB-55LAM(1480mAh)+KSC-25LSK+KRA-27M,902.90,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3320K3SLAKVP,UHF Li-Ion Value Pack : NX-3320K3+KNB-55LAM(1480mAh)+KSC-25LSK+KRA-27M,967.60,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3220-ISCK,"VHF (136-174MHz), 5.0 Watts, 64 CH, Basic Model",621.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3220-ISCK2,"VHF (136-174MHz), 5.0 Watts, 512 CH, Standard Key Model",731.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3220-ISCK3,"VHF (136-174MHz), 5.0 Watts, 512 CH, Full Key Model",796.20,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3320-ISCK,"UHF (400-520MHz), 5.0 Watts, 64 CH, Basic Model",621.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3320-ISCK2,"UHF (400-520MHz), 5.0 Watts, 512 CH, Standard Key Model",731.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+31,NX-3320-ISCK3,"UHF (400-520MHz), 5.0 Watts, 512 CH, Full Key Model",796.20,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+33,KMC-45D,"MIL-SPEC, IP54/55 Speaker microphone (Built-in 2.5mm miniature earphone jack)",115.30,
+33,KMC-21A,Compact speaker microphone,69.00,
+33,KHS-7C,Single muff headset w/boom mic no PTT,85.70,
+33,KHS-7AC,Lt. Wt Single muff headset w/boom mic & in-line PTT,110.00,
+33,KHS-8BL,Two-Wire palm mic w/earphone (black),146.70,
+33,KHS-9BL,Three-Wire lapel mic w/earphone (black),237.00,
+34,KHS-10DC-BH,Hvy-duty Behind-the-head Headset W/boom Mic Earcup-mounted PTT with NRR of 24dB,504.20,
+34,KHS-10DC-OH,Hvy-duty Over-the-head Headset W/boom Mic Earcup-mounted PTT with NRR of 24dB,538.50,
+34,KHS-22A,Behind-the-Head Headset with flexible boom mic and in-line PTT single ear receiver (low profile wire,75.80,
+34,KHS-26,Clip Mic w/earphone,40.00,
+34,KHS-27A,D-Ring Ear Hanger w/PTT & Mic,35.00,
+34,KHS-31C,C-Ring Ear Hanger w/PTT & Mic,42.70,
+34,KPG-22UM,USB Programming interface cable,212.30,
+37,NX-3420-ISCK3,"800/900MHz, 3.0 Watts, 260 CH, Full Key Model, NXDN Conv & Trunking",869.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+40,NX-1200NVBK2,"VHF (136-174MHz), 5W, 260 CH, LCD & Standard Keypad, NXDN/Analog",506.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+40,NX-1300NUBK,"UHF (450-520MHz), 5W, 64 CH, Basic Model, NXDN/Analog",405.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+40,NX-1300NUBK2,"UHF (450-520MHz), 5W, 260 CH, LCD & Standard Keypad, NXDN/Analog",506.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+40,NX-1300NUBK4,"UHF (400-470MHz), 5W, 64 CH, Basic Model, NXDN/Analog",405.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+40,NX-1300NUBK5,"UHF (400-470MHz), 5W, 260 CH, LCD & Standard Keypad, NXDN/Analog",506.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+40,NX-1200-ISCNBK,"VHF (136-174MHz), 5W, 64 CH, Basic Model, NXDN/Analog",602.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+41,NX-1200-ISCNBK2,"VHF (136-174MHz),S 5TWA,N 2D6A0R CDH, LCD & Standard Keypad, NXDN/Analog",702.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+41,NX-1300-ISCNBK2,"UHF (450-520MHz), 5W, 260 CH, LCD & Standard Keypad, NXDN/Analog",702.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+41,NX-1300-ISCNBK4,"UHF (400-470MHz), 5W, 64 CH, Basic Model, NXDN/Analog",602.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+41,NX-1300-ISCNBK5,"UHF (400-470MHz), 5W, 260 CH, LCD & Standard Keypad, NXDN/Analog",702.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+41,KNB-69L,"2550 mAh, Li-ion battery - requires KSC-35K/SK charger",105.00,
+41,KNB-82LCM,"CSA US Intrinsically Safe Battery Li-ion 1900mAh, battery only",154.00,
+41,KNB-29N,"1500 mAh, NiMH battery - requires KSC-43K charger",49.30,
+41,KSC-35SK,110~220 volt Fast rate single unit charger for KNB-45L/69L,42.20,
+41,KSC-43K,110~220 volt Fast rate single unit charger for KNB-29N/45L/69L,49.20,
+41,KMB-28AK,Six Unit Charger Adapter for the KSC-35SK chargers,280.00,
+41,KVC-22,110~220 volt Fast rate DC vehicular charger adapter for KSC-35SK charger,49.20,
+42,KLH-187,Nylon case for NX-1200/1300 srs,19.70,
+42,KWD-1301CN,License Key for DMR Conventional Conversion,49.50,
+42,KWD-1500EE,License key for DMR ARC4 Enhanced Encryption,39.70,
+42,KWD-1501RC,License Key for Remote Control by Subscriber Unit,39.70,
+43,E30-3410-05,2 pin Clone Cable,107.00,
+43,L-5075,NX-1000 Series Portables Programming (with basic TX/RX check),40.50,
+44,NX-1300NUK3,"UHF (450-520MHz), 5W, 260 CH, LCD & Full Keypad, NXDN/Analog",601.20,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+44,NX-1300NUK6,"UHF (400-470MHz), 5W, 260 CH, LCD & Full Keypad, NXDN/Analog",601.20,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+45,KNB-84LM,"1900 mAh, Li-ion battery (IEC 60529 - IP67) - requires KSC-35K/SK charger",98.50,
+47,NX-1200DVBK2,"VHF (136-174MHz), 5W, 260 CH, LCD & Standard Keypad, DMR/Analog",506.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+47,NX-1300DUBK,"UHF (450-520MHz), 5W, 64 CH, Basic Model, DMR/Analog",405.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+47,NX-1300DUBK2,"UHF (450-520MHz), 5W, 260 CH, LCD & Standard Keypad, DMR/Analog",506.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+47,NX-1300DUBK4,"UHF (400-470MHz), 5W, 64 CH, Basic Model, DMR/Analog",405.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+47,NX-1300DUBK5,"UHF (400-470MHz), 5W, 260 CH, LCD & Standard Keypad, DMR/Analog",506.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+48,NX-1200-ISCDBK,"VHF (136-174MHz), 5W, 64 CH, Basic Model, DMR/Analog",602.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+48,NX-1200-ISCDBK2,"VHF (136-174MHz), 5W, 260 CH, LCD & Standard Keypad, DMR/Analog",702.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+48,NX-1300-ISCDBK,"UHF (450-520MHz), 5W, 64 CH, Basic Model, DMR/Analog",602.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+48,NX-1300-ISCDBK2,"UHF (450-520MHz), 5W, 260 CH, LCD & Standard Keypad, DMR/Analog",702.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+48,NX-1300-ISCDBK4,"UHF (400-470MHz), 5W, 64 CH, Basic Model, DMR/Analog",602.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+48,NX-1300-ISCDBK5,"UHF (400-470MHz), 5W, 260 CH, LCD & Standard Keypad, DMR/Analog",702.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+51,NX-1300DUK3,"UHF (450-520MHz), 5W, 260 CH, Full Keypad Model, DMR/Analog",601.20,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+51,NX-1300DUK6,"UHF (400-470MHz), 5W, 260 CH, Full Keypad Model, DMR/Analog",601.20,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+54,NX-1200AVBK2,"VHF (136-174MHz), 5W, 260 CH, LCD & Standard Keypad, Analog",463.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+54,NX-1300AUBK,"UHF (450-520MHz), 5W, 64 CH, Basic, Analog",373.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+54,NX-1300AUBK2,"UHF (450-520 MHz), 5W, 260 CH, LCD & Standard Keypad,Analog",463.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+54,NX-1300AUBK4,"UHF (400-470MHz), 5W, 64 CH, Basic, Analog",373.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+54,NX-1300AUBK5,"UHF (400-470 MHz), 5W, 260 CH, LCD & Standard Keypad, Analog",463.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+56,KWD-1300CAK,License Key for DMR Tier2 Conventional Upgrade,49.50,
+57,NX-1302AUBK,"UHF (450-520MHz), 2W, 64 CH, Basic Model, Analog",337.20,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+61,KLH-154K2,Heavy duty leather carrying case for NX-3210/NX-210,59.20,
+63,KSC-50K,Li-Ion Rapid rate charger (Same as supplied with PKT-300K) 4,2.30,
+63,KSC-44MLKS,"AC Adapter (For cradle multi unit use, up to 6 units) 5",3.70,
+63,KSC-506K,Rapid rate 6-Unit Charger for KNB-81L 2,44.30,
+63,KBH-21W,Belt Clip 1,2.50,
+66,NX-5800K,"UHF (450-520MHz), 45 Watts NXDN Conventional / TYPE-C (Gen1/Gen2) Trunking",1300.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+66,NX-5800K2,"UHF (380-470MHz), 45 Watts NXDN Conventional / TYPE-C (Gen1/Gen2) Trunking",1300.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+66,NX-5900K,"700 / 800 MHz, 30/35 Watts NXDN Conventional / 800MHz TYPE-C (Gen1/Gen2) Trunking",1658.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+66,NX-5700BK,"VHF (50W, 136-174 MHz) RF Deck Only",956.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+66,NX-5800BK,"UHF (45W, 450-520 MHz) RF Deck Only",956.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+66,NX-5800BK2,"UHF (45W, 380-470 MHz) RF Deck Only",956.00,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+66,NX-5900BK,"35W, 700/800 MHz RF Deck Only",1313.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+71,KMC-66M,MIL-SPEC Standard electret mobile microphone with 12 keypad (8-pin mod. plug),126.70,
+71,KES-10W,"External speaker, 8.5W rated, 4-Ohm, 3.5mm L-type pin plug",65.30,
+71,KCT-72M,External Accessory Connection Cable for KCH-19M / KCH-20RM,49.20,
+71,KMC-9C,Control Station Desktop Microphone (8-pin mod. plug),115.30,
+71,KMC-59C,Control Station Desktop Microphone (8-pin mod. plug),255.50,
+71,KCT-23M2,"DC Cable, 75-110W, 10 feet",52.50,
+71,KCT-23M4,"DC Cable, 75/110W, 23 feet",72.20,
+71,KCH-20RM,- Remote configuration only. No Internal Speaker included. KES-5A is required.,802.70,
+71,KCT-71M3,Remote Control Cable (25 feet),107.00,
+71,KCT-71M4,Remote Control Cable (1.6 feet),60.20,
+71,KCT-77M2,Remote Control Cable for KCH-21RM (17 feet),245.20,
+72,KCT-18,Ignition sense cable,26.30,
+72,KLF-2,"Line Filter (suppresses alternator whine, 25dB, 25A max).",56.30,
+72,KRA-40GM,GPS Antenna,56.00,
+72,KCT-90USB,USB Mobile Cable for SD Card Direct Access Support,124.70,
+72,KPS-15,"DC Switching Power Supply (117/230 VAC; 23A max. continuous, 25A peak)",232.00,
+72,KMB-34,Control Station Mounting Case for KPS-15 Power Supply with mobile,72.20,
+75,KMB-33M,"5AFFM KMC-65M(x2), KCH-20RM(x2), KRK-15BM, KCT-71M2(x2), KCT-23M3, KMB-33M, KES-",2350.00,
+75,5AFMM,"KMC-65M, KCH-20RM, KRK-15BM(x2), KCT-71M2, KCT-71M4, KCT-23M3(x2), KMB-",1472.20,
+75,5AFMM-MR,"KMC-65M, KCH-20RM, KRK-15BM(x2), KCT-71M2, KCT-71M4, KCT-23M3(x2), KMB-",1671.90,
+75,5AHMM-MR,"KCH-21RM, KRK-15BM(x2), KCT-77M2, KCT-71M4, KCT-23M3(x2), KMB-33M(x2), KES-",2282.80,
+75,5AFFMM,"KMC-65M(x2), KCH-20RM(x2), KRK-15BM(x2), KCT-71M2(x2), KCT-71M4, KCT-23M3(x2),",2568.20,
+75,5AFFMM-MR,"KMC-65M(x2), KCH-20RM(x2), KRK-15BM(x2), KCT-71M2(x2), KCT-71M4, KCT-23M3(x2),",2638.40,
+75,6AFMIG,"KMC-65M, KCH-20RM, KCT-71M2, KCT-23M4, KCT-72M, KES-5A, KCT-18, KMB-36",1295.30,
+75,6AHMIG,"KCH-21RM, KCT-77M2, KCT-23M4, KCT-18, KMB-36",1776.70,
+76,L-5029,Factory Assembly & Factory Packing for Single Head Remote Kit and Radio,81.00,
+76,L-5030,Factory Assembly & Factory Packing for Dual Head Remote Kit and Radio,151.20,
+76,L-5031,Factory Assembly & Factory Packing for Single Head Remote Kit and Dual Deck Radio,91.80,
+76,L-5032,Factory Assembly & Factory Packing for Single Head / Dual Deck / Ext. Speakers,162.00,
+76,L-5033,Factory Assembly & Factory Packing for Dual Head and Dual Deck Radio,162.00,
+76,L-5034,Factory Assembly & Factory Packing for Dual Head / Dual Deck / Ext. Speakers,167.30,
+76,L-5035,Factory Assembly & Factory Packing for Single Head Remote and Triple Deck Radio,151.20,
+76,L-5037,Factory Assembly & Factory Packing for Dual Head and Triple Deck Radio,172.80,
+76,L-5006,NX-5000 Mobile Programming (with basic TX/RX check),40.50,
+76,L-5007,Install KWD-AE30K in NX-5000 series Mobile,81.00,
+76,L-5008,Install KWD-AE31K in NX-5000 series Mobile,81.00,
+76,L-5015,Install KAP-2 (Default) HR1/INTERNAL Sp./PA.,27.00,
+76,L-5019,Install KAP-2 (Default) HR1/EXTERNAL Sp./PA.,27.00,
+77,KPG-115,Encryption Key Loader Interface Cable for Motorola KVL-3000/3000 Plus/4000,374.20,
+77,KPG-115AUT,KVL-4000 Radio Authentication Cable,469.50,
+77,KPG-46XM,Full Speed USB Programming interface cable,212.30,
+77,KPG-CLN-RJ45,"Mobile-to-Mobile Cloning Cable (RJ45:RJ45), 3m",229.50,
+78,NX-3820HGK,"UHF (450 - 520MHz), 45 Watts, 512 CH, 128 Zones",901.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+78,NX-3820HGK2,"UHF (400 - 470MHz), 45 Watts, 512 CH, 128 Zones",901.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+78,NX-3820HGK-TR,"UHF (450 - 520MHz), 45 Watts, 512 CH, 128 Zones with NXDN Trunking",934.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+78,NX-3820HGK2-TR,"UHF (400 - 470MHz), 45 Watts, 512 CH, 128 Zones with NXDN Trunking",934.70,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+79,KRK-19BM,Interface Kit for an RF Deck,49.20,
+79,KCT-71A50,KCT-71A Extended Control Head Cable (up to 50 ft. max.),249.50,
+79,KCT-71A100,KCT-71A Extended Control Head Cable (up to 100 ft. max.),321.50,
+79,KMB-10,Key lock adapter,35.20,
+80,KES-5A,"External speaker, 40W max input",80.30,
+80,L-5053,NX-3720HG/3820HG/3920G/3921G Programming (with basic TX/RX check),40.50,
+82,NX-3921GK,"900MHz, 15 Watts, 512 CH, 128 Zones, NXDN Conv & Trunking",1177.80,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+86,NX-1800HNUK2,"400-470 MHz UHF 45W, 260 Ch / 128 Zones",577.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+87,GA25MCX,Garmin On-dash Style Magnetic base GPS Antenna for GPS15XL-W,83.20,
+87,KPG-D6NK,License Key for KPG-D6NK,122.80,
+87,L-1873,NX-1000 Series Mobiles Programming (with basic TX/RX check),40.50,
+87,L-1874,Install Garmin GPS15XL-W in NX-1000 Series mobile,108.00,
+88,NX-1800HDUK2,"400-470 MHz UHF 45W, 260 Ch / 128 Zones",577.50,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+90,NX-1000,series mobiles include: • Multiple Scan Functions •,6.25,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*
+90,NX-1800HAUK2,"400-470 MHz UHF 45W, 260 Ch / 128 Zones",548.30,Belt Clip (KBH-11) | Universal Connector Cap | User Guide | Premium Warranty: 3 Years*

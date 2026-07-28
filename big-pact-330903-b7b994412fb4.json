@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "big-pact-330903",
+  "private_key_id": "b7b994412fb44ddbb84725d75b0d06e87e3a75e5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDer2J7cF+gn6hN\nWn/tM1KK1KujZWhk7h5h4flCpLQ4peUaUIXMz7laUZe0OW9pLjsj5D7VnNNeX3VR\n+cWJJ3j3Kbgm1Kn1Bz7YQcGFL2KoFR/vfq1HPqH/YiiqhIkRQmry3GbknogKAqGC\n/6W5zAeBHPpZijmziSKX8OW19hn83KAKp/5ZENaJL8xGU/ujue96oUC5w9zcv4AQ\njdqJXLmE2vbiYYJs7+6dMhsIaZg17KSrqNpxkp5tD7ayDptuqwenL324xIG5JVue\nYcreAVbLdbvt40tTQxf8audjhzjs03Tr6/kgrjzbdmsDkaCqtbpHfc/iv+AAKszK\n5WZTvJonAgMBAAECggEAVBHWlk+YaqWb/ogaH8zubqdXnTpdrS0Qn1eWqQhRWcmX\nstWPjgEmMuj24v2ECCuB/EzhQ/gO/GQBgM9ROjSCwJ0pfs9u0qjHmxFIJCX9kwNW\nqS4j8O++bRH71FRxAukWQ1XeKpWHOnA/1Zr6UCis9JuiEEfU/Oja/I3fy1B8Ay/7\nmY4ZLa0Y1RbpthCgPHM0lzygzgnKyc4do0BZHUz9mjQhvI7GmgZSuMoxL3Z8gtNI\nLsj7+SRDVr+/4z/pTVF8l8u/oxbfdj28yjgfnCIsLz76Y3nWJKg0wYoF6/ZssE4c\nezPNsYpdIAh2eoHJLIYfR+S90Y907Dyi+uyAqvwREQKBgQDxIZcguIl4I78pQsZR\nB7Dcz/fXv32VgDffshuAqv8nUAV6/gxRLI+/E4fvgv/NdEt8nQaihaWqN8Bl9dgn\neJDEWmHrVjdUMV4/RGUoJYDNnkuyNhHLadc/p7UtNRAnc0nVNTJeTxw/4paEN9mu\nmKX4jkA0H3qmp64cZ0/+Ff0e4wKBgQDsapxVLROajO0JxJmfy90xGi/61vHHRcHt\nC4xmhBlgYndJmXVL+rDiAhd+jBnFMmlbMLQxfA3E2dVCGDKZJ9d8VsDKACX5L1Iz\nwaGl18Bp34KMT3Va7WQMtXxO5//9pI0c6rmYchbv+PYu5x0z1Nt3VIESiml5X+ut\nOjj5KdqW7QKBgQCS46Z/nUrI7+W8idvrcqbv7JSLTjB/iQsAbyxH1mL2nM2p3ea8\n8Etk184APqn7i3OMps9q48VGiw3eTsPtT4nIw1JRHUU5OZWzLsP8j9QF7f8owb1X\nT9N7CHva3S9JCPcaNXzIbKLF3A9a3fbyYDUC1A0Sc3aw3Qa4cMsO+nAmhwKBgQDe\n44guOYhA7lpQGj1nzVDliTXw/JMH93lknb2prSMrnsmt5vMSRfBbs/MoiLeHFgcE\nRT+tY7Krg1+up5eUk15ySGwMReWHL5kFWKmo7GboqiOvWv5eUm9AGB5xWgMbw/aS\na628zttXNVYMVDJQ+n5K262wqDPWjZtpPvoV1uLR5QKBgQDgonl8SAvWan0FuyZ2\nHNgSAj2iFPG35gNy2zClKAujQJCmkQ7kIgm+E15V6RAAJU9Recm9VHrki/RbktVI\ngZYt634N1reMQ4rfNBPLAowJmCUdBBG6d2LWLcb8nRqP7LeoQnLYKha/u0/3Jf78\n7WdxXAtRXb17Gf1TOPD/FvrNuQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "kenneth-klyberg@big-pact-330903.iam.gserviceaccount.com",
+  "client_id": "108515734200888184911",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/kenneth-klyberg%40big-pact-330903.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

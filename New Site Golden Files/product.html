@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Specifications & Procurement Console</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; background-color: #ffffff; min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.1); z-index: 2000; border-top: 3px solid #0b5eb4; border-radius: 0 0 4px 4px;
+        }
+        .dropdown-content a {
+            color: #0e1a24; padding: 12px 16px; text-decoration: none; display: block; font-weight: 700; font-size: 0.88rem; text-align: left; border-bottom: 1px solid #f1f5f9;
+        }
+        .dropdown-content a:hover { background-color: #f8fafc; color: #0b5eb4; }
+        .dropdown:hover .dropdown-content { display: block !important; }
+        .procure-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem; margin-top: 10px; }
+        .procure-table th { padding: 12px 8px; border-bottom: 2px solid #cbd5e1; color: #475569; font-weight: 700; }
+        .procure-table td { padding: 12px 8px; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
+    </style>
+</head>
+<body id="top-viewport" style="padding-top: 110px; background-color: #f8fafc; margin: 0; font-family: 'Segoe UI', system-ui, sans-serif;">
+
+    <!-- Fixed Navigation Header Matrix Assembly -->
+    <header class="main-header" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.08); background-color: #ffffff !important; border-bottom: 3px solid #0b5eb4; display: flex; flex-direction: column;">
+        <div style="background-color: #0e1a24; color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 600; padding: 8px 0; border-bottom: 1px solid rgba(11, 94, 180, 0.3); width: 100%;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; box-sizing: border-box;">
+                <div><i class="fa-solid fa-location-dot" style="color: #00FF66; margin-right: 4px;"></i> 30+ Years of Certified Wireless Expertise | 700 S John Rodes Blvd, Melbourne, FL 32904</div>
+                <div><a href="tel:3217254824" style="color: #00FFFF; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 600;"><i class="fa-solid fa-phone-volume"></i> (321) 725-4824</a></div>
+            </div>
+        </div>
+        <div style="padding: 12px 0; width: 100%; background-color: #ffffff !important; box-sizing: border-box;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
+                <div class="logo"><img src="tarc-logo.png" alt="Company Logo" style="height: 50px; width: auto; display: block; cursor: pointer;" onclick="window.location.href='index.html';"></div>
+                <nav class="nav-links" style="display: flex; align-items: center;">
+                    <a href="index.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Home</a>
+                    <div class="dropdown" style="margin-left: 20px;">
+                        <a href="#" style="color: #0b5eb4; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 4px;">Brand Showrooms <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="catalog.html?brand=kenwood"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Kenwood Catalog</a>
+                            <a href="catalog.html?brand=icom"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Icom Catalog</a>
+                            <a href="catalog.html?brand=hytera"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Hytera Catalog</a>
+                            <a href="catalog.html?brand=motorola"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Motorola Catalog</a>
+                            <a href="catalog.html?brand=ritron"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Ritron Catalog</a>
+                        </div>
+                    </div>
+                    <a href="index.html#industries" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Industries</a>
+                    <a href="calculator.html" class="nav-calc-link" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;"><i class="fa-solid fa-tower-broadcast" style="color: #0b5eb4;"></i> RF Sim</a>
+                    <a href="#" id="cartToggleBtn" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 25px; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-cart-shopping" style="color: #0b5eb4;"></i> Cart (<span id="cartCountBadge" style="font-weight: 800; color: #16a34a;">0</span>)</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main style="padding: 60px 0; background-color: #ffffff;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;">
+            
+            <!-- Splitting Layout Panel Frame Layout -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 50px; align-items: start; margin-bottom: 60px;">
+                
+                <!-- Left Media Hub Base Container Block -->
+                <div style="display: flex; flex-direction: column; gap: 30px; box-sizing: border-box;">
+                    <div id="product-media-panel" style="text-align: center; background: rgba(0,0,0,0.01); border: 1px solid #e2e8f0; border-radius: 6px; padding: 40px;">
+                        <div style="width: 100%; height: 320px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                            <img id="primaryProductImg" src="images/radio-placeholder.png" alt="Hardware view..." style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                        </div>
+                    </div>
+                    
+                    <!-- CRITICAL LAYOUT REQUEST BLOCK: Standard inclusions text lists stacked cleanly below the photo frame -->
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 25px; text-align: left;">
+                        <h4 style="color: #0e1a24; font-size: 0.88rem; font-weight: 800; text-transform: uppercase; margin: 0 0 12px 0; letter-spacing: 0.5px; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px;"><i class="fa-solid fa-box-open" style="color:#0b5eb4;"></i> Standard Box Package Includes:</h4>
+                        <ul id="productIncludesList" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;"></ul>
+                    </div>
+                </div>
+
+                <!-- Right Metadata Panel (Features Checklists and Buttons Matrix) -->
+                <div style="text-align: left; box-sizing: border-box;">
+                    <div id="productBrandBadge" style="background: rgba(11, 94, 180, 0.08); color: #0b5eb4; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(11, 94, 180, 0.2); display: inline-block; margin-bottom: 12px;">CERTIFIED HARDWARE</div>
+                    <h1 id="productModelTitle" style="color: #0e1a24; font-size: 2.2rem; font-weight: 900; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: -0.5px;">Loading Model...</h1>
+                    <span id="productTypeSub" style="color: #0b5eb4; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 15px;">System Node</span>
+                    <div id="productPriceTag" style="font-size: 1.8rem; font-weight: 900; color: #16a34a; margin-bottom: 20px;">$0.00</div>
+                    
+                    <div style="border-top: 1px solid #e2e8f0; padding-top: 20px; margin-bottom: 25px;">
+                        <h4 style="color: #0e1a24; font-size: 0.88rem; font-weight: 800; text-transform: uppercase; margin: 0 0 15px 0; letter-spacing: 0.5px;"><i class="fa-solid fa-list-check" style="color:#0b5eb4;"></i> General Features Matrix:</h4>
+                        <ul id="productFeaturesList" style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;"></ul>
+                    </div>
+                    <div id="productCartActionBox"></div>
+                </div>
+
+            </div>
+
+            <!-- COMPANION PROCUREMENT ECOSYSTEM CONTAINER MATRIX -->
+            <div style="border-top: 2px solid #e2e8f0; padding-top: 50px; text-align: left;">
+                <span style="color: #0b5eb4; font-size: 0.72rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 5px;"><i class="fa-solid fa-sliders"></i> CUSTOM BUNDLING TERMINAL</span>
+                <h2 style="color: #0e1a24; font-size: 1.8rem; font-weight: 900; margin: 0 0 25px 0; text-transform: uppercase;">Associated System Options & Accessories</h2>
+                            <!-- THE MISSING ANCHOR CONTAINER: This gives the script loop the exact box slot it needs to draw your cards -->
+            <div id="accessory-table-container" style="width: 100%; margin-top: 25px; box-sizing: border-box;">
+                <!-- Your optional microphones, brackets, and speaker cards will inject live right inside this slot -->
+            </div>
+
+                <!-- Category Stacking Container Module Matrix -->
+    <!-- SECURE COMPLIANT SHOPPING CART DRAWER SUB-MANIFEST OVERLAYS -->
+    <div id="fleetCartDrawer" style="position: fixed; top: 0; right: -400px; width: 380px; height: 100%; background: #ffffff; border-left: 3px solid #0b5eb4; box-shadow: -15px 0 40px rgba(14, 26, 36, 0.25); z-index: 3000; transition: right 0.3s ease; box-sizing: border-box; display: flex; flex-direction: column;">
+        <div style="background: #0e1a24; padding: 20px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0b5eb4;">
+            <div style="text-align: left;">
+                <h3 style="color: #ffffff; font-size: 0.95rem; font-weight: 800; letter-spacing: 1px; margin: 0; text-transform: uppercase;"><i class="fa-solid fa-shield-halved" style="color: #00FF66; margin-right: 5px;"></i> SECURE CHECKOUT</h3>
+            </div>
+            <span id="closeCartBtn" style="color: #ffffff; cursor: pointer; font-size: 1.5rem; font-weight: 900; opacity: 0.7;">&times;</span>
+        </div>
+        <div id="cartItemsList" style="flex: 1; padding: 20px 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background-color: #f8fafc; box-sizing: border-box;"></div>
+        <div style="background: #ffffff; padding: 20px 15px; border-top: 2px solid #e2e8f0; display: flex; flex-direction: column; gap: 15px;">
+            <div style="display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; border-bottom: 1px dashed #cbd5e1; padding-bottom: 12px; text-align: left;">
+                <div style="display: flex; justify-content: space-between; color: #5a6e72; font-weight: 600;"><span>Total Order Volume:</span><span id="cartTotalItemsCount" style="color: #0e1a24; font-weight: 800;">0 Units</span></div>
+                <div style="display: flex; justify-content: space-between; font-size: 1.05rem; color: #0e1a24; font-weight: 800; margin-top: 4px;"><span>Subtotal:</span><span id="cartEstimatedTotalValue" style="color: #16a34a;">$0.00</span></div>
+            </div>
+            <button class="btn-primary" style="width: 100%; font-weight: 800; text-transform: uppercase; padding: 14px 20px;" onclick="alert('Routing securely to transaction gateway...')">Proceed to Checkout</button>
+        </div>
+    </div>
+
+        <!-- =========================================================================
+         UNIVERSAL PRODUCT SPECIFICATION ROUTING CONTROLLER (PART 1 OF 2)
+         ========================================================================= -->
+    <script>
+        // System variables tracking active product detail models and cart objects
+        let masterSheetFullFeed = [];
+        let secureStorefrontCart = [];
+        let activeRouteModelToken = "";
+
+               // Central live Google Deployment macro endpoint path channel (Syncs with your custom spreadsheet URL)
+        const LIVE_STREAM_URL = "https://script.google.com/macros/s/AKfycbxDYnUEqqMvGcxnSIRD_dzULfxvSjXjALHylFTA8-Da9rVVyLbe0l7CGif26qE9p_lU/exec";
+
+        // --- 1. PARAMETER ROUTER: CAPTURES ACTIVE MODEL FROM LINK VECTOR ---
+        function initializeProductShowcaseRoute() {
+            const urlParamsSearch = new URLSearchParams(window.location.search);
+            const passedModel = urlParamsSearch.get("model") || "";
+            activeRouteModelToken = passedModel.trim();
+            
+            if (activeRouteModelToken === "") {
+                window.location.href = "index.html";
+                return;
+            }
+            fetchFullCatalogFeed();
+        }
+
+                // --- 2. HIGH-SPEED CORS COMPLIANT DATA FETCH PIPELINE WITH DUAL-LAYER CACHING ---
+        async function fetchFullCatalogFeed() {
+            const STORAGE_CACHE_KEY = "tarc_inventory_cache_feed";
+            const CACHE_TIMESTAMP_KEY = "tarc_inventory_cache_timestamp";
+            const TEN_MINUTES_IN_MS = 10 * 60 * 1000;
+
+            const cachedDataString = localStorage.getItem(STORAGE_CACHE_KEY);
+            const cachedTimestampString = localStorage.getItem(CACHE_TIMESTAMP_KEY);
+            const currentTimeStamp = Date.now();
+
+            // INSTANT DATA DELIVERY: Pulls your technical spec records out in milliseconds
+            if (cachedDataString && cachedTimestampString) {
+                if ((currentTimeStamp - parseInt(cachedTimestampString)) < TEN_MINUTES_IN_MS) {
+                    masterSheetFullFeed = JSON.parse(cachedDataString);
+                    executeSpecificationsRouteAndDraw();
+                    return;
+                }
+            }
+
+            try {
+                console.log("📡 CONNECTING: Local cache clear or expired. Syncing with live spreadsheet macro...");
+                const networkResponse = await fetch(LIVE_STREAM_URL);
+                if (!networkResponse.ok) throw new Error("Database handshake timeout.");
+                
+                masterSheetFullFeed = await networkResponse.json();
+                
+                localStorage.setItem(STORAGE_CACHE_KEY, JSON.stringify(masterSheetFullFeed));
+                localStorage.setItem(CACHE_TIMESTAMP_KEY, currentTimeStamp.toString());
+                
+                executeSpecificationsRouteAndDraw();
+                
+            } catch (err) {
+                console.error("❌ TIMEOUT: Network stream down. Pulling emergency local memory rows.", err);
+                if (cachedDataString) {
+                    masterSheetFullFeed = JSON.parse(cachedDataString);
+                    executeSpecificationsRouteAndDraw();
+                } else {
+                    document.getElementById("productModelTitle").innerText = "Connection Offline";
+                }
+            }
+        }
+
+        function executeSpecificationsRouteAndDraw() {
+            const targetRadioNode = masterSheetFullFeed.find(radioItem => {
+                const rowModelString = (radioItem.model || radioItem.Model || "").toString().trim().toLowerCase();
+                return rowModelString === activeRouteModelToken.toLowerCase();
+            });
+
+            if (!targetRadioNode) {
+                document.getElementById("productModelTitle").innerText = "Model Record Not Found";
+                return;
+            }
+
+            buildMainProductDetails(targetRadioNode);
+            buildAssociatedAccessories(targetRadioNode);
+        }
+
+        // --- 3. DYNAMIC MAIN DETAIL SPECIFICATION CARD PAINTER ---
+        function buildMainProductDetails(radioItem) {
+            let rawPriceValue = radioItem.price || radioItem.Price || 0;
+            let priceValue = parseFloat(rawPriceValue) || 0;
+            let priceDisplayString = priceValue > 0 ? `$${priceValue.toFixed(2)}` : "Contact for Bulk Quote";
+
+            let targetFolderPrefix = "";
+            let exactBrandName = (radioItem.brand || radioItem.Brand || "Kenwood").toString().trim();
+            const checkBrandLower = exactBrandName.toLowerCase();
+            
+            if (checkBrandLower.includes("kenwood")) targetFolderPrefix = "kenwood/";
+            else if (checkBrandLower.includes("icom")) targetFolderPrefix = "icom/";
+            else if (checkBrandLower.includes("motorola")) targetFolderPrefix = "Motorola/";
+            else if (checkBrandLower.includes("ritron")) targetFolderPrefix = "ritron/";
+            else if (checkBrandLower.includes("hytera")) targetFolderPrefix = "hytera/";
+
+            let rawImageValue = radioItem.image || radioItem.Image || "";
+            let cleanFileNameString = rawImageValue.toString().trim();
+            if (cleanFileNameString.includes("/")) {
+                cleanFileNameString = cleanFileNameString.split("/").pop();
+            }
+            let fallbackImageSource = cleanFileNameString !== "" ? `${targetFolderPrefix}images/${cleanFileNameString}` : "images/radio-placeholder.png";
+
+            let exactModelName = radioItem.model || radioItem.Model || "Commercial Tier";
+            let exactTypeName = radioItem.type || radioItem.Type || "Wireless Component";
+            let exactBestForText = radioItem.bestFor || radioItem.bestfor || radioItem.BestFor || "All General Sectors";
+            let rawFeatures = radioItem.features || radioItem.Features || "";
+
+            document.title = `${exactBrandName} ${exactModelName} | Procurement Matrix`;
+            if (document.getElementById("productBrandBadge")) document.getElementById("productBrandBadge").innerHTML = `<i class="fa-solid fa-award"></i> CERTIFIED ${exactBrandName.toUpperCase()} ASSET`;
+            if (document.getElementById("productModelTitle")) document.getElementById("productModelTitle").innerText = exactModelName;
+            if (document.getElementById("productTypeSub")) document.getElementById("productTypeSub").innerText = exactTypeName;
+            if (document.getElementById("productPriceTag")) document.getElementById("productPriceTag").innerText = priceDisplayString;
+            if (document.getElementById("productBestForLine")) document.getElementById("productBestForLine").innerText = exactBestForText;
+            if (document.getElementById("primaryProductImg")) document.getElementById("primaryProductImg").src = fallbackImageSource;
+
+            // PAINT GENERAL FEATURES MATRIX (Respects your manual bold <b> tags from the spreadsheet cell!)
+            const specGridListNode = document.getElementById("productFeaturesList");
+            if (specGridListNode && rawFeatures) {
+                specGridListNode.innerHTML = "";
+                let cleanFeaturesString = rawFeatures.toString().replace(/[\[\]]/g, '').replace(/["']/g, '');
+                let featuresArray = cleanFeaturesString.split(",").map(f => f.trim());
+                
+                featuresArray.forEach(itemText => {
+                    if (itemText !== "") {
+                        const specRow = document.createElement("li");
+                        specRow.style.cssText = "margin-bottom:10px; display:flex; align-items:start; gap:8px; font-size:0.92rem; color:#334155; text-align:left; line-height:1.4;";
+                        specRow.innerHTML = `<i class="fa-solid fa-circle-check" style="color:#0b5eb4; margin-top:3px; font-size:0.85rem; flex-shrink:0;"></i> <span>${itemText}</span>`;
+                        specGridListNode.appendChild(specRow);
+                    }
+                });
+            }
+
+            // PAINT STANDARD INCLUSIONS LIST DIRECTLY UNDER PICTURE FRAME
+            const includesListNode = document.getElementById("productIncludesList");
+            if (includesListNode) {
+                includesListNode.innerHTML = "";
+                let rawIncludes = radioItem.includes || radioItem.Includes || "";
+                if (rawIncludes) {
+                    let cleanTextString = rawIncludes.toString().replace(/[\[\]]/g, '').replace(/["']/g, '');
+                    let inclusionsArray = cleanTextString.split(",").map(item => item.trim());
+                    
+                    inclusionsArray.forEach(itemText => {
+                        if (itemText !== "") {
+                            const rowLi = document.createElement("li");
+                            rowLi.style.cssText = "display:flex; align-items:center; gap:8px; font-size:0.88rem; color:#334155; font-weight:600;";
+                            rowLi.innerHTML = `<i class="fa-solid fa-square-plus" style="color:#16a34a; font-size:0.95rem;"></i> <span>${itemText}</span>`;
+                            includesListNode.appendChild(rowLi);
+                        }
+                    });
+                } else {
+                    includesListNode.innerHTML = `<li style="font-size:0.85rem; color:#64748b; font-style:italic;">Refer to product datasheet for standard box contents.</li>`;
+                }
+            }
+
+            // Build action buttons with simple terminology
+            let downloadPdfBtnHTML = "";
+            let specSheetPathLink = radioItem.specLink || radioItem.speclink || radioItem.SpecLink || "";
+            if (specSheetPathLink && specSheetPathLink.trim() !== "") {
+                let cleanPdfNameString = specSheetPathLink.trim().split("/").pop();
+                downloadPdfBtnHTML = `<a href="${targetFolderPrefix}specs/${cleanPdfNameString}" target="_blank" class="btn-secondary" style="display:block; text-align:center; padding:14px; font-size:0.88rem; font-weight:900; text-decoration:none; border-radius:4px; border:1px solid #cbd5e1; color:#475569; background:#ffffff; margin-top:8px;"><i class="fa-solid fa-file-pdf" style="color:#ef4444;"></i> Specification Data Sheet</a>`;
+            }
+
+            if (document.getElementById("productCartActionBox")) {
+                document.getElementById("productCartActionBox").innerHTML = `
+                    <button class="btn-primary" style="width:100%; font-size:0.95rem; font-weight:900; background:#0b5eb4; color:#ffffff; padding:14px; border:none; border-radius:4px; cursor:pointer;" onclick="injectItemIntoSecureCart('${exactModelName}', '${exactBrandName}', '${exactTypeName}', ${priceValue}, '${fallbackImageSource}')">
+                        <i class="fa-solid fa-cart-plus"></i> Buy Now / Add to Cart
+                    </button>
+                    ${downloadPdfBtnHTML}`;
+            }
+        }
+                // --- 4. OPTIONAL COMPONENT CARD GRID DATA LOOP GENERATOR (DIAGNOSTIC VISUALIZER) ---
+        function buildAssociatedAccessories(radioItem) {
+            // Find your exact bottom display panel block from the screenshot
+            const targetContainer = document.getElementById("accessory-table-container") || document.getElementById("left-column-optional-grid");
+            
+            if (!targetContainer) {
+                console.error("❌ Heading zone container element is completely missing from your HTML structure layout.");
+                return;
+            }
+
+            // Establish our display grid area inside that terminal slot
+            targetContainer.innerHTML = `<div id="left-column-optional-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 20px; width: 100%; margin-top: 20px;"></div>`;
+            const optionalGridNode = document.getElementById("left-column-optional-grid");
+
+            const targetBrandLower = (radioItem.brand || radioItem.Brand || "").toString().trim().toLowerCase();
+            const baseRadioModelClean = (radioItem.model || radioItem.Model || "").toString().trim().toLowerCase();
+
+            // VISUAL DEBUG BANNER MATRIX: Count how many accessories actually live in your downloaded 30 rows
+            const totalAccessoriesInSheet = masterSheetFullFeed.filter(item => {
+                const itemType = (item.type || item.Type || "").toString().trim().toLowerCase();
+                return itemType.includes("access") || itemType.includes("part") || itemType.includes("mic") || itemType.includes("batter");
+            });
+
+            const matchingAccessoriesList = masterSheetFullFeed.filter(item => {
+                const checkBrandLower = (item.brand || item.Brand || "").toString().trim().toLowerCase();
+                const belongsToSameBrand = checkBrandLower === targetBrandLower || checkBrandLower.includes(targetBrandLower);
+                
+                const compatibilityText = (item.compatibleModels || item.compatiblemodels || item.CompatibleModels || "").toString().trim().toLowerCase();
+                
+                let isExplicitlyCompatible = false;
+                if (compatibilityText !== "") {
+                    const individualModelsList = compatibilityText.split(",").map(m => m.trim().toLowerCase());
+                    const cleanRadioModel = baseRadioModelClean.trim().toLowerCase();
+                    
+                    isExplicitlyCompatible = individualModelsList.some(modelTag => {
+                        const strippedTag = modelTag.replace(/[^a-z0-9]/g, "");
+                        const strippedActive = cleanRadioModel.replace(/[^a-z0-9]/g, "");
+                        return modelTag === cleanRadioModel || modelTag.includes(cleanRadioModel) || cleanRadioModel.includes(modelTag) || strippedTag === strippedActive;
+                    });
+                }
+                return belongsToSameBrand && isExplicitlyCompatible;
+            });
+
+            // IF THE SELECTION FILTER FAILS: Print out a real visual diagnostic message directly on your web view layout!
+            if (matchingAccessoriesList.length === 0) {
+                optionalGridNode.innerHTML = `
+                    <div style="grid-column: 1/-1; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 6px; padding: 20px; text-align: left; font-size: 0.9rem; color: #b45309; line-height: 1.5; font-weight: 600;">
+                        <i class="fa-solid fa-triangle-exclamation"></i> <strong>DATA PATH DIAGNOSTIC:</strong><br>
+                        • System downloaded total row items from spreadsheet: <strong>${masterSheetFullFeed.length} rows</strong><br>
+                        • Total rows marked as an 'Accessory' type column: <strong>${totalAccessoriesInSheet.length} items</strong><br>
+                        • Total matches found linking to model string token "${radioItem.model}": <strong>0 matches</strong><br><br>
+                        <span style="font-size: 0.82rem; font-weight: 500; color: #78350f;">To fix this: Open your Google Sheet, select an accessory row, and verify that its <code>type</code> column contains exactly <code>Accessory</code> and its <code>compatibleModels</code> column contains exactly <code>NX-1700</code>.</span>
+                    </div>`;
+                return;
+            }
+
+            // PAINTER ENGINE: Draws the visual cards cleanly if the data rows match up
+            matchingAccessoriesList.forEach(accessory => {
+                const accCard = document.createElement("div");
+                accCard.style.cssText = "background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 4px; padding: 15px; display: flex; flex-direction: column; text-align: center; box-sizing: border-box; font-size: 0.82rem; box-shadow: 0 2px 6px rgba(0,0,0,0.01);";
+
+                let rawPriceValue = accessory.price || accessory.Price || 0;
+                let priceValue = parseFloat(rawPriceValue) || 0;
+                let priceDisplayString = priceValue > 0 ? `$${priceValue.toFixed(2)}` : "Contact for Quote";
+
+                let targetFolderPrefix = targetBrandLower.includes("kenwood") ? "kenwood/images/" : (targetBrandLower.includes("icom") ? "icom/images/" : (targetBrandLower.includes("motorola") ? "Motorola/images/" : (targetBrandLower.includes("ritron") ? "ritron/images/" : "hytera/images/")));
+                let rawImg = accessory.image || accessory.Image || "";
+                let cleanImg = rawImg.toString().trim().includes("/") ? rawImg.toString().trim().split("/").pop() : rawImg.toString().trim();
+                let fallbackAccImg = cleanImg !== "" ? `${targetFolderPrefix}${cleanImg}` : "images/radio-placeholder.png";
+                let exactModel = accessory.model || accessory.Model || "Part Node";
+
+                accCard.innerHTML = `
+                    <div style="width: 100%; height: 90px; display: flex; align-items: center; justify-content: center; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 4px; margin-bottom: 10px; overflow: hidden;">
+                        <img src="${fallbackAccImg}" style="max-height: 90%; max-width: 90%; object-fit: contain;" onerror="this.src='images/radio-placeholder.png';">
+                    </div>
+                    <h5 style="color: #0e1a24; font-size: 0.85rem; font-weight: 800; margin: 0 0 6px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center;">${exactModel}</h5>
+                    <div style="font-size: 0.88rem; font-weight: 800; color: #16a34a; margin-bottom: 10px; text-align: center;">${priceDisplayString}</div>
+                    <button class="btn-primary" style="width: 100%; font-size: 0.72rem; font-weight: 800; background: #0b5eb4; color: #ffffff; padding: 8px; border: none; border-radius: 4px; cursor: pointer; margin-top: auto;" onclick="injectItemIntoSecureCart('${exactModel}', '${radioItem.brand || "Kenwood"}', 'Accessory', ${priceValue}, '${fallbackAccImg}')">
+                        <i class="fa-solid fa-plus"></i> Add to Cart
+                    </button>`;
+
+                optionalGridNode.appendChild(accCard);
+            });
+        }
+
+        // --- 5. SECURE TRANSACTIONAL CHECKOUT CART MANAGERS ---
+        window.injectItemIntoSecureCart = function(model, brand, type, price, img) {
+            const match = secureStorefrontCart.find(c => c.model === model);
+            if (match) { match.qty += 1; } 
+            else { secureStorefrontCart.push({ model, brand, type, price, image: img, qty: 1 }); }
+            refreshSecureEcomConsole();
+        };
+
+        window.modifyCartItemQuantity = function(idx, delta) {
+            if (!secureStorefrontCart[idx]) return;
+            if (delta === -99) { secureStorefrontCart.splice(idx, 1); } 
+            else {
+                secureStorefrontCart[idx].qty += delta;
+                if (secureStorefrontCart[idx].qty <= 0) secureStorefrontCart.splice(idx, 1);
+            }
+            refreshSecureEcomConsole();
+        };
+
+        function refreshSecureEcomConsole() {
+            const list = document.getElementById("cartItemsList"), badge = document.getElementById("cartCountBadge");
+            const totalUnits = document.getElementById("cartTotalItemsCount"), sumNode = document.getElementById("cartEstimatedTotalValue");
+            if (!list) return; list.innerHTML = ""; let count = 0, sum = 0;
+
+            if (secureStorefrontCart.length === 0) {
+                list.innerHTML = `<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; flex:1; color:#5a6e72; padding:40px 0; font-size:0.85rem; font-weight:600;"><i class="fa-solid fa-basket-shopping" style="font-size:2rem; color:#cbd5e1; margin-bottom:12px;"></i><span>Manifest is empty.</span></div>`;
+                if (badge) badge.innerText = "0"; if (totalUnits) totalUnits.innerText = "0 Units"; if (sumNode) sumNode.innerText = "$0.00"; return;
+            }
+
+            secureStorefrontCart.forEach((product, idx) => {
+                count += product.qty; sum += (product.price * product.qty);
+                const card = document.createElement("div"); card.style.cssText = "background:#ffffff; border:1px solid #e2e8f0; border-left:3px solid #0b5eb4; border-radius:4px; padding:12px; display:flex; gap:12px; align-items:center; box-sizing:border-box;";
+                card.innerHTML = `<div style="width:45px; height:45px; display:flex; align-items:center; justify-content:center; background:#f8fafc; border:1px solid #e2e8f0; border-radius:4px; flex-shrink:0;"><img src="${product.image}" style="max-height:90%; max-width:90%; object-fit:contain;" onerror="this.src='images/radio-placeholder.png'"></div><div style="display:flex; flex-direction:column; gap:2px; flex:1; overflow:hidden; text-align:left;"><span style="color:#0b5eb4; font-size:0.65rem; font-weight:800; text-transform:uppercase;">${product.brand}</span><h4 style="color:#0e1a24; font-size:0.85rem; font-weight:800; margin:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${product.model}</h4><div style="color:#16a34a; font-size:0.82rem; font-weight:800;">$${(product.price * product.qty).toFixed(2)}</div></div><div style="display:flex; flex-direction:column; align-items:center; gap:4px; flex-shrink:0;"><div style="display:flex; align-items:center; border:1px solid #cbd5e1; border-radius:4px; overflow:hidden; background:#f8fafc; height:22px;"><button onclick="modifyCartItemQuantity(${idx}, -1)" style="border:none; background:none; width:18px; cursor:pointer; font-weight:900;">-</button><span style="font-size:0.8rem; font-weight:800; color:#0e1a24; width:20px; text-align:center;">${product.qty}</span><button onclick="modifyCartItemQuantity(${idx}, 1)" style="border:none; background:none; width:18px; cursor:pointer; font-weight:900;">+</button></div><span onclick="modifyCartItemQuantity(${idx}, -99)" style="color:#ef4444; font-size:0.65rem; font-weight:700; cursor:pointer; text-transform:uppercase;"><i class="fa-solid fa-trash-can"></i> Drop</span></div>`;
+                list.appendChild(card);
+            });
+            if (badge) badge.innerText = count; if (totalUnits) totalUnits.innerText = `${count} Unit${count !== 1 ? 's' : ''}`; if (sumNode) sumNode.innerText = `$${sum.toFixed(2)}`;
+        }
+
+        // --- 6. CORE DESKTOP DRAWER TRIGGER EVENT BINDERS ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const trigger = document.getElementById("cartToggleBtn"), dismiss = document.getElementById("closeCartBtn"), drawer = document.getElementById("fleetCartDrawer");
+            if (trigger && drawer) { trigger.addEventListener("click", (e) => { e.preventDefault(); drawer.style.right = "0px"; }); }
+            if (dismiss && drawer) { dismiss.addEventListener("click", () => { drawer.style.right = "-400px"; }); }
+            initializeProductShowcaseRoute();
+        });
+    </script>
+</body>
+</html>
