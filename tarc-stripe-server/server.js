@@ -50,8 +50,8 @@ app.post('/create-checkout-session', async (req, res) => {
       payment_method_types: ['card'],
       line_items,
       mode: 'payment',
-      success_url: 'http://localhost:5500/success.html',
-	  cancel_url: 'http://localhost:5500/cancel.html',
+success_url: 'https://kklyberg.github.io/TA-Radio-Website/success.html',
+cancel_url: 'https://kklyberg.github.io/TA-Radio-Website/cancel.html',
     });
 
     res.json({ url: session.url });
