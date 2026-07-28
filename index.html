@@ -120,7 +120,17 @@
             <p>Rugged hardware, crystal-clear digital audio, and flawless wide-area network coverage engineered to keep your workforce connected and safe. Authorized dealer for Motorola, Kenwood, Icom, Hytera, and Ritron.</p>
         </div>
     </section>
+<!-- Sheet-driven campaign slider (promotions rows 7–10) -->
+<section id="tarcCampaignSlider" style="padding:0; position:relative; overflow:hidden; min-height:320px; background:#0e1a24;">
+  <div id="tarcSliderTrack" style="position:relative; width:100%; min-height:320px;"></div>
 
+  <button type="button" id="tarcSlidePrev" aria-label="Previous slide"
+    style="position:absolute; left:12px; top:50%; transform:translateY(-50%); z-index:5; width:42px; height:42px; border:none; border-radius:50%; background:rgba(255,255,255,0.15); color:#fff; font-size:1.2rem; cursor:pointer;">‹</button>
+  <button type="button" id="tarcSlideNext" aria-label="Next slide"
+    style="position:absolute; right:12px; top:50%; transform:translateY(-50%); z-index:5; width:42px; height:42px; border:none; border-radius:50%; background:rgba(255,255,255,0.15); color:#fff; font-size:1.2rem; cursor:pointer;">›</button>
+
+  <div id="tarcSlideDots" style="position:absolute; bottom:14px; left:0; right:0; display:flex; justify-content:center; gap:8px; z-index:5;"></div>
+</section>
     <!-- Concise Homepage Procurement Portal (Trimmed Clean Design) -->
     <section id="catalog" class="catalog-section" style="padding: 80px 0; background-color: #ffffff; border-top: 1px solid #e2e8f0;">
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
@@ -470,68 +480,204 @@
         </div>
     </div>
 
-    <script>
-	
-	    // YOUR COPIED PRODUCTION WEB APP URL ENDPOINT TRACK
-    const PROMO_STREAM_ENDPOINT = "https://script.google.com/macros/s/AKfycbw1M3qP6Lkebhy14vbMcCXESzB-N2QEFf2NHGHSuItlVn1sNP35Efa9uGdlRXEeF-m8DA/exec";
+<!-- TARC LIVE PROMO MODAL (sheet-controlled) -->
+<div id="tarcPromoModalOverlay" style="display:none; position:fixed; inset:0; background:rgba(14,26,36,0.72); align-items:center; justify-content:center; z-index:4000; opacity:0; transition:opacity 0.28s ease;">
+  <div id="tarcPromoModalCard" style="background:#ffffff; border-radius:12px; max-width:480px; width:calc(100% - 32px); overflow:hidden; box-shadow:0 25px 50px rgba(14,26,36,0.35); border-top:4px solid #0b5eb4; transform:translateY(18px) scale(0.98); opacity:0; transition:transform 0.32s cubic-bezier(0.16,1,0.3,1), opacity 0.32s ease;">
+    <div style="background:#0e1a24; padding:16px 20px; display:flex; justify-content:space-between; align-items:center;">
+      <span id="tarcPromoBadge" style="background:rgba(11,94,180,0.25); color:#00FFFF; font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; padding:4px 10px; border-radius:4px;">Promotion</span>
+      <button type="button" onclick="collapseMarketingPromoModalWindow()" style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer; line-height:1;">&times;</button>
+    </div>
+    <div style="padding:28px 24px; text-align:center;">
+      <h2 id="tarcPromoHeadline" style="color:#0e1a24; font-size:1.5rem; font-weight:900; margin:0 0 12px 0;">Special Promotion</h2>
+      <p id="tarcPromoMessage" style="color:#475569; font-size:0.95rem; line-height:1.5; margin:0 0 24px 0;"></p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <button type="button" onclick="collapseMarketingPromoModalWindow()" style="padding:12px 22px; border:1px solid #cbd5e1; border-radius:4px; background:#fff; font-weight:700; cursor:pointer; color:#475569;">Maybe Later</button>
+        <button type="button" id="tarcPromoBtn" onclick="collapseMarketingPromoModalWindow()" style="padding:12px 22px; border:none; border-radius:4px; background:#0b5eb4; color:#fff; font-weight:800; cursor:pointer;">Learn More</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-    async function evaluateLiveMarketingCampaigns() {
-      try {
-        const networkResponse = await fetch(PROMO_STREAM_ENDPOINT);
-        if (!networkResponse.ok) return;
-        
-        const campaignBundle = await networkResponse.json();
-        
-        // If your administrative spreadsheet flag is turned "yes", slide open the new container [INDEX]
-        if (campaignBundle.modal && campaignBundle.modal.isactive === "yes") {
-          document.getElementById("tarcPromoHeadline").innerText = campaignBundle.modal.headline || "Special Promotion";
-          document.getElementById("tarcPromoMessage").innerText = campaignBundle.modal.message || "";
-          
-          if (campaignBundle.modal.badge) document.getElementById("tarcPromoBadge").innerText = campaignBundle.modal.badge;
-          if (campaignBundle.modal.buttontext) document.getElementById("tarcPromoBtn").innerText = campaignBundle.modal.buttontext;
-          
-          const overlayNode = document.getElementById("tarcPromoModalOverlay");
-          const innerFrameNode = overlayNode.querySelector("div");
-          
-          // Tailwind visibility class injection routine [INDEX]
-          overlayNode.classList.remove("hidden");
-          overlayNode.classList.add("flex");
-          
-          setTimeout(() => {
-            innerFrameNode.classList.remove("scale-95");
-            innerFrameNode.classList.add("scale-100");
-          }, 50);
-        }
-      } catch(err) {
-        console.warn("Marketing stream sleep or offline mode layout.");
+<script>
+  const PROMO_STREAM_ENDPOINT =
+    "https://script.google.com/macros/s/AKfycbw1M3qP6Lkebhy14vbMcCXESzB-N2QEFf2NHGHSuItlVn1sNP35Efa9uGdlRXEeF-m8DA/exec?stream=promo";
+
+  var tarcSlideIndex = 0;
+  var tarcSlideTimer = null;
+
+  function renderTarcSlides(slides) {
+    var section = document.getElementById("tarcCampaignSlider");
+    var track = document.getElementById("tarcSliderTrack");
+    var dots = document.getElementById("tarcSlideDots");
+    if (!track || !dots) return;
+
+    slides = (slides || []).filter(function (s) {
+      return s && (s.headline || s.message);
+    });
+
+    if (!slides.length) {
+      if (section) section.style.display = "none";
+      return;
+    }
+
+    if (section) section.style.display = "block";
+
+    track.innerHTML = slides.map(function (s, i) {
+      var bg = s.bgimage
+        ? "background-image:linear-gradient(rgba(14,26,36,0.72), rgba(14,26,36,0.82)), url('" + s.bgimage + "'); background-size:cover; background-position:center;"
+        : "background:#0e1a24;";
+      return (
+        '<div class="tarc-slide" style="display:' + (i === 0 ? "flex" : "none") +
+        '; min-height:320px; align-items:center; justify-content:center; padding:48px 24px; text-align:center; color:#fff; position:relative; ' + bg + '">' +
+        (s.badge
+          ? '<div style="position:absolute; top:16px; left:50%; transform:translateX(-50%); background:#0b5eb4; color:#fff; font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; padding:5px 12px; border-radius:4px;">' +
+            s.badge +
+            "</div>"
+          : "") +
+        '<div style="max-width:720px;">' +
+        '<h2 style="margin:0 0 12px 0; font-size:1.75rem; font-weight:900;">' +
+        (s.headline || "") +
+        "</h2>" +
+        '<p style="margin:0 0 20px 0; color:#cbd5e1; font-size:1rem; line-height:1.5;">' +
+        (s.message || "") +
+        "</p>" +
+        (s.buttontext
+          ? '<a href="catalog.html" style="display:inline-block; background:#0b5eb4; color:#fff; text-decoration:none; font-weight:800; padding:12px 22px; border-radius:4px;">' +
+            s.buttontext +
+            "</a>"
+          : "") +
+        "</div></div>"
+      );
+    }).join("");
+
+    dots.innerHTML = slides
+      .map(function (_, i) {
+        return (
+          '<button type="button" data-dot="' +
+          i +
+          '" style="width:10px; height:10px; border-radius:50%; border:none; cursor:pointer; background:' +
+          (i === 0 ? "#0b5eb4" : "rgba(255,255,255,0.35)") +
+          ';"></button>'
+        );
+      })
+      .join("");
+
+    tarcSlideIndex = 0;
+
+    function showSlide(n) {
+      var cards = track.querySelectorAll(".tarc-slide");
+      var dotBtns = dots.querySelectorAll("button");
+      if (!cards.length) return;
+      tarcSlideIndex = (n + cards.length) % cards.length;
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].style.display = i === tarcSlideIndex ? "flex" : "none";
+      }
+      for (var d = 0; d < dotBtns.length; d++) {
+        dotBtns[d].style.background =
+          d === tarcSlideIndex ? "#0b5eb4" : "rgba(255,255,255,0.35)";
       }
     }
 
-    function collapseMarketingPromoModalWindow() {
-      const overlayNode = document.getElementById("tarcPromoModalOverlay");
-      const innerFrameNode = overlayNode.querySelector("div");
-      
-      innerFrameNode.classList.remove("scale-100");
-      innerFrameNode.classList.add("scale-95");
-      
-      setTimeout(() => {
-        overlayNode.classList.add("hidden");
-        overlayNode.classList.remove("flex");
-      }, 250);
+    function startTimer() {
+      clearInterval(tarcSlideTimer);
+      tarcSlideTimer = setInterval(function () {
+        showSlide(tarcSlideIndex + 1);
+      }, 6000);
     }
 
-    // Keyboard hotkey safety exit layer [INDEX]
-    document.addEventListener('keydown', function(e) {
-      if (e.key === "Escape") collapseMarketingPromoModalWindow();
-    });
+    var prev = document.getElementById("tarcSlidePrev");
+    var next = document.getElementById("tarcSlideNext");
+    if (prev)
+      prev.onclick = function () {
+        showSlide(tarcSlideIndex - 1);
+        startTimer();
+      };
+    if (next)
+      next.onclick = function () {
+        showSlide(tarcSlideIndex + 1);
+        startTimer();
+      };
+    dots.onclick = function (e) {
+      var btn = e.target.closest("button[data-dot]");
+      if (!btn) return;
+      showSlide(parseInt(btn.getAttribute("data-dot"), 10));
+      startTimer();
+    };
 
-    document.addEventListener("DOMContentLoaded", evaluateLiveMarketingCampaigns);
-	</script> <!-- This closes your modal animation script block perfectly -->
+    startTimer();
+  }
 
-  <!-- =========================================================================
-   * ACTIVE GLOBAL PIPELINE AND CORE SITE OPERATIONS HOOKS
-   * ========================================================================= -->
+  async function evaluateLiveMarketingCampaigns() {
+    try {
+      const res = await fetch(PROMO_STREAM_ENDPOINT);
+      if (!res.ok) return;
+
+      const campaignBundle = await res.json();
+
+      // Modal (only if not dismissed this session)
+      if (sessionStorage.getItem("tarc_promo_dismissed") !== "1") {
+        const modal = campaignBundle.modal;
+        if (
+          modal &&
+          String(modal.isactive).toLowerCase() === "yes" &&
+          (modal.headline || modal.message)
+        ) {
+          var headlineEl = document.getElementById("tarcPromoHeadline");
+          var messageEl = document.getElementById("tarcPromoMessage");
+          var badgeEl = document.getElementById("tarcPromoBadge");
+          var btnEl = document.getElementById("tarcPromoBtn");
+          var overlay = document.getElementById("tarcPromoModalOverlay");
+
+          if (overlay && headlineEl && messageEl) {
+            headlineEl.innerText = modal.headline || "Special Promotion";
+            messageEl.innerText = modal.message || "";
+            if (badgeEl && modal.badge) badgeEl.innerText = modal.badge;
+            if (btnEl && modal.buttontext) btnEl.innerText = modal.buttontext;
+
+            overlay.style.display = "flex";
+            requestAnimationFrame(function () {
+              overlay.style.opacity = "1";
+              var card = document.getElementById("tarcPromoModalCard");
+              if (card) {
+                card.style.transform = "translateY(0) scale(1)";
+                card.style.opacity = "1";
+              }
+            });
+          }
+        }
+      }
+
+      // Slider always runs from sheet rows 7-10
+      renderTarcSlides(campaignBundle.slides || []);
+    } catch (err) {
+      console.warn("Promo stream offline:", err);
+    }
+  }
+
+  function collapseMarketingPromoModalWindow() {
+    var overlay = document.getElementById("tarcPromoModalOverlay");
+    if (!overlay) return;
+    var card = document.getElementById("tarcPromoModalCard");
+    if (card) {
+      card.style.transform = "translateY(14px) scale(0.98)";
+      card.style.opacity = "0";
+    }
+    overlay.style.opacity = "0";
+    sessionStorage.setItem("tarc_promo_dismissed", "1");
+    setTimeout(function () {
+      overlay.style.display = "none";
+    }, 300);
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") collapseMarketingPromoModalWindow();
+  });
+
+  document.addEventListener("DOMContentLoaded", evaluateLiveMarketingCampaigns);
+</script>
+
   <!-- Always attach your master script.js down here at the very bottom -->
-  <script src="script.js"></script>ipt>
+  
+  <script src="script.js"></script>
 </body>
 </html>
