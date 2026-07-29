@@ -221,35 +221,59 @@ function initializeUniversalShowroomRoute() {
       }
     }
 
-    function executeLiveMatrixSift() {
-      if (!masterSheetInventoryFeed.length) return;
+   function executeLiveMatrixSift() {
+  if (!masterSheetInventoryFeed.length) return;
 
-      const searchVal = (
-        document.getElementById("catalogSearch")?.value ||
-        document.getElementById("navbarGlobalSearchInput")?.value || ""
-      ).toLowerCase().trim();
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlSearch = (urlParams.get("search") || "").toLowerCase().trim();
 
-      const cat = activeSelectedCategory.toLowerCase();
+  const inputSearch = (
+    document.getElementById("catalogSearch")?.value ||
+    document.getElementById("navbarGlobalSearchInput")?.value ||
+    ""
+  ).toLowerCase().trim();
 
-      const filtered = masterSheetInventoryFeed.filter(item => {
-        const model = (item.model || "").toString().toLowerCase();
-        const type  = (item.type  || "").toString().toLowerCase();
-        const brand = (item.brand || "").toString().toLowerCase();
+  // Prefer what the user typed on this page; otherwise use ?search= from the URL
+  const searchVal = inputSearch || urlSearch;
 
-        const brandOk = searchVal || brand === activeRouteBrandToken || brand.includes(activeRouteBrandToken);
-        const searchOk = !searchVal || model.includes(searchVal) || brand.includes(searchVal);
-        const catOk = cat === "all" || type === cat;
+  // Keep the catalog search box in sync when arriving from the header
+  const catalogBox = document.getElementById("catalogSearch");
+  if (catalogBox && urlSearch && !inputSearch) {
+    catalogBox.value = urlSearch;
+  }
 
-        return brandOk && searchOk && catOk;
-      });
+  const cat = (activeSelectedCategory || "all").toLowerCase();
 
-      const withImages = filtered.filter(hasRealImage);
-      const needsImage = filtered.filter(item => !hasRealImage(item));
+  const filtered = masterSheetInventoryFeed.filter((item) => {
+    const model = (item.model || item.Model || "").toString().toLowerCase();
+    const type = (item.type || item.Type || "").toString().toLowerCase();
+    const brand = (item.brand || item.Brand || "").toString().toLowerCase();
+    const features = (item.features || item.Features || "").toString().toLowerCase();
 
-      buildResponsiveProductCards(withImages);
-      buildPriceListTable(needsImage);
-    }
+    // Brand filter (when a brand route is active and user is not free-searching everything)
+    const brandOk =
+      !activeRouteBrandToken ||
+      searchVal ||
+      brand === activeRouteBrandToken ||
+      brand.includes(String(activeRouteBrandToken).toLowerCase());
 
+    const searchOk =
+      !searchVal ||
+      model.includes(searchVal) ||
+      brand.includes(searchVal) ||
+      type.includes(searchVal) ||
+      features.includes(searchVal);
+
+    const catOk = cat === "all" || type === cat;
+
+    return brandOk && searchOk && catOk;
+  });
+
+  const withImages = filtered.filter(hasRealImage);
+  const needsImage = filtered.filter((item) => !hasRealImage(item));
+  buildResponsiveProductCards(withImages);
+  buildPriceListTable(needsImage);
+}
     function buildResponsiveProductCards(items) {
       const grid = document.getElementById("catalog-feed-grid");
       if (!grid) return;
@@ -462,5 +486,28 @@ function initializeUniversalShowroomRoute() {
       fetchUniversalCatalogFeed();
     });
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  var searchNode = document.getElementById("navbarGlobalSearchInput");
+  if (!searchNode) return;
+
+  function goSearch() {
+    var q = (searchNode.value || "").trim();
+    if (!q) return;
+    // From industries/ folder use ../catalog.html — from root use catalog.html
+    var base = window.location.pathname.indexOf("/industries/") !== -1
+      ? "../catalog.html"
+      : "catalog.html";
+    window.location.href = base + "?search=" + encodeURIComponent(q);
+  }
+
+  searchNode.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      goSearch();
+    }
+  });
+});
+</script>
 </body>
 </html>
