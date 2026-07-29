@@ -68,7 +68,24 @@
             </div>
         </div>
     </section>
+<!-- Industry-tagged products from sheet column: industry -->
+<section style="padding: 50px 0 70px 0; background: #f8fafc; border-top: 1px solid #e2e8f0;">
+  <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;">
+    <span style="color: #0b5eb4; font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 6px;">
+      <i class="fa-solid fa-tags"></i> Inventory tagged for this sector
+    </span>
+    <h2 style="color: #0e1a24; font-size: 1.6rem; font-weight: 900; margin: 0 0 8px 0;">
+      Matching products
+    </h2>
+    <p style="color: #64748b; font-size: 0.95rem; margin: 0 0 24px 0; max-width: 560px;">
+      Only models with this sector listed in the spreadsheet <strong>industry</strong> column appear here.
+    </p>
 
+    <div id="industryRecommendedProductsGrid"
+         style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px;">
+    </div>
+  </div>
+</section>
     <footer class="main-footer">
         <div class="container"><p>&copy; 2026 TARC Radio Products. Sector Engineered Wireless Communications.</p></div>
     </footer>
@@ -230,96 +247,142 @@
                 "bg": "../images/manufacturing.jpg"
             }
         };
+document.addEventListener("DOMContentLoaded", async () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const activeSector = (urlParams.get("sector") || "education").toLowerCase().trim();
+  const sectorData = industryMatrix[activeSector] || industryMatrix["education"];
 
-    document.addEventListener("DOMContentLoaded", async () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const activeSector = urlParams.get('sector') || 'education';
-        const sectorData = industryMatrix[activeSector] || industryMatrix["education"];
-        const catalogBtn = document.getElementById("indViewCatalogBtn");
-        if (catalogBtn) {
-            catalogBtn.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i> View Matching ${sectorData.tag || 'Industry'} Catalog`;
-            catalogBtn.href = `../catalog.html?search=${encodeURIComponent(sectorData.tag)}`;
-        }
-        console.log("✅ Running for:", activeSector);
+  console.log("✅ Running for:", activeSector);
 
-        // Hero Population
-        const indTitle = document.getElementById("indTitle");
-        if (indTitle) indTitle.innerText = sectorData.title || "Sector Solutions";
+  // --- Hero / copy (always run; does not need the button) ---
+  const indTag = document.getElementById("indTag");
+  if (indTag) indTag.innerText = sectorData.tag || "";
 
-        const indSubtitle = document.getElementById("indSubtitle");
-        if (indSubtitle) indSubtitle.innerText = sectorData.subtitle || "";
+  const indTitle = document.getElementById("indTitle");
+  if (indTitle) indTitle.innerText = sectorData.title || "Sector Solutions";
 
-        const indHeading = document.getElementById("indHeading");
-        if (indHeading) indHeading.innerText = sectorData.heading || "";
+  const indSubtitle = document.getElementById("indSubtitle");
+  if (indSubtitle) indSubtitle.innerText = sectorData.subtitle || "";
 
-        const indBodyText = document.getElementById("indBodyText");
-        if (indBodyText) indBodyText.innerText = sectorData.body || "";
+  const indHeading = document.getElementById("indHeading");
+  if (indHeading) indHeading.innerText = sectorData.heading || "";
 
-        const hero = document.getElementById("industryHero");
-        if (hero && sectorData.bg) {
-            hero.style.backgroundImage = `linear-gradient(rgba(11,17,22,0.94), rgba(11,17,22,0.4)), url('${sectorData.bg}')`;
-        }
+  const indBodyText = document.getElementById("indBodyText");
+  if (indBodyText) indBodyText.innerText = sectorData.body || "";
 
-        // Product Grid
-        const gridNode = document.getElementById("industryRecommendedProductsGrid");
-        if (gridNode) {
-            gridNode.innerHTML = "<p style='text-align:center; padding:40px;'>Loading recommended hardware...</p>";
-            try {
-                const LIVE_STREAM_URL = "https://script.google.com/macros/s/AKfycbw1M3qP6Lkebhy14vbMcCXESzB-N2QEFf2NHGHSuItlVn1sNP35Efa9uGdlRXEeF-m8DA/exec";
-                const response = await fetch(LIVE_STREAM_URL);
-                if (!response.ok) throw new Error("Fetch failed");
-                const masterData = await response.json();
+  const indArchitecture = document.getElementById("indArchitecture");
+  if (indArchitecture) indArchitecture.innerText = sectorData.architecture || "";
 
-                const tag = sectorData.tag.toLowerCase().trim();
-                const filtered = masterData.filter(item => {
-                    const itemType = String(item.type || item.Type || "").toLowerCase().trim();
-                    if (itemType === "accessory") return false;
-                    let industryCell = String(item.industry || item.Industry || "").toLowerCase();
-                    return industryCell.includes(tag);
-                });
+  const indDeployTitle = document.getElementById("indDeployTitle");
+  if (indDeployTitle) indDeployTitle.innerText = sectorData.deployTitle || "Recommended Hardware";
 
-                console.log(`Found ${filtered.length} matching products for ${tag}`);
+  const indDeployDesc = document.getElementById("indDeployDesc");
+  if (indDeployDesc) indDeployDesc.innerText = sectorData.deployDesc || "";
 
-                gridNode.innerHTML = "";
+  const specsList = document.getElementById("indDeploySpecs");
+  if (specsList && Array.isArray(sectorData.specs)) {
+    specsList.innerHTML = sectorData.specs
+      .map(
+        (s) =>
+          `<li style="color:#cbd5e1; font-size:0.9rem; margin-bottom:8px;"><i class="fa-solid fa-check" style="color:#00FF66; margin-right:8px;"></i>${s}</li>`
+      )
+      .join("");
+  }
 
-                if (filtered.length === 0) {
-                    gridNode.innerHTML = `<div style="padding:40px; text-align:center; color:#b45309;">No products tagged for this sector yet.</div>`;
-                    return;
-                }
+  const hero = document.getElementById("industryHero");
+  if (hero && sectorData.bg) {
+    hero.style.backgroundImage = `linear-gradient(rgba(11,17,22,0.94), rgba(11,17,22,0.4)), url('${sectorData.bg}')`;
+  }
 
-                filtered.forEach(item => {
-                    const brand = item.brand || "Kenwood";
-                    const model = item.model || "Model";
-                    const price = parseFloat(item.price || 0);
-                    const imgName = item.image || "";
-                    let folderPrefix = "../kenwood/images/";
-                    const b = brand.toLowerCase();
-                    if (b.includes("hytera")) folderPrefix = "../hytera/images/";
-                    else if (b.includes("icom")) folderPrefix = "../icom/images/";
-                    else if (b.includes("motorola")) folderPrefix = "../motorola/images/";
-                    else if (b.includes("ritron")) folderPrefix = "../ritron/images/";
+  // --- Button is OPTIONAL (safe if you deleted it) ---
+  const catalogBtn = document.getElementById("indViewCatalogBtn");
+  if (catalogBtn) {
+    catalogBtn.style.display = "none"; // hide instead of requiring it
+  }
 
-                    const card = document.createElement("div");
-                    card.style.cssText = "background:#ffffff; border:1px solid #e2e8f0; border-radius:6px; padding:20px; box-shadow:0 4px 12px rgba(0,0,0,0.03);";
-                    card.innerHTML = `
-                        <div style="height:180px; background:#f8fafc; border-radius:4px; margin-bottom:15px; display:flex; align-items:center; justify-content:center; overflow:hidden;">
-                            <img src="${folderPrefix}${imgName}" style="max-height:90%; max-width:90%; object-fit:contain;" onerror="this.src='../images/radio-placeholder.png';">
-                        </div>
-                        <span style="color:#0b5eb4; font-size:0.7rem; font-weight:800;">${brand}</span>
-                        <h3 style="font-size:1.1rem; margin:6px 0;">${model}</h3>
-                        <div style="color:#16a34a; font-weight:900;">${price ? '$' + price.toFixed(2) : 'Quote'}</div>
-                        <button onclick="window.location.href='../product.html?model=${encodeURIComponent(model)}'" style="margin-top:15px; width:100%; padding:10px; background:#0b5eb4; color:white; border:none; border-radius:4px; cursor:pointer;">
-                            View System Profile
-                        </button>
-                    `;
-                    gridNode.appendChild(card);
-                });
-            } catch (e) {
-                console.error("Product grid error:", e);
-                gridNode.innerHTML = `<div style="padding:30px; text-align:center; color:#ef4444;">Unable to load products.</div>`;
-            }
-        }
+  // --- Product grid ---
+  const gridNode = document.getElementById("industryRecommendedProductsGrid");
+  if (!gridNode) {
+    console.warn("industryRecommendedProductsGrid not found");
+    return;
+  }
+
+  gridNode.innerHTML =
+    "<p style='text-align:center; padding:40px;'>Loading recommended hardware...</p>";
+
+  try {
+    const LIVE_STREAM_URL =
+      "https://script.google.com/macros/s/AKfycbw1M3qP6Lkebhy14vbMcCXESzB-N2QEFf2NHGHSuItlVn1sNP35Efa9uGdlRXEeF-m8DA/exec";
+    const response = await fetch(LIVE_STREAM_URL);
+    if (!response.ok) throw new Error("Fetch failed");
+
+    const masterData = await response.json();
+    const tag = (sectorData.tag || "").toLowerCase().trim();
+
+    const filtered = masterData.filter((item) => {
+      const itemType = String(item.type || item.Type || "").toLowerCase().trim();
+      if (itemType === "accessory") return false;
+
+      const industryCell = String(item.industry || item.Industry || "")
+        .toLowerCase()
+        .trim();
+      if (!industryCell) return false;
+      return industryCell.includes(tag);
     });
+
+    console.log("Found", filtered.length, "matching products for", tag);
+
+    gridNode.innerHTML = "";
+    if (filtered.length === 0) {
+      gridNode.innerHTML = `<div style="padding:40px; text-align:center; color:#b45309;">No products tagged for this sector yet.</div>`;
+      return;
+    }
+
+filtered.forEach((item) => {
+  const brand = item.brand || item.Brand || "Kenwood";
+  const model = item.model || item.Model || "Model";
+  const price = parseFloat(item.price || item.Price || 0);
+
+  // --- same idea as product.html ---
+  let folderPrefix = "../kenwood/";
+  const b = String(brand).toLowerCase();
+  if (b.includes("hytera")) folderPrefix = "../hytera/";
+  else if (b.includes("icom")) folderPrefix = "../icom/";
+  else if (b.includes("motorola")) folderPrefix = "../Motorola/"; // match your real folder name
+  else if (b.includes("ritron")) folderPrefix = "../ritron/";
+
+  let rawImage = String(item.image || item.Image || "").trim();
+  // sheet may store "foo.png" or "kenwood/images/foo.png" — use filename only
+  if (rawImage.includes("/")) rawImage = rawImage.split("/").pop();
+
+  const imgSrc = rawImage
+    ? `${folderPrefix}images/${rawImage}`
+    : "../images/radio-placeholder.png";
+
+  const card = document.createElement("div");
+  card.style.cssText =
+    "background:#ffffff; border:1px solid #e2e8f0; border-radius:6px; padding:20px; box-shadow:0 4px 12px rgba(0,0,0,0.03);";
+  card.innerHTML = `
+    <div style="height:180px; background:#f8fafc; border-radius:4px; margin-bottom:15px; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+      <img src="${imgSrc}" alt="${model}"
+        style="max-height:90%; max-width:90%; object-fit:contain;"
+        onerror="this.src='../images/radio-placeholder.png';">
+    </div>
+    <span style="color:#0b5eb4; font-size:0.7rem; font-weight:800;">${brand}</span>
+    <h3 style="font-size:1.1rem; margin:6px 0;">${model}</h3>
+    <div style="color:#16a34a; font-weight:900;">${price ? "$" + price.toFixed(2) : "Quote"}</div>
+    <button type="button"
+      onclick="window.location.href='../product.html?model=${encodeURIComponent(model)}'"
+      style="margin-top:15px; width:100%; padding:10px; background:#0b5eb4; color:white; border:none; border-radius:4px; cursor:pointer;">
+      View System Profile
+    </button>`;
+  gridNode.appendChild(card);
+});
+  } catch (e) {
+    console.error("Product grid error:", e);
+    gridNode.innerHTML = `<div style="padding:30px; text-align:center; color:#ef4444;">Unable to load products.</div>`;
+  }
+});
 </script>
 </body>
 </html>
