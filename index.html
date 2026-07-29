@@ -113,13 +113,23 @@
   </header>
 
 
-    <!-- Hero Section -->
     <section id="home" class="hero-section">
-        <div class="container hero-content">
-            <h1>Mission-Critical Two-Way Radio Solutions</h1>
-            <p>Rugged hardware, crystal-clear digital audio, and flawless wide-area network coverage engineered to keep your workforce connected and safe. Authorized dealer for Motorola, Kenwood, Icom, Hytera, and Ritron.</p>
-        </div>
-    </section>
+  <div class="container hero-content">
+    <h1>Mission-Critical Two-Way Radio Solutions</h1>
+    <p>Rugged hardware, crystal-clear digital audio, and flawless wide-area network coverage engineered to keep your workforce connected and safe. Authorized dealer for Motorola, Kenwood, Icom, Hytera, and Ritron.</p>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: 32px; width: 100%; max-width: 900px; margin-left: auto; margin-right: auto; box-sizing: border-box; padding: 0 8px;">
+  <a href="#catalog"
+     style="display: inline-flex; align-items: center; gap: 8px; background: #0b5eb4; color: #ffffff; text-decoration: none; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.4px; padding: 14px 24px; border-radius: 4px; box-shadow: 0 4px 14px rgba(11, 94, 180, 0.35);">
+    <i class="fa-solid fa-boxes-stacked"></i> Browse Catalogs
+  </a>
+  <a href="#" id="heroQuoteBtn"
+     style="display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #ffffff; text-decoration: none; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.4px; padding: 14px 24px; border-radius: 4px; border: 2px solid rgba(255,255,255,0.85);">
+    <i class="fa-solid fa-file-invoice"></i> Request a Quote
+  </a>
+</div>
+  </div>
+</section>
 <!-- Sheet-driven campaign slider (promotions rows 7–10) -->
 <section id="tarcCampaignSlider" style="padding:0; position:relative; overflow:hidden; min-height:320px; background:#0e1a24;">
   <div id="tarcSliderTrack" style="position:relative; width:100%; min-height:320px;"></div>
@@ -143,7 +153,7 @@
                 <label style="font-size: 0.72rem; font-weight: 800; color: #0b5eb4; text-transform: uppercase; letter-spacing: 0.5px;"><i class="fa-solid fa-handshake"></i> Direct Manufacturer Catalogs:</label>
                 
                 <!-- SURGICAL GRID: Switches flat text buttons into a high-quality visual brand grid -->
-                <div class="accessory-filter-pills" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; width: 100%; box-sizing: border-box;">
+                <div class="accessory-filter-pills" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; width: 100%; max-width: 900px; margin: 0 auto; box-sizing: border-box;">
                     
                     <!-- KENWOOD CARD -->
                     <a href="catalog.html?brand=kenwood" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s, box-shadow 0.2s;" onmouseenter="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.05)';" onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0,0,0,0.02)';">
@@ -675,9 +685,20 @@
 
   document.addEventListener("DOMContentLoaded", evaluateLiveMarketingCampaigns);
 </script>
-
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var quoteBtn = document.getElementById("heroQuoteBtn");
+    var modalBox = document.getElementById("quoteModal");
+    if (quoteBtn && modalBox) {
+      quoteBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        modalBox.style.display = "flex";
+      });
+    }
+  });
+</script>
   <!-- Always attach your master script.js down here at the very bottom -->
   
-  <script src="script.js"></script>
+  <!-- <script src="script.js"></script> -->
 </body>
 </html>
