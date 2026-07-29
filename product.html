@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Equipment Specifications & Procurement Console</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cloudflare.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     .dropdown { position: relative; display: inline-block; }
     .dropdown-content { display: none; position: absolute; background-color: #ffffff; min-width: 200px; box-shadow: 0px 8px 16px rgba(0,0,0,0.1); z-index: 2000; border-top: 3px solid #0b5eb4; border-radius: 0 0 4px 4px; }
@@ -21,55 +21,72 @@
 </head>
 <body id="top-viewport" style="padding-top: 110px; background-color: #f8fafc; margin: 0; font-family: 'Segoe UI', system-ui, sans-serif;"> 
   
-  <!-- Fixed Corporate Header Assembly Component --> 
-  <header class="main-header" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.08); background-color: #ffffff; display: flex; flex-direction: column;"> 
-    
-    <!-- FIXED TOP UTILITY STRIP --> 
-    <div style="background-color: #0e1a24 !important; color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 600; padding: 8px 0; border-bottom: 1px solid rgba(11, 94, 180, 0.3); width: 100%;"> 
-      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; box-sizing: border-box;"> 
-        <div><i class="fa-solid fa-location-dot" style="color: #00FF66; margin-right: 4px;"></i> 30+ Years of Certified Wireless Expertise | 700 S John Rodes Blvd, Melbourne, FL 32904</div> 
-        <div><a href="tel:3217254824" style="color: #00FFFF; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 600;"><i class="fa-solid fa-phone-volume"></i> (321) 725-4824</a></div> 
-      </div> 
-    </div> 
+ <!-- Fixed Corporate Header -->
+<header class="main-header" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.08); background-color: #ffffff; border-bottom: 3px solid #0b5eb4; display: flex; flex-direction: column;">
 
-    <div style="padding: 12px 0; width: 100%; background-color: #ffffff !important; box-sizing: border-box;"> 
-      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; gap: 20px; box-sizing: border-box;"> 
-        
-        <!-- Left Branding Module Group --> 
-        <div style="display: flex; align-items: center; gap: 15px; flex-shrink: 0;"> 
-          <img src="tarc-logo.png" alt="TARC Logo" style="height: 50px; width: auto; display: block; cursor: pointer;" onclick="window.location.href='index.html';"> 
-          <div style="text-align: left; line-height: 1.2;"> 
-            <h1 style="margin: 0; font-size: 1.15rem; font-weight: 900; color: #0e1a24; text-transform: uppercase; letter-spacing: -0.3px;">T.A. Radio</h1> 
-            <span style="font-size: 0.65rem; color: #0b5eb4; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; display: block;">Communications</span> 
-          </div> 
-        </div> 
+  <!-- Top utility strip -->
+  <div style="background-color: #0e1a24; color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 600; padding: 8px 0; width: 100%;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; box-sizing: border-box;">
+      <div><i class="fa-solid fa-location-dot" style="color: #00FF66; margin-right: 4px;"></i> 30+ Years of Certified Wireless Expertise | 700 S John Rodes Blvd, Melbourne, FL 32904</div>
+      <div><a href="tel:3217254824" style="color: #00FFFF; text-decoration: none; font-weight: 600;"><i class="fa-solid fa-phone-volume"></i> (321) 725-4824</a></div>
+    </div>
+  </div>
 
-        <!-- CENTER PLACEMENT: Unified Global Product Search Input Field --> 
-        <div style="flex: 1; max-width: 420px; position: relative; display: flex; align-items: center;"> 
-          <input type="text" id="navbarGlobalSearchInput" placeholder="Search models, brands, accessories..." style="width: 100%; padding: 8px 35px 8px 12px; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 0.85rem; color: #0e1a24; box-sizing: border-box; background: #f8fafc; transition: all 0.2s ease;"> 
-          <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 12px; color: #94a3b8; font-size: 0.85rem; pointer-events: none;"></i> 
-        </div> 
+  <!-- Main bar: logo | search | nav -->
+  <div style="padding: 12px 0; width: 100%; background-color: #ffffff; box-sizing: border-box;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; box-sizing: border-box; flex-wrap: wrap;">
 
-        <!-- Right Side Primary Navigation Anchors links --> 
-        <nav class="nav-links" style="display: flex; align-items: center; flex-shrink: 0;"> 
-          <a href="index.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Home</a> 
-          <div class="dropdown" style="margin-left: 20px;"> 
-            <a href="#" style="color: #0b5eb4; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 4px;">Brand Showrooms <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></a> 
-            <div class="dropdown-content"> 
-              <a href="catalog.html?brand=kenwood"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Kenwood Catalog</a> 
-              <a href="catalog.html?brand=icom"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Icom Catalog</a> 
-              <a href="catalog.html?brand=hytera"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Hytera Catalog</a> 
-              <a href="catalog.html?brand=motorola"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Motorola Catalog</a> 
-              <a href="catalog.html?brand=ritron"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Ritron Catalog</a> 
-            </div> 
-          </div> 
-          <a href="index.html#industries" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Industries</a> 
-          <a href="calculator.html" class="nav-calc-link" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;"><i class="fa-solid fa-tower-broadcast" style="color: #0b5eb4;"></i> RF Sim</a> 
-          <a href="#" id="cartToggleBtn" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 25px; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-cart-shopping" style="color: #0b5eb4;"></i> Cart (<span id="cartCountBadge" style="font-weight: 800; color: #16a34a;">0</span>)</a> 
-        </nav> 
-      </div> 
-    </div> 
-  </header>
+      <!-- Logo + name -->
+      <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
+        <img src="tarc-logo.png" alt="T.A. Radio" style="height: 50px; width: auto; cursor: pointer;" onclick="window.location.href='index.html';">
+        <div style="text-align: left; line-height: 1.15;">
+          <div style="margin: 0; font-size: 1.15rem; font-weight: 900; color: #0e1a24; text-transform: uppercase;">T.A. Radio</div>
+          <span style="font-size: 0.65rem; color: #0b5eb4; font-weight: 800; text-transform: uppercase;">Communications</span>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div style="flex: 1; max-width: 380px; min-width: 180px; position: relative;">
+        <input type="text" id="navbarGlobalSearchInput" placeholder="Search models, brands, accessories..."
+          style="width: 100%; padding: 8px 35px 8px 12px; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 0.85rem; background: #f8fafc; box-sizing: border-box;">
+        <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; pointer-events: none;"></i>
+      </div>
+
+      <!-- Nav links -->
+      <nav class="nav-links" style="display: flex; align-items: center; flex-wrap: wrap; flex-shrink: 0;">
+        <a href="index.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 16px; font-size: 0.9rem;">Home</a>
+
+        <div class="dropdown" style="margin-left: 16px;">
+          <a href="#" style="color: #0e1a24; text-decoration: none; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 4px;">
+            Brand Showrooms <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem; color: #0b5eb4;"></i>
+          </a>
+          <div class="dropdown-content">
+            <a href="catalog.html?brand=kenwood">Kenwood Catalog</a>
+            <a href="catalog.html?brand=icom">Icom Catalog</a>
+            <a href="catalog.html?brand=hytera">Hytera Catalog</a>
+            <a href="catalog.html?brand=motorola">Motorola Catalog</a>
+            <a href="catalog.html?brand=ritron">Ritron Catalog</a>
+          </div>
+        </div>
+
+        <a href="index.html#industries" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 16px; font-size: 0.9rem;">Industries</a>
+
+        <a href="poc.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 16px; font-size: 0.9rem;">
+          <i class="fa-solid fa-tower-cell" style="color: #0b5eb4;"></i> PoC
+        </a>
+
+        <a href="calculator.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 16px; font-size: 0.9rem;">
+          <i class="fa-solid fa-tower-broadcast" style="color: #0b5eb4;"></i> RF Sim
+        </a>
+
+        <a href="#" id="cartToggleBtn" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 16px; font-size: 0.9rem;">
+          <i class="fa-solid fa-cart-shopping" style="color: #0b5eb4;"></i> Cart (<span id="cartCountBadge" style="font-weight: 800; color: #16a34a;">0</span>)
+        </a>
+      </nav>
+
+    </div>
+  </div>
+</header>
 
 <main style="padding: 60px 0; background-color: #ffffff;">
   <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;">

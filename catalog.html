@@ -13,7 +13,7 @@
       box-shadow: 0px 8px 16px rgba(0,0,0,0.1); z-index: 2000;
       border-top: 3px solid #0b5eb4; border-radius: 0 0 4px 4px;
     }
-    .dropdown-content a {
+    .dropdown-content a {grid-template-columns
       color: #0e1a24; padding: 12px 16px; text-decoration: none; display: block;
       font-weight: 700; font-size: 0.88rem; text-align: left; border-bottom: 1px solid #f1f5f9;
     }
@@ -40,47 +40,53 @@
         <div><a href="tel:3217254824" style="color: #00FFFF; text-decoration: none; font-weight: 600;"><i class="fa-solid fa-phone-volume"></i> (321) 725-4824</a></div>
       </div>
     </div>
-    <div style="padding: 12px 0; background-color: #ffffff;">
-      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; gap: 20px;">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <img src="tarc-logo.png" alt="T.A. Logo" style="height: 52px; cursor: pointer;" onclick="window.location.href='index.html';">
-          <div style="text-align: left; line-height: 1.15;">
-            <h1 style="margin: 0; font-size: 1.15rem; font-weight: 900; color: #0e1a24; text-transform: uppercase;">T.A. Radio</h1>
-            <span style="font-size: 0.72rem; color: #0b5eb4; font-weight: 800; text-transform: uppercase;">Communications</span>
-          </div>
-        </div>
-        <div style="flex: 1; max-width: 420px; position: relative;">
-          <input type="text" id="navbarGlobalSearchInput" placeholder="Search models, brands, accessories..." style="width: 100%; padding: 8px 35px 8px 12px; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 0.85rem; background: #f8fafc;">
-          <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8;"></i>
-        </div>
-        <nav style="display: flex; align-items: center;">
-          <a href="index.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Home</a>
-          <div class="dropdown" style="margin-left: 20px;">
-            <a href="#" style="color: #0b5eb4; text-decoration: none; font-weight: 700; font-size: 0.92rem;">Brand Showrooms <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></a>
-            <div class="dropdown-content">
-              <a href="catalog.html?brand=kenwood">Kenwood Catalog</a>
-              <a href="catalog.html?brand=icom">Icom Catalog</a>
-              <a href="catalog.html?brand=hytera">Hytera Catalog</a>
-              <a href="catalog.html?brand=motorola">Motorola Catalog</a>
-              <a href="catalog.html?brand=ritron">Ritron Catalog</a>
-            </div>
-          </div>
-          <a href="index.html#industries" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Industries</a>
-          <a href="calculator.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;"><i class="fa-solid fa-tower-broadcast" style="color: #0b5eb4;"></i> RF Sim</a>
-          <a href="#" id="cartToggleBtn" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 25px; font-size: 0.95rem;"><i class="fa-solid fa-cart-shopping" style="color: #0b5eb4;"></i> Cart (<span id="cartCountBadge" style="font-weight: 800; color: #16a34a;">0</span>)</a>
-        </nav>
+     <div style="padding: 12px 0; width: 100%; background-color: #ffffff !important; box-sizing: border-box;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
+                <div class="logo"><img src="tarc-logo.png" alt="Company Logo" style="height: 50px; width: auto; display: block; cursor: pointer;" onclick="window.location.href='index.html';"></div>
+                <nav class="nav-links" style="display: flex; align-items: center; flex-wrap: wrap;">
+  <a href="index.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Home</a>
+
+  <div class="dropdown" style="margin-left: 20px;">
+    <a href="#" style="color: #0e1a24; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 4px;">
+      Brand Showrooms <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; color:#0b5eb4;"></i>
+    </a>
+    <div class="dropdown-content">
+      <a href="catalog.html?brand=kenwood"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Kenwood Catalog</a>
+      <a href="catalog.html?brand=icom"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Icom Catalog</a>
+      <a href="catalog.html?brand=hytera"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Hytera Catalog</a>
+      <a href="catalog.html?brand=motorola"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Motorola Catalog</a>
+      <a href="catalog.html?brand=ritron"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Ritron Catalog</a>
+    </div>
+  </div>
+
+  <a href="index.html#industries" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Industries</a>
+
+  <!-- Active on this page -->
+  <a href="poc.html" style="color: #0b5eb4; text-decoration: none; font-weight: 800; margin-left: 20px; font-size: 0.92rem;">
+    <i class="fa-solid fa-tower-cell"></i> PoC
+  </a>
+
+  <a href="calculator.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">
+    <i class="fa-solid fa-tower-broadcast" style="color: #0b5eb4;"></i> RF Sim
+  </a>
+</nav>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section id="showroomHero" style="background: #0e1a24; color: #ffffff; padding: 60px 0; border-bottom: 4px solid #0b5eb4;">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-      <span id="showroomDealerBadge" style="background: rgba(0, 255, 102, 0.15); color: #00FF66; font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 4px; letter-spacing: 1px; text-transform: uppercase; display: inline-block; margin-bottom: 12px;"><i class="fa-solid fa-award"></i> LOADING SHOWROOM...</span>
-      <h2 id="showroomTitle" style="margin: 0 0 10px 0; font-size: 2.3rem; font-weight: 900;">Showroom Systems Portfolio</h2>
-      <p style="margin: 0; color: #cbd5e1; font-size: 1.05rem; max-width: 650px;">Audit technical hardware grids, verify component compliance records, and build mission-critical deployment manifests seamlessly.</p>
-    </div>
-  </section>
+  <section id="showroomHero" style="padding: 60px 0; border-bottom: 4px solid #0b5eb4; text-align: left; color: #ffffff; background-color: #0e1a24;">
+  <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;">
+    <span id="showroomDealerBadge" style="color: #00FFFF; font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 5px;">
+      <i class="fa-solid fa-award"></i> AUTHORIZED WIRELESS DEALER
+    </span>
+    <h1 id="showroomTitle" style="color: #ffffff; font-size: 2.6rem; font-weight: 900; margin: 0 0 10px 0; text-transform: uppercase;">
+      Wireless Systems Portfolio
+    </h1>
+    <p id="showroomSubtitle" style="color: #cbd5e1; font-size: 1.05rem; margin: 0; max-width: 750px; line-height: 1.5;">
+      Verify technical parameters, audit procurement compliance criteria, or execute instant checkout deployments.
+    </p>
+  </div>
+</section>
 
   <!-- Main Catalog -->
   <main style="padding: 40px 0; background: #f8fafc;">
@@ -157,22 +163,33 @@
       return true;
     }
 
-    function initializeUniversalShowroomRoute() {
-      const params = new URLSearchParams(window.location.search);
-      const passedBrand = (params.get("brand") || "kenwood").toLowerCase().trim();
-      activeRouteBrandToken = passedBrand;
+function initializeUniversalShowroomRoute() {
+  const params = new URLSearchParams(window.location.search);
+  const passedBrand = (params.get("brand") || "kenwood").toLowerCase().trim();
+  activeRouteBrandToken = passedBrand;
 
-      const badge = document.getElementById("showroomDealerBadge");
-      const title = document.getElementById("showroomTitle");
-      const label = document.getElementById("filterRowLabel");
-      const input = document.getElementById("catalogSearch");
+  const badge = document.getElementById("showroomDealerBadge");
+  const title = document.getElementById("showroomTitle");
+  const label = document.getElementById("filterRowLabel");
+  const input = document.getElementById("catalogSearch");
 
-      const brandLabel = passedBrand.charAt(0).toUpperCase() + passedBrand.slice(1);
-      if (badge) badge.innerHTML = `<i class="fa-solid fa-award"></i> AUTHORIZED ${brandLabel.toUpperCase()} DEALER HUB`;
-      if (title) title.innerText = `${brandLabel} Systems Portfolio`;
-      if (label) label.innerHTML = `<i class="fa-solid fa-sliders"></i> Filter ${brandLabel} Stock Tiers:`;
-      if (input) input.placeholder = `Search ${brandLabel} models...`;
-    }
+  const brandLabel = passedBrand.charAt(0).toUpperCase() + passedBrand.slice(1);
+
+  if (badge) badge.innerHTML = `<i class="fa-solid fa-award"></i> AUTHORIZED ${brandLabel.toUpperCase()} DEALER HUB`;
+  if (title) title.innerText = `${brandLabel} Systems Portfolio`;
+  if (label) label.innerHTML = `<i class="fa-solid fa-sliders"></i> Filter ${brandLabel} Stock Tiers:`;
+  if (input) input.placeholder = `Search ${brandLabel} models...`;
+
+  // Catalog banner (brand radio art on the right)
+  const heroBannerNode = document.getElementById("showroomHero");
+  if (heroBannerNode) {
+    heroBannerNode.style.background =
+      `linear-gradient(to right, rgba(14,26,36,0.98) 35%, rgba(14,26,36,0) 80%), url('images/hero-${passedBrand}.png') no-repeat right center`;
+    heroBannerNode.style.backgroundSize = "contain";
+    heroBannerNode.style.padding = "60px 0";
+    heroBannerNode.style.borderBottom = "4px solid #0b5eb4";
+  }
+}
 
     async function fetchUniversalCatalogFeed() {
       const CACHE_KEY = "tarc_inventory_cache_feed";
