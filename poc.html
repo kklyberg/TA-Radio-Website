@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TARC | Interactive PTToC Scenario Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" href="data:,">
     <style>
         .dropdown { position: relative; display: inline-block; }
@@ -34,21 +34,33 @@
         <div style="padding: 12px 0; width: 100%; background-color: #ffffff !important; box-sizing: border-box;">
             <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
                 <div class="logo"><img src="tarc-logo.png" alt="Company Logo" style="height: 50px; width: auto; display: block; cursor: pointer;" onclick="window.location.href='index.html';"></div>
-                <nav class="nav-links" style="display: flex; align-items: center;">
-                    <a href="index.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Home</a>
-                    <div class="dropdown" style="margin-left: 20px;">
-                        <a href="#" style="color: #0e1a24; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 4px;">Brand Showrooms <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></a>
-                        <div class="dropdown-content">
-                            <a href="catalog.html?brand=kenwood"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Kenwood Catalog</a>
-                            <a href="catalog.html?brand=icom"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Icom Catalog</a>
-                            <a href="catalog.html?brand=hytera"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Hytera Catalog</a>
-                            <a href="catalog.html?brand=motorola"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Motorola Catalog</a>
-                            <a href="catalog.html?brand=ritron"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Ritron Catalog</a>
-                        </div>
-                    </div>
-                    <a href="index.html#industries" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Industries</a>
-                    <a href="calculator.html" class="nav-calc-link" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;"><i class="fa-solid fa-tower-broadcast"></i> RF Sim</a>
-                </nav>
+                <nav class="nav-links" style="display: flex; align-items: center; flex-wrap: wrap;">
+  <a href="index.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Home</a>
+
+  <div class="dropdown" style="margin-left: 20px;">
+    <a href="#" style="color: #0e1a24; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 4px;">
+      Brand Showrooms <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; color:#0b5eb4;"></i>
+    </a>
+    <div class="dropdown-content">
+      <a href="catalog.html?brand=kenwood"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Kenwood Catalog</a>
+      <a href="catalog.html?brand=icom"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Icom Catalog</a>
+      <a href="catalog.html?brand=hytera"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Hytera Catalog</a>
+      <a href="catalog.html?brand=motorola"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Motorola Catalog</a>
+      <a href="catalog.html?brand=ritron"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Ritron Catalog</a>
+    </div>
+  </div>
+
+  <a href="index.html#industries" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Industries</a>
+
+  <!-- Active on this page -->
+  <a href="poc.html" style="color: #0b5eb4; text-decoration: none; font-weight: 800; margin-left: 20px; font-size: 0.92rem;">
+    <i class="fa-solid fa-tower-cell"></i> PoC
+  </a>
+
+  <a href="calculator.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">
+    <i class="fa-solid fa-tower-broadcast" style="color: #0b5eb4;"></i> RF Sim
+  </a>
+</nav>
             </div>
         </div>
     </header>
@@ -76,6 +88,16 @@
                 <img id="pocConnectionImageBanner" src="images/connect-basic-template.png" alt="Kenwood System Link Map" style="width: 100%; height: auto; max-height: 280px; object-fit: contain; display: block; margin: 0 auto;">
             </div>
         </div>
+		<section style="margin-top: 40px; text-align: left; width: 100%;">
+  <span style="color: #0b5eb4; font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;">PoC Hardware</span>
+  <h2 style="color: #0e1a24; font-size: 1.5rem; font-weight: 900; margin: 6px 0 12px 0;">Cellular PTT / PoC Radios</h2>
+  <p style="color: #64748b; font-size: 0.95rem; margin: 0 0 20px 0; max-width: 640px;">
+    Selected terminals designed for push-to-talk over cellular. Full catalog filtering can be connected to the live inventory sheet next.
+  </p>
+  <div id="pocRadioGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px;">
+    <!-- Client demo: add 2–4 static cards here, or wire sheet feed later -->
+  </div>
+</section>
     </main>
     <!-- Automated Image Router Script -->
     <script>

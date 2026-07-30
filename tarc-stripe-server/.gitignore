@@ -1,2 +1,10 @@
 node_modules/
 .env
+*.json
+!package.json
+!package-lock.json
+!kenwood-products.json.env
+node_modules/
+datasheet.js
+datasheet.py
+.env.*
