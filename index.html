@@ -141,48 +141,122 @@
 
   <div id="tarcSlideDots" style="position:absolute; bottom:14px; left:0; right:0; display:flex; justify-content:center; gap:8px; z-index:5;"></div>
 </section>
-<!-- ========== BACK TO SCHOOL / CAMPUS STRIP (LIGHT) ========== -->
-<!-- ========== BACK TO SCHOOL BANNER ========== -->
+<!-- ========== BACK TO SCHOOL — HIGH CONTRAST POP ========== -->
 <section id="backToSchool" style="
   position: relative;
-  background-image:
-    linear-gradient(90deg, rgba(14,26,36,0.92) 0%, rgba(14,26,36,0.75) 45%, rgba(14,26,36,0.45) 100%),
-    url('images/education.png');
-  background-size: cover;
-  background-position: center right;
-  background-repeat: no-repeat;
-  color: #ffffff;
-  padding: 56px 0;
+  background: #f0f7ff;
   border-bottom: 4px solid #0b5eb4;
   overflow: hidden;
 ">
-  <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; position: relative; z-index: 1;">
+  <!-- soft gold accent line under hero -->
+  <div style="height: 6px; background: linear-gradient(90deg, #f59e0b, #0b5eb4, #00c2e0);"></div>
+
+  <div style="
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    min-height: 340px;
+    max-width: 1200px;
+    margin: 0 auto;
+  ">
     
-    <div style="max-width: 560px; text-align: left;">
-      <span style="display: inline-block; background: rgba(0,255,255,0.15); color: #00FFFF; font-size: 0.72rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 4px; margin-bottom: 14px;">
+    <!-- LEFT: bright copy panel -->
+    <div style="
+      background: linear-gradient(160deg, #ffffff 0%, #e8f2fc 100%);
+      padding: 48px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      box-shadow: 8px 0 30px rgba(11, 94, 180, 0.08);
+      z-index: 2;
+    ">
+      <span style="
+        display: inline-block;
+        width: fit-content;
+        background: #f59e0b;
+        color: #0e1a24;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        padding: 6px 14px;
+        border-radius: 4px;
+        margin-bottom: 14px;
+      ">
         <i class="fa-solid fa-graduation-cap"></i> Back to School 2026
       </span>
-      
-      <h2 style="margin: 0 0 12px 0; font-size: clamp(1.6rem, 3.2vw, 2.2rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.3px; color: #ffffff; text-shadow: 0 2px 12px rgba(0,0,0,0.45);">
-        Campus communications, ready for fall
+
+      <h2 style="
+        margin: 0 0 12px 0;
+        font-size: clamp(1.65rem, 3vw, 2.25rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -0.4px;
+        color: #0e1a24;
+        line-height: 1.15;
+      ">
+        Back to School<br>Communication is Essential
       </h2>
-      
-      <p style="margin: 0 0 22px 0; color: #e2e8f0; font-size: 1.05rem; line-height: 1.55; text-shadow: 0 1px 6px rgba(0,0,0,0.35);">
-        Staff, security, facilities, and buses—clear radio when phones aren’t enough. Local support for Florida schools and campuses.
+
+      <p style="margin: 0 0 24px 0; color: #475569; font-size: 1.05rem; line-height: 1.55; max-width: 420px;">
+        Hallways, fields, and bus loops—staff and security stay connected when cell service isn’t enough. Local kits &amp; support for Florida schools.
       </p>
-      
+
       <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-        <a href="industries/industry.html?sector=education" style="display: inline-block; background: #0b5eb4; color: #ffffff; font-weight: 800; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; padding: 14px 22px; border-radius: 4px;">
-          Education solutions
-        </a>
-        <a href="tel:3217254824" style="display: inline-block; background: rgba(255,255,255,0.12); color: #ffffff; font-weight: 800; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; padding: 14px 22px; border-radius: 4px; border: 2px solid rgba(255,255,255,0.55);">
-          <i class="fa-solid fa-phone"></i> (321) 725-4824
-        </a>
+        <a href="industries/industry.html?sector=education" style="
+          display: inline-block;
+          background: #0b5eb4;
+          color: #fff;
+          font-weight: 800;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-size: 0.85rem;
+          padding: 14px 22px;
+          border-radius: 4px;
+          box-shadow: 0 6px 18px rgba(11, 94, 180, 0.35);
+        ">Education solutions</a>
+        <a href="tel:3217254824" style="
+          display: inline-block;
+          background: #fff;
+          color: #0b5eb4;
+          font-weight: 800;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-size: 0.85rem;
+          padding: 14px 22px;
+          border-radius: 4px;
+          border: 2px solid #0b5eb4;
+        "><i class="fa-solid fa-phone"></i> Call us</a>
       </div>
     </div>
 
+    <!-- RIGHT: photo -->
+    <div style="
+      position: relative;
+      background-image: url('images/education.png');
+      background-size: cover;
+      background-position: center center;
+      min-height: 280px;
+    ">
+      <!-- light fade so photo meets white panel cleanly -->
+      <div style="
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, #e8f2fc 0%, transparent 28%);
+        pointer-events: none;
+      "></div>
+    </div>
   </div>
-</section>    <!-- Concise Homepage Procurement Portal (Trimmed Clean Design) -->
+</section>
+
+<style>
+  @media (max-width: 800px) {
+    #backToSchool > div[style*="grid-template-columns"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+<!-- Concise Homepage Procurement Portal (Trimmed Clean Design) -->
     <section id="catalog" class="catalog-section" style="padding: 80px 0; background-color: #ffffff; border-top: 1px solid #e2e8f0;">
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
             <span style="color: #0b5eb4; font-size: 0.75rem; font-weight: bold; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 5px;"><i class="fa-solid fa-boxes-stacked"></i> DIRECTORY ROUTING TERMINAL</span>
