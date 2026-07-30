@@ -1,24 +1,30 @@
-const fs = require('fs');
+require("dotenv").config();
+
+const fs = require("fs");
+const path = require("path"); // only if you use path later
+const { OpenAI } = require("openai");
+const { getDocumentProxy, extractText } = require("unpdf");
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY || ""
+});
 const axios = require('axios');
 const cheerio = require('cheerio');
 const sharp = require('sharp');
 const { PDFParse } = require('pdf-parse');
-const { OpenAI } = require('openai');
+
 
 // =========================================================================
 // CONFIGURATION
 // =========================================================================
 const CONTROLLER_CONFIG = {
     mode: "web",
-    targetPath: "https://www.kenwood.com/usa/com/lmr/",
+    targetPath: "https://shop.motorolasolutions.com/search/_/N-735920568+3332137478?Nrpp=15",
     pageRange: null
 };
 
 const APPS_SCRIPT_ENDPOINT = "https://script.google.com/macros/s/AKfycbw1M3qP6Lkebhy14vbMcCXESzB-N2QEFf2NHGHSuItlVn1sNP35Efa9uGdlRXEeF-m8DA/exec";
 
-const openai = new OpenAI({
-    apiKey: "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"
-});
+
 
 // =========================================================================
 // AI PARSER
@@ -26,9 +32,7 @@ const openai = new OpenAI({
 async function processRawTextThroughAIBrain(extractedRawTextString, brandNameHint) {
     console.log("🧠 Sending to AI...");
 
-
-
-  const promptInstructions = `
+    const promptInstructions = `
     You are an elite, highly precise automated B2B radio communications catalog parser. 
     Analyze the raw text content scraped from a manufacturer document or webpage.
     
@@ -40,10 +44,10 @@ async function processRawTextThroughAIBrain(extractedRawTextString, brandNameHin
 
     Generate a JSON array matching these 13 strict schema keys for EACH item (Radio or Accessory):
     1. "model": Standalone identifier string or accessory part number (e.g., "NX-1200K").
-    2. "brand": Validated brand name detected or provided (e.g., "Kenwood" or "Icom").
+    2. "brand": Validated brand name detected or provided (e.g., "Kenwood" or "Icom" or "Motorola").
     3. "type": lowercase "portable", "mobile", or "accessory".
     4. "price": MSRP dollar decimal number.
-    5. "image": Auto-generate standard folder format matching its uppercase part number string (e.g., "[brand]/images/NX-1200K.png"). Do not leave blank.
+    5. "image": Extract and return the exact link found in the "ImageURL" metadata text block that corresponds to this item. If no explicit link is found, auto-generate standard folder format matching its uppercase part number string (e.g., "[brand]/images/PARTNUMBER.png").
     6. "includes": JSON array of strings for radios; empty array [] for accessories.
     7. "features": JSON array of technical feature strings. Do not return flat comma strings.
     8. "specLink": Auto-generate path tracking format (e.g., "[brand]/specs/brochure.pdf").
@@ -73,15 +77,13 @@ async function processRawTextThroughAIBrain(extractedRawTextString, brandNameHin
         return [];
     }
 }
-
 // =========================================================================
-// MAIN PIPELINE
+// MAIN PIPELINE (FORCE UPDATE + SELECTOR PATCH)
 // =========================================================================
 async function executeBatchCatalogUpload() {
     console.log(`🚀 STARTING PIPELINE (MODE: ${CONTROLLER_CONFIG.mode})...`);
 
     const finalScrubbedProducts = [];
-    const imageMap = new Map();
 
     try {
         // -------------------- PDF MODE --------------------
@@ -98,7 +100,6 @@ async function executeBatchCatalogUpload() {
             const result = await parser.getText();
             await parser.destroy();
 
-            // Simple split into sections
             const documentPagesArray = result.text
                 ? result.text.split(/(\f|\n\s*\n{2,})/).filter(p => p.trim().length > 30)
                 : [result.text || ""];
@@ -117,7 +118,69 @@ async function executeBatchCatalogUpload() {
             }
         }
 
-        console.log(`📡 Found ${finalScrubbedProducts.length} products.`);
+        // -------------------- WEB MODE (CONTEXTUAL CELL MAPPER) --------------------
+        if (CONTROLLER_CONFIG.mode === "web") {
+            console.log("🌐 Launching headless browser engine...");
+            const { chromium } = require('playwright');
+            const browser = await chromium.launch({ headless: true });
+            
+            const context = await browser.newContext({
+                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            });
+            const page = await context.newPage();
+
+            try {
+                console.log(`📡 Connecting to target search catalog: ${CONTROLLER_CONFIG.targetPath}`);
+                await page.goto(CONTROLLER_CONFIG.targetPath, { waitUntil: 'domcontentloaded', timeout: 30000 });
+                
+                console.log("⏳ Waiting for result layouts to populate...");
+                await page.waitForTimeout(8000); 
+
+                console.log("📸 Contextually pairing text records and matching image attributes inside the DOM...");
+                const unifiedTextPayload = await page.evaluate(() => {
+                    const structures = document.querySelectorAll('div, li, tr, [class*="product"], [class*="item"]');
+                    const cleanDataBatches = [];
+
+                    structures.forEach(node => {
+                        const rawText = node.innerText || "";
+                        const partRegex = /\b[A-Z0-9]{7,12}[A-Z0-9-]*\b/;
+                        
+                        if (partRegex.test(rawText) && (rawText.includes('$') || rawText.toLowerCase().includes('cart'))) {
+                            const foundPart = rawText.match(partRegex);
+                            
+                            const imageEl = node.querySelector('img') || node.parentElement?.querySelector('img');
+                            const imageLink = imageEl?.getAttribute('data-src') || imageEl?.src || "";
+
+                            if (imageLink && imageLink.startsWith('http')) {
+                                cleanDataBatches.push(`ProductPart: ${foundPart}\nSourceData: ${rawText.replace(/\s+/g, ' ')}\nImageURL: ${imageLink}\n---`);
+                            }
+                        }
+                    });
+
+                    if (cleanDataBatches.length === 0) {
+                        return document.body.innerText;
+                    }
+
+                    return cleanDataBatches.join('\n');
+                });
+
+                await context.close();
+                await browser.close();
+
+                console.log("🧠 Forwarding structured matrix blocks directly to AI...");
+                const batch = await processRawTextThroughAIBrain(unifiedTextPayload, "Motorola");
+                if (batch && batch.length > 0) {
+                    finalScrubbedProducts.push(...batch);
+                }
+
+            } catch (scrapeError) {
+                console.error("❌ Headless Scraper Error:", scrapeError.message);
+                await browser.close();
+                return;
+            }
+        }
+
+        console.log(`📡 Found ${finalScrubbedProducts.length} products to upload.`);
 
         // -------------------- PREPARE ACCESSORY LIST --------------------
         const masterAccessoryCodesList = finalScrubbedProducts
@@ -130,18 +193,30 @@ async function executeBatchCatalogUpload() {
         for (const item of finalScrubbedProducts) {
             try {
                 const model = String(item.model || "").trim().toUpperCase();
-                const detectedBrand = String(item.brand || "Kenwood").trim().toLowerCase();
+                
+                let rawBrand = item.brand || "Motorola";
+                if (!rawBrand || rawBrand.toLowerCase() === "unknown") {
+                    rawBrand = "Motorola";
+                }
+                let detectedBrand = rawBrand.trim().toLowerCase();
 
-                // Image path (placeholder for now)
-                item.image = `${detectedBrand}/images/${model.toLowerCase()}.png`;
+                               // ✅ REPAIR: Converts relative paths to absolute domain URLs before uploading
+                let finalizedImageValue = item.image || "";
+                
+                if (finalizedImageValue && finalizedImageValue.startsWith("/")) {
+                    finalizedImageValue = `https://motorolasolutions.com${finalizedImageValue}`;
+                } else if (!finalizedImageValue || finalizedImageValue.toLowerCase().includes('unknown')) {
+                    finalizedImageValue = `${detectedBrand}/images/${model.toLowerCase()}.png`;
+                }
+
 
                 const flatPayload = {
-                    action: "insertInventoryRow",
+                    action: "updateInventoryContent", 
                     model: model,
-                    brand: item.brand || "Kenwood",
-                    type: item.type || "portable",
+                    brand: rawBrand,
+                    type: item.type || "accessory",
                     price: item.price || 0,
-                    image: item.image,
+                    image: finalizedImageValue, 
                     specLink: item.specLink || "",
                     includes: Array.isArray(item.includes) ? JSON.stringify(item.includes) : "[]",
                     features: Array.isArray(item.features) ? JSON.stringify(item.features) : "[]",
@@ -156,6 +231,8 @@ async function executeBatchCatalogUpload() {
                     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(flatPayload[key]))
                     .join("&");
 
+                console.log(`📡 Shipping row data: ${flatPayload.brand} ${flatPayload.model}`);
+
                 const response = await fetch(APPS_SCRIPT_ENDPOINT, {
                     method: "POST",
                     headers: {
@@ -168,13 +245,28 @@ async function executeBatchCatalogUpload() {
 
                 const rawSheetResponseText = await response.text();
 
-                if (response.status === 200 && (rawSheetResponseText.includes("true") || rawSheetResponseText.includes("Success"))) {
-                    console.log(`✅ Loaded: ${flatPayload.brand} ${flatPayload.model}`);
+                const isSuccess = response.status === 200 && (
+                    rawSheetResponseText.includes("true") || 
+                    rawSheetResponseText.includes("Success") || 
+                    rawSheetResponseText.includes("created") || 
+                    rawSheetResponseText.includes("updated")
+                );
+
+                if (isSuccess) {
+                    console.log(`✅ Loaded into Google Sheets: ${flatPayload.brand} ${flatPayload.model} (${rawSheetResponseText})`);
                 } else {
-                    console.error(`❌ Failed to upload: ${model}`);
+                    if (rawSheetResponseText.toLowerCase().includes("not found")) {
+                        console.log(`⚠️ Row missing. Attempting fresh registration for: ${model}`);
+                        flatPayload.action = "createAccessory";
+                        const retryFormBody = Object.keys(flatPayload).map(k => encodeURIComponent(k) + "=" + encodeURIComponent(flatPayload[k])).join("&");
+                        const retryResponse = await fetch(APPS_SCRIPT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: retryFormBody, redirect: "follow" });
+                        const retryText = await retryResponse.text();
+                        console.log(`✨ Creation Fallback Result: ${retryText}`);
+                    } else {
+                        console.error(`❌ Failed to upload: ${model}. Response: ${rawSheetResponseText}`);
+                    }
                 }
 
-                // Small delay to avoid rate limits
                 await new Promise(resolve => setTimeout(resolve, 800));
 
             } catch (itemErr) {

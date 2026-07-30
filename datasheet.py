@@ -8,9 +8,9 @@ from oauth2client.service_account import ServiceAccountCredentials
 from openai import OpenAI
 
 # ========== CONFIG ==========
-PDF_PATH = "ic-f1000-series.pdf"          # ← change per datasheet
-BRAND = "Icom"                            # Kenwood | Hytera | Icom | Motorola | Ritron
-BRAND_FOLDER = "icom"
+PDF_PATH = "BPR-50dX.pdf"          # ← change per datasheet
+BRAND = "Motorola"                            # Kenwood | Hytera | Icom | Motorola | Ritron
+BRAND_FOLDER = "motorola"
 DEFAULT_TYPE = "portable"
 PAGE_RANGE = None                         # e.g. (1, 4) or None
 

@@ -1,21 +1,27 @@
+require("dotenv").config();
+
 const fs = require("fs");
-const { getDocumentProxy, extractText } = require("unpdf");
+const path = require("path"); // only if you use path later
+
 const { OpenAI } = require("openai");
+const { getDocumentProxy, extractText } = require("unpdf");
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY || ""
+});
 
 // ========== CONFIG ==========
 const CONFIG = {
-  targetFile: "NX-P1200NV_NX-P1300NUComp.pdf",
-  brand: "Kenwood",
-  brandFolder: "kenwood",
+  targetFile: "mototrbo_sl300_data_sheet (1).pdf",
+  brand: "Motorola",
+  brandFolder: "motorola",
   type: "portable",
   pageRange: null,
   appsScriptUrl:
     "https://script.google.com/macros/s/AKfycbw1M3qP6Lkebhy14vbMcCXESzB-N2QEFf2NHGHSuItlVn1sNP35Efa9uGdlRXEeF-m8DA/exec"
 };
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || "sk-proj-YOUR_KEY_HERE"
-});
+
 // ============================
 
 function parsePageRange(pageRange, totalPages) {

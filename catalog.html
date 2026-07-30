@@ -221,34 +221,66 @@ function initializeUniversalShowroomRoute() {
       }
     }
 
-    function executeLiveMatrixSift() {
-      if (!masterSheetInventoryFeed.length) return;
+function executeLiveMatrixSift() {
+  if (!masterSheetInventoryFeed.length) return;
 
-      const searchVal = (
-        document.getElementById("catalogSearch")?.value ||
-        document.getElementById("navbarGlobalSearchInput")?.value || ""
-      ).toLowerCase().trim();
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlSearch = (urlParams.get("search") || "").toLowerCase().trim();
+  const inputSearch = (
+    document.getElementById("catalogSearch")?.value ||
+    document.getElementById("navbarGlobalSearchInput")?.value ||
+    ""
+  ).toLowerCase().trim();
 
-      const cat = activeSelectedCategory.toLowerCase();
+  const searchVal = inputSearch || urlSearch;
 
-      const filtered = masterSheetInventoryFeed.filter(item => {
-        const model = (item.model || "").toString().toLowerCase();
-        const type  = (item.type  || "").toString().toLowerCase();
-        const brand = (item.brand || "").toString().toLowerCase();
+  const catalogBox = document.getElementById("catalogSearch");
+  if (catalogBox && searchVal && catalogBox.value.trim() === "") {
+    catalogBox.value = searchVal;
+  }
 
-        const brandOk = searchVal || brand === activeRouteBrandToken || brand.includes(activeRouteBrandToken);
-        const searchOk = !searchVal || model.includes(searchVal) || brand.includes(searchVal);
-        const catOk = cat === "all" || type === cat;
+  const cat = (typeof activeSelectedCategory !== "undefined" ? activeSelectedCategory : "all")
+    .toString()
+    .toLowerCase();
 
-        return brandOk && searchOk && catOk;
-      });
+  const filtered = masterSheetInventoryFeed.filter((item) => {
+    const model = (item.model || item.Model || "").toString().toLowerCase();
+    const brand = (item.brand || item.Brand || "").toString().toLowerCase();
+    const type = (item.type || item.Type || "").toString().toLowerCase();
+    const features = (item.features || item.Features || "").toString().toLowerCase();
 
-      const withImages = filtered.filter(hasRealImage);
-      const needsImage = filtered.filter(item => !hasRealImage(item));
+    // PARTIAL match — "bd552" finds "bd552i-bt-u1"
+    const searchOk =
+      !searchVal ||
+      model.includes(searchVal) ||
+      brand.includes(searchVal) ||
+      type.includes(searchVal) ||
+      features.includes(searchVal);
 
-      buildResponsiveProductCards(withImages);
-      buildPriceListTable(needsImage);
+    if (!searchOk) return false;
+
+    // While searching, don't force a single brand
+    if (searchVal) {
+      if (cat !== "all" && type !== cat && !type.includes(cat)) return false;
+      return true;
     }
+
+    // Normal brand browse (no search)
+    const brandToken = String(activeRouteBrandToken || "").toLowerCase();
+    const brandOk =
+      !brandToken ||
+      brand === brandToken ||
+      brand.includes(brandToken);
+
+    const catOk = cat === "all" || type === cat || type.includes(cat);
+    return brandOk && catOk;
+  });
+
+  const withImages = filtered.filter(hasRealImage);
+  const needsImage = filtered.filter((item) => !hasRealImage(item));
+  buildResponsiveProductCards(withImages);
+  buildPriceListTable(needsImage);
+}
 
     function buildResponsiveProductCards(items) {
       const grid = document.getElementById("catalog-feed-grid");

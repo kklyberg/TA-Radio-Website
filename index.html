@@ -141,7 +141,122 @@
 
   <div id="tarcSlideDots" style="position:absolute; bottom:14px; left:0; right:0; display:flex; justify-content:center; gap:8px; z-index:5;"></div>
 </section>
-    <!-- Concise Homepage Procurement Portal (Trimmed Clean Design) -->
+<!-- ========== BACK TO SCHOOL — HIGH CONTRAST POP ========== -->
+<section id="backToSchool" style="
+  position: relative;
+  background: #f0f7ff;
+  border-bottom: 4px solid #0b5eb4;
+  overflow: hidden;
+">
+  <!-- soft gold accent line under hero -->
+  <div style="height: 6px; background: linear-gradient(90deg, #f59e0b, #0b5eb4, #00c2e0);"></div>
+
+  <div style="
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    min-height: 340px;
+    max-width: 1200px;
+    margin: 0 auto;
+  ">
+    
+    <!-- LEFT: bright copy panel -->
+    <div style="
+      background: linear-gradient(160deg, #ffffff 0%, #e8f2fc 100%);
+      padding: 48px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      box-shadow: 8px 0 30px rgba(11, 94, 180, 0.08);
+      z-index: 2;
+    ">
+      <span style="
+        display: inline-block;
+        width: fit-content;
+        background: #f59e0b;
+        color: #0e1a24;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        padding: 6px 14px;
+        border-radius: 4px;
+        margin-bottom: 14px;
+      ">
+        <i class="fa-solid fa-graduation-cap"></i> Back to School 2026
+      </span>
+
+      <h2 style="
+        margin: 0 0 12px 0;
+        font-size: clamp(1.65rem, 3vw, 2.25rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: -0.4px;
+        color: #0e1a24;
+        line-height: 1.15;
+      ">
+        Back to School<br>Communication is Essential
+      </h2>
+
+      <p style="margin: 0 0 24px 0; color: #475569; font-size: 1.05rem; line-height: 1.55; max-width: 420px;">
+        Hallways, fields, and bus loops—staff and security stay connected when cell service isn’t enough. Local kits &amp; support for Florida schools.
+      </p>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+        <a href="industries/industry.html?sector=education" style="
+          display: inline-block;
+          background: #0b5eb4;
+          color: #fff;
+          font-weight: 800;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-size: 0.85rem;
+          padding: 14px 22px;
+          border-radius: 4px;
+          box-shadow: 0 6px 18px rgba(11, 94, 180, 0.35);
+        ">Education solutions</a>
+        <a href="tel:3217254824" style="
+          display: inline-block;
+          background: #fff;
+          color: #0b5eb4;
+          font-weight: 800;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-size: 0.85rem;
+          padding: 14px 22px;
+          border-radius: 4px;
+          border: 2px solid #0b5eb4;
+        "><i class="fa-solid fa-phone"></i> Call us</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: photo -->
+    <div style="
+      position: relative;
+      background-image: url('images/education.png');
+      background-size: cover;
+      background-position: center center;
+      min-height: 280px;
+    ">
+      <!-- light fade so photo meets white panel cleanly -->
+      <div style="
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, #e8f2fc 0%, transparent 28%);
+        pointer-events: none;
+      "></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 800px) {
+    #backToSchool > div[style*="grid-template-columns"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+<!-- Concise Homepage Procurement Portal (Trimmed Clean Design) -->
     <section id="catalog" class="catalog-section" style="padding: 80px 0; background-color: #ffffff; border-top: 1px solid #e2e8f0;">
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
             <span style="color: #0b5eb4; font-size: 0.75rem; font-weight: bold; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 5px;"><i class="fa-solid fa-boxes-stacked"></i> DIRECTORY ROUTING TERMINAL</span>
@@ -182,7 +297,7 @@
                     <!-- MOTOROLA CARD -->
                     <a href="catalog.html?brand=motorola" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s, box-shadow 0.2s;" onmouseenter="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.05)';" onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0,0,0,0.02)';">
                         <div style="width: 100%; height: 50px; display: flex; align-items: center; justify-content: center; padding: 2px;">
-                            <img src="motorola/images/motorola-logo.png" alt="Motorola Storefront" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='images/radio-placeholder.png';">
+                            <img src="Motorola/images/motorola-logo.png" alt="Motorola Storefront" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='images/radio-placeholder.png';">
                         </div>
                         <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.3px; margin-top: 6px;">Motorola</span>
                     </a>
