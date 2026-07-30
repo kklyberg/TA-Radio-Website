@@ -563,16 +563,9 @@ function populateVariantDropdown(radioItem, fullInventoryList) {
     });
   }
   if (matchingAccessoriesList.length === 0) {
-    optionalGridNode.innerHTML = `
-      <div style="grid-column: 1/-1; background: #fffbeb; border: 1px solid #fef3c7; border-radius: 6px; padding: 20px; text-align: left; font-size: 0.9rem; color: #b45309; line-height: 1.5; font-weight: 600;">
-        <i class="fa-solid fa-triangle-exclamation"></i> <strong>DATA PATH DIAGNOSTIC:</strong><br>
-        • System downloaded total row items from spreadsheet: <strong>${masterSheetFullFeed.length} rows</strong><br>
-        • Total rows marked as an 'Accessory' type column: <strong>${totalAccessoriesInSheet.length} items</strong><br>
-        • Total matches found linking to accessory models listed in "compatibleModels": <strong>0 matches</strong><br><br>
-        <span style="font-size: 0.82rem; font-weight: 500; color: #78350f;">To fix this: Open your Google Sheet, select this radio model's row, and verify that its <code>compatibleModels</code> column contains a comma-separated list of your accessory part numbers (e.g., <code>PS22002(L), SM09D1, GPS04, POA44</code>).</span>
-      </div>`;
-    return;
-  }
+  optionalGridNode.innerHTML = "";
+  return;
+}
 
   // PAINTER ENGINE: Draws the visual cards cleanly if the data rows match up
                   matchingAccessoriesList.forEach(acc => {
