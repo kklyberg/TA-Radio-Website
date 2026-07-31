@@ -12,7 +12,7 @@ const openai = new OpenAI({
 
 // ========== CONFIG ==========
 const CONFIG = {
-  targetFile: "mototrbo_sl300_data_sheet (1).pdf",
+  targetFile: "CLPe_Series_Spec_Sheet.pdf",
   brand: "Motorola",
   brandFolder: "motorola",
   type: "portable",

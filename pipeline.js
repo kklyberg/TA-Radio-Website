@@ -18,7 +18,7 @@ const { PDFParse } = require('pdf-parse');
 // =========================================================================
 const CONTROLLER_CONFIG = {
     mode: "web",
-    targetPath: "https://shop.motorolasolutions.com/search/_/N-735920568+3332137478?Nrpp=15",
+    targetPath: "https://shop.motorolasolutions.com/search/_/N-735920568+2267871375?_gl=1*wtce7b*_gcl_au*ODU5ODY1MjE2LjE3ODQ0NTM1MDg.*_ga*ODkwODA0MDE0LjE3ODQ0NTM1MDc.*_ga_23THW5EV9N*czE3ODU0MTYzNzUkbzUkZzEkdDE3ODU0NzA0MDkkajMyJGwwJGgzMTkwNTAzNjA.",
     pageRange: null
 };
 
