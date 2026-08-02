@@ -12,9 +12,9 @@ const openai = new OpenAI({
 
 // ========== CONFIG ==========
 const CONFIG = {
-  targetFile: "CLPe_Series_Spec_Sheet.pdf",
+  targetFile: "mototrbo_sl300_data_sheet.pdf",
   brand: "Motorola",
-  brandFolder: "motorola",
+  brandFolder: "Hytera",
   type: "portable",
   pageRange: null,
   appsScriptUrl:
@@ -214,7 +214,69 @@ async function main() {
     console.log(`Mode: CREATE radio + accessories (from scratch)`);
 
     const fullText = await extractTextFromPdf();
-    const parsed = await parseWithAI(fullText);
+    let parsed = await parseWithAI(fullText);
+
+    // Safety check: If your AI returns a raw text string, parse it to an object first
+    if (typeof parsed === 'string') {
+        parsed = JSON.parse(parsed);
+    }
+
+       // =============================================================
+    // DATA INJECTION INTERCEPT: CLEANING AI TEXT OR FALLING BACK
+    // =============================================================
+    // Check if accessories list is missing or empty (handles both possible key layouts)
+    const rawAiAccessories = parsed.accessories || parsed.compatible_accessories || [];
+    const hasAiAccessories = rawAiAccessories.length > 0;
+
+    if (!hasAiAccessories) {
+        console.log("\nℹ️ AI found 0 accessories in PDF datasheet text.");
+        console.log(`📂 Scanning local ${CONFIG.brand || 'Motorola'}/images directory...`);
+        
+        const localParts = getDownloadedAccessories();
+        
+        if (localParts.length > 0) {
+            parsed.accessories = localParts;
+            parsed.compatible_accessories = localParts;
+            console.log(`✅ Patched data stream! Injected ${localParts.length} accessory SKUs from local folder.`);
+        } else {
+            console.log("⚠️ No local fallback images discovered. Leaving list empty.");
+            parsed.accessories = [];
+            parsed.compatible_accessories = [];
+        }
+    } else {
+        console.log("\n🧹 AI found raw text accessories. Cleaning and isolating true part numbers...");
+        
+        const cleanPartsSet = new Set();
+        
+        // Loop through everything the AI found on the datasheet
+        rawAiAccessories.forEach(item => {
+            const currentStr = String(item).trim();
+            
+            // Matches universal Motorola part structures: 2-4 letters, 4 digits, optional letters/digits trailing
+            // This easily matches PMLN7158, NNTN8383B, AN000296A01, etc.
+            const partMatch = currentStr.match(/([A-Z]{2,4}\d{4}[A-Z0-9]*)/i);
+            
+            if (partMatch) {
+                const cleanSKU = partMatch[1].toUpperCase();
+                cleanPartsSet.add(cleanSKU);
+                console.log(`  🎯 Isolated SKU: [${cleanSKU}] from line: "${currentStr.slice(0, 40)}..."`);
+            } else {
+                // Skips pure text lines like "SL300 ACTIVE VIEW DISPLAY"
+                console.log(`  ⏩ Dropped descriptive line (No SKU discovered): "${currentStr}"`);
+            }
+        });
+
+        const finalCleanList = Array.from(cleanPartsSet);
+        
+        // Overwrite the messy AI results with your pure part numbers list
+        parsed.accessories = finalCleanList;
+        parsed.compatible_accessories = finalCleanList;
+        
+        console.log(`✅ Clean up complete! Kept ${finalCleanList.length} valid product SKUs.`);
+    }
+    // =============================================================
+
+    // =============================================================
 
     console.log(`\n🎯 Models: ${parsed.models.length}`);
     parsed.models.forEach((m) => console.log(` • ${m}`));
@@ -240,6 +302,8 @@ async function main() {
       }
       await new Promise((r) => setTimeout(r, 700));
     }
+
+    // NOTE: Make sure the original closing brackets of your main function remain intact down below
 
     // Create the accessories
     for (const acc of parsed.accessories) {
@@ -267,3 +331,35 @@ async function main() {
 }
 
 main();
+// Helper to grab downloaded image names from your local folder
+function getDownloadedAccessories() {
+    // Requires 'path' and 'fs' to be active at the top of your file
+    const brandFolder = CONFIG.brand || 'Motorola';
+    const imageDir = path.join(__dirname, brandFolder, 'images');
+    
+    if (!fs.existsSync(imageDir)) {
+        console.log(`⚠️ Image directory not found at: ${imageDir}`);
+        return [];
+    }
+    
+    return fs.readdirSync(imageDir)
+        .filter(file => file.endsWith('.png'))
+        .map(file => path.basename(file, '.png').toUpperCase());
+}
+// Test string mimicking your messy data sheet output
+const rawText = "1-WIRE SURVEILLANCE KIT (PMLN7158)";
+
+// Regex to capture standard Motorola part numbers (4 letters + 4 digits + optional letters/digits)
+const partMatch = rawText.match(/([A-Z]{4}\d{4}[A-Z0-9]*)/i);
+
+if (partMatch) {
+  const cleanPartNumber = partMatch[1].toUpperCase(); // "PMLN7158"
+  
+  // Extract description by removing the part number and parentheses
+  const cleanDescription = rawText
+    .replace(/\(.*?\)/g, '')  // Removes the parenthesis block
+    .trim();                  // Clean up trailing spaces: "1-WIRE SURVEILLANCE KIT"
+
+  console.log(`Part: ${cleanPartNumber}`);
+  console.log(`Desc: ${cleanDescription}`);
+}

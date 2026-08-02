@@ -161,7 +161,7 @@ function initializeUniversalShowroomRoute() {
             kenwood: "Authorized Nexedge digital line procurement networks.",
             icom: "Commercial aviation, marine, and land mobile ecosystems.",
             hytera: "Secure DMR tier-two and tier-three hardware deployments.",
-            motorola: "Public safety spec communication technologies.",
+            Motorola: "Public safety spec communication technologies.",
             ritron: "Industrial wireless callboxes and radio telemetry gear."
         };
         if (subtitleNode && brandSubtitles[activeRouteBrandToken]) {

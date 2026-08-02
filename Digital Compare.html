@@ -1,0 +1,211 @@
+<!-- ========== VOICE CHANNEL CAPACITY: ANALOG vs TDMA vs FDMA ========== -->
+<style>
+  .capacity-wrap {
+    max-width: 900px;
+    margin: 30px auto;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #ffffff;
+    border: 2px solid #0e1a24;
+    border-top: 5px solid #0b5eb4;
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(14,26,36,0.08);
+    overflow: hidden;
+  }
+  .capacity-header {
+    background: #0e1a24;
+    color: white;
+    padding: 16px 22px;
+  }
+  .capacity-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+  .capacity-header span {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .capacity-body {
+    padding: 25px 20px 10px;
+  }
+  .capacity-canvas {
+    width: 100%;
+    height: 360px;
+    display: block;
+  }
+  .capacity-legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 12px 0 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .capacity-legend span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cap-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+  }
+  .dot-analog { background: #ea580c; }
+  .dot-tdma   { background: #0b5eb4; }
+  .dot-fdma   { background: #16a34a; }
+  .capacity-note {
+    margin: 12px 20px 22px;
+    padding: 14px 16px;
+    background: #f8fafc;
+    border-left: 4px solid #0b5eb4;
+    font-size: 0.88rem;
+    color: #334155;
+    line-height: 1.5;
+  }
+</style>
+
+<div class="capacity-wrap">
+  <div class="capacity-header">
+    <h2>Voice Channel Capacity Comparison</h2>
+    <span>Analog vs TDMA vs FDMA — How many simultaneous conversations fit in the same spectrum</span>
+  </div>
+
+  <div class="capacity-body">
+    <canvas id="capacityCanvas" class="capacity-canvas"></canvas>
+
+    <div class="capacity-legend">
+      <span><div class="cap-dot dot-analog"></div> Analog FM (1 channel)</span>
+      <span><div class="cap-dot dot-tdma"></div> TDMA – DMR (2 slots)</span>
+      <span><div class="cap-dot dot-fdma"></div> FDMA – NXDN / dPMR (2 × 6.25 kHz)</span>
+    </div>
+  </div>
+
+  <div class="capacity-note">
+    <strong>Key takeaway:</strong> 
+    In a standard 12.5 kHz channel, classic Analog carries <strong>1</strong> voice path. 
+    Both TDMA (DMR) and FDMA (NXDN) deliver <strong>2</strong> simultaneous voice paths from the same RF resource, 
+    effectively doubling capacity without needing extra frequencies.
+  </div>
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('capacityCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * window.devicePixelRatio;
+    canvas.height = 360 * window.devicePixelRatio;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = '360px';
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    draw();
+  }
+
+  function draw() {
+    const w = canvas.width / window.devicePixelRatio;
+    const h = 360;
+    const pad = { top: 40, right: 30, bottom: 60, left: 60 };
+    const graphW = w - pad.left - pad.right;
+    const graphH = h - pad.top - pad.bottom;
+
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, w, h);
+
+    // Title inside graph area
+    ctx.fillStyle = '#64748b';
+    ctx.font = '600 13px Segoe UI, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Voice Paths Available in One 12.5 kHz RF Channel', pad.left + graphW / 2, 22);
+
+    // Y-axis scale (0 to 2.5)
+    const maxPaths = 2.5;
+    const yScale = graphH / maxPaths;
+
+    // Horizontal grid + labels
+    ctx.strokeStyle = '#e2e8f0';
+    ctx.lineWidth = 1;
+    ctx.fillStyle = '#0e1a24';
+    ctx.font = '12px Segoe UI, sans-serif';
+    ctx.textAlign = 'right';
+
+    for (let i = 0; i <= 5; i++) {
+      const val = i * 0.5;
+      const y = pad.top + graphH - (val * yScale);
+      ctx.beginPath();
+      ctx.moveTo(pad.left, y);
+      ctx.lineTo(pad.left + graphW, y);
+      ctx.stroke();
+      ctx.fillText(val.toFixed(1), pad.left - 10, y + 4);
+    }
+
+    // Y-axis label
+    ctx.save();
+    ctx.translate(18, pad.top + graphH / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center';
+    ctx.font = '600 12px Segoe UI, sans-serif';
+    ctx.fillText('Simultaneous Voice Paths', 0, 0);
+    ctx.restore();
+
+    // X positions for the three bars
+    const barWidth = graphW * 0.18;
+    const gap = graphW * 0.12;
+    const startX = pad.left + graphW * 0.12;
+
+    const systems = [
+      { name: 'Analog\nFM',     paths: 1, color: '#ea580c', x: startX },
+      { name: 'TDMA\n(DMR)',    paths: 2, color: '#0b5eb4', x: startX + barWidth + gap },
+      { name: 'FDMA\n(NXDN)',   paths: 2, color: '#16a34a', x: startX + 2 * (barWidth + gap) }
+    ];
+
+    // Draw bars
+    systems.forEach(sys => {
+      const barH = sys.paths * yScale;
+      const y = pad.top + graphH - barH;
+
+      // Bar
+      ctx.fillStyle = sys.color;
+      ctx.fillRect(sys.x, y, barWidth, barH);
+
+      // Value on top
+      ctx.fillStyle = '#0e1a24';
+      ctx.font = 'bold 18px Segoe UI, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(sys.paths, sys.x + barWidth / 2, y - 10);
+
+      // Label under bar
+      ctx.font = '600 13px Segoe UI, sans-serif';
+      const lines = sys.name.split('\n');
+      lines.forEach((line, idx) => {
+        ctx.fillText(line, sys.x + barWidth / 2, pad.top + graphH + 22 + idx * 16);
+      });
+    });
+
+    // Bottom axis line
+    ctx.strokeStyle = '#0e1a24';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(pad.left, pad.top + graphH);
+    ctx.lineTo(pad.left + graphW, pad.top + graphH);
+    ctx.stroke();
+
+    // Left axis line
+    ctx.beginPath();
+    ctx.moveTo(pad.left, pad.top);
+    ctx.lineTo(pad.left, pad.top + graphH);
+    ctx.stroke();
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+})();
+</script>
+<!-- ========== END CAPACITY COMPARISON ========== -->

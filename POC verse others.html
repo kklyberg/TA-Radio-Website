@@ -1,0 +1,272 @@
+<!-- ========== TRADITIONAL RF vs PoC (PTT over Cellular) ========== -->
+<style>
+  .poc-wrap {
+    max-width: 920px;
+    margin: 30px auto;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #ffffff;
+    border: 2px solid #0e1a24;
+    border-top: 5px solid #0b5eb4;
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(14,26,36,0.08);
+    overflow: hidden;
+  }
+  .poc-header {
+    background: #0e1a24;
+    color: white;
+    padding: 16px 22px;
+  }
+  .poc-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+  .poc-header span {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .poc-body {
+    padding: 22px 18px 12px;
+  }
+  .poc-section {
+    margin-bottom: 24px;
+  }
+  .poc-label {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .poc-label .tag {
+    font-size: 0.7rem;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-weight: 700;
+  }
+  .tag-rf  { background: #ffedd5; color: #9a3412; }
+  .tag-poc { background: #dbeafe; color: #1e40af; }
+  canvas.poc-canvas {
+    width: 100%;
+    height: 130px;
+    display: block;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+  }
+  .poc-note {
+    margin: 6px 18px 20px;
+    padding: 14px 16px;
+    background: #f8fafc;
+    border-left: 4px solid #0b5eb4;
+    font-size: 0.86rem;
+    color: #334155;
+    line-height: 1.55;
+  }
+  .poc-note strong { color: #0e1a24; }
+</style>
+
+<div class="poc-wrap">
+  <div class="poc-header">
+    <h2>Traditional Radio vs PoC (PTT over Cellular)</h2>
+    <span>How the voice actually travels — RF path vs Cellular path</span>
+  </div>
+
+  <div class="poc-body">
+
+    <!-- TRADITIONAL RF -->
+    <div class="poc-section">
+      <div class="poc-label">
+        Traditional Two-Way Radio
+        <span class="tag tag-rf">RF Limited</span>
+      </div>
+      <canvas id="canvasRF" class="poc-canvas"></canvas>
+    </div>
+
+    <!-- PoC -->
+    <div class="poc-section">
+      <div class="poc-label">
+        PoC – Push-to-Talk over Cellular
+        <span class="tag tag-poc">Cellular + Cloud</span>
+      </div>
+      <canvas id="canvasPoC" class="poc-canvas"></canvas>
+    </div>
+
+  </div>
+
+  <div class="poc-note">
+    <strong>Laymen takeaway:</strong><br>
+    Traditional radio only works where your radio signal (and repeaters) can reach. 
+    PoC turns any cellular or Wi-Fi connection into a nationwide (or global) push-to-talk system. 
+    The radio no longer has to “talk” directly to another radio or repeater — it talks to the cellular network and a cloud server does the rest.
+  </div>
+</div>
+
+<script>
+(function() {
+  function setup(id, height) {
+    const canvas = document.getElementById(id);
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = height * dpr;
+    ctx.scale(dpr, dpr);
+    return { ctx, w: rect.width, h: height };
+  }
+
+  function drawRF() {
+    const { ctx, w, h } = setup('canvasRF', 130);
+    ctx.clearRect(0, 0, w, h);
+
+    const y = h / 2;
+
+    // Radio 1
+    drawRadio(ctx, 50, y, '#ea580c');
+    // Arrow to tower
+    drawArrow(ctx, 95, y, 210, y, '#ea580c');
+    // Repeater tower
+    drawTower(ctx, 250, y, '#9a3412');
+    // Arrow to radio 2
+    drawArrow(ctx, 295, y, 410, y, '#ea580c');
+    // Radio 2
+    drawRadio(ctx, 450, y, '#ea580c');
+
+    // Labels
+    ctx.fillStyle = '#9a3412';
+    ctx.font = '600 12px Segoe UI, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Radio', 50, y + 48);
+    ctx.fillText('Repeater', 250, y + 48);
+    ctx.fillText('Radio', 450, y + 48);
+
+    ctx.fillStyle = '#64748b';
+    ctx.font = '11px Segoe UI, sans-serif';
+    ctx.fillText('Limited by terrain, power & antenna height', w / 2, 18);
+  }
+
+  function drawPoC() {
+    const { ctx, w, h } = setup('canvasPoC', 130);
+    ctx.clearRect(0, 0, w, h);
+
+    const y = h / 2;
+
+    // Radio / Smartphone 1
+    drawRadio(ctx, 50, y, '#0b5eb4');
+    // Arrow to cell tower
+    drawArrow(ctx, 95, y, 180, y, '#0b5eb4');
+    // Cell tower
+    drawCellTower(ctx, 220, y);
+    // Arrow to cloud
+    drawArrow(ctx, 265, y, 340, y, '#0b5eb4');
+    // Cloud
+    drawCloud(ctx, 390, y - 10);
+    // Arrow to cell tower 2
+    drawArrow(ctx, 445, y, 520, y, '#0b5eb4');
+    // Cell tower 2
+    drawCellTower(ctx, 560, y);
+    // Arrow to radio 2
+    drawArrow(ctx, 605, y, 690, y, '#0b5eb4');
+    // Radio 2
+    drawRadio(ctx, 730, y, '#0b5eb4');
+
+    // Labels
+    ctx.fillStyle = '#1e40af';
+    ctx.font = '600 12px Segoe UI, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Radio', 50, y + 48);
+    ctx.fillText('Cell', 220, y + 48);
+    ctx.fillText('Cloud', 390, y + 48);
+    ctx.fillText('Cell', 560, y + 48);
+    ctx.fillText('Radio', 730, y + 48);
+
+    ctx.fillStyle = '#64748b';
+    ctx.font = '11px Segoe UI, sans-serif';
+    ctx.fillText('Works anywhere cellular or Wi-Fi exists', w / 2, 18);
+  }
+
+  // Helper drawing functions
+  function drawRadio(ctx, x, y, color) {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.roundRect(x - 18, y - 22, 36, 44, 5);
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(x - 10, y - 14, 20, 12);
+    ctx.fillStyle = color;
+    ctx.fillRect(x - 3, y + 8, 6, 10);
+  }
+
+  function drawTower(ctx, x, y, color) {
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(x, y + 28);
+    ctx.lineTo(x - 18, y - 30);
+    ctx.lineTo(x + 18, y - 30);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x, y - 30);
+    ctx.lineTo(x, y - 42);
+    ctx.stroke();
+  }
+
+  function drawCellTower(ctx, x, y) {
+    ctx.strokeStyle = '#0b5eb4';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(x, y + 28);
+    ctx.lineTo(x, y - 35);
+    ctx.stroke();
+    // Arms
+    ctx.beginPath();
+    ctx.moveTo(x - 16, y - 18);
+    ctx.lineTo(x + 16, y - 18);
+    ctx.moveTo(x - 12, y - 8);
+    ctx.lineTo(x + 12, y - 8);
+    ctx.stroke();
+  }
+
+  function drawCloud(ctx, x, y) {
+    ctx.fillStyle = '#0b5eb4';
+    ctx.beginPath();
+    ctx.arc(x, y, 16, 0, Math.PI * 2);
+    ctx.arc(x + 18, y - 4, 14, 0, Math.PI * 2);
+    ctx.arc(x + 32, y + 4, 12, 0, Math.PI * 2);
+    ctx.arc(x + 12, y + 10, 13, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function drawArrow(ctx, x1, y1, x2, y2, color) {
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+    // Arrowhead
+    const angle = Math.atan2(y2 - y1, x2 - x1);
+    ctx.beginPath();
+    ctx.moveTo(x2, y2);
+    ctx.lineTo(x2 - 10 * Math.cos(angle - 0.35), y2 - 10 * Math.sin(angle - 0.35));
+    ctx.lineTo(x2 - 10 * Math.cos(angle + 0.35), y2 - 10 * Math.sin(angle + 0.35));
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  function drawAll() {
+    drawRF();
+    drawPoC();
+  }
+
+  window.addEventListener('resize', drawAll);
+  drawAll();
+})();
+</script>
+<!-- ========== END RF vs PoC ========== -->

@@ -64,7 +64,7 @@
             <a href="catalog.html?brand=kenwood">Kenwood Catalog</a>
             <a href="catalog.html?brand=icom">Icom Catalog</a>
             <a href="catalog.html?brand=hytera">Hytera Catalog</a>
-            <a href="catalog.html?brand=motorola">Motorola Catalog</a>
+            <a href="catalog.html?brand=Motorola">Motorola Catalog</a>
             <a href="catalog.html?brand=ritron">Ritron Catalog</a>
           </div>
         </div>
@@ -389,10 +389,10 @@ function populateVariantDropdown(radioItem, fullInventoryList) {
       const checkBrandLower = exactBrandName.toLowerCase();
 
       if (checkBrandLower.includes("kenwood")) targetFolderPrefix = "kenwood/";
-      else if (checkBrandLower.includes("icom")) targetFolderPrefix = "icom/";
-      else if (checkBrandLower.includes("motorola")) targetFolderPrefix = "motorola/";
-      else if (checkBrandLower.includes("ritron")) targetFolderPrefix = "ritron/";
-      else if (checkBrandLower.includes("hytera")) targetFolderPrefix = "hytera/";
+else if (checkBrandLower.includes("icom")) targetFolderPrefix = "icom/";
+else if (checkBrandLower.includes("motorola")) targetFolderPrefix = "Motorola/"; // check lowercase, path capital M
+else if (checkBrandLower.includes("ritron")) targetFolderPrefix = "ritron/";
+else if (checkBrandLower.includes("hytera")) targetFolderPrefix = "hytera/";
 
       let rawImageValue = radioItem.image || radioItem.Image || "";
       let cleanFileNameString = rawImageValue.toString().trim();

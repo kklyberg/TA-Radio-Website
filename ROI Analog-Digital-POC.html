@@ -1,0 +1,152 @@
+<!-- ========== ROI COMPARISON: ANALOG vs DIGITAL vs PoC ========== -->
+<style>
+  .roi-wrap {
+    max-width: 920px;
+    margin: 30px auto;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #ffffff;
+    border: 2px solid #0e1a24;
+    border-top: 5px solid #0b5eb4;
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(14,26,36,0.08);
+    overflow: hidden;
+  }
+  .roi-header {
+    background: #0e1a24;
+    color: white;
+    padding: 16px 22px;
+  }
+  .roi-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+  .roi-header span {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .roi-body {
+    padding: 22px 20px 10px;
+  }
+  .roi-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .roi-table th {
+    background: #f1f5f9;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    padding: 11px 12px;
+    text-align: left;
+    border-bottom: 2px solid #0e1a24;
+  }
+  .roi-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+  }
+  .roi-table tr:last-child td {
+    border-bottom: none;
+  }
+  .roi-tech {
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-weight: 700;
+    margin-left: 6px;
+  }
+  .tag-low   { background: #dcfce7; color: #166534; }
+  .tag-med   { background: #ffedd5; color: #9a3412; }
+  .tag-high  { background: #fee2e2; color: #991b1b; }
+  .tag-best  { background: #dbeafe; color: #1e40af; }
+  .roi-note {
+    margin: 16px 20px 22px;
+    padding: 14px 16px;
+    background: #f8fafc;
+    border-left: 4px solid #0b5eb4;
+    font-size: 0.86rem;
+    color: #334155;
+    line-height: 1.55;
+  }
+</style>
+
+<div class="roi-wrap">
+  <div class="roi-header">
+    <h2>Return on Investment Comparison</h2>
+    <span>Analog vs Digital (DMR/NXDN) vs PoC — Cost, Capacity & Long-term Value</span>
+  </div>
+
+  <div class="roi-body">
+    <table class="roi-table">
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>Analog</th>
+          <th>Digital (DMR / NXDN)</th>
+          <th>PoC (Cellular)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Startup Hardware Cost</strong></td>
+          <td class="roi-tech">Low <span class="tag tag-low">Lowest</span></td>
+          <td class="roi-tech">Medium</td>
+          <td class="roi-tech">Low–Medium</td>
+        </tr>
+        <tr>
+          <td><strong>Infrastructure Cost</strong></td>
+          <td>Repeaters + towers + links<br><span class="tag tag-high">High if wide area</span></td>
+          <td>Same as Analog or slightly higher<br><span class="tag tag-med">Medium–High</span></td>
+          <td>Almost none (uses cellular)<br><span class="tag tag-low">Lowest</span></td>
+        </tr>
+        <tr>
+          <td><strong>Ongoing Monthly Cost</strong></td>
+          <td>Very low (power + maintenance)</td>
+          <td>Very low (power + maintenance)</td>
+          <td>Cellular / subscription fees<br><span class="tag tag-med">Recurring</span></td>
+        </tr>
+        <tr>
+          <td><strong>Voice Capacity</strong></td>
+          <td>1 conversation per channel</td>
+          <td>2 conversations per channel<br><span class="tag tag-best">2× Analog</span></td>
+          <td>Limited mainly by data plan & server<br><span class="tag tag-best">Highly scalable</span></td>
+        </tr>
+        <tr>
+          <td><strong>Coverage Expansion</strong></td>
+          <td>Expensive (new repeaters)</td>
+          <td>Expensive (new repeaters)</td>
+          <td>Instant (wherever cellular exists)<br><span class="tag tag-best">Best</span></td>
+        </tr>
+        <tr>
+          <td><strong>Typical Best ROI When…</strong></td>
+          <td>Small site, few users, short range</td>
+          <td>Medium–large fleet, need capacity & efficiency</td>
+          <td>Wide geographic area, multi-site, or rapid growth</td>
+        </tr>
+        <tr>
+          <td><strong>5-Year Cost Trend</strong></td>
+          <td>Low ongoing, but limited growth</td>
+          <td>Higher initial, better capacity longevity</td>
+          <td>Lower initial infrastructure, higher recurring</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="roi-note">
+    <strong>Simple decision guide for customers:</strong><br>
+    • <strong>Analog</strong> — Lowest cost if you only need a small area and few users.<br>
+    • <strong>Digital (DMR/NXDN)</strong> — Best long-term value when you need more capacity, better audio, and room to grow on licensed channels.<br>
+    • <strong>PoC</strong> — Often the highest ROI when coverage must span cities, states, or the whole country without building radio infrastructure.
+  </div>
+</div>
+<!-- ========== END ROI COMPARISON ========== -->
