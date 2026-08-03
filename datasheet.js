@@ -19,9 +19,9 @@ const openai = new OpenAI({
 
 // ========== ONLY SECTION YOU EDIT PER RUN ==========
 const CONFIG = {
-  targetFile: "NX3K_MT_K_3921_SSi.pdf", // PDF in this folder
-  brand: "Kenwood",                          // Kenwood | Motorola | Hytera | Icom | Ritron
-  brandFolder: "kenwood",                    // must match folder on disk (lowercase)
+  targetFile: "xpr5000e-series-datasheet-na.pdf", // PDF in this folder
+  brand: "Motorola",                          // Kenwood | Motorola | Hytera | Icom | Ritron
+  brandFolder: "motorola",                    // must match folder on disk (lowercase)
   type: "mobile",                          // portable | mobile | repeater | base | ...
   pageRange: null,                           // null = all pages, or "1-5" or "1,3,7"
   appsScriptUrl:
