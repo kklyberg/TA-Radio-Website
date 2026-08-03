@@ -70,25 +70,26 @@
         <span style="color: #0b5eb4; font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 5px;"><i class="fa-solid fa-diagram-project"></i> SYSTEM ARCHITECTURE</span>
         <h1 style="color: #0e1a24; font-size: 2.2rem; font-weight: 900; margin: 0 0 35px 0; text-transform: uppercase; letter-spacing: -0.5px;">Choose Your Integration Scenario</h1>
 
-        <!-- Interaction Buttons -->
+            <!-- Interaction Buttons -->
         <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; width: 100%;">
             <button id="tabBtnBasic" onclick="switchPocScenario('basic')" style="padding: 12px 24px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; border-radius: 4px; border: 2px solid #0b5eb4; background: #0b5eb4; color: #ffffff; cursor: pointer; transition: all 0.2s;">Basic (RoIP Gateway)</button>
             <button id="tabBtnIntermediate" onclick="switchPocScenario('intermediate')" style="padding: 12px 24px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; border-radius: 4px; border: 2px solid #cbd5e1; background: #ffffff; color: #475569; cursor: pointer; transition: all 0.2s;">Intermediate (IP Network)</button>
             <button id="tabBtnAdvanced" onclick="switchPocScenario('advanced')" style="padding: 12px 24px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; border-radius: 4px; border: 2px solid #cbd5e1; background: #ffffff; color: #475569; cursor: pointer; transition: all 0.2s;">Advanced (Direct ISSI/AIS)</button>
         </div>
 
-        <!-- Text Box Display Panel -->
-        <div id="scenarioDisplayCard" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 35px; text-align: left; box-sizing: border-box; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.02); margin-bottom: 25px;">
-            <!-- Content renders here live -->
-        </div>
-
-        <!-- Solid Black Presentation Row Container for the Images -->
-        <div style="background: #000000; border-radius: 6px; padding: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.25);">
+        <!-- IMAGE FIRST -->
+        <div style="background: #000000; border-radius: 6px; padding: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.25); margin-bottom: 25px;">
             <div style="width: 100%; max-width: 960px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
                 <img id="pocConnectionImageBanner" src="images/connect-basic-template.png" alt="Kenwood System Link Map" style="width: 100%; height: auto; max-height: 280px; object-fit: contain; display: block; margin: 0 auto;">
             </div>
         </div>
-		<section style="margin-top: 40px; text-align: left; width: 100%;">
+
+        <!-- TEXT BELOW IMAGE -->
+        <div id="scenarioDisplayCard" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 35px; text-align: left; box-sizing: border-box; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.02); margin-bottom: 25px;">
+            <!-- Content renders here live -->
+        </div>
+
+<section style="margin-top: 40px; text-align: left; width: 100%;">
   <span style="color: #0b5eb4; font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;">PoC Hardware</span>
   <h2 style="color: #0e1a24; font-size: 1.5rem; font-weight: 900; margin: 6px 0 12px 0;">Cellular PTT / PoC Radios</h2>
   <p style="color: #64748b; font-size: 0.95rem; margin: 0 0 20px 0; max-width: 640px;">

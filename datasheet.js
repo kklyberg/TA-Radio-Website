@@ -1,8 +1,15 @@
+/**
+ * datasheet2.js — Generic multi-brand datasheet importer
+ * Brands: Kenwood | Motorola | Hytera | Icom | Ritron
+ *
+ * Usage:
+ *   1. Edit CONFIG below
+ *   2. node datasheet2.js
+ */
+
 require("dotenv").config();
-
 const fs = require("fs");
-const path = require("path"); // only if you use path later
-
+const path = require("path");
 const { OpenAI } = require("openai");
 const { getDocumentProxy, extractText } = require("unpdf");
 
@@ -10,19 +17,31 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || ""
 });
 
-// ========== CONFIG ==========
+// ========== ONLY SECTION YOU EDIT PER RUN ==========
 const CONFIG = {
-  targetFile: "mototrbo_sl300_data_sheet.pdf",
-  brand: "Motorola",
-  brandFolder: "Hytera",
-  type: "portable",
-  pageRange: null,
+  targetFile: "NX3K_MT_K_3921_SSi.pdf", // PDF in this folder
+  brand: "Kenwood",                          // Kenwood | Motorola | Hytera | Icom | Ritron
+  brandFolder: "kenwood",                    // must match folder on disk (lowercase)
+  type: "mobile",                          // portable | mobile | repeater | base | ...
+  pageRange: null,                           // null = all pages, or "1-5" or "1,3,7"
   appsScriptUrl:
     "https://script.google.com/macros/s/AKfycbw1M3qP6Lkebhy14vbMcCXESzB-N2QEFf2NHGHSuItlVn1sNP35Efa9uGdlRXEeF-m8DA/exec"
 };
+// ==================================================
 
+// Brand-specific part-number patterns (data only — do not hardcode elsewhere)
+const PART_PATTERNS = {
+  kenwood:  /\b([A-Z]{2,4}-?[A-Z0-9]{1,10}(?:-[A-Z0-9]+)?)\b/i,
+  motorola: /\b([A-Z]{2,4}\d{4}[A-Z0-9]*)\b/i,
+  hytera:   /\b([A-Z]{2,6}\d{2,5}[A-Z0-9\-]*)\b/i,
+  icom:     /\b([A-Z]{1,3}-?[A-Z0-9]{2,10})\b/i,
+  ritron:   /\b([A-Z]{2,5}-?[A-Z0-9]{2,10})\b/i
+};
 
-// ============================
+function getPartRegex() {
+  const key = String(CONFIG.brand || "").toLowerCase();
+  return PART_PATTERNS[key] || /\b([A-Z]{2,6}[-\s]?\d{2,6}[A-Z0-9\-]*)\b/i;
+}
 
 function parsePageRange(pageRange, totalPages) {
   if (!pageRange) {
@@ -56,20 +75,49 @@ function cleanFeatures(features) {
     .join(", ");
 }
 
-function imagePath(model) {
-  const fileBase = String(model)
+function slugify(model) {
+  return String(model)
     .toLowerCase()
     .replace(/\s+/g, "-")
     .replace(/[^a-z0-9\-]/g, "");
-  return `${CONFIG.brandFolder}/images/${fileBase}.png`;
+}
+
+function imagePath(model) {
+  return `${CONFIG.brandFolder}/images/${slugify(model)}.png`;
 }
 
 function specPath(model) {
-  const fileBase = String(model)
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9\-]/g, "");
-  return `${CONFIG.brandFolder}/specs/${fileBase}.pdf`;
+  return `${CONFIG.brandFolder}/specs/${slugify(model)}.pdf`;
+}
+
+function getDownloadedAccessories() {
+  const imageDir = path.join(__dirname, CONFIG.brandFolder, "images");
+  if (!fs.existsSync(imageDir)) {
+    console.log(`⚠️ Image directory not found: ${imageDir}`);
+    return [];
+  }
+  return fs
+    .readdirSync(imageDir)
+    .filter((f) => /\.(png|jpg|jpeg)$/i.test(f))
+    .map((f) => path.basename(f).replace(/\.(png|jpg|jpeg)$/i, "").toUpperCase());
+}
+
+function extractPartNumbers(rawList) {
+  const regex = getPartRegex();
+  const clean = new Set();
+  for (const item of rawList || []) {
+    const str = String(item).trim();
+    if (!str) continue;
+    const match = str.match(regex);
+    if (match) {
+      const sku = match[1].toUpperCase().replace(/\s+/g, "");
+      clean.add(sku);
+      console.log(` 🎯 Isolated SKU: [${sku}]`);
+    } else {
+      console.log(` ⏩ Dropped (no SKU): "${str.slice(0, 50)}"`);
+    }
+  }
+  return Array.from(clean);
 }
 
 async function extractTextFromPdf() {
@@ -105,7 +153,7 @@ async function extractTextFromPdf() {
 
 async function parseWithAI(fullText) {
   console.log("🧠 Sending to AI...");
-   const systemPrompt = `
+  const systemPrompt = `
 You are an expert B2B two-way radio datasheet parser for ${CONFIG.brand} products.
 
 Return ONE JSON object with these exact keys:
@@ -114,7 +162,7 @@ Return ONE JSON object with these exact keys:
   "root_model": "base series name if clear, else first model",
   "short_description": "1-3 professional sentences",
   "catalog_copy": "one short catalog line",
-  "features": ["feature 1", "feature 2", "feature 3", ...],
+  "features": ["feature 1", "feature 2", "..."],
   "specifications": {
     "Frequency Range": "...",
     "Channel Capacity": "...",
@@ -131,17 +179,13 @@ Return ONE JSON object with these exact keys:
   "industry": ["industries if mentioned, else []"]
 }
 
-Rules for features:
-- Extract EVERY distinct feature mentioned in the document, including those in multi-column layouts, bullet lists, and highlighted call-outs.
-- Return them as a flat array of clean plain-English strings (no bullets, no numbers, no leading dashes).
-- Include both general features and safety/security/scan/voice features.
-- Do not invent features that are not in the text.
-- Aim for 12–25 solid features when the datasheet has that many.
-
-Other rules:
-- Only use information that actually appears in the text.
+Rules:
+- Only use information that appears in the text.
+- Extract EVERY distinct feature (flat array of plain English strings).
+- Do not invent features or part numbers.
+- compatible_accessories must be real part numbers only.
 - For specifications, only include keys that have a clear value.
-- compatible_accessories must be real part numbers (BP-279, MB-133, FA-SC55V, etc.).
+- Aim for 12–25 features when the datasheet supports it.
 `;
 
   const aiResponse = await openai.chat.completions.create({
@@ -171,10 +215,9 @@ Other rules:
 
 async function createOrUpdate(model, parsed, isAccessory = false) {
   const action = isAccessory ? "createAccessory" : "createProduct";
-
   const payload = {
-    action: action,
-    model: model,
+    action,
+    model,
     brand: CONFIG.brand,
     type: isAccessory ? "accessory" : CONFIG.type,
     image: isAccessory ? "" : imagePath(model),
@@ -187,11 +230,14 @@ async function createOrUpdate(model, parsed, isAccessory = false) {
       : parsed.short_description,
     industry: isAccessory ? "" : parsed.industry,
     "catalog-copy": isAccessory ? model : parsed.catalog_copy,
-    "root-model": isAccessory ? "" : (parsed.root_model || model)
+    "root-model": isAccessory ? "" : parsed.root_model || model
   };
 
   const body = Object.keys(payload)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(payload[key] ?? ""))
+    .map(
+      (key) =>
+        encodeURIComponent(key) + "=" + encodeURIComponent(payload[key] ?? "")
+    )
     .join("&");
 
   const response = await fetch(CONFIG.appsScriptUrl, {
@@ -210,90 +256,63 @@ async function createOrUpdate(model, parsed, isAccessory = false) {
 
 async function main() {
   try {
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error("OPENAI_API_KEY missing. Check your .env file.");
+    }
+
     console.log(`Brand: ${CONFIG.brand}`);
-    console.log(`Mode: CREATE radio + accessories (from scratch)`);
+    console.log(`Folder: ${CONFIG.brandFolder}`);
+    console.log(`Type: ${CONFIG.type}`);
+    console.log(`PDF: ${CONFIG.targetFile}`);
+    console.log(`Mode: CREATE radio + accessories\n`);
 
     const fullText = await extractTextFromPdf();
     let parsed = await parseWithAI(fullText);
+    if (typeof parsed === "string") parsed = JSON.parse(parsed);
 
-    // Safety check: If your AI returns a raw text string, parse it to an object first
-    if (typeof parsed === 'string') {
-        parsed = JSON.parse(parsed);
-    }
-
-       // =============================================================
-    // DATA INJECTION INTERCEPT: CLEANING AI TEXT OR FALLING BACK
-    // =============================================================
-    // Check if accessories list is missing or empty (handles both possible key layouts)
-    const rawAiAccessories = parsed.accessories || parsed.compatible_accessories || [];
+    // ----- Accessories: AI first, local folder fallback -----
+    const rawAiAccessories =
+      parsed.accessories || parsed.compatible_accessories || [];
     const hasAiAccessories = rawAiAccessories.length > 0;
 
     if (!hasAiAccessories) {
-        console.log("\nℹ️ AI found 0 accessories in PDF datasheet text.");
-        console.log(`📂 Scanning local ${CONFIG.brand || 'Motorola'}/images directory...`);
-        
-        const localParts = getDownloadedAccessories();
-        
-        if (localParts.length > 0) {
-            parsed.accessories = localParts;
-            parsed.compatible_accessories = localParts;
-            console.log(`✅ Patched data stream! Injected ${localParts.length} accessory SKUs from local folder.`);
-        } else {
-            console.log("⚠️ No local fallback images discovered. Leaving list empty.");
-            parsed.accessories = [];
-            parsed.compatible_accessories = [];
-        }
+      console.log("\nℹ️ AI found 0 accessories in PDF.");
+      console.log(`📂 Scanning ${CONFIG.brandFolder}/images ...`);
+      const localParts = getDownloadedAccessories();
+      if (localParts.length > 0) {
+        parsed.accessories = localParts;
+        parsed.compatible_accessories = localParts;
+        console.log(`✅ Injected ${localParts.length} SKUs from local images.`);
+      } else {
+        console.log("⚠️ No local images found. Accessories list empty.");
+        parsed.accessories = [];
+        parsed.compatible_accessories = [];
+      }
     } else {
-        console.log("\n🧹 AI found raw text accessories. Cleaning and isolating true part numbers...");
-        
-        const cleanPartsSet = new Set();
-        
-        // Loop through everything the AI found on the datasheet
-        rawAiAccessories.forEach(item => {
-            const currentStr = String(item).trim();
-            
-            // Matches universal Motorola part structures: 2-4 letters, 4 digits, optional letters/digits trailing
-            // This easily matches PMLN7158, NNTN8383B, AN000296A01, etc.
-            const partMatch = currentStr.match(/([A-Z]{2,4}\d{4}[A-Z0-9]*)/i);
-            
-            if (partMatch) {
-                const cleanSKU = partMatch[1].toUpperCase();
-                cleanPartsSet.add(cleanSKU);
-                console.log(`  🎯 Isolated SKU: [${cleanSKU}] from line: "${currentStr.slice(0, 40)}..."`);
-            } else {
-                // Skips pure text lines like "SL300 ACTIVE VIEW DISPLAY"
-                console.log(`  ⏩ Dropped descriptive line (No SKU discovered): "${currentStr}"`);
-            }
-        });
-
-        const finalCleanList = Array.from(cleanPartsSet);
-        
-        // Overwrite the messy AI results with your pure part numbers list
-        parsed.accessories = finalCleanList;
-        parsed.compatible_accessories = finalCleanList;
-        
-        console.log(`✅ Clean up complete! Kept ${finalCleanList.length} valid product SKUs.`);
+      console.log("\n🧹 Cleaning AI accessory list...");
+      const finalCleanList = extractPartNumbers(rawAiAccessories);
+      parsed.accessories = finalCleanList;
+      parsed.compatible_accessories = finalCleanList;
+      console.log(`✅ Kept ${finalCleanList.length} valid SKUs.`);
     }
-    // =============================================================
-
-    // =============================================================
 
     console.log(`\n🎯 Models: ${parsed.models.length}`);
     parsed.models.forEach((m) => console.log(` • ${m}`));
-
     console.log(`\n🧩 Accessories: ${parsed.accessories.length}`);
     parsed.accessories.forEach((a) => console.log(` • ${a}`));
 
-    // Create the main radios
+    // Create main products
     for (const model of parsed.models) {
       const name = String(model).trim();
       if (!name) continue;
-
       process.stdout.write(`📡 ${name} ... `);
       const result = await createOrUpdate(name, parsed, false);
       const text = (result.text || "").toLowerCase();
-
-      if (text.includes("created") || text.includes("updated") || text.includes("success")) {
+      if (
+        text.includes("created") ||
+        text.includes("updated") ||
+        text.includes("success")
+      ) {
         console.log("✅ created/updated");
       } else if (text.includes("already")) {
         console.log("⏭ already exists");
@@ -303,17 +322,13 @@ async function main() {
       await new Promise((r) => setTimeout(r, 700));
     }
 
-    // NOTE: Make sure the original closing brackets of your main function remain intact down below
-
-    // Create the accessories
+    // Create accessories
     for (const acc of parsed.accessories) {
       const name = String(acc).trim();
       if (!name) continue;
-
       process.stdout.write(`🧩 ${name} ... `);
       const result = await createOrUpdate(name, parsed, true);
       const text = (result.text || "").toLowerCase();
-
       if (text.includes("created") || text.includes("success")) {
         console.log("✅ created");
       } else if (text.includes("already")) {
@@ -327,39 +342,8 @@ async function main() {
     console.log("\nDone.");
   } catch (err) {
     console.error("💥", err.message);
+    process.exit(1);
   }
 }
 
 main();
-// Helper to grab downloaded image names from your local folder
-function getDownloadedAccessories() {
-    // Requires 'path' and 'fs' to be active at the top of your file
-    const brandFolder = CONFIG.brand || 'Motorola';
-    const imageDir = path.join(__dirname, brandFolder, 'images');
-    
-    if (!fs.existsSync(imageDir)) {
-        console.log(`⚠️ Image directory not found at: ${imageDir}`);
-        return [];
-    }
-    
-    return fs.readdirSync(imageDir)
-        .filter(file => file.endsWith('.png'))
-        .map(file => path.basename(file, '.png').toUpperCase());
-}
-// Test string mimicking your messy data sheet output
-const rawText = "1-WIRE SURVEILLANCE KIT (PMLN7158)";
-
-// Regex to capture standard Motorola part numbers (4 letters + 4 digits + optional letters/digits)
-const partMatch = rawText.match(/([A-Z]{4}\d{4}[A-Z0-9]*)/i);
-
-if (partMatch) {
-  const cleanPartNumber = partMatch[1].toUpperCase(); // "PMLN7158"
-  
-  // Extract description by removing the part number and parentheses
-  const cleanDescription = rawText
-    .replace(/\(.*?\)/g, '')  // Removes the parenthesis block
-    .trim();                  // Clean up trailing spaces: "1-WIRE SURVEILLANCE KIT"
-
-  console.log(`Part: ${cleanPartNumber}`);
-  console.log(`Desc: ${cleanDescription}`);
-}

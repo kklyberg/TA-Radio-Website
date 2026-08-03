@@ -7,11 +7,7 @@ const TARGET_FOLDER = "motorolasolutions/images"; // Saves directly to your fold
 
 // 1. Paste the clean, 8-character part numbers from your datasheet script here
 const datasheetParts = [
-  "PMNN4468", "PMLN7074", "PMLN7101", "PMLN7109", "CB000262A01",
-  "PMAE4093", "PMAE4094", "PMAE4095", "PMAD4144", "PMAD4145",
-  "PMAD4146", "PMLN7189", "PMLN7156", "PMLN7157", "PMLN7158",
-  "PMLN7159", "RLN6242", "RLN6282", "PMLN6074", "PMLN7076",
-  "PMLN7128", "PMLN7190"
+  ""
 ];
 
 // 2. Paste the raw, messy image URLs your URL extraction script grabbed here
