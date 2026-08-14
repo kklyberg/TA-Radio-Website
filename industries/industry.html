@@ -348,7 +348,7 @@ filtered.forEach((item) => {
   const b = String(brand).toLowerCase();
   if (b.includes("hytera")) folderPrefix = "../hytera/";
   else if (b.includes("icom")) folderPrefix = "../icom/";
-  else if (b.includes("motorola")) folderPrefix = "../Motorola/"; // match your real folder name
+  else if (b.includes("motorola")) folderPrefix = "../motorola/"; // match your real folder name
   else if (b.includes("ritron")) folderPrefix = "../ritron/";
 
   let rawImage = String(item.image || item.Image || "").trim();
