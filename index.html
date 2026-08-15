@@ -112,24 +112,141 @@
     </div>
   </header>
 
-
-    <section id="home" class="hero-section">
-  <div class="container hero-content">
-    <h1>Mission-Critical Two-Way Radio Solutions</h1>
-    <p>Rugged hardware, crystal-clear digital audio, and flawless wide-area network coverage engineered to keep your workforce connected and safe. Authorized dealer for Motorola, Kenwood, Icom, Hytera, and Ritron.</p>
-
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: 32px; width: 100%; max-width: 900px; margin-left: auto; margin-right: auto; box-sizing: border-box; padding: 0 8px;">
-  <a href="#catalog"
-     style="display: inline-flex; align-items: center; gap: 8px; background: #0b5eb4; color: #ffffff; text-decoration: none; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.4px; padding: 14px 24px; border-radius: 4px; box-shadow: 0 4px 14px rgba(11, 94, 180, 0.35);">
-    <i class="fa-solid fa-boxes-stacked"></i> Browse Catalogs
-  </a>
-  <a href="#" id="heroQuoteBtn"
-     style="display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #ffffff; text-decoration: none; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.4px; padding: 14px 24px; border-radius: 4px; border: 2px solid rgba(255,255,255,0.85);">
-    <i class="fa-solid fa-file-invoice"></i> Request a Quote
-  </a>
-</div>
+<section id="home" class="hero-section" style="
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 520px;
+  background-image: url('ta-radio-hero-banner.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+">
+  <!-- SCROLLING TICKER -->
+  <div style="
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    overflow: hidden;
+    z-index: 30;
+    background: transparent;
+  ">
+    <div style="
+      display: flex;
+      width: max-content;
+      animation: ticker-scroll 30s linear infinite;
+    ">
+      <span style="
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 1.3px;
+        color: #00f0ff;
+        text-shadow: 0 0 8px rgba(0,240,255,0.85), 0 0 16px rgba(0,180,255,0.5);
+        white-space: nowrap;
+        padding-right: 80px;
+      ">MISSION-CRITICAL COMMUNICATIONS • AUTHORIZED MOTOROLA • KENWOOD • ICOM DEALER • HYTERA • RITRON • 30+ YEARS OF CERTIFIED WIRELESS EXPERTISE • </span>
+      
+      <span style="
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 1.3px;
+        color: #00f0ff;
+        text-shadow: 0 0 8px rgba(0,240,255,0.85), 0 0 16px rgba(0,180,255,0.5);
+        white-space: nowrap;
+        padding-right: 80px;
+      ">MISSION-CRITICAL COMMUNICATIONS • AUTHORIZED MOTOROLA • KENWOOD • ICOM DEALER • HYTERA • RITRON • 30+ YEARS OF CERTIFIED WIRELESS EXPERTISE • </span>
+    </div>
   </div>
+  <!-- FLYING TEXT ELEMENTS -->
+<div class="flying-text t1">MOTOROLA</div>
+<div class="flying-text t2">KENWOOD</div>
+<div class="flying-text t3">ICOM</div>
+<div class="flying-text t4">HYTERA</div>
+<div class="flying-text t5">RITRON</div>
+<div class="flying-text t6">DIGITAL RADIO</div>
+<div class="flying-text t7">WIDE-AREA COVERAGE</div>
 </section>
+
+<style>
+  @keyframes ticker-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+/* ===== RADIATING FLYING TEXT FROM THE TOWER ===== */
+.flying-text {
+  position: absolute;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #00f0ff;
+  text-shadow: 
+    0 0 6px #00f0ff,
+    0 0 14px #00e5ff,
+    0 0 28px #00c8ff,
+    0 0 50px rgba(0, 180, 255, 0.6);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0;
+  /* Start centered on the tower */
+  left: 50%;
+  top: 32%;                 /* roughly the top of the tower antenna */
+  transform: translate(-50%, -50%) scale(0.35);
+  animation: radiate 13s ease-out infinite;
+}
+
+/* Individual directions & timing */
+.t1  { --x: -420px; --y: -180px; animation-delay: 0s; }
+.t2  { --x:  380px; --y: -160px; animation-delay: 1.1s; }
+.t3  { --x: -350px; --y:  40px;  animation-delay: 2.3s; }
+.t4  { --x:  410px; --y:  30px;  animation-delay: 3.4s; }
+.t5  { --x: -280px; --y: -90px;  animation-delay: 4.6s; }
+.t6  { --x:  300px; --y: -70px;  animation-delay: 5.7s; }
+.t7  { --x: -180px; --y:  110px; animation-delay: 6.9s; }
+.t8  { --x:  220px; --y:  130px; animation-delay: 8.0s; }
+.t9  { --x: -480px; --y: -40px;  animation-delay: 0.6s; }
+.t10 { --x:  460px; --y: -20px;  animation-delay: 1.8s; }
+.t11 { --x: -320px; --y:  160px; animation-delay: 3.0s; }
+.t12 { --x:  340px; --y:  150px; animation-delay: 4.2s; }
+.t13 { --x: -150px; --y: -200px; animation-delay: 5.4s; }
+.t14 { --x:  160px; --y: -190px; animation-delay: 6.6s; }
+.t15 { --x:  0px;   --y:  180px; animation-delay: 7.8s; }
+
+@keyframes radiate {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+    filter: brightness(0.6);
+  }
+  12% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.55);
+    filter: brightness(1.3);
+  }
+  35% {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--x) * 0.45), calc(-50% + var(--y) * 0.45)) scale(0.95);
+    filter: brightness(1.7);          /* hottest point */
+  }
+  70% {
+    opacity: 0.7;
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.15);
+    filter: brightness(1.3);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--x) * 1.15), calc(-50% + var(--y) * 1.15)) scale(1.25);
+    filter: brightness(0.8);
+  }
+}
+</style>
 <!-- Sheet-driven campaign slider (promotions rows 7–10) -->
 <section id="tarcCampaignSlider" style="padding:0; position:relative; overflow:hidden; min-height:320px; background:#0e1a24;">
   <div id="tarcSliderTrack" style="position:relative; width:100%; min-height:320px;"></div>
