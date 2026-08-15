@@ -125,6 +125,11 @@
   margin: 0;
   padding: 0;
 ">
+<!-- STATIC TAGLINE ABOVE TICKER -->
+<div class="hero-tagline">
+  Serving Brevard County and surrounding areas for over 30 years
+</div>
+
   <!-- SCROLLING TICKER -->
   <div style="
     position: absolute;
@@ -150,7 +155,7 @@
         text-shadow: 0 0 8px rgba(0,240,255,0.85), 0 0 16px rgba(0,180,255,0.5);
         white-space: nowrap;
         padding-right: 80px;
-      ">MISSION-CRITICAL COMMUNICATIONS • AUTHORIZED MOTOROLA • KENWOOD • ICOM DEALER • HYTERA • RITRON • 30+ YEARS OF CERTIFIED WIRELESS EXPERTISE • </span>
+      ">MISSION-CRITICAL COMMUNICATIONS • AUTHORIZED MOTOROLA • KENWOOD • ICOM  • HYTERA • RITRON DEALER• 30+ YEARS OF CERTIFIED WIRELESS EXPERTISE • </span>
       
       <span style="
         font-family: 'Segoe UI', system-ui, sans-serif;
@@ -161,7 +166,7 @@
         text-shadow: 0 0 8px rgba(0,240,255,0.85), 0 0 16px rgba(0,180,255,0.5);
         white-space: nowrap;
         padding-right: 80px;
-      ">MISSION-CRITICAL COMMUNICATIONS • AUTHORIZED MOTOROLA • KENWOOD • ICOM DEALER • HYTERA • RITRON • 30+ YEARS OF CERTIFIED WIRELESS EXPERTISE • </span>
+      ">MISSION-CRITICAL COMMUNICATIONS • AUTHORIZED MOTOROLA • KENWOOD • ICOM  • HYTERA • RITRON DEALER• 30+ YEARS OF CERTIFIED WIRELESS EXPERTISE • </span>
     </div>
   </div>
   <!-- FLYING TEXT ELEMENTS -->
@@ -175,10 +180,30 @@
 </section>
 
 <style>
+/* ===== TAGLINE ABOVE TICKER ===== */
+.hero-tagline {
+  position: absolute;
+  bottom: 125px;                 /* adjust if needed */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 25;
+  pointer-events: none;
+  
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 2.0rem;           /* larger than the ticker */
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #e0f7ff;
+  text-shadow: 
+    0 0 8px rgba(0, 240, 255, 0.7),
+    0 0 18px rgba(0, 180, 255, 0.4);
+}
   @keyframes ticker-scroll {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
+  
 /* ===== RADIATING FLYING TEXT FROM THE TOWER ===== */
 .flying-text {
   position: absolute;
