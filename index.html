@@ -3,65 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>T.A. Radio Communications // Mission-Critical Fleet Showrooms</title>
-  
-  <!-- =========================================================================
-   * TAILWIND CSS UTILITY FRAMEWORK ENGINE HOOK
-   * ========================================================================= -->
-  <!-- Crucial: This must sit independently outside of any <style> tags! -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Your existing standard CSS stylesheets and FontAwesome icon kits follow below -->
+  <title>T.A. Radio Communications | Mission-Critical Two-Way Radio Solutions</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cloudflare.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<style>
-  
+<body style="margin:0; padding-top:110px; background:#f8fafc; font-family:'Segoe UI', system-ui, sans-serif;">
 
-
-/* FIXED BRAND SHOWROOM DROPDOWN HOVER MATRIX */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #ffffff;
-  min-width: 200px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
-  z-index: 2000;
-  border-top: 3px solid #0b5eb4;
-  border-radius: 0 0 4px 4px;
-}
-
-.dropdown-content a {
-  color: #0e1a24;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  font-weight: 700;
-  font-size: 0.88rem;
-  text-align: left;
-  border-bottom: 1px solid #f1f5f9;
-}
-
-.dropdown-content a:hover {
-  background-color: #f8fafc;
-  color: #0b5eb4;
-}
-
-/* Forces the menu layout panel to reveal itself cleanly on hover mouse track */
-.dropdown:hover .dropdown-content {
-  display: block !important;
-}
-</style>
-<body id="top-viewport" style="padding-top: 110px; margin: 0; background-color: #f8fafc;">
-
-       <!-- Fixed Navigation Header Matrix Assembly -->
-  <header class="main-header" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.08); background-color: #ffffff !important; border-bottom: 3px solid #0b5eb4; display: flex; flex-direction: column;">
+    <header class="main-header" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.08); background-color: #ffffff !important; border-bottom: 3px solid #0b5eb4; display: flex; flex-direction: column;">
     
     <div style="background-color: #0e1a24; color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 600; padding: 8px 0; border-bottom: 1px solid rgba(11, 94, 180, 0.3); width: 100%;">
       <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; box-sizing: border-box;">
@@ -112,731 +62,627 @@
     </div>
   </header>
 
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero-section" style="
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 520px;
+    background-image: url('ta-radio-hero-banner.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+  ">
+    <!-- Tagline -->
+    <div class="hero-tagline">
+      Serving Brevard County and surrounding areas for over 30 years
+    </div>
 
-    <section id="home" class="hero-section">
-  <div class="container hero-content">
-    <h1>Mission-Critical Two-Way Radio Solutions</h1>
-    <p>Rugged hardware, crystal-clear digital audio, and flawless wide-area network coverage engineered to keep your workforce connected and safe. Authorized dealer for Motorola, Kenwood, Icom, Hytera, and Ritron.</p>
+    <!-- Scrolling Ticker -->
+    <div style="position:absolute; bottom:32px; left:0; width:100%; height:48px; overflow:hidden; z-index:30;">
+      <div style="display:flex; width:max-content; animation:ticker-scroll 30s linear infinite;">
+        <span style="font-size:1.1rem; font-weight:700; letter-spacing:1.3px; color:#00f0ff; text-shadow:0 0 8px rgba(0,240,255,0.85); white-space:nowrap; padding-right:80px;">
+          MISSION-CRITICAL COMMUNICATIONS • AUTHORIZED MOTOROLA • KENWOOD • ICOM • HYTERA • RITRON DEALER • 30+ YEARS OF CERTIFIED WIRELESS EXPERTISE •
+        </span>
+        <span style="font-size:1.1rem; font-weight:700; letter-spacing:1.3px; color:#00f0ff; text-shadow:0 0 8px rgba(0,240,255,0.85); white-space:nowrap; padding-right:80px;">
+          MISSION-CRITICAL COMMUNICATIONS • AUTHORIZED MOTOROLA • KENWOOD • ICOM • HYTERA • RITRON DEALER • 30+ YEARS OF CERTIFIED WIRELESS EXPERTISE •
+        </span>
+      </div>
+    </div>
 
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: 32px; width: 100%; max-width: 900px; margin-left: auto; margin-right: auto; box-sizing: border-box; padding: 0 8px;">
-  <a href="#catalog"
-     style="display: inline-flex; align-items: center; gap: 8px; background: #0b5eb4; color: #ffffff; text-decoration: none; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.4px; padding: 14px 24px; border-radius: 4px; box-shadow: 0 4px 14px rgba(11, 94, 180, 0.35);">
-    <i class="fa-solid fa-boxes-stacked"></i> Browse Catalogs
-  </a>
-  <a href="#" id="heroQuoteBtn"
-     style="display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #ffffff; text-decoration: none; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.4px; padding: 14px 24px; border-radius: 4px; border: 2px solid rgba(255,255,255,0.85);">
-    <i class="fa-solid fa-file-invoice"></i> Request a Quote
-  </a>
-</div>
+    <!-- Flying Text -->
+    <div class="flying-text t1">MOTOROLA</div>
+    <div class="flying-text t2">KENWOOD</div>
+    <div class="flying-text t3">ICOM</div>
+    <div class="flying-text t4">HYTERA</div>
+    <div class="flying-text t5">RITRON</div>
+    <div class="flying-text t6">DIGITAL RADIO</div>
+    <div class="flying-text t7">WIDE-AREA COVERAGE</div>
+  </section>
+<!-- =========================================================================
+     T.A. RADIO COMMUNICATIONS: INDUSTRIAL WIRELESS SERVICES PLATFORM
+     ========================================================================= -->
+<section id="commercial-capabilities" style="padding: 90px 0; background-color: #ffffff; border-top: 4px solid #0b5eb4; font-family: 'Segoe UI', system-ui, sans-serif;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;">
+        
+        <!-- Premium Commercial Section Header Layout -->
+        <div style="margin-bottom: 60px; border-left: 5px solid #0b5eb4; padding-left: 20px; text-align: left;">
+            <span style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: #0b5eb4; letter-spacing: 1.5px; display: block; margin-bottom: 6px;">
+                Enterprise Wireless Solutions
+            </span>
+            <h2 style="font-size: 2.3rem; font-weight: 900; color: #0e1a24; text-transform: uppercase; margin: 0; tracking: -0.5px; line-height: 1.15;">
+                Professional Services &amp; Infrastructure Engineering
+            </h2>
+            <p style="font-size: 1.05rem; color: #475569; margin-top: 8px; max-width: 750px; font-weight: 500; line-height: 1.5;">
+                Minimize operational downtime and maximize field coordination. We deliver certified component bench repairs, custom wide-area designs, and seamless FCC navigation.
+            </p>
+        </div>
+
+        <!-- 4-Column High-Converting B2B Service Grid Matrix -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+            
+            <!-- Service Card 1: Certified Component Repairs Depot -->
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-top: 3px solid #0e1a24; border-radius: 8px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: all 0.2s ease;">
+                <div>
+                    <div style="width: 48px; height: 48px; background-color: #0e1a24; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: #ffffff;">
+                        <i class="fa-solid fa-screwdriver-wrench" style="font-size: 1.3rem;"></i>
+                    </div>
+                    <h3 style="font-size: 1.15rem; font-weight: 800; color: #0e1a24; text-transform: uppercase; margin: 0 0 10px 0; tracking: -0.2px;">
+                        Certified Component Repair
+                    </h3>
+                    <p style="font-size: 0.88rem; color: #475569; line-height: 1.6; margin: 0 0 18px 0;">
+                        Stop throwing away broken assets. Our component-level test benches evaluate, realign, and recertify radios to original specifications.
+                    </p>
+                    <ul style="margin: 0 0 20px 0; padding: 0; list-style: none; font-size: 0.82rem; font-weight: 700; color: #334155;">
+                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #16a34a;"></i> Physical Tuning &amp; Diagnostics</li>
+                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #16a34a;"></i> OEM Factory Spare Parts</li>
+                        <li style="margin-bottom: 0; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #16a34a;"></i> Rapid In-House Bench Testing</li>
+                    </ul>
+                </div>
+                <div style="border-top: 1px solid #e2e8f0; padding-top: 15px;">
+                    <a href="repairs.html" style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; color: #0b5eb4; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                        Book Repair Depot <i class="fa-solid fa-arrow-right-long"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Service Card 2: Custom RF Systems Path Engineering -->
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-top: 3px solid #0b5eb4; border-radius: 8px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: all 0.2s ease;">
+                <div>
+                    <div style="width: 48px; height: 48px; background-color: #0b5eb4; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: #ffffff;">
+                        <i class="fa-solid fa-diagram-project" style="font-size: 1.2rem;"></i>
+                    </div>
+                    <h3 style="font-size: 1.15rem; font-weight: 800; color: #0e1a24; text-transform: uppercase; margin: 0 0 10px 0; tracking: -0.2px;">
+                        RF System Integration
+                    </h3>
+                    <p style="font-size: 0.88rem; color: #475569; line-height: 1.6; margin: 0 0 18px 0;">
+                        Overcome structural deadzones and concrete blockages. We custom engineer complex coverages utilizing repeaters, antennas, and multi-site linking.
+                    </p>
+                    <ul style="margin: 0 0 20px 0; padding: 0; list-style: none; font-size: 0.82rem; font-weight: 700; color: #334155;">
+                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #16a34a;"></i> Signal Topography Profiling</li>
+                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #16a34a;"></i> Multi-Repeater Voting Tracks</li>
+                        <li style="margin-bottom: 0; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #16a34a;"></i> In-Building Signal Correction</li>
+                    </ul>
+                </div>
+                <div style="border-top: 1px solid #e2e8f0; padding-top: 15px;">
+                    <a href="system-design.html" style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; color: #0b5eb4; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                        Request Architecture Design <i class="fa-solid fa-arrow-right-long"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Service Card 3: Digital Migration & Nationwide PoC Matrix -->
+            <div style="background: #ecfeff; border: 1px solid #c5f2f7; border-top: 3px solid #0891b2; border-radius: 8px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: all 0.2s ease;">
+                <div>
+                    <div style="width: 48px; height: 48px; background-color: #0891b2; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: #ffffff;">
+                        <i class="fa-solid fa-mobile-screen-button" style="font-size: 1.2rem;"></i>
+                    </div>
+                    <h3 style="font-size: 1.15rem; font-weight: 800; color: #0e1a24; text-transform: uppercase; margin: 0 0 10px 0; tracking: -0.2px;">
+                        Digital Migration &amp; PoC
+                    </h3>
+                    <p style="font-size: 0.88rem; color: #1e293b; line-height: 1.6; margin: 0 0 18px 0;">
+                        Erase geography limits completely. Shift your outdated analog layout onto high-security digital systems or instant nationwide 4G LTE/5G cellular talkgroups.
+                    </p>
+                    <ul style="margin: 0 0 20px 0; padding: 0; list-style: none; font-size: 0.82rem; font-weight: 700; color: #0f766e;">
+                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #0d9488;"></i> Phased Dual-Mode Transitioning</li>
+                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #0d9488;"></i> Hardware RoIP Gateway Patches</li>
+                        <li style="margin-bottom: 0; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #0d9488;"></i> Nationwide Latency under 350ms</li>
+                    </ul>
+                </div>
+                <div style="border-top: 1px solid #c5f2f7; padding-top: 15px;">
+                    <a href="migration-hub.html" style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; color: #0891b2; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                        Enter Migration Center <i class="fa-solid fa-arrow-right-long"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Service Card 4: FCC Frequency Regulatory Licensing Compliance -->
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-top: 3px solid #0e1a24; border-radius: 8px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: all 0.2s ease;">
+                <div>
+                    <div style="width: 48px; height: 48px; background-color: #16a34a; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: #ffffff;">
+                        <i class="fa-solid fa-file-shield" style="font-size: 1.2rem;"></i>
+                    </div>
+                    <h3 style="font-size: 1.15rem; font-weight: 800; color: #0e1a24; text-transform: uppercase; margin: 0 0 10px 0; tracking: -0.2px;">
+                        FCC Regulatory Management
+                    </h3>
+                    <p style="font-size: 0.88rem; color: #475569; line-height: 1.6; margin: 0 0 18px 0;">
+                        Avoid catastrophic federal compliance infractions. We audit, organize, update, and secure your commercial FCC coordinates, licensing, and narrowbanding.
+                    </p>
+                    <ul style="margin: 0 0 20px 0; padding: 0; list-style: none; font-size: 0.82rem; font-weight: 700; color: #334155;">
+                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #16a34a;"></i> New Frequency Coordination</li>
+                        <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #16a34a;"></i> License Renewal Processing</li>
+                        <li style="margin-bottom: 0; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-circle-check" style="color: #16a34a;"></i> Call Sign Modification Filing</li>
+                    </ul>
+                </div>
+                <div style="border-top: 1px solid #e2e8f0; padding-top: 15px;">
+                    <a href="fcc-licensing.html" style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; color: #0b5eb4; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                        Audit FCC Licenses <i class="fa-solid fa-arrow-right-long"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+  <!-- ===== INDUSTRIES ===== -->
+  <section id="industries" style="padding:80px 0; background:#f8fafc;">
+    <div class="container" style="max-width:1200px; margin:0 auto; padding:0 20px;">
+      <h2 style="font-size:2.1rem; font-weight:900; color:#0e1a24; margin-bottom:8px;">Industries We Serve</h2>
+      <p style="color:#64748b; margin-bottom:40px; max-width:640px;">Custom wireless network deployments engineered to bypass environmental obstructions in your sector.</p>
+
+      <div class="industries-grid">
+        <div class="industry-card" style="background-image:url('images/education.jpg')" onclick="location.href='industries/industry.html?sector=education'">
+          <h3>Education</h3>
+          <p>Instant coordination for safe, efficient K-12 and university campuses without bulky equipment.</p>
+        </div>
+        <div class="industry-card" style="background-image:url('images/construction.jpg')" onclick="location.href='industries/industry.html?sector=construction'">
+          <h3>Construction</h3>
+          <p>Mil-Spec rugged hardware built for the severe dust, noise, and rigor of extreme job sites.</p>
+        </div>
+        <div class="industry-card" style="background-image:url('images/fire-rescue.jpg')" onclick="location.href='industries/industry.html?sector=fire'">
+          <h3>Fire & Rescue</h3>
+          <p>Mission-critical reliability, intense heat resistance, and clear digital audio when life safety is on the line.</p>
+        </div>
+        <div class="industry-card" style="background-image:url('images/ems.jpg')" onclick="location.href='industries/industry.html?sector=ems'">
+          <h3>EMS</h3>
+          <p>Seamless communication, vital tracking metrics, and vehicle mobile configurations from field dispatch to ER.</p>
+        </div>
+        <div class="industry-card" style="background-image:url('images/police.jpg')" onclick="location.href='industries/industry.html?sector=police'">
+          <h3>Police & Law Enforcement</h3>
+          <p>Secure, AES-256 encrypted coverage frameworks and advanced GPS telemetry tracking for public safety networks.</p>
+        </div>
+        <div class="industry-card" style="background-image:url('images/airports.jpg')" onclick="location.href='industries/industry.html?sector=airports'">
+          <h3>Airports</h3>
+          <p>Streamlined ground control, tarmac coordination, and specialized aviation multi-channel systems.</p>
+        </div>
+        <div class="industry-card" style="background-image:url('images/security.jpg')" onclick="location.href='industries/industry.html?sector=security'">
+          <h3>Private Security</h3>
+          <p>Constant vigilance via discreet surveillance audio earpieces backed by heavy-duty 18-hour battery cycles.</p>
+        </div>
+        <div class="industry-card" style="background-image:url('images/churches.jpg')" onclick="location.href='industries/industry.html?sector=churches'">
+          <h3>Churches & Worship</h3>
+          <p>Subtle, low-profile coordination for ministries, guest parking management, and medical team alerts.</p>
+        </div>
+        <div class="industry-card" style="background-image:url('images/manufacturing.jpg')" onclick="location.href='industries/industry.html?sector=manufacturing'">
+          <h3>Manufacturing</h3>
+          <p>Intrinsically safe explosion-proof hardware portfolios paired with custom active localized repeater networks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AUTHORIZED BRANDS ===== -->
+  <section style="padding:70px 0; background:#ffffff; border-top:1px solid #e2e8f0;">
+    <div class="container" style="max-width:1200px; margin:0 auto; padding:0 20px; text-align:center;">
+      <h2 style="font-size:1.9rem; font-weight:900; color:#0e1a24; margin-bottom:12px;">Authorized Dealer</h2>
+      <p style="color:#64748b; margin-bottom:40px;">Official showrooms for the industry’s most trusted manufacturers.</p>
+
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
+        <a href="catalog.html?brand=motorola" style="padding:18px 28px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; font-weight:800; color:#0e1a24; text-decoration:none;">Motorola</a>
+        <a href="catalog.html?brand=kenwood" style="padding:18px 28px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; font-weight:800; color:#0e1a24; text-decoration:none;">Kenwood</a>
+        <a href="catalog.html?brand=icom" style="padding:18px 28px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; font-weight:800; color:#0e1a24; text-decoration:none;">Icom</a>
+        <a href="catalog.html?brand=hytera" style="padding:18px 28px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; font-weight:800; color:#0e1a24; text-decoration:none;">Hytera</a>
+        <a href="catalog.html?brand=ritron" style="padding:18px 28px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; font-weight:800; color:#0e1a24; text-decoration:none;">Ritron</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section style="padding:80px 20px; background:#0e1a24; text-align:center;">
+    <h2 style="color:#fff; font-size:2rem; font-weight:900; margin-bottom:16px;">Ready to Build Your Network?</h2>
+    <p style="color:#94a3b8; max-width:520px; margin:0 auto 30px; font-size:1.1rem;">Talk to a local expert with 30+ years of wireless experience in Brevard County.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="tel:3217254824" style="background:#0b5eb4; color:#fff; padding:16px 32px; border-radius:6px; font-weight:800; text-decoration:none;">Call (321) 725-4824</a>
+      <a href="#" id="heroQuoteBtn" style="background:transparent; color:#fff; padding:16px 32px; border-radius:6px; font-weight:800; text-decoration:none; border:2px solid rgba(255,255,255,0.4);">Request a Quote</a>
+    </div>
+  </section>
+<!-- =========================================================================
+     T.A. RADIO: DIGITAL MIGRATION & NATIONWIDE PoC KNOWLEDGE BASE
+     ========================================================================= -->
+<section id="migration-resource-center" class="py-20 bg-slate-100 border-t-4 border-[#0b5eb4]">
+  <div class="max-w-6xl mx-auto px-4">
+    
+    <!-- Section Header Block -->
+    <div class="border-b-2 border-[#0b5eb4] pb-6 mb-12">
+      <span class="text-xs font-black tracking-widest text-[#0b5eb4] uppercase block mb-1">Wireless Migration Framework</span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-[#0e1a24] uppercase tracking-tight">Digital Migration &amp; PoC Enterprise Hub</h2>
+      <p class="text-slate-600 text-base mt-2 max-w-3xl font-medium">
+        Transition legacy analog fleets to high-performance Digital LMR (DMR/NXDN), or deploy instant nationwide Push-to-Talk over Cellular (PoC) infrastructure across carrier networks.
+      </p>
+    </div>
+
+    <!-- Core Technology Structural Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+      
+      <!-- Box A: Analog to Digital -->
+      <div class="bg-white p-8 rounded-lg border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded bg-blue-50 flex items-center justify-center">
+              <i class="fa-solid fa-tower-broadcast text-xl text-[#0b5eb4]"></i>
+            </div>
+            <h3 class="text-xl font-bold text-[#0e1a24] uppercase tracking-tight">Analog &rarr; Digital LMR Path</h3>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed mb-6">
+            Migrating from legacy analog to narrow-band Digital LMR doubles operational channel capacity on your current frequencies using advanced TDMA/FDMA technology. Digital processing eliminates fringe static, filters out background commercial noise, and enables AES encryption protocols. Dual-mode base stations and portables ensure seamless interoperability throughout your phased upgrade lifecycle.
+          </p>
+        </div>
+        <div class="border-t pt-4">
+          <span class="text-xs font-bold text-slate-400 uppercase block mb-2">Core Digital Portfolios:</span>
+          <div class="flex flex-wrap gap-2 text-xs font-extrabold uppercase">
+            <span class="bg-slate-100 text-[#0e1a24] px-2.5 py-1 rounded">Motorola MOTOTRBO</span>
+            <span class="bg-slate-100 text-[#0e1a24] px-2.5 py-1 rounded">Kenwood NEXEDGE</span>
+            <span class="bg-slate-100 text-[#0e1a24] px-2.5 py-1 rounded">Ritron Wireless</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box B: Digital to PoC (LTE) -->
+      <div class="bg-white p-8 rounded-lg border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded bg-cyan-50 flex items-center justify-center">
+              <i class="fa-solid fa-mobile-screen-button text-xl text-cyan-600"></i>
+            </div>
+            <h3 class="text-xl font-bold text-[#0e1a24] uppercase tracking-tight">Digital &rarr; PoC &amp; RoIP Gateways</h3>
+          </div>
+          <p class="text-sm text-slate-600 leading-relaxed mb-6">
+            Push-to-Talk over Cellular (PoC) digitizes enterprise voice traffic into secure IP packets routed across nationwide 4G LTE/5G commercial grids and private Wi-Fi networks. This deployment pattern drops local repeater tower footprints, frequency coordination licensing, and physical sight limits completely. Integrating a hardware Radio over IP (RoIP) gateway allows you to bridge active field radios instantly into wide-area cellular talkgroups.
+          </p>
+        </div>
+        <div class="border-t pt-4">
+          <span class="text-xs font-bold text-cyan-600 uppercase block mb-2">Authorized PoC &amp; Hybrid Providers:</span>
+          <div class="flex flex-wrap gap-2 text-xs font-extrabold uppercase">
+            <span class="bg-cyan-50 text-cyan-700 px-2.5 py-1 rounded">Hytera PoC (PNC Series)</span>
+            <span class="bg-cyan-50 text-cyan-700 px-2.5 py-1 rounded">Icom LTE (IP Systems)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PRE-QUALIFICATION SYSTEM FINDER APPLET -->
+    <div class="bg-[#0e1a24] text-white rounded-xl p-8 md:p-12 shadow-md">
+      <div class="max-w-2xl mx-auto text-center mb-8">
+        <h3 class="text-2xl font-black uppercase tracking-tight text-white">Interactive Fleet Migration Assessment</h3>
+        <p class="text-slate-400 text-sm mt-1">Determine the optimal technology conversion framework for your physical infrastructure footprint.</p>
+      </div>
+
+      <!-- Interactive Dynamic Display Window Frame -->
+      <div class="bg-slate-900 border border-slate-800 rounded-lg p-6 max-w-xl mx-auto">
+        <div id="migrationQuizAppContainer" class="space-y-6">
+          
+          <!-- Step 1 Pane -->
+          <div id="hubStep1">
+            <label class="block text-xs font-black uppercase text-slate-400 tracking-wider mb-3">Step 1: Define Current Fleet Architecture</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button type="button" onclick="handleHubSelection('fleetType', 'legacy')" class="w-100 py-3.5 px-4 text-left rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-sm transition">Legacy Analog Radios Only</button>
+              <button type="button" onclick="handleHubSelection('fleetType', 'digital')" class="w-100 py-3.5 px-4 text-left rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-sm transition">Active Digital LMR Network</button>
+            </div>
+          </div>
+
+          <!-- Step 2 Pane (Hidden Initially) -->
+          <div id="hubStep2" class="hidden">
+            <label class="block text-xs font-black uppercase text-slate-400 tracking-wider mb-3">Step 2: Define Core Operational Coverage Goal</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button type="button" onclick="handleHubSelection('coverageGoal', 'local')" class="w-100 py-3.5 px-4 text-left rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-sm transition">Single Site / Fixed Campus</button>
+              <button type="button" onclick="handleHubSelection('coverageGoal', 'wide')" class="w-100 py-3.5 px-4 text-left rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-sm transition">Wide-Area / Multi-City Fleet</button>
+            </div>
+          </div>
+
+          <!-- Result Pane (Hidden Initially) -->
+          <div id="hubResultPane" class="hidden p-5 bg-slate-950 border border-emerald-900 rounded space-y-4">
+            <div class="flex items-center gap-2 text-emerald-400">
+              <i class="fa-solid fa-circle-check"></i>
+              <h4 id="hubResultHeader" class="text-base font-black uppercase tracking-wide"></h4>
+            </div>
+            <p id="hubResultBody" class="text-slate-400 text-xs leading-relaxed"></p>
+            <div class="pt-2">
+              <a href="#contact" onclick="linkQuizDataToForm()" class="inline-block bg-[#0b5eb4] text-white font-bold text-xs uppercase tracking-wider py-2.5 px-5 rounded hover:bg-blue-700 transition">Request Migration Analysis Quote</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
-<!-- Sheet-driven campaign slider (promotions rows 7–10) -->
-<section id="tarcCampaignSlider" style="padding:0; position:relative; overflow:hidden; min-height:320px; background:#0e1a24;">
-  <div id="tarcSliderTrack" style="position:relative; width:100%; min-height:320px;"></div>
 
-  <button type="button" id="tarcSlidePrev" aria-label="Previous slide"
-    style="position:absolute; left:12px; top:50%; transform:translateY(-50%); z-index:5; width:42px; height:42px; border:none; border-radius:50%; background:rgba(255,255,255,0.15); color:#fff; font-size:1.2rem; cursor:pointer;">‹</button>
-  <button type="button" id="tarcSlideNext" aria-label="Next slide"
-    style="position:absolute; right:12px; top:50%; transform:translateY(-50%); z-index:5; width:42px; height:42px; border:none; border-radius:50%; background:rgba(255,255,255,0.15); color:#fff; font-size:1.2rem; cursor:pointer;">›</button>
+  <!-- ===== FOOTER ===== -->
+  <footer style="background:#0a1219; color:#64748b; text-align:center; padding:30px 20px; font-size:0.9rem;">
+    <p style="margin:0;">&copy; 2026 T.A. Radio Communications. All Rights Reserved. | 700 S John Rodes Blvd, Melbourne, FL 32904</p>
+  </footer>
 
-  <div id="tarcSlideDots" style="position:absolute; bottom:14px; left:0; right:0; display:flex; justify-content:center; gap:8px; z-index:5;"></div>
-</section>
-<!-- ========== BACK TO SCHOOL — HIGH CONTRAST POP ========== -->
-<section id="backToSchool" style="
+  <!-- Required styles for hero + industries -->
+  <style>
+  /* Brand Showrooms Dropdown */
+.dropdown {
   position: relative;
-  background: #f0f7ff;
-  border-bottom: 4px solid #0b5eb4;
-  overflow: hidden;
-">
-  <!-- soft gold accent line under hero -->
-  <div style="height: 6px; background: linear-gradient(90deg, #f59e0b, #0b5eb4, #00c2e0);"></div>
+  display: inline-block;
+}
 
-  <div style="
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    min-height: 340px;
-    max-width: 1200px;
-    margin: 0 auto;
-  ">
-    
-    <!-- LEFT: bright copy panel -->
-    <div style="
-      background: linear-gradient(160deg, #ffffff 0%, #e8f2fc 100%);
-      padding: 48px 36px;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  min-width: 210px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  z-index: 2000;
+  border-top: 3px solid #0b5eb4;
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+}
+
+.dropdown-content a {
+  color: #0e1a24;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-weight: 700;
+  font-size: 0.88rem;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background 0.15s ease;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f7ff;
+  color: #0b5eb4;
+}
+
+/* Show the menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+    .hero-tagline {
+      position: absolute;
+      bottom: 100px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      z-index: 25;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #e0f7ff;
+      text-shadow: 0 0 12px rgba(0,240,255,0.6);
+      pointer-events: none;
+    }
+    @keyframes ticker-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .flying-text {
+      position: absolute;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #00f0ff;
+      text-shadow: 0 0 10px #00f0ff, 0 0 25px rgba(0,180,255,0.5);
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 15;
+      opacity: 0;
+      left: 50%;
+      top: 32%;
+      transform: translate(-50%, -50%) scale(0.35);
+      animation: radiate 13s ease-out infinite;
+    }
+    .t1 { --x:-420px; --y:-180px; animation-delay:0s; }
+    .t2 { --x:380px; --y:-160px; animation-delay:1.1s; }
+    .t3 { --x:-350px; --y:40px; animation-delay:2.3s; }
+    .t4 { --x:410px; --y:30px; animation-delay:3.4s; }
+    .t5 { --x:-280px; --y:-90px; animation-delay:4.6s; }
+    .t6 { --x:300px; --y:-70px; animation-delay:5.7s; }
+    .t7 { --x:-180px; --y:110px; animation-delay:6.9s; }
+
+    @keyframes radiate {
+      0%   { opacity:0; transform:translate(-50%,-50%) scale(0.3); filter:brightness(0.6); }
+      12%  { opacity:0.9; transform:translate(-50%,-50%) scale(0.55); filter:brightness(1.3); }
+      35%  { opacity:1; transform:translate(calc(-50% + var(--x)*0.45), calc(-50% + var(--y)*0.45)) scale(0.95); filter:brightness(1.7); }
+      70%  { opacity:0.7; transform:translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.15); filter:brightness(1.3); }
+      100% { opacity:0; transform:translate(calc(-50% + var(--x)*1.15), calc(-50% + var(--y)*1.15)) scale(1.25); filter:brightness(0.8); }
+    }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .industry-card {
+      position: relative;
+      height: 220px;
+      border-radius: 10px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      color: white;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      text-align: left;
-      box-shadow: 8px 0 30px rgba(11, 94, 180, 0.08);
-      z-index: 2;
-    ">
-      <span style="
-        display: inline-block;
-        width: fit-content;
-        background: #f59e0b;
-        color: #0e1a24;
-        font-size: 0.72rem;
-        font-weight: 900;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        padding: 6px 14px;
-        border-radius: 4px;
-        margin-bottom: 14px;
-      ">
-        <i class="fa-solid fa-graduation-cap"></i> Back to School 2026
-      </span>
-
-      <h2 style="
-        margin: 0 0 12px 0;
-        font-size: clamp(1.65rem, 3vw, 2.25rem);
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: -0.4px;
-        color: #0e1a24;
-        line-height: 1.15;
-      ">
-        Back to School<br>Communication is Essential
-      </h2>
-
-      <p style="margin: 0 0 24px 0; color: #475569; font-size: 1.05rem; line-height: 1.55; max-width: 420px;">
-        Hallways, fields, and bus loops—staff and security stay connected when cell service isn’t enough. Local kits &amp; support for Florida schools.
-      </p>
-
-      <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-        <a href="industries/industry.html?sector=education" style="
-          display: inline-block;
-          background: #0b5eb4;
-          color: #fff;
-          font-weight: 800;
-          text-decoration: none;
-          text-transform: uppercase;
-          font-size: 0.85rem;
-          padding: 14px 22px;
-          border-radius: 4px;
-          box-shadow: 0 6px 18px rgba(11, 94, 180, 0.35);
-        ">Education solutions</a>
-        <a href="tel:3217254824" style="
-          display: inline-block;
-          background: #fff;
-          color: #0b5eb4;
-          font-weight: 800;
-          text-decoration: none;
-          text-transform: uppercase;
-          font-size: 0.85rem;
-          padding: 14px 22px;
-          border-radius: 4px;
-          border: 2px solid #0b5eb4;
-        "><i class="fa-solid fa-phone"></i> Call us</a>
-      </div>
-    </div>
-
-    <!-- RIGHT: photo -->
-    <div style="
+      justify-content: flex-end;
+      padding: 22px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .industry-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 70%);
+      z-index: 1;
+    }
+    .industry-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 35px rgba(0,0,0,0.2);
+    }
+    .industry-card h3, .industry-card p {
       position: relative;
-      background-image: url('images/education.png');
-      background-size: cover;
-      background-position: center center;
-      min-height: 280px;
-    ">
-      <!-- light fade so photo meets white panel cleanly -->
-      <div style="
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(90deg, #e8f2fc 0%, transparent 28%);
-        pointer-events: none;
-      "></div>
-    </div>
-  </div>
-</section>
-
-<style>
-  @media (max-width: 800px) {
-    #backToSchool > div[style*="grid-template-columns"] {
-      grid-template-columns: 1fr !important;
+      z-index: 2;
+      margin: 0;
     }
-  }
-</style>
-<!-- Concise Homepage Procurement Portal (Trimmed Clean Design) -->
-    <section id="catalog" class="catalog-section" style="padding: 80px 0; background-color: #ffffff; border-top: 1px solid #e2e8f0;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-            <span style="color: #0b5eb4; font-size: 0.75rem; font-weight: bold; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 5px;"><i class="fa-solid fa-boxes-stacked"></i> DIRECTORY ROUTING TERMINAL</span>
-            <h2 class="section-title" style="color: #0e1a24; font-size: 2.2rem; font-weight: 900; margin-bottom: 10px; text-align: left;">Direct Procurement Showrooms</h2>
-            <p class="section-subtitle" style="color: #5a6e72; font-size: 1rem; margin-bottom: 40px; text-align: left; max-width: 700px;">Select a certified manufacturer portal below to audit equipment specification grids, download compliance datasheets, or execute instant checkout deployments.</p>
-            
-                       <!-- DIRECT REVENUE ROUTING PORTS: Clicking a choice passes parameters instantly to catalog.html -->
-            <div style="display: flex; flex-direction: column; gap: 15px; text-align: left; margin-top: 20px;">
-                <label style="font-size: 0.72rem; font-weight: 800; color: #0b5eb4; text-transform: uppercase; letter-spacing: 0.5px;"><i class="fa-solid fa-handshake"></i> Direct Manufacturer Catalogs:</label>
-                
-                <!-- SURGICAL GRID: Switches flat text buttons into a high-quality visual brand grid -->
-                <div class="accessory-filter-pills" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; width: 100%; max-width: 900px; margin: 0 auto; box-sizing: border-box;">
-                    
-                    <!-- KENWOOD CARD -->
-                    <a href="catalog.html?brand=kenwood" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s, box-shadow 0.2s;" onmouseenter="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.05)';" onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0,0,0,0.02)';">
-                        <div style="width: 100%; height: 50px; display: flex; align-items: center; justify-content: center; padding: 2px;">
-                            <img src="kenwood/images/kenwood-logo.png" alt="Kenwood Storefront" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='images/radio-placeholder.png';">
-                        </div>
-                        <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.3px; margin-top: 6px;">Kenwood</span>
-                    </a>
-
-                    <!-- ICOM CARD -->
-                    <a href="catalog.html?brand=icom" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s, box-shadow 0.2s;" onmouseenter="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.05)';" onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0,0,0,0.02)';">
-                        <div style="width: 100%; height: 50px; display: flex; align-items: center; justify-content: center; padding: 2px;">
-                            <img src="icom/images/icom-logo.png" alt="Icom Storefront" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='images/radio-placeholder.png';">
-                        </div>
-                        <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.3px; margin-top: 6px;">Icom</span>
-                    </a>
-
-                    <!-- HYTERA CARD -->
-                    <a href="catalog.html?brand=hytera" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s, box-shadow 0.2s;" onmouseenter="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.05)';" onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0,0,0,0.02)';">
-                        <div style="width: 100%; height: 50px; display: flex; align-items: center; justify-content: center; padding: 2px;">
-                            <img src="hytera/images/hytera-logo.png" alt="Hytera Storefront" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='images/radio-placeholder.png';">
-                        </div>
-                        <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.3px; margin-top: 6px;">Hytera</span>
-                    </a>
-
-                    <!-- MOTOROLA CARD -->
-                    <a href="catalog.html?brand=Motorola" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s, box-shadow 0.2s;" onmouseenter="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.05)';" onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0,0,0,0.02)';">
-                        <div style="width: 100%; height: 50px; display: flex; align-items: center; justify-content: center; padding: 2px;">
-                            <img src="motorola/images/Motorola-logo.png" alt="Motorola Storefront" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='images/radio-placeholder.png';">
-                        </div>
-                        <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.3px; margin-top: 6px;">Motorola</span>
-                    </a>
-
-                    <!-- RITRON CARD -->
-                    <a href="catalog.html?brand=ritron" style="text-decoration: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: transform 0.2s, box-shadow 0.2s;" onmouseenter="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.05)';" onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='0 1px 3px rgba(0,0,0,0.02)';">
-                        <div style="width: 100%; height: 50px; display: flex; align-items: center; justify-content: center; padding: 2px;">
-                            <img src="ritron/images/ritron-logo.png" alt="Ritron Storefront" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='images/radio-placeholder.png';">
-                        </div>
-                        <span style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.3px; margin-top: 6px;">Ritron</span>
-                    </a>
-                    
-                </div>
-            </div>
-
-
-        </div>
-    </section>
-
-<!-- =========================================================================
-     ENTERPRISE PTToC / PoC EDUCATIONAL REFERENCE ENGINE (PART 1 OF 2)
-     ========================================================================= -->
-<section id="poc-education" style="padding: 90px 0; background-color: #ffffff; border-top: 1px solid #e2e8f0; font-family: 'Segoe UI', system-ui, sans-serif;">
-    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;">
-        
-        <!-- Header Strip Section -->
-        <div style="border-bottom: 2px solid #0b5eb4; padding-bottom: 20px; margin-bottom: 45px; text-align: left;">
-            <span style="color: #0b5eb4; font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 6px;">
-                <i class="fa-solid fa-tower-cell"></i> ARCHITECTURE BRIEF // SYSTEM-PoC
-            </span>
-            <h2 style="font-size: 2.2rem; font-weight: 900; color: #0e1a24; margin: 0; text-transform: uppercase; letter-spacing: -0.5px;">
-                Push-to-Talk Over Cellular (PoC) Technology
-            </h2>
-            <p style="color: #5a6e72; font-size: 1.05rem; margin: 8px 0 0 0; max-width: 800px; line-height: 1.5; font-weight: 500;">
-                A comprehensive technical guide to nationwide wireless fleet routing over commercial LTE cellular networks and private Wi-Fi infrastructure.
-            </p>
-        </div>
-
-        <!-- CORE PARADIGM SHIFT: LMR vs PoC Split Matrix Rows -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; align-items: start; margin-bottom: 50px;">
-            
-            <!-- Left Vector: Traditional LMR Constraints Panel -->
-            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-top: 4px solid #ef4444; border-radius: 6px; padding: 30px; text-align: left; box-sizing: border-box;">
-                <h3 style="color: #0e1a24; font-size: 1.15rem; font-weight: 800; margin: 0 0 15px 0; text-transform: uppercase; display: flex; align-items: center; gap: 8px;">
-                    <i class="fa-solid fa-triangle-exclamation" style="color: #ef4444;"></i> 1.0 Traditional Land Mobile Radio (LMR)
-                </h3>
-                <p style="color: #475569; font-size: 0.92rem; line-height: 1.6; margin: 0 0 20px 0;">
-                    Standard analog and digital two-way radio systems (VHF/UHF) propagate RF energy via localized line-of-sight paths. To expand operational footprints beyond a few miles, enterprise clients are forced to fund, construct, and maintain heavy capital infrastructure, including tower leases, duplexers, and fixed base repeaters.
-                </p>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: #475569; font-weight: 600;">
-                    <li><i class="fa-solid fa-circle-xmark" style="color: #ef4444; margin-right: 6px;"></i> Range restricted by structural horizons and topography bounds.</li>
-                    <li><i class="fa-solid fa-circle-xmark" style="color: #ef4444; margin-right: 6px;"></i> High upfront infrastructure expenditures (CAPEX).</li>
-                    <li><i class="fa-solid fa-circle-xmark" style="color: #ef4444; margin-right: 6px;"></i> Strict FCC frequency licensing and coordination boundaries.</li>
-                </ul>
-            </div>
-
-            <!-- Right Vector: The PoC Alternative Network Panel -->
-            <div style="background: #f0f7ff; border: 1px solid #cbd5e1; border-top: 4px solid #0b5eb4; border-radius: 6px; padding: 30px; text-align: left; box-sizing: border-box;">
-                <h3 style="color: #0e1a24; font-size: 1.15rem; font-weight: 800; margin: 0 0 15px 0; text-transform: uppercase; display: flex; align-items: center; gap: 8px;">
-                    <i class="fa-solid fa-circle-nodes" style="color: #0b5eb4;"></i> 2.0 Push-to-Talk Over Cellular Solution
-                </h3>
-                <p style="color: #475569; font-size: 0.92rem; line-height: 1.6; margin: 0 0 20px 0;">
-                    PoC tech digitizes voice signals into secure IP data packets, routing them through pre-existing commercial 4G LTE/5G carrier networks and localized enterprise Wi-Fi systems. Hitting the PTT switch creates instant communication links with zero distance constraints, bridging dispatch hubs and mobile fleets nationwide.
-                </p>
-                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; color: #0e1a24; font-weight: 700;">
-                    <li><i class="fa-solid fa-circle-check" style="color: #16a34a; margin-right: 6px;"></i> Infinite operational range footprint spanning coast-to-coast.</li>
-                    <li><i class="fa-solid fa-circle-check" style="color: #16a34a; margin-right: 6px;"></i> Zero localized repeater infrastructure costs or tower lease burdens.</li>
-                    <li><i class="fa-solid fa-circle-check" style="color: #16a34a; margin-right: 6px;"></i> Fast, license-free fleet deployments with instant system boots.</li>
-                </ul>
-            </div>
-
-        </div>
-        <!-- TECHNICAL DEEP DIVE: IP Layer Routing & Technical Topology -->
-        <div style="background: #0e1a24; color: #ffffff; border-radius: 6px; padding: 35px; text-align: left; box-sizing: border-box; margin-bottom: 50px; border-left: 5px solid #00FFFF; box-shadow: 0 10px 30px rgba(14,26,36,0.15);">
-            <h3 style="color: #00FFFF; font-size: 1.25rem; font-weight: 800; margin: 0 0 12px 0; text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Consolas', 'Courier New', monospace, sans-serif;">
-                <i class="fa-solid fa-network-wired"></i> 3.0 Operational Mechanics & Network Topology
-            </h3>
-            <p style="color: #cbd5e1; font-size: 0.92rem; line-height: 1.6; margin-bottom: 25px; font-family: 'Consolas', 'Courier New', monospace, sans-serif;">
-                When a user initiates transmission on a PoC terminal (e.g., Icom IP730D or Motorola SL300 LTE), voice audio is instantly encoded via an optimized hardware vocoder into narrow-bandwidth digital data blocks. These packets traverse the mobile network loop through secure APN (Access Point Name) gateways to a centralized cloud dispatch server matrix. The server resolves destination routing keys and multi-casts the payload down to targeted talkgroups simultaneously—all in <strong>&lt; 350 milliseconds</strong>.
-            </p>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; font-family: inherit;">
-                <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 4px;">
-                    <h4 style="color: #ffffff; font-size: 0.85rem; font-weight: 800; margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 0.5px;">Advanced Encryption Standards</h4>
-                    <p style="color: #94a3b8; font-size: 0.8rem; margin: 0; line-height: 1.4;">Voice data passing through carrier channels is secured via SSL/TLS and end-to-end AES-256 bit encryption keys, preventing tracking and eavesdropping.</p>
-                </div>
-                <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 4px;">
-                    <h4 style="color: #ffffff; font-size: 0.85rem; font-weight: 800; margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 0.5px;">Cross-Platform Roaming</h4>
-                    <p style="color: #94a3b8; font-size: 0.8rem; margin: 0; line-height: 1.4;">PoC transceivers actively monitor link budget levels, switching between 4G/5G towers and localized industrial Wi-Fi networks without dropping active calls.</p>
-                </div>
-                <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 4px;">
-                    <h4 style="color: #ffffff; font-size: 0.85rem; font-weight: 800; margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 0.5px;">Integrated Telemetry Suite</h4>
-                    <p style="color: #94a3b8; font-size: 0.8rem; margin: 0; line-height: 1.4;">Because terminals occupy continuous IP paths, central dispatch stations track real-time GPS locations, dispatch status lines, and system alerts natively.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- HIGH-UTILITY BENCHMARK GUIDE: System Comparison Matrix Profile -->
-        <div style="text-align: left;">
-            <h3 style="font-size: 1.2rem; font-weight: 900; color: #0e1a24; margin-bottom: 25px; text-transform: uppercase; letter-spacing: -0.25px;">
-                4.0 Procurement Integration & Comparison Profile
-            </h3>
-            
-            <div style="overflow-x: auto; width: 100%; border: 1px solid #e2e8f0; border-radius: 6px;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; background: #ffffff; min-width: 600px;">
-                    <thead>
-                        <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0; color: #0e1a24; font-weight: 800;">
-                            <th style="padding: 15px;">System Attribute</th>
-                            <th style="padding: 15px; color: #0b5eb4;">Push-to-Talk Over Cellular (PoC)</th>
-                            <th style="padding: 15px;">Traditional Digital LMR Systems</th>
-                        </tr>
-                    </thead>
-                    <tbody style="color: #475569; font-weight: 500;">
-                        <tr style="border-bottom: 1px solid #e2e8f0;">
-                            <td style="padding: 15px; font-weight: 700; color: #0e1a24;">Maximum Range Limit</td>
-                            <td style="padding: 15px; color: #0b5eb4; font-weight: 700;">Nationwide Footprint (Carrier Bound)</td>
-                            <td style="padding: 15px;">Local Site Footprint (Horizon Bound)</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e2e8f0;">
-                            <td style="padding: 15px; font-weight: 700; color: #0e1a24;">Upfront Infrastructure Costs</td>
-                            <td style="padding: 15px; color: #16a34a; font-weight: 700;"><i class="fa-solid fa-circle-dollar-to-slot"></i> None ($0.00 Fixed Assets)</td>
-                            <td style="padding: 15px;">High (Towers, Repeaters, Duplexers)</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e2e8f0;">
-                            <td style="padding: 15px; font-weight: 700; color: #0e1a24;">Operational Scalability</td>
-                            <td style="padding: 15px;">Infinite (Add units to the database instantly)</td>
-                            <td style="padding: 15px;">Limited by fixed hardware channel banks</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 15px; font-weight: 700; color: #0e1a24;">Ideal Industry Sectors</td>
-                            <td style="padding: 15px; font-weight: 600;">Long-Haul Logistics, Multi-Site Utilities, Campus Grounds</td>
-                            <td style="padding: 15px;">Heavy Construction Sites, Public Safety Rigs, Remote Refining Fields</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div style="margin-top: 30px; display: flex; justify-content: flex-start;">
-                <button class="btn-primary" onclick="filterAccessory('All'); document.getElementById('catalog').scrollIntoView({behavior: 'smooth'});" style="font-weight: 800; text-transform: uppercase; padding: 14px 28px; font-size: 0.88rem; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(11, 94, 180, 0.15);">
-                    <i class="fa-solid fa-magnifying-glass"></i> Browse Certified PoC System Stock Lines
-                </button>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-	    <!-- Industries Grid Section -->
-    <section id="industries" class="industries-section">
-        <div class="container">
-            <h2 class="section-title">Industries We Serve</h2>
-            <p class="section-subtitle">Custom wireless network deployments engineered to bypass environmental obstructions in your sector.</p>
-            
-            <!-- Unified Matrix Grid Block Container -->
-            <div class="grid-container">
-                
-                <!-- 1. Education -->
-                <div class="card card-interactive" onclick="window.location.href='industries/industry.html?sector=education';">
-                    <i class="fa-solid fa-graduation-cap card-icon"></i>
-                    <h3>Education</h3>
-                    <p>Instant coordination for safe, efficient K-12 and university campuses without bulky equipment.</p>
-                </div>
-
-                <!-- 2. Construction -->
-                <div class="card card-interactive" onclick="window.location.href='industries/industry.html?sector=construction';">
-                    <i class="fa-solid fa-helmet-safety card-icon"></i>
-                    <h3>Construction</h3>
-                    <p>Mil-Spec rugged hardware built for the severe dust, noise, and rigor of extreme job sites.</p>
-                </div>
-
-                <!-- 3. Fire & Rescue -->
-                <div class="card card-interactive" onclick="window.location.href='industries/industry.html?sector=fire';">
-                    <i class="fa-solid fa-fire-extinguisher card-icon"></i>
-                    <h3>Fire & Rescue</h3>
-                    <p>Mission-critical reliability, intense heat resistance, and clear digital audio when life safety is on the line.</p>
-                </div>
-
-                <!-- 4. EMS -->
-                <div class="card card-interactive" onclick="window.location.href='industries/industry.html?sector=ems';">
-                    <i class="fa-solid fa-ambulance card-icon"></i>
-                    <h3>EMS</h3>
-                    <p>Seamless communication, vital tracking metrics, and vehicle mobile configurations from field dispatch to ER.</p>
-                </div>
-
-                <!-- 5. Police -->
-                <div class="card card-interactive" onclick="window.location.href='industries/industry.html?sector=police';">
-                    <i class="fa-solid fa-shield-halved card-icon"></i>
-                    <h3>Police & Law Enforcement</h3>
-                    <p>Secure, AES-256 encrypted coverage frameworks and advanced GPS telemetry tracking for public safety networks.</p>
-                </div>
-
-                <!-- 6. Airports -->
-                <div class="card card-interactive" onclick="window.location.href='industries/industry.html?sector=airports';">
-                    <i class="fa-solid fa-plane card-icon"></i>
-                    <h3>Airports</h3>
-                    <p>Streamlined ground control, tarmac coordination, and specialized aviation multi-channel systems.</p>
-                </div>
-
-                <!-- 7. Security -->
-                <div class="card card-interactive" onclick="window.location.href='industries/industry.html?sector=security';">
-                    <i class="fa-solid fa-user-shield card-icon"></i>
-                    <h3>Private Security</h3>
-                    <p>Constant vigilance via discreet surveillance audio earpieces backed by heavy-duty 18-hour battery cycles.</p>
-                </div>
-
-                <!-- 8. Churches -->
-                <div class="card card-interactive" onclick="window.location.href='industries/industry.html?sector=churches';">
-                    <i class="fa-solid fa-church card-icon"></i>
-                    <h3>Churches & Worship</h3>
-                    <p>Subtle, low-profile coordination for ministries, guest parking management, and medical team alerts.</p>
-                </div>
-
-                <!-- 9. Manufacturing -->
-                <div class="card card-interactive" onclick="window.location.href='industries/industry.html?sector=manufacturing';">
-                    <i class="fa-solid fa-industry card-icon"></i>
-                    <h3>Manufacturing</h3>
-                    <p>Intrinsically safe explosion-proof hardware portfolios paired with custom active localized repeater networks.</p>
-                </div>
-
-            </div> <!-- Grid container ends safely -->
-        </div>
-    </section>
-
-    <!-- Interactive Simulator Teaser Deck Section -->
-    <section class="teaser-section">
-        <div class="container teaser-container">
-            <h2>Know Your Communication Boundaries Before You Deploy</h2>
-            <p>Will your hardware survive dense urban concrete or heavy forest canopy? Stop guessing. Run your network values through our professional, interactive Link Budget Path Engineering Simulator tool.</p>
-            <a href="calculator.html" class="btn-primary" style="text-decoration:none; display:inline-block;"><i class="fa-solid fa-crosshairs"></i> Open Interactive RF Simulator</a>
-        </div>
-    </section>
-
-    <!-- Main Corporate Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2026 T.A. Radio Communication. All Rights Reserved. Engineered Wireless Communication Systems.</p>
-        </div>
-    </footer>
-
-    <!-- Universal RFQ Form Submission Popup Modal -->
-    <div id="quoteModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h3>Request Pricing & Fleet Manifest Analysis</h3>
-            <form id="quoteForm">
-                <label for="name">Contact Name</label>
-                <input type="text" id="name" required placeholder="John Doe">
-                <label for="email">Business Email</label>
-                <input type="email" id="email" required placeholder="name@company.com">
-                <label for="message">Requirements Brief</label>
-                <textarea id="message" rows="4" placeholder="Tell us about your industry, environment, estimated range boundaries, or device count requirements..."></textarea>
-                <button type="submit" class="btn-primary">Submit System Inquiry</button>
-            </form>
-        </div>
-    </div>
-
-        <!-- HIGH-SECURITY SLIDING RFQ FLEET PROCURMENT DRAWER CONSOLE -->
-    <div id="fleetCartDrawer" style="position: fixed; top: 0; right: -400px; width: 380px; height: 100%; background: #ffffff; border-left: 3px solid #0b5eb4; box-shadow: -15px 0 40px rgba(14, 26, 36, 0.25); z-index: 3000; transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1); box-sizing: border-box; display: flex; flex-direction: column; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;">
-        
-        <!-- Console Header Panel: Establishes immediate authority -->
-        <div style="background: #0e1a24; padding: 20px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0b5eb4;">
-            <div style="display: flex; flex-direction: column; gap: 2px; text-align: left;">
-                <h3 style="color: #ffffff; font-size: 0.95rem; font-weight: 800; letter-spacing: 1px; margin: 0; text-transform: uppercase;"><i class="fa-solid fa-lock" style="color: #00FF66; margin-right: 5px;"></i> SECURE FLEET REQUEST</h3>
-                <span style="color: #cbd5e1; font-size: 0.68rem; font-weight: bold; letter-spacing: 0.5px; text-transform: uppercase;">TARC PROCURMENT NETWORK // CONSOLE-V2</span>
-            </div>
-            <span id="closeCartBtn" style="color: #ffffff; cursor: pointer; font-size: 1.5rem; font-weight: 900; opacity: 0.7; transition: opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">&times;</span>
-        </div>
-
-        <!-- Encrypted Link Baseline Status Strip -->
-        <div style="background: #f0fdf4; border-bottom: 1px solid #bbf7d0; padding: 10px 15px; display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: #16a34a; font-weight: 700; text-align: left;">
-            <i class="fa-solid fa-shield-halved" style="font-size: 0.85rem;"></i>
-            <span>SSL Secured Procurement Channel Active // Verified Dealer</span>
-        </div>
-
-        <!-- Dynamic Content Body Feed Lane (List scrolls independently inside this room) -->
-        <div id="cartItemsList" style="flex: 1; padding: 20px 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background-color: #f8fafc; box-sizing: border-box;">
-            <!-- JavaScript dynamically paints your chosen items inside here with high-contrast text -->
-        </div>
-
-        <!-- Secure Pricing Summary & Submission Control Panel Block -->
-        <div style="background: #ffffff; padding: 20px 15px; border-top: 2px solid #e2e8f0; display: flex; flex-direction: column; gap: 15px; box-shadow: 0 -4px 15px rgba(0,0,0,0.02);">
-            
-            <!-- Fleet Total Multi-Channel Summary Metrics -->
-            <div style="display: flex; flex-direction: column; gap: 6px; font-size: 0.82rem; border-bottom: 1px dashed #cbd5e1; padding-bottom: 12px;">
-                <div style="display: flex; justify-content: space-between; color: #5a6e72; font-weight: 600;">
-                    <span>Total Unique Hardware Rows:</span>
-                    <span id="cartTotalItemsCount" style="color: #0e1a24; font-weight: 800;">0 Units</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: #0e1a24; font-weight: 800; margin-top: 4px;">
-                    <span>Estimated Retail Baseline:</span>
-                    <span id="cartEstimatedTotalValue" style="color: #0b5eb4;">$0.00</span>
-                </div>
-            </div>
-
-            <!-- Heavy Solid Procurement Action Trigger Buttons -->
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-                <button id="checkoutFleetBtn" class="btn-primary" style="width: 100%; font-weight: 800; text-transform: uppercase; letter-spacing: 0.75px; padding: 14px 20px; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(11, 94, 180, 0.2);">
-                    <i class="fa-solid fa-file-invoice"></i> Compile Official Quote Request
-                </button>
-                <div style="display: flex; align-items: center; justify-content: center; gap: 5px; color: #5a6e72; font-size: 0.72rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
-                    <i class="fa-solid fa-circle-check" style="color: #16a34a;"></i> Hardware availability locked for 24 Hours
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-<!-- TARC LIVE PROMO MODAL (sheet-controlled) -->
-<div id="tarcPromoModalOverlay" style="display:none; position:fixed; inset:0; background:rgba(14,26,36,0.72); align-items:center; justify-content:center; z-index:4000; opacity:0; transition:opacity 0.28s ease;">
-  <div id="tarcPromoModalCard" style="background:#ffffff; border-radius:12px; max-width:480px; width:calc(100% - 32px); overflow:hidden; box-shadow:0 25px 50px rgba(14,26,36,0.35); border-top:4px solid #0b5eb4; transform:translateY(18px) scale(0.98); opacity:0; transition:transform 0.32s cubic-bezier(0.16,1,0.3,1), opacity 0.32s ease;">
-    <div style="background:#0e1a24; padding:16px 20px; display:flex; justify-content:space-between; align-items:center;">
-      <span id="tarcPromoBadge" style="background:rgba(11,94,180,0.25); color:#00FFFF; font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; padding:4px 10px; border-radius:4px;">Promotion</span>
-      <button type="button" onclick="collapseMarketingPromoModalWindow()" style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer; line-height:1;">&times;</button>
-    </div>
-    <div style="padding:28px 24px; text-align:center;">
-      <h2 id="tarcPromoHeadline" style="color:#0e1a24; font-size:1.5rem; font-weight:900; margin:0 0 12px 0;">Special Promotion</h2>
-      <p id="tarcPromoMessage" style="color:#475569; font-size:0.95rem; line-height:1.5; margin:0 0 24px 0;"></p>
-      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <button type="button" onclick="collapseMarketingPromoModalWindow()" style="padding:12px 22px; border:1px solid #cbd5e1; border-radius:4px; background:#fff; font-weight:700; cursor:pointer; color:#475569;">Maybe Later</button>
-        <button type="button" id="tarcPromoBtn" onclick="collapseMarketingPromoModalWindow()" style="padding:12px 22px; border:none; border-radius:4px; background:#0b5eb4; color:#fff; font-weight:800; cursor:pointer;">Learn More</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+    .industry-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .industry-card p {
+      font-size: 0.88rem;
+      line-height: 1.45;
+      opacity: 0.95;
+    }
+  </style>
 <script>
-  const PROMO_STREAM_ENDPOINT =
-    "https://script.google.com/macros/s/AKfycbw1M3qP6Lkebhy14vbMcCXESzB-N2QEFf2NHGHSuItlVn1sNP35Efa9uGdlRXEeF-m8DA/exec?stream=promo";
+// State Engine Tracking Customer Fleet Parameters
+let fleetConfigurationState = { techBase: null, rangeNeed: null };
 
-  var tarcSlideIndex = 0;
-  var tarcSlideTimer = null;
-
-  function renderTarcSlides(slides) {
-    var section = document.getElementById("tarcCampaignSlider");
-    var track = document.getElementById("tarcSliderTrack");
-    var dots = document.getElementById("tarcSlideDots");
-    if (!track || !dots) return;
-
-    slides = (slides || []).filter(function (s) {
-      return s && (s.headline || s.message);
-    });
-
-    if (!slides.length) {
-      if (section) section.style.display = "none";
-      return;
-    }
-
-    if (section) section.style.display = "block";
-
-    track.innerHTML = slides.map(function (s, i) {
-      var bg = s.bgimage
-        ? "background-image:linear-gradient(rgba(14,26,36,0.72), rgba(14,26,36,0.82)), url('" + s.bgimage + "'); background-size:cover; background-position:center;"
-        : "background:#0e1a24;";
-      return (
-        '<div class="tarc-slide" style="display:' + (i === 0 ? "flex" : "none") +
-        '; min-height:320px; align-items:center; justify-content:center; padding:48px 24px; text-align:center; color:#fff; position:relative; ' + bg + '">' +
-        (s.badge
-          ? '<div style="position:absolute; top:16px; left:50%; transform:translateX(-50%); background:#0b5eb4; color:#fff; font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; padding:5px 12px; border-radius:4px;">' +
-            s.badge +
-            "</div>"
-          : "") +
-        '<div style="max-width:720px;">' +
-        '<h2 style="margin:0 0 12px 0; font-size:1.75rem; font-weight:900;">' +
-        (s.headline || "") +
-        "</h2>" +
-        '<p style="margin:0 0 20px 0; color:#cbd5e1; font-size:1rem; line-height:1.5;">' +
-        (s.message || "") +
-        "</p>" +
-        (s.buttontext
-          ? '<a href="catalog.html" style="display:inline-block; background:#0b5eb4; color:#fff; text-decoration:none; font-weight:800; padding:12px 22px; border-radius:4px;">' +
-            s.buttontext +
-            "</a>"
-          : "") +
-        "</div></div>"
-      );
-    }).join("");
-
-    dots.innerHTML = slides
-      .map(function (_, i) {
-        return (
-          '<button type="button" data-dot="' +
-          i +
-          '" style="width:10px; height:10px; border-radius:50%; border:none; cursor:pointer; background:' +
-          (i === 0 ? "#0b5eb4" : "rgba(255,255,255,0.35)") +
-          ';"></button>'
-        );
-      })
-      .join("");
-
-    tarcSlideIndex = 0;
-
-    function showSlide(n) {
-      var cards = track.querySelectorAll(".tarc-slide");
-      var dotBtns = dots.querySelectorAll("button");
-      if (!cards.length) return;
-      tarcSlideIndex = (n + cards.length) % cards.length;
-      for (var i = 0; i < cards.length; i++) {
-        cards[i].style.display = i === tarcSlideIndex ? "flex" : "none";
-      }
-      for (var d = 0; d < dotBtns.length; d++) {
-        dotBtns[d].style.background =
-          d === tarcSlideIndex ? "#0b5eb4" : "rgba(255,255,255,0.35)";
-      }
-    }
-
-    function startTimer() {
-      clearInterval(tarcSlideTimer);
-      tarcSlideTimer = setInterval(function () {
-        showSlide(tarcSlideIndex + 1);
-      }, 6000);
-    }
-
-    var prev = document.getElementById("tarcSlidePrev");
-    var next = document.getElementById("tarcSlideNext");
-    if (prev)
-      prev.onclick = function () {
-        showSlide(tarcSlideIndex - 1);
-        startTimer();
-      };
-    if (next)
-      next.onclick = function () {
-        showSlide(tarcSlideIndex + 1);
-        startTimer();
-      };
-    dots.onclick = function (e) {
-      var btn = e.target.closest("button[data-dot]");
-      if (!btn) return;
-      showSlide(parseInt(btn.getAttribute("data-dot"), 10));
-      startTimer();
-    };
-
-    startTimer();
-  }
-
-  async function evaluateLiveMarketingCampaigns() {
-    try {
-      const res = await fetch(PROMO_STREAM_ENDPOINT);
-      if (!res.ok) return;
-
-      const campaignBundle = await res.json();
-
-      // Modal (only if not dismissed this session)
-      if (sessionStorage.getItem("tarc_promo_dismissed") !== "1") {
-        const modal = campaignBundle.modal;
-        if (
-          modal &&
-          String(modal.isactive).toLowerCase() === "yes" &&
-          (modal.headline || modal.message)
-        ) {
-          var headlineEl = document.getElementById("tarcPromoHeadline");
-          var messageEl = document.getElementById("tarcPromoMessage");
-          var badgeEl = document.getElementById("tarcPromoBadge");
-          var btnEl = document.getElementById("tarcPromoBtn");
-          var overlay = document.getElementById("tarcPromoModalOverlay");
-
-          if (overlay && headlineEl && messageEl) {
-            headlineEl.innerText = modal.headline || "Special Promotion";
-            messageEl.innerText = modal.message || "";
-            if (badgeEl && modal.badge) badgeEl.innerText = modal.badge;
-            if (btnEl && modal.buttontext) btnEl.innerText = modal.buttontext;
-
-            overlay.style.display = "flex";
-            requestAnimationFrame(function () {
-              overlay.style.opacity = "1";
-              var card = document.getElementById("tarcPromoModalCard");
-              if (card) {
-                card.style.transform = "translateY(0) scale(1)";
-                card.style.opacity = "1";
-              }
-            });
-          }
-        }
-      }
-
-      // Slider always runs from sheet rows 7-10
-      renderTarcSlides(campaignBundle.slides || []);
-    } catch (err) {
-      console.warn("Promo stream offline:", err);
-    }
-  }
-
-  function collapseMarketingPromoModalWindow() {
-    var overlay = document.getElementById("tarcPromoModalOverlay");
-    if (!overlay) return;
-    var card = document.getElementById("tarcPromoModalCard");
-    if (card) {
-      card.style.transform = "translateY(14px) scale(0.98)";
-      card.style.opacity = "0";
-    }
-    overlay.style.opacity = "0";
-    sessionStorage.setItem("tarc_promo_dismissed", "1");
-    setTimeout(function () {
-      overlay.style.display = "none";
-    }, 300);
-  }
-
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") collapseMarketingPromoModalWindow();
-  });
-
-  document.addEventListener("DOMContentLoaded", evaluateLiveMarketingCampaigns);
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var quoteBtn = document.getElementById("heroQuoteBtn");
-    var modalBox = document.getElementById("quoteModal");
-    if (quoteBtn && modalBox) {
-      quoteBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        modalBox.style.display = "flex";
-      });
-    }
-  });
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  var searchNode = document.getElementById("navbarGlobalSearchInput");
-  if (!searchNode) return;
-
-  function goSearch() {
-    var q = (searchNode.value || "").trim();
-    if (!q) return;
-    // From industries/ folder use ../catalog.html — from root use catalog.html
-    var base = window.location.pathname.indexOf("/industries/") !== -1
-      ? "../catalog.html"
-      : "catalog.html";
-    window.location.href = base + "?search=" + encodeURIComponent(q);
-  }
-
-  searchNode.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      goSearch();
-    }
-  });
-});
-</script>
-  <!-- Always attach your master script.js down here at the very bottom -->
+function recordConfigOption(configKey, userChoice) {
+  fleetConfigurationState[configKey] = userChoice;
   
-  <!-- <script src="script.js"></script> -->
+  if (configKey === 'techBase') {
+    document.getElementById('cfgStep1').classList.add('hidden');
+    document.getElementById('cfgStep2').classList.remove('hidden');
+  } else if (configKey === 'rangeNeed') {
+    document.getElementById('cfgStep2').classList.add('hidden');
+    buildMigrationRecommendation();
+  }
+}
+
+function buildMigrationRecommendation() {
+  const currentBase = fleetConfigurationState.techBase;
+  const rangeTarget = fleetConfigurationState.rangeNeed;
+  
+  let outHeader = "";
+  let outBody = "";
+  let targetUrl = "catalog.html";
+
+  if (rangeTarget === 'wide') {
+    outHeader = "Recommended Deployment Architecture: Wide-Area Cellular PoC";
+    outBody = "To completely break down local frequency limitations without massive capital repeater costs, deploy an IP-routed fleet system. We recommend Hytera PNC Series portables or Icom LTE systems. For mixed-mode fleets, we can bridge your existing Motorola or Kenwood radios into this network natively using a physical Radio over IP (RoIP) gateway module.";
+    targetUrl = "catalog.html?tech=poc";
+  } else {
+    outHeader = "Recommended Deployment Architecture: Phased Digital DMR Upgrade";
+    outBody = "For localized facilities, campuses, or dense structural properties, standard Land Mobile Radio architectures offer complete dedicated on-site control. We advise upgrading older analog elements to high-efficiency digital units from Motorola MOTOTRBO, Kenwood NEXEDGE, or Ritron. Dual-mode systems across Hytera and Icom catalogs allow you to operate cross-fleet communication seamlessly while transitioning at your own pace.";
+    targetUrl = "catalog.html?tech=lmr";
+  }
+
+  // Update DOM Display Interface Nodes
+  document.getElementById('cfgResultHeader').innerText = outHeader;
+  document.getElementById('cfgResultBody').innerText = outBody;
+  document.getElementById('cfgCatalogRouterLink').href = targetUrl;
+  
+  // Display the panel
+  document.getElementById('cfgResultWindow').classList.remove('hidden');
+}
+
+function triggerDirectDealerEmail() {
+  const baseLabel = fleetConfigurationState.techBase === 'analog' ? "Legacy Analog UHF/VHF" : "Narrowband Digital LMR";
+  const rangeLabel = fleetConfigurationState.rangeNeed === 'local' ? "On-Site Facility / Campus Grid" : "Regional or Nationwide Long-Haul";
+  
+  const recipientEmail = "sales@taradio.com"; 
+  const subjectLine = encodeURIComponent("T.A. Radio Communications - Automated Migration Hub Inquiry");
+  
+  const computedBody = encodeURIComponent(
+    `Hello T.A. Radio Sales Team,\n\n` +
+    `I have completed the technical fleet assessment on your website and would like a custom multi-brand system quotation.\n\n` +
+    `[CUSTOMER FLEET PROFILE DATA]:\n` +
+    `• Active Baseline Technology: ${baseLabel}\n` +
+    `• Operational Horizon Boundary: ${rangeLabel}\n\n` +
+    `Please coordinate a technical analysis call to review compatible hardware choices.\n\n` +
+    `Thank you.`
+  );
+
+  window.location.href = `mailto:${recipientEmail}?subject=${subjectLine}&body=${computedBody}`;
+}
+
+// Multi-Brand Deployment Matrix Tracking State Engine
+let customerFleetAssessment = { fleetType: null, coverageGoal: null };
+
+function handleHubSelection(matrixKey, selectionValue) {
+  customerFleetAssessment[matrixKey] = selectionValue;
+  
+  if (matrixKey === 'fleetType') {
+    document.getElementById('hubStep1').classList.add('hidden');
+    document.getElementById('hubStep2').classList.remove('hidden');
+  } else if (matrixKey === 'coverageGoal') {
+    document.getElementById('hubStep2').classList.add('hidden');
+    processFleetDeploymentOutput();
+  }
+}
+
+function processFleetDeploymentOutput() {
+  const currentSetup = customerFleetAssessment.fleetType;
+  const targetRange = customerFleetAssessment.coverageGoal;
+  
+  let headerText = "";
+  let bodyText = "";
+
+  if (targetRange === 'wide') {
+    headerText = "Recommended Path: Nationwide PoC Carrier Deployment";
+    bodyText = "To address wide-area distribution or fleet transit objectives without extensive repeater infrastructure, we recommend deploying a high-efficiency Push-to-Talk over Cellular network. For direct fleet management, we advise implementing Hytera PNC Series LTE terminals or Icom IP Series handheld networks. If you have legacy radios, we can integrate a physical RoIP gateway to loop your LMR components into the wide-area cloud talkgroup.";
+  } else {
+    headerText = "Recommended Path: Phased Narrow-Band Digital LMR Conversion";
+    bodyText = "For single-facility structures or fixed localized boundaries, standard Land Mobile Radio architectures offer complete localized protection. We recommend upgrading old elements to digital tier lines across Motorola MOTOTRBO, Kenwood NEXEDGE, or Ritron systems. Hytera and Icom hardware dual-mode configuration modes will permit cross-communication across legacy analog devices while you complete your timeline transitions.";
+  }
+
+  document.getElementById('hubResultHeader').innerText = headerText;
+  document.getElementById('hubResultBody').innerText = bodyText;
+  document.getElementById('hubResultPane').classList.remove('hidden');
+}
+
+function linkQuizDataToForm() {
+  // If your website features a standard lead capture form field with an ID of "message" or "comments",
+  // this hook will automatically pre-populate it with their selected technology requirements data.
+  const inputMessageField = document.getElementById('message');
+  if (inputMessageField) {
+    inputMessageField.value = `Automated Web Qualification Data: Customer wants to migrate from a [${customerFleetAssessment.fleetType}] setup to a [${customerFleetAssessment.coverageGoal}] operational environment. Requesting custom manufacturer system blueprint quote.`;
+  }
+}
+// =========================================================================
+// UNIFIED GLOBAL SEARCH CONTROLLER LOGIC
+// =========================================================================
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("navbarGlobalSearchInput");
+
+    if (searchInput) {
+        searchInput.addEventListener("keypress", (event) => {
+            // Check if the user pressed the "Enter" key
+            if (event.key === "Enter") {
+                const queryText = searchInput.value.trim();
+
+                if (queryText.length > 0) {
+                    // Redirect the user to your catalog page with the search term as a URL parameter
+                    window.location.href = `catalog.html?search=${encodeURIComponent(queryText)}`;
+                }
+            }
+        });
+    }
+});
+
+</script>
 </body>
 </html>

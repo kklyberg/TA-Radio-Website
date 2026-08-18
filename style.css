@@ -53,62 +53,64 @@ body {
     color: var(--electric-blue);
 }
 
-/* --- THE SEAMLESS HIGH-LUMINOSITY HERO BLENDER ENGINE (CENTERED) --- */
+/* ===== FULL-BLEED HERO BANNER + LIVE TICKER ===== */
 #home.hero-section {
-    background-color: var(--logo-edge-dark) !important;
-    background-image: radial-gradient(
-        circle at center,
-        rgba(10, 14, 20, 0.05) 0%,    
-        rgba(10, 14, 20, 0.45) 50%,   
-        rgba(10, 14, 20, 0.98) 100%   
-    ), 
-    url('tarc-logo1.png');
-    
-    background-repeat: no-repeat !important;
-    background-position: center 62% !important;
-    background-size: min(85vw, 620px) auto !important; 
-    box-shadow: inset 0 -50px 80px rgba(0, 255, 255, 0.12);
-    
-    height: 70vh;
-    display: flex;
-    align-items: flex-start;                    
-    justify-content: center;
-    text-align: center;            /* FIXED: Spatially forces all child headers to center-align automatically */
-    overflow: hidden;
-    padding-top: 35px;
+  position: relative;                          /* CRITICAL for the ticker */
+  background-color: transparent !important;
+  background-image: url('ta-radio-hero-banner.jpg') !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  
+  height: 70vh;
+  min-height: 520px;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-.hero-content {
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;           /* FIXED: Center anchors your text blocks inside your responsive viewport container */
-    justify-content: center;
-    text-align: center;            /* FIXED: Forces perfect symmetry on paragraph rows text wraps */
+/* ===== SCROLLING TICKER ===== */
+.hero-ticker {
+  position: absolute;
+  bottom: 32px;                /* move up/down to sit on the glowing bar */
+  left: 0;
+  width: 100%;
+  height: 46px;
+  overflow: hidden;
+  z-index: 20;
+  background: transparent;
+  pointer-events: none;
 }
 
-.hero-content h1 {
-    font-size: 3.2rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: var(--pure-white);
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95), 0 0 15px rgba(0, 255, 255, 0.4);
-    margin-bottom: 15px;
-    letter-spacing: -0.5px;
-    text-align: center;
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 32s linear infinite;
 }
 
-.hero-content p {
-    font-size: 1.15rem;
-    max-width: 850px;
-    color: #f1f5f9;
-    text-shadow: 0 3px 12px rgba(0, 0, 0, 0.95);
-    font-weight: 500;
-    text-align: center;            /* FIXED: Clean layout symmetry across your glowing logo waveforms */
+.ticker-track span {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #00f0ff;
+  text-shadow: 
+    0 0 6px rgba(0, 240, 255, 0.8),
+    0 0 14px rgba(0, 180, 255, 0.5);
+  white-space: nowrap;
+  padding-right: 80px;
 }
 
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Optional: pause when user hovers */
+.hero-ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
 /* =========================================================================
    CLEAN COCKPIT MARKETPLACE GRID & ACCESSORY PILLS (PART 2)
    ========================================================================= */

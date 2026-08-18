@@ -164,6 +164,32 @@
     }
 
 function initializeUniversalShowroomRoute() {
+// Add this check directly where your dynamic catalog parsing script initializes
+const structuralParams = new URLSearchParams(window.location.search);
+const activeQueryBrand = structuralParams.get('brand'); // e.g. "hytera"
+const activeQueryTech = structuralParams.get('tech');   // e.g. "poc" or "lmr"
+
+function applyDynamicDealerFilters(originalProductArray) {
+  let computationalArray = originalProductArray;
+
+  // Intercept and isolate by manufacturer choice
+  if (activeQueryBrand) {
+    computationalArray = computationalArray.filter(product => 
+      product.brand.toLowerCase() === activeQueryBrand.toLowerCase()
+    );
+  }
+
+  // Intercept and isolate by system communication protocol choice
+  if (activeQueryTech) {
+    computationalArray = computationalArray.filter(product => 
+      product.technology.toLowerCase() === activeQueryTech.toLowerCase()
+    );
+  }
+
+  // Pass filtered array downward to build your standard catalog display grid items
+  renderGridDisplayCards(computationalArray);
+}
+
   const params = new URLSearchParams(window.location.search);
   const passedBrand = (params.get("brand") || "kenwood").toLowerCase().trim();
   activeRouteBrandToken = passedBrand;

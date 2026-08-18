@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why PoC Is Replacing Traditional Two-Way Radios | TARC Communications</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="data:,">
+    <style>
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; background-color: #ffffff; min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.1); z-index: 2000; border-top: 3px solid #0b5eb4; border-radius: 0 0 4px 4px;
+        }
+        .dropdown-content a {
+            color: #0e1a24; padding: 12px 16px; text-decoration: none; display: block; font-weight: 700; font-size: 0.88rem; text-align: left; border-bottom: 1px solid #f1f5f9;
+        }
+        .dropdown-content a:hover { background-color: #f8fafc; color: #0b5eb4; }
+        .dropdown:hover .dropdown-content { display: block !important; }
+
+        /* ===== HERO BANNER ===== */
+        .hero-banner {
+            background: linear-gradient(90deg, #0a1a2f 0%, #0f2540 45%, #05080f 100%);
+            color: white;
+            height: 380px;
+            overflow: hidden;
+            margin-bottom: 50px;
+        }
+        .hero-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 48% 52%;   /* Slightly more room for logo */
+            gap: 20px;
+            align-items: center;
+        }
+        .hero-logo-wrap {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+        .hero-logo {
+            height: 100%;                 /* Full height */
+            width: auto;                  /* Keep natural width */
+            max-width: 100%;
+            object-fit: contain;          /* No cropping of the logo itself */
+            object-position: left center; /* Anchored to left edge */
+            filter: drop-shadow(0 0 50px rgba(0, 245, 255, 0.55));
+        }
+        .hero-content h1 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin: 0 0 18px 0;
+        }
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 28px;
+            max-width: 480px;
+        }
+        .hero-btns a {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-right: 12px;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: #00f5ff;
+            color: #0e1a24;
+        }
+        .btn-primary:hover {
+            background: #22d3ee;
+        }
+        .btn-secondary {
+            border: 2px solid rgba(255,255,255,0.6);
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Article Styles */
+        .article-content h2 { color: #0e1a24; font-size: 1.55rem; font-weight: 800; margin: 40px 0 16px 0; }
+        .article-content h3 { color: #0b5eb4; font-size: 1.2rem; font-weight: 700; margin: 28px 0 12px 0; }
+        .article-content p { color: #334155; font-size: 1.05rem; line-height: 1.7; margin-bottom: 18px; }
+        .article-content ul { margin: 0 0 24px 0; padding-left: 0; list-style: none; }
+        .article-content li { position: relative; padding-left: 28px; margin-bottom: 12px; color: #334155; font-size: 1.02rem; line-height: 1.6; }
+        .article-content li:before { content: "\f058"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: #16a34a; position: absolute; left: 0; top: 2px; }
+        .benefit-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 28px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); transition: transform 0.2s; }
+        .benefit-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+        .cta-box { background: linear-gradient(135deg, #0b5eb4 0%, #0e1a24 100%); color: white; border-radius: 12px; padding: 40px; text-align: center; margin-top: 50px; }
+
+        @media (max-width: 900px) {
+            .hero-banner { height: auto; padding: 40px 0; }
+            .hero-inner { grid-template-columns: 1fr; text-align: center; height: auto; }
+            .hero-logo-wrap { height: 300px; justify-content: center; }
+            .hero-logo { height: 100%; width: auto; object-fit: contain; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-btns a { margin-bottom: 12px; }
+        }
+    </style>
+</head>
+<body style="padding-top: 110px; background-color: #f8fafc; margin: 0; font-family: 'Segoe UI', system-ui, sans-serif;">
+
+    <!-- =========================================================================
+         FIXED MASTER UNIFIED SYSTEM HEADER
+         ========================================================================= -->
+    <header class="main-header" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.08); background-color: #ffffff !important; border-bottom: 3px solid #0b5eb4; display: flex; flex-direction: column;">
+        
+        <!-- Top Metadata Ribbon -->
+        <div style="background-color: #0e1a24; color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 600; padding: 8px 0; border-bottom: 1px solid rgba(11, 94, 180, 0.3); width: 100%;">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; box-sizing: border-box;">
+                <div><i class="fa-solid fa-location-dot" style="color: #00FF66; margin-right: 4px;"></i> 30+ Years of Certified Wireless Expertise | 700 S John Rodes Blvd, Melbourne, FL 32904</div>
+                <div><a href="tel:3217254824" style="color: #00FFFF; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 600;"><i class="fa-solid fa-phone-volume"></i> (321) 725-4824</a></div>
+            </div>
+        </div>
+        
+        <!-- Main Interactive Navigation Track -->
+        <div style="padding: 12px 0; width: 100%; background-color: #ffffff !important; box-sizing: border-box;">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
+                
+                <!-- Logo Node Block -->
+                <div class="logo">
+                    <img src="tarc-logo.png" alt="Company Logo" style="height: 50px; width: auto; display: block; cursor: pointer;" onclick="window.location.href='index.html';">
+                </div>
+                
+                <!-- Main Controls Anchors Group -->
+                <nav class="nav-links" style="display: flex; align-items: center; flex-wrap: wrap;">
+                    <a href="index.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Home</a>
+                    
+                    <!-- Multi-Brand Showrooms Interactive Layer -->
+                    <div class="dropdown" style="margin-left: 20px;">
+                        <a href="#" style="color: #0e1a24; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 4px;">
+                            Brand Showrooms <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; color:#0b5eb4;"></i>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="catalog.html?brand=kenwood"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Kenwood Catalog</a>
+                            <a href="catalog.html?brand=icom"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Icom Catalog</a>
+                            <a href="catalog.html?brand=hytera"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Hytera Catalog</a>
+                            <a href="catalog.html?brand=motorola"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Motorola Catalog</a>
+                            <a href="catalog.html?brand=ritron"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Ritron Catalog</a>
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- =========================================================================
+         HERO SECTION COVER BLOCK 
+         ========================================================================= -->
+    <section class="hero-banner">
+        <div class="hero-inner">
+            <div class="hero-logo-wrap">
+                <img src="tarc-logo.png" alt="TARC Wireless" class="hero-logo">
+            </div>
+            <div class="hero-content">
+                <h1>Why PoC Is Replacing Traditional Two-Way Radios</h1>
+                <p>Bypass physical infrastructure limits, frequency coordination rules, and local range coverage boundaries with nationwide Push-to-Talk over Cellular systems.</p>
+                <div class="hero-btns">
+                    <a href="catalog.html?tech=poc" class="btn-primary">Browse PoC Hardware</a>
+                    <a href="#article" class="btn-secondary">Read System Analysis</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         START OF ARTICLE ENGINE SPACE
+         ========================================================================= -->
+    <main id="article" class="max-w-4xl mx-auto px-4 py-8 article-content">
+
+        
+        <div style="margin-bottom: 20px;">
+            <span style="color: #0b5eb4; font-size: 0.75rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;">
+                <i class="fa-solid fa-tower-cell"></i> Push-to-Talk over Cellular
+            </span>
+        </div>
+
+        <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 35px;">
+            Updated August 2026 · 5 min read
+        </p>
+
+        <div class="article-content">
+
+            <p>
+                Instant group communication has always been the goal. For decades, conventional two-way radios delivered that capability for construction teams, logistics fleets, public safety, and field service crews. As operations spread across cities and counties, however, the physical limits of radio systems — range, repeaters, licensing, and capital cost — become harder to justify.
+            </p>
+
+            <p>
+                Push-to-Talk over Cellular (PoC) solves many of those constraints by moving the same one-to-many, button-press experience onto the 4G/LTE and 5G networks that already blanket most of the country.
+            </p>
+
+            <h2>What Exactly Is PoC?</h2>
+            <p>
+                PoC keeps the familiar radio workflow — press a button and talk to an entire group instantly — but carries the voice traffic as data over cellular and Wi-Fi instead of dedicated radio frequencies. There is no need for your own towers, repeaters, or frequency licenses. Coverage simply follows the commercial cellular footprint.
+            </p>
+
+            <h2>Four Practical Advantages Driving the Shift</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr; gap: 22px; margin: 30px 0;">
+
+                <div class="benefit-card">
+                    <h3 style="margin-top:0;"><i class="fa-solid fa-globe" style="margin-right:8px;"></i> Coverage That Travels With the Team</h3>
+                    <p style="margin-bottom:0;">
+                        Traditional radio range is measured in miles from the nearest repeater. PoC range is measured by cellular coverage. Crews can stay connected from Melbourne to Jacksonville, across the state, or even into neighboring states without adding infrastructure.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3 style="margin-top:0;"><i class="fa-solid fa-dollar-sign" style="margin-right:8px;"></i> Predictable Operating Costs</h3>
+                    <p style="margin-bottom:0;">
+                        Building a private radio system requires capital for hardware, site leases, and licenses, plus ongoing maintenance. PoC typically uses a monthly subscription model. Organizations convert a large upfront expense into a steady operational cost that scales with headcount.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3 style="margin-top:0;"><i class="fa-solid fa-toolbox" style="margin-right:8px;"></i> Features Built for Modern Work</h3>
+                    <p style="margin-bottom:0;">
+                        Professional PoC devices commonly include GPS location tracking, photo and form sharing, emergency Man-Down and Lone Worker alerts, and strong noise cancellation — tools that help dispatch, safety, and accountability without extra hardware.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3 style="margin-top:0;"><i class="fa-solid fa-car" style="margin-right:8px;"></i> Safer, Compliant Operation for Drivers</h3>
+                    <p style="margin-bottom:0;">
+                        Many commercial drivers cannot legally hold a phone while the vehicle is moving. Purpose-built PoC radios with physical PTT buttons and external microphones keep communication hands-free and help fleets stay aligned with safety rules.
+                    </p>
+                </div>
+
+            </div>
+
+            <h2>When Traditional Radio Still Makes Sense</h2>
+            <p>
+                Conventional two-way radios remain the better choice in deep rural or underground locations where cellular service is unreliable or nonexistent. They also require no monthly data plan and can operate completely independently of commercial networks. Many organizations therefore keep a hybrid approach: traditional radios for the local job site and PoC for wide-area coordination.
+            </p>
+
+            <h2>Who Benefits Most From PoC?</h2>
+            <ul>
+                <li>Logistics and distribution fleets that cross multiple counties or states</li>
+                <li>Field service companies (HVAC, electrical, plumbing) with crews spread across Central Florida</li>
+                <li>School districts and campus security teams covering several locations</li>
+                <li>Construction and infrastructure projects that move from site to site</li>
+                <li>Any operation that needs GPS visibility and group messaging in addition to voice</li>
+            </ul>
+
+            <h2>How T.A.Radio Can Help</h2>
+            <p>
+                T.A.Radio Communications has spent more than three decades designing wireless systems for Florida organizations. We evaluate coverage needs, recommend the right mix of PoC devices and traditional radios, and handle deployment so your team can start talking on day one.
+            </p>
+
+            <p>
+                Whether you need a pure PoC solution, an interoperability gateway that links cellular users to existing radio talkgroups, or a full system design, we can walk you through the options.
+            </p>
+
+            <!-- CTA Box -->
+            <div class="cta-box">
+                <h2 style="color:white; margin:0 0 12px 0; font-size:1.8rem;">Ready to Expand Coverage Without Adding Towers?</h2>
+                <p style="color:rgba(255,255,255,0.9); font-size:1.1rem; margin-bottom:28px;">
+                    Schedule a no-obligation consultation and see how PoC can fit your operation.
+                </p>
+                <a href="tel:3217254824" style="display:inline-block; background:#00FF66; color:#0e1a24; font-weight:800; padding:14px 32px; border-radius:50px; text-decoration:none; margin-right:12px;">
+                    <i class="fa-solid fa-phone"></i> (321) 725-4824
+                </a>
+                <a href="poc.html" style="display:inline-block; background:transparent; color:white; font-weight:700; padding:14px 32px; border-radius:50px; border:2px solid white; text-decoration:none;">
+                    Explore PoC Options
+                </a>
+            </div>
+
+        </div>
+    </main>
+<script>
+// Interactive Architecture Blueprint Component Model State Control Loop
+function setVisualizerTrack(modeTrackKey) {
+  // Capture targeting element node references
+  const btnLmr = document.getElementById('btn-toggle-lmr');
+  const btnPoc = document.getElementById('btn-toggle-poc');
+  
+  const visTitle = document.getElementById('vis-title');
+  const visDesc = document.getElementById('vis-description');
+  const visMetRange = document.getElementById('vis-metric-range');
+  const visMetInfra = document.getElementById('vis-metric-infra');
+  
+  const visIcon = document.getElementById('vis-center-icon');
+  const visCenterLbl = document.getElementById('vis-center-lbl');
+  const visCenterDesc = document.getElementById('vis-center-desc');
+  
+  const visTargetTitle = document.getElementById('vis-target-title');
+  const visTargetBody = document.getElementById('vis-target-body');
+  const visActionLink = document.getElementById('vis-action-link');
+
+  // Set Manufacturer Card Variables to modify border styles based on selection matrix
+  const cardsLmrOnly = ['card-motorola', 'card-kenwood', 'card-ritron'];
+  const badgesDual = ['badge-hytera', 'badge-icom'];
+
+  if (modeTrackKey === 'poc') {
+    // 1. Shift Style Controls of Navigation Switches
+    btnLmr.className = "px-4 py-2 text-xs font-black uppercase rounded tracking-wider text-slate-400 hover:text-white transition-all duration-200 cursor-pointer";
+    btnPoc.className = "px-4 py-2 text-xs font-black uppercase rounded tracking-wider bg-cyan-600 text-white transition-all duration-200 shadow cursor-pointer";
+
+    // 2. Modify Informational Content Nodes (Left Block)
+    visTitle.innerText = "Push-to-Talk Over Cellular (PoC)";
+    visDesc.innerText = "Converts physical voice into cloud-routed IP data packets. Signals stream instantly across standard commercial 4G LTE/5G network infrastructure grids and Wi-Fi configurations, removing on-premise hardware constraints, private towers, and site licensing maps.";
+    visMetRange.innerText = "Nationwide / Multi-City";
+    visMetInfra.innerText = "Cellular Grids / Cloud";
+
+    // 3. Update Center Graphic Node Values
+    visIcon.className = "fa-solid fa-cloud text-lg text-cyan-500 transition-all duration-300";
+    visCenterLbl.innerText = "LTE IP Carrier Infrastructure";
+    visCenterDesc.innerText = "Cloud routing systems hosting real-time push-to-talk streams across cellular provider networks.";
+
+    // 4. Update Target Output Block Options
+    visTargetTitle.innerText = "Logistics, Mobile Fleets, & Distribution";
+    visTargetBody.innerText = "Optimized for distribution frameworks, interstate commerce tracking, state-wide field operations, and regional service networks.";
+    visActionLink.href = "catalog.html?tech=poc";
+    visActionLink.className = "inline-flex items-center justify-center w-full sm:w-auto bg-cyan-600 text-white text-[10px] font-black uppercase tracking-wider py-2 px-3 rounded shadow hover:bg-cyan-500 transition";
+
+    // 5. De-emphasize LMR-Only manufacturers and light up PoC assets
+    cardsLmrOnly.forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.className = "p-3 bg-slate-950/40 border border-slate-900 rounded opacity-40 shadow-none flex items-center justify-between";
+    });
+    badgesDual.forEach(id => {
+      const el = document.getElementById(id);
+      if(el) { el.innerText = "PoC Active"; el.className = "text-[9px] font-black bg-cyan-500 text-slate-950 px-2 py-0.5 rounded tracking-wide uppercase"; }
+    });
+
+  } else {
+    // 1. Shift Style Controls back to Digital LMR mode
+    btnLmr.className = "px-4 py-2 text-xs font-black uppercase rounded tracking-wider bg-[#0b5eb4] text-white transition-all duration-200 shadow cursor-pointer";
+    btnPoc.className = "px-4 py-2 text-xs font-black uppercase rounded tracking-wider text-slate-400 hover:text-white transition-all duration-200 cursor-pointer";
+
+    // 2. Restore Informational Content Nodes (Left Block)
+    visTitle.innerText = "Narrowband Digital LMR Grid";
+    visDesc.innerText = "Operating via local physical radio frequencies (VHF/UHF bands). This system tier utilizes high-efficiency TDMA/FDMA protocols to split operational voice lines, delivering pristine audio boundaries across localized physical facilities and structures without reliance on external cellular towers.";
+    visMetRange.innerText = "Fixed Local Site";
+    visMetInfra.innerText = "Repeaters / Antennas";
+
+    // 3. Restore Center Graphic Node Values
+    visIcon.className = "fa-solid fa-tower-broadcast text-lg text-[#0b5eb4] transition-all duration-300";
+    visCenterLbl.innerText = "RF Direct Links";
+    visCenterDesc.innerText = "Localized base station configurations handling frequency distribution logic parameters.";
+
+    // 4. Restore Target Output Block Options
+    visTargetTitle.innerText = "Campus Security & Plant Grids";
+    visTargetBody.innerText = "Directly targeted for local operations environments, building frameworks, processing centers, or private municipal campus footprints.";
+    visActionLink.href = "catalog.html?tech=lmr";
+    visActionLink.className = "inline-flex items-center justify-center w-full sm:w-auto bg-[#0b5eb4] text-white text-[10px] font-black uppercase tracking-wider py-2 px-3 rounded shadow hover:bg-blue-600 transition";
+
+    // 5. Restore full visibility to all 5 brands for LMR mode
+    cardsLmrOnly.forEach(id => {
+      const el = document.getElementById(id);
+      if(el) el.className = "p-3 bg-slate-950 border border-slate-800 rounded transition duration-200 shadow-sm flex items-center justify-between";
+    });
+    badgesDual.forEach(id => {
+      const el = document.getElementById(id);
+      if(el) { el.innerText = "Dual Capable"; el.className = "text-[9px] font-black bg-cyan-500 text-slate-950 px-2 py-0.5 rounded tracking-wide uppercase"; }
+    });
+  }
+}
+</script>
+    <!-- Footer -->
+    <footer style="background:#0e1a24; color:#94a3b8; padding:40px 20px; margin-top:40px; text-align:center; font-size:0.9rem;">
+        <p style="margin:0 0 8px 0;">© 2026 TARC Communications · Melbourne, FL</p>
+        <p style="margin:0;">30+ Years of Certified Wireless Expertise</p>
+    </footer>
+
+</body>
+</html>

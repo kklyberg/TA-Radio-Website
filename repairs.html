@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certified Depot Component Repair | T.A. Radio Communications</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Essential Cleaned Brand Showrooms Dropdown Layout */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; top: 100%; left: 0; background-color: #ffffff; min-width: 210px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12); z-index: 2000; border-top: 3px solid #0b5eb4; border-radius: 0 0 6px 6px; overflow: hidden;
+        }
+        .dropdown-content a {
+            color: #0e1a24; padding: 12px 16px; text-decoration: none; display: block; font-weight: 700; font-size: 0.88rem;
+            border-bottom: 1px solid #f1f5f9; transition: background 0.15s ease;
+        }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: #f0f7ff; color: #0b5eb4; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* Premium Sales Component Repair Hero Overlay */
+        .repair-hero {
+            position: relative; width: 100%; height: 50vh; min-height: 400px;
+            background-image: linear-gradient(to right, rgba(14, 26, 36, 0.95) 40%, rgba(14, 26, 36, 0.4) 100%), url('images/repair.png');
+            background-size: cover; background-position: center center; background-repeat: no-repeat;
+            display: flex; align-items: center; color: #ffffff;
+        }
+    </style>
+</head>
+<body style="margin:0; padding-top:110px; background:#f8fafc; font-family:'Segoe UI', system-ui, sans-serif;">
+
+    <!-- =========================================================================
+         FIXED MASTER UNIFIED SYSTEM HEADER
+         ========================================================================= -->
+    <header class="main-header" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.08); background-color: #ffffff !important; border-bottom: 3px solid #0b5eb4; display: flex; flex-direction: column;">
+        <div style="background-color: #0e1a24; color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 600; padding: 8px 0; border-bottom: 1px solid rgba(11, 94, 180, 0.3); width: 100%;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; box-sizing: border-box;">
+                <div><i class="fa-solid fa-location-dot" style="color: #00FF66; margin-right: 4px;"></i> 30+ Years of Certified Wireless Expertise | 700 S John Rodes Blvd, Melbourne, FL 32904</div>
+                <div><a href="tel:3217254824" style="color: #00FFFF; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 600;"><i class="fa-solid fa-phone-volume"></i> (321) 725-4824</a></div>
+            </div>
+        </div>
+        <div style="padding: 12px 0; width: 100%; background-color: #ffffff !important; box-sizing: border-box;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; gap: 20px; box-sizing: border-box;">
+                <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
+                    <img src="tarc-logo.png" alt="T.A. Logo" style="height: 52px; width: auto; display: block; cursor: pointer;" onclick="window.location.href='index.html';">
+                    <div style="text-align: left; line-height: 1.15;">
+                        <h1 style="margin: 0; font-size: 1.15rem; font-weight: 900; color: #0e1a24; text-transform: uppercase; letter-spacing: -0.3px;">T.A. Radio</h1>
+                        <span style="font-size: 0.72rem; color: #0b5eb4; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; display: block; margin-top: 1px;">Communications</span>
+                    </div>
+                </div>
+                <div style="flex: 1; max-width: 420px; position: relative; display: flex; align-items: center;">
+                    <input type="text" id="navbarGlobalSearchInput" placeholder="Search models, brands, accessories..." style="width: 100%; padding: 8px 35px 8px 12px; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 0.85rem; color: #0e1a24; box-sizing: border-box; background: #f8fafc; transition: all 0.2s ease;">
+                    <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 12px; color: #94a3b8; font-size: 0.85rem; pointer-events: none;"></i>
+                </div>
+                <nav class="nav-links" style="display: flex; align-items: center; flex-shrink: 0;">
+                    <a href="index.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Home</a>
+                    <div class="dropdown" style="margin-left: 20px;">
+                        <a href="#" style="color: #0b5eb4; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 4px;">Brand Showrooms <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; color:#0b5eb4;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="catalog.html?brand=kenwood"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Kenwood Catalog</a>
+                            <a href="catalog.html?brand=icom"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Icom Catalog</a>
+                            <a href="catalog.html?brand=hytera"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Hytera Catalog</a>
+                            <a href="catalog.html?brand=motorola"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Motorola Catalog</a>
+                            <a href="catalog.html?brand=ritron"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Ritron Catalog</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- =========================================================================
+         HIGH-CONVERTING COMPONENT REPAIR HERO SECTION
+         ========================================================================= -->
+    <section class="repair-hero">
+        <div style="max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 20px; box-sizing: border-box;">
+            <div style="max-width: 580px;">
+                <span style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: #00f5ff; letter-spacing: 1.5px; display: block; margin-bottom: 8px;">Certified Depot Support</span>
+                <h2 style="font-size: 2.5rem; font-weight: 900; text-transform: uppercase; line-height: 1.15; margin: 0 0 15px 0; tracking: -0.5px;">Component-Level Radio Repair Bench</h2>
+                <p style="font-size: 1.05rem; color: #cbd5e1; margin: 0 0 25px 0; line-height: 1.5; font-weight: 500;">Stop writing off broken wireless hardware. Our elite technicians diagnose, align, and repair complex infrastructure down to the board level.</p>
+                <a href="#repair-sales-pitch" style="background-color: #0b5eb4; color: #ffffff; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; text-decoration: none; padding: 14px 28px; border-radius: 4px; display: inline-flex; align-items: center; gap: 8px; border-bottom: 3px solid #084382; transition: background 0.15s ease;">
+                    Review Repair Bench Capabilities <i class="fa-solid fa-angle-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- =========================================================================
+         REPAIR DEPOT PERSUASIVE COMMERCIAL SALES GRID
+         ========================================================================= -->
+    <main id="repair-sales-pitch" style="max-width: 1200px; margin: 0 auto; padding: 70px 20px; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif;">
+        
+        <!-- Section Header Text -->
+        <div style="margin-bottom: 50px; text-align: left; border-left: 5px solid #0b5eb4; padding-left: 15px;">
+            <h3 style="font-size: 1.8rem; font-weight: 900; color: #0e1a24; text-transform: uppercase; margin: 0 0 8px 0; tracking: -0.3px;">
+                Minimize Fleet Downtime. Protect Capital Investments.
+            </h3>
+            <p style="font-size: 1rem; color: #475569; line-height: 1.5; margin: 0; max-width: 800px; font-weight: 500;">
+                Equipment failures destroy operational safety margins and drag down enterprise efficiency. Instead of writing off failing assets, protect your initial capital investment by routing devices through our certified technical test facility.
+            </p>
+        </div>
+
+        <!-- Conversion Layout Columns Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; align-items: start;">
+            
+            <!-- Left Side: Value Propositions & Differentiators List -->
+            <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 35px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                <h4 style="font-size: 1.1rem; font-weight: 800; color: #0e1a24; text-transform: uppercase; margin: 0 0 25px 0; border-b: 2px solid #f1f5f9; padding-bottom: 10px;">
+                    Our Field Bench Specializations
+                </h4>
+                
+                <ul style="margin: 0; padding: 0; list-style: none;">
+                    <li style="margin-bottom: 24px; position: relative; padding-left: 35px; font-size: 0.95rem; line-height: 1.5; color: #334155;">
+                        <i class="fa-solid fa-circle-check" style="color: #16a34a; font-size: 1.2rem; position: absolute; left: 0; top: 2px;"></i>
+                        <strong style="color: #0e1a24; display: block; font-weight: 700; text-transform: uppercase; font-size: 0.88rem; margin-bottom: 2px;">Component-Level Debugging</strong>
+                        We isolate faulty microchips, processors, diodes, and capacitors. Our technicians repair logic boards and internal circuits directly rather than swapping expensive module decks.
+                    </li>
+                    <li style="margin-bottom: 24px; position: relative; padding-left: 35px; font-size: 0.95rem; line-height: 1.5; color: #334155;">
+                        <i class="fa-solid fa-circle-check" style="color: #16a34a; font-size: 1.2rem; position: absolute; left: 0; top: 2px;"></i>
+                        <strong style="color: #0e1a24; display: block; font-weight: 700; text-transform: uppercase; font-size: 0.88rem; margin-bottom: 2px;">Precision Alignment &amp; Tuning</strong>
+                        Over time, frequencies drift. We re-tune transmitters, align voltage-controlled oscillators, and recalibrate filters to bring devices back to absolute OEM performance benchmarks.
+                    </li>
+                    <li style="margin-bottom: 0; position: relative; padding-left: 35px; font-size: 0.95rem; line-height: 1.5; color: #334155;">
+                        <i class="fa-solid fa-circle-check" style="color: #16a34a; font-size: 1.2rem; position: absolute; left: 0; top: 2px;"></i>
+                        <strong style="color: #0e1a24; display: block; font-weight: 700; text-transform: uppercase; font-size: 0.88rem; margin-bottom: 2px;">OEM Factory Spare Parts Matrix</strong>
+                        We maintain an expansive stock of authentic components for all five major manufacturers: Motorola, Kenwood, Hytera, Icom, and Ritron, protecting your device performance warranties.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Right Side: Inbound Action Procurement Ticket Form Trigger -->
+            <div style="background-color: #0e1a24; border-radius: 8px; padding: 40px; color: #ffffff; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div style="width: 60px; height: 60px; background-color: rgba(11, 94, 180, 0.2); border: 2px solid #0b5eb4; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; color: #00f5ff;">
+                        <i class="fa-solid fa-file-invoice" style="font-size: 1.5rem;"></i>
+                    </div>
+                    <h4 style="font-size: 1.25rem; font-weight: 900; text-transform: uppercase; margin: 0; tracking: 0.5px;">Initialize Repair Ticket</h4>
+                    <p style="font-size: 0.82rem; color: #94a3b8; margin-top: 6px; line-height: 1.4;">
+                        Pre-qualify your fleet assets directly with our service center. Clicking below routes your technical repair request instantly to our sales desk.
+                    </p>
+                </div>
+
+                <!-- Structured Technical Selection Dropdowns Frame -->
+                <div style="margin-bottom: 24px;">
+                    <label style="display: block; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; tracking: 1px; color: #cbd5e1; margin-bottom: 8px;">Select Equipment Manufacturer Track</label>
+                    <select id="repair-brand-select" style="width: 100%; padding: 12px; border-radius: 4px; background-color: #1e293b; border: 1px solid #334155; color: #ffffff; font-size: 0.85rem; font-weight: 700; outline: none; cursor: pointer;">
+                        <option value="Hytera">Hytera Authorized Portfolio</option>
+                        <option value="Motorola">Motorola MOTOTRBO Systems</option>
+                        <option value="Kenwood">Kenwood NEXEDGE Line</option>
+                        <option value="Icom">Icom IC/IDAS Platforms</option>
+                        <option value="Ritron">Ritron Wireless Systems</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <label style="display: block; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; tracking: 1px; color: #cbd5e1; margin-bottom: 8px;">Estimate Asset Quantity</label>
+                    <select id="repair-qty-select" style="width: 100%; padding: 12px; border-radius: 4px; background-color: #1e293b; border: 1px solid #334155; color: #ffffff; font-size: 0.85rem; font-weight: 700; outline: none; cursor: pointer;">
+                        <option value="1-5 Devices">Single Fleet Segment (1-5 Radios)</option>
+                        <option value="6-20 Devices">Medium Operation Group (6-20 Radios)</option>
+                        <option value="21+ Devices">Enterprise Infrastructure Lot (21+ Radios)</option>
+                    </select>
+                </div>
+
+                <!-- Dynamic Email Router Execution Action Key -->
+                <button type="button" onclick="executeSalesBenchForm()" style="width: 100%; padding: 14px; background-color: #0b5eb4; border: none; border-radius: 4px; color: #ffffff; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; tracking: 1px; border-bottom: 3px solid #084382; cursor: pointer; transition: all 0.15s ease;" onmouseover="this.style.backgroundColor='#126ccf'" onmouseout="this.style.backgroundColor='#0b5eb4'">
+                    Email Technical Data For Quote &rarr;
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- =========================================================================
+         AUTOMATED INBOUND SALES PROCUREMENT SCRIPT CONTROLLER
+         ========================================================================= -->
+    <script>
+        function executeSalesBenchForm() {
+            const brandVal = document.getElementById('repair-brand-select').value;
+            const qtyVal = document.getElementById('repair-qty-select').value;
+            
+            const targetDealerMail = "sales@taradio.com";
+            const computedSubject = encodeURIComponent(`T.A. Radio Depot Bench Repair Evaluation Request - ${brandVal}`);
+            
+            const detailedEmailContent = encodeURIComponent(
+                `Hello T.A. Radio Communications Repair Desk,\n\n` +
+                `I am reviewing my service alternatives and would like to coordinate a component-level diagnostics evaluation for my wireless fleet.\n\n` +
+                `[FLEET TECHNICAL SERVICE DATA]:\n` +
+                `• Equipment Manufacturer: ${brandVal}\n` +
+                `• Estimated Batch Volume: ${qtyVal}\n\n` +
+                `Please get back to me with our service intake ticket coordinates and shipping criteria.\n\n` +
+                `Thank you.`
+            );
+
+            // Trigger the mail app wrapper seamlessly
+            window.location.href = `mailto:${targetDealerMail}?subject=${computedSubject}&body=${detailedEmailContent}`;
+        }
+		// =========================================================================
+// UNIFIED GLOBAL SEARCH CONTROLLER LOGIC
+// =========================================================================
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("navbarGlobalSearchInput");
+
+    if (searchInput) {
+        searchInput.addEventListener("keypress", (event) => {
+            // Check if the user pressed the "Enter" key
+            if (event.key === "Enter") {
+                const queryText = searchInput.value.trim();
+
+                if (queryText.length > 0) {
+                    // Redirect the user to your catalog page with the search term as a URL parameter
+                    window.location.href = `catalog.html?search=${encodeURIComponent(queryText)}`;
+                }
+            }
+        });
+    }
+});
+
+    </script>
+
+</body>
+</html>
