@@ -1,0 +1,12 @@
+Radio_Type,Transmission_Type,Radio_Model,Accessory_Type,Accessory_Part_Number,Accessory_Description,Compatible
+Portable,NEXEDGE/DMR,"NX-5200, NX-200(G), NX-210(G), NX-220, NX-240, NX-230EX, TK-D200(G), TK-D240 etc.",Antenna,KRA-22,VHF Helical Antenna (short type),X
+Portable,NEXEDGE/DMR,"NX-5300, NX-300(G), NX-410 etc.",Antenna,KRA-23,UHF Helical Antenna (short type),X
+Portable,NEXEDGE/DMR,Various NX-2xx/3xx,Antenna,KRA-26,VHF Helical Antenna (Capless),X
+Portable,NEXEDGE/DMR,Various NX-2xx/3xx,Antenna,KRA-27,UHF Whip Antenna (Capless),X
+Mobile,NEXEDGE,NX-700H/720H etc.,Antenna,KRA-32,700/800MHz Whip Antenna,X
+Mobile,NEXEDGE,NX-800H/820H etc.,Antenna,KRA-38,800/900MHz Whip Antenna,X
+Portable,NEXEDGE/DMR,Various,Antenna,KRA-41,VHF Stubby Antenna,X
+Portable,NEXEDGE/DMR,Various,Antenna,KRA-42,UHF Stubby Antenna,X
+Portable,NEXEDGE (GPS),NX-xxxG models,Antenna,KRA-43G,VHF Helical Antenna (GPS included),X
+Portable,NEXEDGE (GPS),NX-xxxG models,Antenna,KRA-44G,UHF Helical Antenna (GPS included),X
+Portable (GPS),NEXEDGE,Type G models,Antenna,KRA-40G,GPS Antenna,X (Only Type G)

@@ -1,0 +1,267 @@
+<!-- ========== ANALOG vs TDMA vs FDMA – WAVEFORM / SPECTRUM VIEW ========== -->
+<style>
+  .wave-wrap {
+    max-width: 920px;
+    margin: 30px auto;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #ffffff;
+    border: 2px solid #0e1a24;
+    border-top: 5px solid #0b5eb4;
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(14,26,36,0.08);
+    overflow: hidden;
+  }
+  .wave-header {
+    background: #0e1a24;
+    color: white;
+    padding: 16px 22px;
+  }
+  .wave-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+  .wave-header span {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .wave-body {
+    padding: 20px 18px 10px;
+  }
+  .wave-section {
+    margin-bottom: 22px;
+  }
+  .wave-label {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .wave-label .tag {
+    font-size: 0.7rem;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-weight: 700;
+  }
+  .tag-analog { background: #ffedd5; color: #9a3412; }
+  .tag-tdma   { background: #dbeafe; color: #1e40af; }
+  .tag-fdma   { background: #dcfce7; color: #166534; }
+  canvas.wave-canvas {
+    width: 100%;
+    height: 110px;
+    display: block;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+  }
+  .wave-note {
+    margin: 8px 18px 20px;
+    padding: 13px 15px;
+    background: #f8fafc;
+    border-left: 4px solid #0b5eb4;
+    font-size: 0.86rem;
+    color: #334155;
+    line-height: 1.5;
+  }
+</style>
+
+<div class="wave-wrap">
+  <div class="wave-header">
+    <h2>Analog vs TDMA vs FDMA</h2>
+    <span>How the RF channel is used — Waveform & Spectrum View</span>
+  </div>
+
+  <div class="wave-body">
+
+    <!-- ANALOG -->
+    <div class="wave-section">
+      <div class="wave-label">
+        Analog FM
+        <span class="tag tag-analog">1 Voice Path</span>
+      </div>
+      <canvas id="canvasAnalog" class="wave-canvas"></canvas>
+    </div>
+
+    <!-- TDMA -->
+    <div class="wave-section">
+      <div class="wave-label">
+        TDMA (DMR style)
+        <span class="tag tag-tdma">2 Voice Paths – Time Slots</span>
+      </div>
+      <canvas id="canvasTdma" class="wave-canvas"></canvas>
+    </div>
+
+    <!-- FDMA -->
+    <div class="wave-section">
+      <div class="wave-label">
+        FDMA (NXDN / 6.25 kHz)
+        <span class="tag tag-fdma">2 Voice Paths – Frequency Split</span>
+      </div>
+      <canvas id="canvasFdma" class="wave-canvas"></canvas>
+    </div>
+
+  </div>
+
+  <div class="wave-note">
+    <strong>How to read the diagrams:</strong><br>
+    • <strong>Analog</strong> – continuous signal occupies the full channel the entire time (one conversation).<br>
+    • <strong>TDMA</strong> – same frequency is shared by taking turns in short time slots (Slot 1 / Slot 2).<br>
+    • <strong>FDMA</strong> – the 12.5 kHz channel is split into two narrower 6.25 kHz channels that can be used at the same time.
+  </div>
+</div>
+
+<script>
+(function() {
+  function setupCanvas(id) {
+    const canvas = document.getElementById(id);
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = 110 * dpr;
+    ctx.scale(dpr, dpr);
+    return { canvas, ctx, w: rect.width, h: 110 };
+  }
+
+  function drawAnalog() {
+    const { ctx, w, h } = setupCanvas('canvasAnalog');
+    ctx.clearRect(0, 0, w, h);
+
+    // Center line
+    ctx.strokeStyle = '#cbd5e1';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, h/2);
+    ctx.lineTo(w, h/2);
+    ctx.stroke();
+
+    // Continuous sine-like wave
+    ctx.beginPath();
+    ctx.strokeStyle = '#ea580c';
+    ctx.lineWidth = 2.8;
+    for (let x = 0; x <= w; x++) {
+      const t = x / w * 8 * Math.PI;
+      const y = h/2 + Math.sin(t) * 28 + Math.sin(t*2.3)*6;
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Label
+    ctx.fillStyle = '#9a3412';
+    ctx.font = '600 12px Segoe UI, sans-serif';
+    ctx.fillText('Continuous analog signal (full channel, full time)', 12, 18);
+  }
+
+  function drawTdma() {
+    const { ctx, w, h } = setupCanvas('canvasTdma');
+    ctx.clearRect(0, 0, w, h);
+
+    const slotW = w / 8;
+
+    for (let i = 0; i < 8; i++) {
+      const x = i * slotW;
+      const isSlot1 = i % 2 === 0;
+
+      // Slot background
+      ctx.fillStyle = isSlot1 ? 'rgba(11, 94, 180, 0.13)' : 'rgba(14, 26, 36, 0.06)';
+      ctx.fillRect(x, 8, slotW - 2, h - 16);
+
+      // Wave inside active slot
+      ctx.beginPath();
+      ctx.strokeStyle = isSlot1 ? '#0b5eb4' : '#64748b';
+      ctx.lineWidth = 2.5;
+      for (let px = 0; px < slotW - 2; px++) {
+        const t = px / 18;
+        const y = h/2 + Math.sin(t * Math.PI * 2) * (isSlot1 ? 26 : 10);
+        if (px === 0) ctx.moveTo(x + px, y);
+        else ctx.lineTo(x + px, y);
+      }
+      ctx.stroke();
+
+      // Slot label
+      ctx.fillStyle = isSlot1 ? '#1e40af' : '#64748b';
+      ctx.font = 'bold 11px Segoe UI, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(isSlot1 ? 'Slot 1' : 'Slot 2', x + slotW/2 - 1, h - 6);
+    }
+
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#1e40af';
+    ctx.font = '600 12px Segoe UI, sans-serif';
+    ctx.fillText('Same frequency – alternating time slots', 12, 18);
+  }
+
+  function drawFdma() {
+    const { ctx, w, h } = setupCanvas('canvasFdma');
+    ctx.clearRect(0, 0, w, h);
+
+    // Frequency axis concept
+    const mid = h / 2;
+
+    // Lower 6.25 kHz channel
+    ctx.fillStyle = 'rgba(22, 163, 74, 0.15)';
+    ctx.fillRect(0, mid + 4, w, 40);
+
+    ctx.beginPath();
+    ctx.strokeStyle = '#16a34a';
+    ctx.lineWidth = 2.6;
+    for (let x = 0; x <= w; x++) {
+      const t = x / 22;
+      const y = mid + 24 + Math.sin(t) * 14;
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Upper 6.25 kHz channel
+    ctx.fillStyle = 'rgba(22, 163, 74, 0.10)';
+    ctx.fillRect(0, 12, w, 40);
+
+    ctx.beginPath();
+    ctx.strokeStyle = '#15803d';
+    ctx.lineWidth = 2.6;
+    for (let x = 0; x <= w; x++) {
+      const t = x / 19;
+      const y = 32 + Math.sin(t * 1.1) * 14;
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Divider line
+    ctx.strokeStyle = '#94a3b8';
+    ctx.setLineDash([4, 3]);
+    ctx.beginPath();
+    ctx.moveTo(0, mid);
+    ctx.lineTo(w, mid);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Labels
+    ctx.fillStyle = '#166534';
+    ctx.font = '600 12px Segoe UI, sans-serif';
+    ctx.fillText('6.25 kHz Channel A', 12, 18);
+    ctx.fillText('6.25 kHz Channel B', 12, mid + 18);
+
+    ctx.fillStyle = '#64748b';
+    ctx.font = '11px Segoe UI, sans-serif';
+    ctx.fillText('12.5 kHz total', w - 90, mid - 6);
+  }
+
+  function drawAll() {
+    drawAnalog();
+    drawTdma();
+    drawFdma();
+  }
+
+  window.addEventListener('resize', drawAll);
+  drawAll();
+})();
+</script>
+<!-- ========== END WAVEFORM COMPARISON ========== -->

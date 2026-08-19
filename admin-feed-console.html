@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TARC Procurement Matrix | Data Ingestion Terminal</title>
+  <link rel="stylesheet" href="https://cloudflare.com">
+  <style>
+    /* Main Tech Slate Workspace Core Theme */
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: #f8fafc; padding: 50px 20px; color: #0e1a24; margin: 0; }
+    .admin-console-box { max-width: 840px; margin: 0 auto; background: #ffffff; border-radius: 6px; box-shadow: 0 4px 25px rgba(14,26,36,0.08); border-top: 4px solid #0b5eb4; padding: 40px; box-sizing: border-box; }
+    
+    /* Small Business Header Identity */
+    .terminal-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; margin-bottom: 30px; }
+    .terminal-title h2 { margin: 0; color: #0e1a24; font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.3px; }
+    .terminal-title span { font-size: 0.72rem; color: #0b5eb4; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; display: block; margin-top: 2px; }
+    .badge-certified { background: rgba(11, 94, 180, 0.08); color: #0b5eb4; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; padding: 5px 12px; border-radius: 4px; border: 1px solid rgba(11, 94, 180, 0.2); }
+    
+    /* Form Structure Grid Elements */
+    .form-row-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 20px; }
+    .form-group-full { margin-bottom: 25px; text-align: left; }
+    .form-group-half { text-align: left; }
+    
+    /* Clean Label and Typography Classes */
+    label { display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #475569; margin-bottom: 8px; letter-spacing: 0.5px; }
+    label i { color: #0b5eb4; margin-right: 4px; }
+    input[type="text"], textarea { width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.9rem; color: #0e1a24; box-sizing: border-box; background: #ffffff; transition: all 0.2s ease; }
+    input[type="text"]:focus, textarea:focus { outline: none; border-color: #0b5eb4; box-shadow: 0 0 0 3px rgba(11, 94, 180, 0.15); }
+    textarea { resize: vertical; min-height: 90px; font-family: inherit; line-height: 1.5; }
+    
+    /* Styled Form Action Drivers */
+    .compile-btn { width: 100%; background: #0b5eb4; color: #ffffff; font-weight: 800; text-transform: uppercase; padding: 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem; letter-spacing: 0.5px; transition: background 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .compile-btn:hover { background: #094a8f; }
+    
+    /* Output Block Styling Overlays */
+    .output-section-matrix { margin-top: 40px; border-top: 2px dashed #e2e8f0; padding-top: 30px; display: none; }
+    .output-card-slot { background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #16a34a; border-radius: 4px; padding: 20px; margin-bottom: 20px; position: relative; text-align: left; }
+    .output-card-slot label { color: #0e1a24; font-size: 0.8rem; margin-bottom: 12px; }
+    .copy-btn { position: absolute; top: 15px; right: 15px; background: #ffffff; border: 1px solid #cbd5e1; padding: 5px 10px; font-size: 0.68rem; font-weight: 800; border-radius: 4px; cursor: pointer; text-transform: uppercase; color: #475569; transition: all 0.1s ease; }
+    .copy-btn:hover { background: #f1f5f9; border-color: #94a3b8; color: #0b5eb4; }
+  </style>
+</head>
+<body>
+
+  <div class="admin-console-box">
+    
+    <!-- Branding Header Complex Matrix -->
+    <div class="terminal-header">
+      <div class="terminal-title">
+        <h2>Data Ingestion Terminal</h2>
+        <span>Product Catalog Feed Framework</span>
+      </div>
+      <div class="badge-certified"><i class="fa-solid fa-shield-halved"></i> SECURE OFFLINE SYSTEM</div>
+    </div>
+    
+    <!-- Standardized Input Row Fields (Aligned to Columns 1 - 4) -->
+    <div class="form-row-grid">
+      <div class="form-group-half"><label><i class="fa-solid fa-tag"></i> Model Token (e.g., IC-F1000)</label><input type="text" id="in-model"></div>
+      <div class="form-group-half"><label><i class="fa-solid fa-copyright"></i> Brand Name (e.g., Icom)</label><input type="text" id="in-brand"></div>
+    </div>
+    
+    <div class="form-row-grid">
+      <div class="form-group-half"><label><i class="fa-solid fa-network-wired"></i> Device Type / Category (e.g., Portable Transceiver)</label><input type="text" id="in-type"></div>
+      <div class="form-group-half"><label><i class="fa-solid fa-dollar-sign"></i> Base Price Value (e.g., 285.00)</label><input type="text" id="in-price"></div>
+    </div>
+    <!-- Standardized Input Row Fields (Aligned to Columns 5 - 6) -->
+    <div class="form-row-grid">
+      <div class="form-group-half"><label><i class="fa-solid fa-image"></i> Image File Name (e.g., ic-f1000.png)</label><input type="text" id="in-image"></div>
+      <div class="form-group-half"><label><i class="fa-solid fa-box-open"></i> Package Inclusions (Comma Separated List)</label><input type="text" id="in-includes" placeholder="e.g., BP-279 Battery, BC-213 Desktop Charger, MB-133 Belt Clip"></div>
+    </div>
+
+    <!-- Standardized Input Row Fields (Aligned to Columns 8 - 10) -->
+    <div class="form-row-grid">
+      <div class="form-group-half"><label><i class="fa-solid fa-file-pdf"></i> PDF Data Sheet Link (e.g., specs/ic-f1000.pdf)</label><input type="text" id="in-speclink"></div>
+      <div class="form-group-half"><label><i class="fa-solid fa-sliders"></i> Optional Accessories (Comma Separated Part Numbers)</label><input type="text" id="in-compat" placeholder="e.g., BP-278, BP-280, HM-168LWP"></div>
+    </div>
+
+    <!-- Column 9 Matrix: Technical Specifications Entry Container with Mode Toggle Switch -->
+    <div class="form-group-full">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <label for="in-spectable" style="margin-bottom: 0;"><i class="fa-solid fa-microchip"></i> Technical Specifications Grid Data (Column 9)</label>
+        
+        <!-- Toggle Switch Component Setup Matrix -->
+        <div style="display: flex; align-items: center; gap: 10px; background: #f1f5f9; padding: 6px 12px; border-radius: 20px; border: 1px solid #cbd5e1;">
+          <span style="font-size: 0.7rem; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.3px;">Plain Text Mode</span>
+          <label style="position: relative; display: inline-block; width: 44px; height: 22px; margin-bottom: 0; cursor: pointer;">
+            <input type="checkbox" id="toggleHtmlMode" style="opacity: 0; width: 0; height: 0;">
+            <span id="sliderStyleMatrix" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .3s; border-radius: 22px;"></span>
+          </label>
+          <span style="font-size: 0.7rem; font-weight: 800; color: #0b5eb4; text-transform: uppercase; letter-spacing: 0.3px;">Hytera HTML Mode</span>
+        </div>
+      </div>
+      <textarea id="in-spectable" style="min-height: 110px;" placeholder="Plain Text Mode: Paste rows separated by colons (e.g., Frequency: 136-174 MHz)&#10;Hytera HTML Mode: Paste raw HTML table markup source directly..."></textarea>
+    </div>
+
+    <!-- Column 7 Matrix: General Features Bulk Input Textarea -->
+    <div style="border-top: 1px dashed #e2e8f0; margin-top: 30px; padding-top: 25px;">
+      <div class="form-group-full">
+        <label><i class="fa-solid fa-list-check"></i> Raw Data Sheet Features Dump (Column 7)</label>
+        <span style="font-size: 0.75rem; color: #64748b; display: block; margin-bottom: 10px; font-weight: 500; line-height: 1.4;">
+          💡 Put each feature on a separate new line. Start with the headline in ALL CAPS, followed by a colon (e.g., LOUD AUDIO: Custom speaker provides crystal clear sound). The compiler engine will automatically convert headlines to Unicode bold text, strip out internal paragraph sentence commas, and cleanly separate rows.
+        </span>
+        <textarea id="in-raw-features" style="min-height: 180px;" placeholder="LOUD AUDIO: Delivers class leading powerful volume&#10;RELIABLE DURABLE: Waterproof design tested to MIL-STD-810-G standards&#10;GPS POSITIONING: Enables real-time dispatch map tracking"></textarea>
+      </div>
+    </div>
+
+    <!-- Interactive Execution Switch Matrix Style Overlays -->
+    <style>
+      #toggleHtmlMode:checked + #sliderStyleMatrix { background-color: #0b5eb4; }
+      #sliderStyleMatrix:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
+      #toggleHtmlMode:checked + #sliderStyleMatrix:before { transform: translateX(22px); }
+    </style>
+
+    <button type="button" class="compile-btn" id="generatePayloadBtn">
+      <i class="fa-solid fa-gear"></i> Compile and Generate Spreadsheet Row
+    </button>
+
+    <!-- OUTPUT SCREEN MATRIX PANEL OVERLAYS -->
+    <div class="output-section-matrix" id="outputConsoleArea">
+      <h3 style="color: #16a34a; font-size: 0.95rem; font-weight: 900; text-transform: uppercase; margin: 0 0 20px 0; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
+        <i class="fa-solid fa-circle-check"></i> Spreadsheet Payload Strings Compiled Successfully
+      </h3>
+      
+      <div class="output-card-slot">
+        <label><i class="fa-solid fa-file-spreadsheet" style="color:#16a34a;"></i> Complete Tab-Separated Row (Select Column A in Google Sheets and Paste)</label>
+        <button class="copy-btn" onclick="copyValueToClipboard('rawRowOutput')"><i class="fa-solid fa-copy"></i> Copy Row</button>
+        <textarea id="rawRowOutput" style="font-family: monospace; font-size: 0.8rem; background: #1e293b; color: #38bdf8; min-height: 100px; border: none; padding: 15px; width: 100%; box-sizing: border-box; border-radius: 4px;" readonly></textarea>
+      </div>
+
+      <div class="output-card-slot" style="border-left-color: #0b5eb4;">
+        <label><i class="fa-solid fa-font" style="color:#0b5eb4;"></i> Isolated Processed Features String (For data logging or manual cell backup)</label>
+        <button class="copy-btn" onclick="copyValueToClipboard('featuresTextOutput')"><i class="fa-solid fa-copy"></i> Copy Features Only</button>
+        <textarea id="featuresTextOutput" style="font-family: monospace; font-size: 0.82rem; background: #ffffff; color: #334155; min-height: 80px; border: 1px solid #cbd5e1; padding: 12px; width: 100%; box-sizing: border-box; border-radius: 4px;" readonly></textarea>
+      </div>
+    </div>
+
+  </div> <!-- End .admin-console-box -->
+  <script>
+    // Automated translation maps mapping to Unicode mathematical bold strings
+    const unicodeBoldCharMap = {
+      'A': '𝗔', 'B': '𝗕', 'C': '𝗖', 'D': '𝗗', 'E': '𝗘', 'F': '𝗙', 'G': '𝗚', 'H': '𝗛', 'I': '𝗜', 'J': '𝗝', 'K': '𝗞', 'L': '𝗟', 'M': '𝗠',
+      'N': '𝗡', 'O': '𝗢', 'P': '𝗣', 'Q': '𝗤', 'R': '𝗥', 'S': '𝗦', 'T': '𝗧', 'U': '𝗨', 'V': '𝗩', 'W': '𝗪', 'X': '𝗫', 'Y': '𝗬', 'Z': '𝗵',
+      'a': '𝗮', 'b': '𝗯', 'c': '𝗰', 'd': '𝗱', 'e': '𝗲', 'f': '𝗳', 'g': '𝗴', 'h': '𝗵', 'i': '𝗶', 'j': '𝗷', 'k': '𝗸', 'l': '𝗹', 'm': '𝗺',
+      'n': '𝗻', 'o': '𝗼', 'p': '𝗽', 'q': '𝗾', 'r': '𝗿', 's': '𝘀', 't': '𝘁', 'u': '𝘂', 'v': '𝘃', 'w': '𝘄', 'x': '𝗅', 'y': '𝘆', 'z': '𝘇',
+      '0': '𝟬', '1': '𝟭', '2': '𝟮', '3': '𝟯', '4': '𝟰', '5': '𝟱', '6': '𝟲', '7': '𝟳', '8': '𝟴', '9': '𝟵', '&': '＆'
+    };
+
+    function convertStringToUnicodeBold(sourceText) {
+      return sourceText.split('').map(char => unicodeBoldCharMap[char] || char).join('');
+    }
+
+    document.getElementById('generatePayloadBtn').addEventListener('click', () => {
+      // 1. Gather Basic Parameters
+      const inputModel = document.getElementById('in-model').value.trim();
+      const inputBrand = document.getElementById('in-brand').value.trim();
+      const inputType = document.getElementById('in-type').value.trim();
+      const inputPrice = document.getElementById('in-price').value.trim();
+      const inputImage = document.getElementById('in-image').value.trim();
+      const inputIncludes = document.getElementById('in-includes').value.trim();
+      const inputSpecLink = document.getElementById('in-speclink').value.trim();
+      const inputCompat = document.getElementById('in-compat').value.trim();
+
+      // 2. DYNAMIC SPECIFICATION MATRIX FIELD CHECKER (Column 9)
+      const rawSpecTableInput = document.getElementById('in-spectable').value;
+      const isHyteraHtmlModeActive = document.getElementById('toggleHtmlMode').checked;
+      let inputSpecTable = "";
+
+      if (isHyteraHtmlModeActive) {
+        inputSpecTable = rawSpecTableInput.trim().replace(/\n/g, ' ').replace(/\t/g, ' ');
+      } else {
+        const specLines = rawSpecTableInput.split('\n');
+        let tableRowsHtml = "";
+        
+        specLines.forEach(line => {
+          const cleanLine = line.trim();
+          // Verify a colon exists and make sure it isn't part of a web link protocol (http:)
+          if (cleanLine !== "" && cleanLine.includes(':') && !cleanLine.startsWith('http')) {
+            const separatorIdx = cleanLine.indexOf(':');
+            const specLabel = cleanLine.substring(0, separatorIdx).trim();
+            const specValue = cleanLine.substring(separatorIdx + 1).trim();
+            
+            tableRowsHtml += `<tr style="border-bottom: 1px solid #e2e8f0;"><td style="padding: 8px 4px; font-weight: 700; color: #475569; width: 40%; font-size: 0.82rem; vertical-align: top;">${specLabel}</td><td style="padding: 8px 4px; color: #334155; font-size: 0.82rem; vertical-align: top;">${specValue}</td></tr>`;
+          }
+        });
+        
+        if (tableRowsHtml !== "") {
+          inputSpecTable = `<div style="font-family: inherit; width: 100%;"><p style="font-weight: 700; color: #0e1a24; margin: 0 0 10px 0; font-size: 0.9rem; text-transform: uppercase; border-bottom: 2px solid #cbd5e1; padding-bottom: 4px;"><i class="fa-solid fa-microchip" style="color:#0b5eb4; margin-right:5px;"></i> TECHNICAL SPECIFICATIONS</p><table style="width: 100%; border-collapse: collapse;"><tbody>${tableRowsHtml}</tbody></table></div>`.replace(/\n/g, ' ').replace(/\t/g, ' ');
+        }
+      }
+
+      // 3. LINE PARSER BLOCK: Process raw text dumps line-by-line (Column 7)
+      const rawTextDump = document.getElementById('in-raw-features').value;
+      const linesArray = rawTextDump.split('\n');
+      let compiledFeaturesArray = [];
+
+      linesArray.forEach(line => {
+        const cleanLine = line.trim();
+        if (cleanLine !== "" && cleanLine.includes(':')) {
+          const splitIndex = cleanLine.indexOf(':');
+          let headlineText = cleanLine.substring(0, splitIndex).trim();
+          let descriptorText = cleanLine.substring(splitIndex + 1).trim();
+
+          if (headlineText !== "" && descriptorText !== "") {
+            // Remove all inner sentence commas to protect the frontend parser array rules [INDEX]
+            let sanitizedDescriptor = descriptorText.replace(/,/g, '');
+            
+            if (sanitizedDescriptor.endsWith(',')) {
+              sanitizedDescriptor = sanitizedDescriptor.slice(0, -1).trim();
+            }
+
+            let boldHeadline = convertStringToUnicodeBold(headlineText.toUpperCase());
+            compiledFeaturesArray.push(`${boldHeadline}: ${sanitizedDescriptor}`);
+          }
+        }
+      });
+
+      // Automation engine weaves exactly one comma and a space between every single block [INDEX]
+      const finalFeaturesString = compiledFeaturesArray.join(', ');
+      document.getElementById('featuresTextOutput').value = finalFeaturesString;
+
+      // 4. FIXED COLUMN ORDER SEQUENCE LAYER: Synchronized exactly with your 12-column setup [INDEX]
+      const rowColumnsSequence = [
+        inputModel,          // Col 1: model
+        inputBrand,          // Col 2: brand
+        inputType,           // Col 3: type
+        inputPrice,          // Col 4: price
+        inputImage,          // Col 5: image
+        inputIncludes,       // Col 6: includes
+        finalFeaturesString, // Col 7: features
+        inputSpecLink,       // Col 8: specLink
+        inputSpecTable,      // Col 9: specTable
+        inputCompat,         // Col 10: compatibleModels
+        "",                  // Col 11: short-description (Blank placeholder text slot)
+        ""                   // Col 12: industry (Blank placeholder text slot)
+      ];
+
+      const finalTabSeparatedLine = rowColumnsSequence.join('\t');
+      document.getElementById('rawRowOutput').value = finalTabSeparatedLine;
+
+      // Display results card element containers
+      document.getElementById('outputConsoleArea').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('outputConsoleArea').offsetTop, behavior: 'smooth' });
+    });
+
+    window.copyValueToClipboard = function(targetElementId) {
+      const copyFieldNode = document.getElementById(targetElementId);
+      copyFieldNode.select();
+      document.execCommand('copy');
+      alert("📋 Copied seamlessly to system clipboard buffer matrix!");
+    };
+  </script>
+</body>
+</html>

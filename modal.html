@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARC Modal Promo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        .modal-glow {
+            box-shadow: 0 0 60px rgba(0, 245, 255, 0.7),
+                        0 0 120px rgba(168, 85, 247, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- Trigger Button -->
+    <div class="p-8 text-center">
+        <button onclick="openModal()" 
+                class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition">
+            Show Promo Modal
+        </button>
+    </div>
+
+    <!-- MODAL -->
+    <div id="promoModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+        <div class="bg-white rounded-3xl max-w-lg w-full mx-4 overflow-hidden modal-glow">
+            
+            <!-- Logo with electrified effect -->
+            <div class="p-8 bg-gradient-to-br from-slate-900 to-black relative">
+                <img src="tarc-logo1.png" alt="TARC Communications" 
+                     class="w-full h-auto rounded-2xl">
+            </div>
+
+            <!-- White Content Area -->
+            <div class="p-8 text-center">
+                <h2 class="text-3xl font-bold text-slate-800 mb-3">Special Promotion</h2>
+                <p class="text-slate-600 mb-6">
+                    Get 15% off your first radio system order this month!
+                </p>
+                <div class="flex gap-4 justify-center">
+                    <button onclick="closeModal()" 
+                            class="px-8 py-3 border border-gray-300 rounded-full font-medium">
+                        Maybe Later
+                    </button>
+                    <button onclick="closeModal()" 
+                            class="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-full font-semibold">
+                        Claim Offer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('promoModal').classList.remove('hidden');
+            document.getElementById('promoModal').classList.add('flex');
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('promoModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") closeModal();
+        });
+    </script>
+</body>
+</html>

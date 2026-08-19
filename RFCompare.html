@@ -1,0 +1,224 @@
+<!-- ========== ANALOG vs DIGITAL AUDIO DEGRADATION TRACE ========== -->
+<style>
+  .audio-trace-wrap {
+    max-width: 900px;
+    margin: 30px auto;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #ffffff;
+    border: 2px solid #0e1a24;
+    border-top: 5px solid #0b5eb4;
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(14,26,36,0.08);
+    overflow: hidden;
+  }
+  .audio-trace-header {
+    background: #0e1a24;
+    color: white;
+    padding: 16px 22px;
+  }
+  .audio-trace-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+  .audio-trace-header span {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .audio-trace-body {
+    padding: 25px 20px 15px;
+  }
+  .audio-trace-canvas {
+    width: 100%;
+    height: 340px;
+    display: block;
+  }
+  .audio-trace-legend {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .audio-trace-legend span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+  }
+  .dot-analog { background: #ea580c; }
+  .dot-digital { background: #0b5eb4; }
+  .audio-trace-note {
+    margin: 18px 20px 22px;
+    padding: 14px 16px;
+    background: #f8fafc;
+    border-left: 4px solid #0b5eb4;
+    font-size: 0.88rem;
+    color: #334155;
+    line-height: 1.5;
+  }
+</style>
+
+<div class="audio-trace-wrap">
+  <div class="audio-trace-header">
+    <h2>Analog vs Digital Audio Degradation</h2>
+    <span>How usable audio behaves as signal strength decreases</span>
+  </div>
+
+  <div class="audio-trace-body">
+    <canvas id="audioTraceCanvas" class="audio-trace-canvas"></canvas>
+
+    <div class="audio-trace-legend">
+      <span><div class="dot dot-analog"></div> Analog FM (graceful degradation)</span>
+      <span><div class="dot dot-digital"></div> Digital (DMR / NXDN style cliff)</span>
+    </div>
+  </div>
+
+  <div class="audio-trace-note">
+    <strong>Key difference:</strong> Analog audio becomes progressively noisier but often remains understandable. 
+    Digital audio stays clear and full-quality until the signal is too weak, then drops abruptly to silence or heavy breakup (the “digital cliff”).
+  </div>
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('audioTraceCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * window.devicePixelRatio;
+    canvas.height = 340 * window.devicePixelRatio;
+    canvas.style.width = rect.width + 'px';
+    canvas.style.height = '340px';
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    draw();
+  }
+
+  function draw() {
+    const w = canvas.width / window.devicePixelRatio;
+    const h = 340;
+    const pad = { top: 30, right: 30, bottom: 50, left: 55 };
+    const graphW = w - pad.left - pad.right;
+    const graphH = h - pad.top - pad.bottom;
+
+    ctx.clearRect(0, 0, w, h);
+
+    // Background
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, w, h);
+
+    // Grid
+    ctx.strokeStyle = '#e2e8f0';
+    ctx.lineWidth = 1;
+    for (let i = 0; i <= 10; i++) {
+      const y = pad.top + (graphH / 10) * i;
+      ctx.beginPath();
+      ctx.moveTo(pad.left, y);
+      ctx.lineTo(pad.left + graphW, y);
+      ctx.stroke();
+    }
+    for (let i = 0; i <= 10; i++) {
+      const x = pad.left + (graphW / 10) * i;
+      ctx.beginPath();
+      ctx.moveTo(x, pad.top);
+      ctx.lineTo(x, pad.top + graphH);
+      ctx.stroke();
+    }
+
+    // Axes
+    ctx.strokeStyle = '#0e1a24';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(pad.left, pad.top);
+    ctx.lineTo(pad.left, pad.top + graphH);
+    ctx.lineTo(pad.left + graphW, pad.top + graphH);
+    ctx.stroke();
+
+    // Labels
+    ctx.fillStyle = '#0e1a24';
+    ctx.font = '600 12px Segoe UI, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Signal Strength → (Distance increasing)', pad.left + graphW / 2, h - 12);
+
+    ctx.save();
+    ctx.translate(18, pad.top + graphH / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillText('Usable Audio Quality', 0, 0);
+    ctx.restore();
+
+    // Y-axis labels
+    ctx.textAlign = 'right';
+    ctx.font = '11px Segoe UI, sans-serif';
+    ctx.fillText('Clear', pad.left - 8, pad.top + 8);
+    ctx.fillText('Noisy', pad.left - 8, pad.top + graphH * 0.55);
+    ctx.fillText('Unusable', pad.left - 8, pad.top + graphH - 4);
+
+    // ===== ANALOG CURVE (gradual decay) =====
+    ctx.beginPath();
+    ctx.strokeStyle = '#ea580c';
+    ctx.lineWidth = 3.5;
+    ctx.lineJoin = 'round';
+
+    for (let i = 0; i <= 100; i++) {
+      const t = i / 100;
+      // Gradual roll-off
+      const quality = 1 - Math.pow(t, 1.6) * 0.92;
+      const x = pad.left + t * graphW;
+      const y = pad.top + (1 - quality) * graphH;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // ===== DIGITAL CURVE (cliff) =====
+    ctx.beginPath();
+    ctx.strokeStyle = '#0b5eb4';
+    ctx.lineWidth = 3.5;
+    ctx.lineJoin = 'round';
+
+    for (let i = 0; i <= 100; i++) {
+      const t = i / 100;
+      let quality;
+      if (t < 0.68) {
+        quality = 0.97 - t * 0.08;          // stays high
+      } else {
+        // Sharp cliff
+        const cliff = (t - 0.68) / 0.32;
+        quality = 0.90 * Math.exp(-cliff * 5.5);
+      }
+      const x = pad.left + t * graphW;
+      const y = pad.top + (1 - Math.max(0, quality)) * graphH;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Cliff marker
+    const cliffX = pad.left + 0.72 * graphW;
+    ctx.strokeStyle = '#94a3b8';
+    ctx.setLineDash([5, 4]);
+    ctx.beginPath();
+    ctx.moveTo(cliffX, pad.top);
+    ctx.lineTo(cliffX, pad.top + graphH);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.fillStyle = '#64748b';
+    ctx.font = '11px Segoe UI, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Digital Cliff', cliffX, pad.top - 8);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+})();
+</script>
+<!-- ========== END AUDIO TRACE ========== -->
