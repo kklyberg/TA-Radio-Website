@@ -8,10 +8,10 @@ from oauth2client.service_account import ServiceAccountCredentials
 from openai import OpenAI
 
 # ========== CONFIG ==========
-PDF_PATH = "xpr5000e-series-datasheet-na.pdf"          # ← change per datasheet
+PDF_PATH = "MOTOTRBO.pdf"          # ← change per datasheet
 BRAND = "Motorola"                            # Kenwood | Hytera | Icom | Motorola | Ritron
 BRAND_FOLDER = "motorola"
-DEFAULT_TYPE = "mobile"
+DEFAULT_TYPE = "accessory"
 PAGE_RANGE = None                         # e.g. (1, 4) or None
 
 CREDENTIALS_FILE = "credentials.json"

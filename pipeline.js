@@ -18,7 +18,7 @@ const { PDFParse } = require('pdf-parse');
 // =========================================================================
 const CONTROLLER_CONFIG = {
     mode: "web",
-    targetPath: "https://www.motorolasolutions.com/en_us/products/two-way-radios/mototrbo/portable-radios/sl300.html#tabaccessories",
+    targetPath: "https://shop.motorolasolutions.com/search/_/N-735920568+387156806?Nrpp=15&srsltid=AfmBOoqLT-t-ndMuzn-9pT_2fw9-OLmtfLgeV-kj_LPaGwYG5_kSPgUQ",
     pageRange: null
 };
 

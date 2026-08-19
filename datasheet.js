@@ -19,10 +19,10 @@ const openai = new OpenAI({
 
 // ========== ONLY SECTION YOU EDIT PER RUN ==========
 const CONFIG = {
-  targetFile: "xpr5000e-series-datasheet-na.pdf", // PDF in this folder
+  targetFile: "MOTOTRBO.pdf", // PDF in this folder
   brand: "Motorola",                          // Kenwood | Motorola | Hytera | Icom | Ritron
   brandFolder: "motorola",                    // must match folder on disk (lowercase)
-  type: "mobile",                          // portable | mobile | repeater | base | ...
+  type: "accessory",                          // portable | mobile | repeater | base | ...
   pageRange: null,                           // null = all pages, or "1-5" or "1,3,7"
   appsScriptUrl:
     "https://script.google.com/macros/s/AKfycbw1M3qP6Lkebhy14vbMcCXESzB-N2QEFf2NHGHSuItlVn1sNP35Efa9uGdlRXEeF-m8DA/exec"

@@ -177,26 +177,42 @@
          AUTOMATED INBOUND SALES PROCUREMENT SCRIPT CONTROLLER
          ========================================================================= -->
     <script>
-        function executeSalesBenchForm() {
-            const brandVal = document.getElementById('repair-brand-select').value;
-            const qtyVal = document.getElementById('repair-qty-select').value;
-            
-            const targetDealerMail = "sales@taradio.com";
-            const computedSubject = encodeURIComponent(`T.A. Radio Depot Bench Repair Evaluation Request - ${brandVal}`);
-            
-            const detailedEmailContent = encodeURIComponent(
-                `Hello T.A. Radio Communications Repair Desk,\n\n` +
-                `I am reviewing my service alternatives and would like to coordinate a component-level diagnostics evaluation for my wireless fleet.\n\n` +
-                `[FLEET TECHNICAL SERVICE DATA]:\n` +
-                `• Equipment Manufacturer: ${brandVal}\n` +
-                `• Estimated Batch Volume: ${qtyVal}\n\n` +
-                `Please get back to me with our service intake ticket coordinates and shipping criteria.\n\n` +
-                `Thank you.`
-            );
+function executeSalesBenchForm() {
+    const brandEl = document.getElementById('repair-brand-select');
+    const qtyEl   = document.getElementById('repair-qty-select');
 
-            // Trigger the mail app wrapper seamlessly
-            window.location.href = `mailto:${targetDealerMail}?subject=${computedSubject}&body=${detailedEmailContent}`;
-        }
+    if (!brandEl || !qtyEl) {
+        console.error('Missing form elements:', {
+            brand: !!brandEl,
+            qty: !!qtyEl
+        });
+        alert('Form fields not found. Please check the page.');
+        return;
+    }
+
+    const brandVal = brandEl.value || '(not selected)';
+    const qtyVal   = qtyEl.value   || '(not selected)';
+
+    const targetDealerMail = "sales@taradio.com";
+    const computedSubject  = encodeURIComponent(
+        `T.A. Radio Depot Bench Repair Evaluation Request - ${brandVal}`
+    );
+
+    const detailedEmailContent = encodeURIComponent(
+        `Hello T.A. Radio Communications Repair Desk,\n\n` +
+        `I am reviewing my service alternatives and would like to coordinate a component-level diagnostics evaluation for my wireless fleet.\n\n` +
+        `[FLEET TECHNICAL SERVICE DATA]:\n` +
+        `• Equipment Manufacturer: ${brandVal}\n` +
+        `• Estimated Batch Volume: ${qtyVal}\n\n` +
+        `Please get back to me with our service intake ticket coordinates and shipping criteria.\n\n` +
+        `Thank you.`
+    );
+
+    const mailtoUrl = `mailto:${targetDealerMail}?subject=${computedSubject}&body=${detailedEmailContent}`;
+    console.log('Opening:', mailtoUrl);   // ← check this in the console
+
+    window.location.href = mailtoUrl;
+}
 		// =========================================================================
 // UNIFIED GLOBAL SEARCH CONTROLLER LOGIC
 // =========================================================================

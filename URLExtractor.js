@@ -3,7 +3,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 
 // CONFIG: Set your target site URL here
-const TARGET_URL = "https://shop.motorolasolutions.com/search/_/N-89352954+752341916";
+const TARGET_URL = "https://shop.motorolasolutions.com/search/_/N-735920568+387156806?Nrpp=15&srsltid=AfmBOoqLT-t-ndMuzn-9pT_2fw9-OLmtfLgeV-kj_LPaGwYG5_kSPgUQ";
 const OUTPUT_FILE = "extracted_urls.json";
 
 async function extractUrls() {
