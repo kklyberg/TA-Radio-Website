@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RF System Integration | T.A. Radio Communications</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --topbar: #1a1a1a;
+      --navy: #0f172a;
+      --blue: #0066cc;
+      --blue-hover: #0052a3;
+      --blue-soft: #e8f1fb;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--bg);
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ===== TOP BAR (matches your site) ===== */
+    .top-bar {
+      background: var(--topbar);
+      color: #cbd5e1;
+      font-size: 0.8rem;
+      padding: 0.45rem 1.25rem;
+    }
+    .top-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .top-bar a { color: #94a3b8; }
+    .top-bar a:hover { color: #fff; text-decoration: none; }
+
+    /* ===== HEADER (matches your site structure) ===== */
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.25rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+    .logo-text span {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .search-box {
+      flex: 1;
+      max-width: 320px;
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 0.5rem 2.2rem 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .search-box input:focus { border-color: var(--blue); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.35rem;
+      list-style: none;
+      margin-left: auto;
+    }
+    .nav-links a {
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--blue); }
+    .nav-links .rf-sim { color: var(--blue); font-weight: 600; }
+
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      padding: 3.25rem 1.25rem 2.75rem;
+      text-align: center;
+    }
+    .page-hero-inner { max-width: 720px; margin: 0 auto; }
+
+    .eyebrow {
+      display: inline-block;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .page-hero .lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.75rem;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.4rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--blue-hover);
+      text-decoration: none;
+      color: #fff;
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--blue);
+      border: 2px solid var(--blue);
+    }
+    .btn-outline:hover {
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* ===== CONTENT ===== */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.75rem 1.25rem;
+    }
+
+    .content > p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .content > p strong { color: var(--text); }
+
+    /* ===== CAPABILITY CARDS ===== */
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.4rem;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1.75rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+    .card:hover {
+      border-color: #94a3b8;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    }
+    .card-num {
+      width: 32px;
+      height: 32px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.9rem;
+    }
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== SIMULATOR BAND ===== */
+    .sim-band {
+      background: var(--navy);
+      color: #fff;
+      padding: 3rem 1.25rem;
+      text-align: center;
+    }
+    .sim-band h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .sim-band p {
+      color: #94a3b8;
+      max-width: 480px;
+      margin: 0 auto 1.5rem;
+      font-size: 1.05rem;
+    }
+    .btn-white {
+      display: inline-block;
+      background: #fff;
+      color: var(--navy);
+      padding: 0.75rem 1.6rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .btn-white:hover {
+      background: #e2e8f0;
+      text-decoration: none;
+      color: var(--navy);
+    }
+
+    /* ===== FOOTER STRIP ===== */
+    .footer-strip {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 800px) {
+      .search-box { display: none; }
+      .nav-links { gap: 1rem; font-size: 0.9rem; }
+      .header-inner { flex-wrap: wrap; }
+    }
+	 /* Essential Cleaned Brand Showrooms Dropdown Layout */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; top: 100%; left: 0; background-color: #ffffff; min-width: 210px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12); z-index: 2000; border-top: 3px solid #0b5eb4; border-radius: 0 0 6px 6px; overflow: hidden;
+        }
+        .dropdown-content a {
+            color: #0e1a24; padding: 12px 16px; text-decoration: none; display: block; font-weight: 700; font-size: 0.88rem;
+            border-bottom: 1px solid #f1f5f9; transition: background 0.15s ease;
+        }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: #f0f7ff; color: #0b5eb4; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <span>📍 30+ Years of Certified Wireless Expertise | 700 S John Rodes Blvd, Melbourne, FL 32904</span>
+      <a href="tel:3217254824">📞 (321) 725-4824</a>
+    </div>
+  </div>
+
+   <header class="main-header" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.08); background-color: #ffffff !important; border-bottom: 3px solid #0b5eb4; display: flex; flex-direction: column;">
+        <div style="background-color: #0e1a24; color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 600; padding: 8px 0; border-bottom: 1px solid rgba(11, 94, 180, 0.3); width: 100%;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; box-sizing: border-box;">
+                <div><i class="fa-solid fa-location-dot" style="color: #00FF66; margin-right: 4px;"></i> 30+ Years of Certified Wireless Expertise | 700 S John Rodes Blvd, Melbourne, FL 32904</div>
+                <div><a href="tel:3217254824" style="color: #00FFFF; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 600;"><i class="fa-solid fa-phone-volume"></i> (321) 725-4824</a></div>
+            </div>
+        </div>
+        <div style="padding: 12px 0; width: 100%; background-color: #ffffff !important; box-sizing: border-box;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; gap: 20px; box-sizing: border-box;">
+                <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
+                    <img src="tarc-logo.png" alt="T.A. Logo" style="height: 52px; width: auto; display: block; cursor: pointer;" onclick="window.location.href='index.html';">
+                    <div style="text-align: left; line-height: 1.15;">
+                        <h1 style="margin: 0; font-size: 1.15rem; font-weight: 900; color: #0e1a24; text-transform: uppercase; letter-spacing: -0.3px;">T.A. Radio</h1>
+                        <span style="font-size: 0.72rem; color: #0b5eb4; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; display: block; margin-top: 1px;">Communications</span>
+                    </div>
+                </div>
+                <div style="flex: 1; max-width: 420px; position: relative; display: flex; align-items: center;">
+                    <input type="text" id="navbarGlobalSearchInput" placeholder="Search models, brands, accessories..." style="width: 100%; padding: 8px 35px 8px 12px; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 0.85rem; color: #0e1a24; box-sizing: border-box; background: #f8fafc; transition: all 0.2s ease;">
+                    <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 12px; color: #94a3b8; font-size: 0.85rem; pointer-events: none;"></i>
+                </div>
+                <nav class="nav-links" style="display: flex; align-items: center; flex-shrink: 0;">
+                    <a href="index.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Home</a>
+                    <div class="dropdown" style="margin-left: 20px;">
+                        <a href="#" style="color: #0b5eb4; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 4px;">Brand Showrooms <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; color:#0b5eb4;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="catalog.html?brand=kenwood"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Kenwood Catalog</a>
+                            <a href="catalog.html?brand=icom"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Icom Catalog</a>
+                            <a href="catalog.html?brand=hytera"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Hytera Catalog</a>
+                            <a href="catalog.html?brand=motorola"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Motorola Catalog</a>
+                            <a href="catalog.html?brand=ritron"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Ritron Catalog</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">RF System Integration</span>
+      <h1>Overcome Structural Dead Zones &amp; Concrete Blockages</h1>
+      <p class="lead">
+        We custom-engineer complex radio coverage using repeaters, antennas, and multi-site linking — so your teams stay connected where standard systems fall short.
+      </p>
+      <div class="btn-row">
+        <a href="#capabilities" class="btn btn-primary">Our Capabilities</a>
+        <a href="#" class="btn btn-outline">Open RF Simulator</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <div class="content">
+    <p>
+      Thick concrete, steel framing, basements, and large campuses create <strong>radio dead zones</strong> that put safety and operations at risk.
+      T.A. Radio designs and deploys targeted RF solutions that restore reliable coverage exactly where you need it.
+    </p>
+
+    <p class="section-label" style="margin-top:2rem">What we deliver</p>
+    <h2 class="section-title" id="capabilities">Engineered Coverage Solutions</h2>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>Signal Topography Profiling</h3>
+        <p>
+          We map how RF energy moves across your site — terrain, building materials, and interference sources — so coverage plans are based on real conditions, not assumptions.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>Multi-Repeater Voting Tracks</h3>
+        <p>
+          Linked repeater systems with voting automatically select the strongest signal path. Users move freely across sites without dropping critical calls.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>In-Building Signal Correction</h3>
+        <p>
+          From distributed antenna systems to strategically placed fill-in repeaters, we correct weak indoor coverage caused by concrete, elevators, and shielded areas.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RF SIMULATOR CTA -->
+  <section class="sim-band">
+    <h2>Try Our RF Simulator</h2>
+    <p>
+      Model coverage, identify potential dead zones, and explore multi-site designs before equipment is installed.
+    </p>
+    <a href="#" class="btn-white">Launch RF Simulator →</a>
+  </section>
+
+  <footer class="footer-strip">
+    <p>© 2026 T.A. Radio Communications · Melbourne, FL · (321) 725-4824</p>
+  </footer>
+
+</body>
+</html>
