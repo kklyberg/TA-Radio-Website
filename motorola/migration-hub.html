@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Migration &amp; PoC | T.A. Radio Communications</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --topbar: #1a1a1a;
+      --navy: #0f172a;
+      --blue: #0066cc;
+      --blue-hover: #0052a3;
+      --blue-soft: #e8f1fb;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #fff;
+      --bg-alt: #f8fafc;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); line-height: 1.7; background: var(--bg); }
+    a { color: var(--blue); }
+    a:hover { color: var(--blue-hover); }
+
+    /* Top bar + header (swap with your real header if preferred) */
+    .top-bar { background: var(--topbar); color: #94a3b8; font-size: 0.8rem; padding: 0.45rem 1.25rem; }
+    .top-bar-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+    .top-bar a { color: #94a3b8; text-decoration: none; }
+    .top-bar a:hover { color: #fff; }
+
+    .site-header { background: #fff; border-bottom: 1px solid var(--border); padding: 0.75rem 1.25rem; position: sticky; top: 0; z-index: 40; }
+    .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 1.5rem; }
+    .logo { font-weight: 700; color: var(--navy); text-decoration: none; font-size: 1.05rem; line-height: 1.2; }
+    .logo span { display: block; font-size: 0.7rem; font-weight: 500; color: var(--muted); letter-spacing: 0.04em; }
+    .nav { margin-left: auto; display: flex; gap: 1.25rem; list-style: none; }
+    .nav a { color: var(--text); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+    .nav a:hover, .nav a.active { color: var(--blue); }
+
+    /* Article layout */
+    .page-hero {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      padding: 2.75rem 1.25rem 2.25rem;
+      text-align: center;
+    }
+    .page-hero-inner { max-width: 720px; margin: 0 auto; }
+    .eyebrow {
+      display: inline-block;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      margin-bottom: 0.9rem;
+    }
+    .page-hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    .page-hero .lead { color: var(--muted); font-size: 1.05rem; }
+
+    .article {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 3.5rem;
+    }
+    .article h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 2.25rem 0 0.85rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .article h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+    .article h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .article p { margin-bottom: 1rem; color: var(--text); }
+    .article ul { margin: 0.5rem 0 1.25rem 1.4rem; color: var(--text); }
+    .article li { margin-bottom: 0.4rem; }
+
+    .callout {
+      background: var(--bg-alt);
+      border-left: 4px solid var(--blue);
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .callout p { margin: 0; color: var(--muted); font-size: 0.98rem; }
+
+    .compare {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0 1.75rem;
+      font-size: 0.95rem;
+    }
+    .compare th, .compare td {
+      border: 1px solid var(--border);
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+    }
+    .compare th { background: var(--bg-alt); color: var(--navy); font-weight: 600; }
+    .compare td { color: var(--text); }
+
+    .cta-box {
+      background: var(--navy);
+      color: #fff;
+      padding: 2rem 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .cta-box h3 { color: #fff; margin: 0 0 0.5rem; font-size: 1.25rem; }
+    .cta-box p { color: #94a3b8; margin-bottom: 1.25rem; }
+    .btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--navy);
+      padding: 0.7rem 1.4rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .btn:hover { background: #e2e8f0; color: var(--navy); }
+
+    .footer-strip {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 700px) {
+      .nav { display: none; }
+    }
+	    /* Essential Cleaned Brand Showrooms Dropdown Layout */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; top: 100%; left: 0; background-color: #ffffff; min-width: 210px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12); z-index: 2000; border-top: 3px solid #0b5eb4; border-radius: 0 0 6px 6px; overflow: hidden;
+        }
+        .dropdown-content a {
+            color: #0e1a24; padding: 12px 16px; text-decoration: none; display: block; font-weight: 700; font-size: 0.88rem;
+            border-bottom: 1px solid #f1f5f9; transition: background 0.15s ease;
+        }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: #f0f7ff; color: #0b5eb4; }
+        .dropdown:hover .dropdown-content { display: block; }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <span>📍 30+ Years of Certified Wireless Expertise | 700 S John Rodes Blvd, Melbourne, FL 32904</span>
+      <a href="tel:3217254824">📞 (321) 725-4824</a>
+    </div>
+  </div>
+
+  <header class="main-header" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.08); background-color: #ffffff !important; border-bottom: 3px solid #0b5eb4; display: flex; flex-direction: column;">
+        <div style="background-color: #0e1a24; color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 600; padding: 8px 0; border-bottom: 1px solid rgba(11, 94, 180, 0.3); width: 100%;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; box-sizing: border-box;">
+                <div><i class="fa-solid fa-location-dot" style="color: #00FF66; margin-right: 4px;"></i> 30+ Years of Certified Wireless Expertise | 700 S John Rodes Blvd, Melbourne, FL 32904</div>
+                <div><a href="tel:3217254824" style="color: #00FFFF; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 600;"><i class="fa-solid fa-phone-volume"></i> (321) 725-4824</a></div>
+            </div>
+        </div>
+        <div style="padding: 12px 0; width: 100%; background-color: #ffffff !important; box-sizing: border-box;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; gap: 20px; box-sizing: border-box;">
+                <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
+                    <img src="tarc-logo.png" alt="T.A. Logo" style="height: 52px; width: auto; display: block; cursor: pointer;" onclick="window.location.href='index.html';">
+                    <div style="text-align: left; line-height: 1.15;">
+                        <h1 style="margin: 0; font-size: 1.15rem; font-weight: 900; color: #0e1a24; text-transform: uppercase; letter-spacing: -0.3px;">T.A. Radio</h1>
+                        <span style="font-size: 0.72rem; color: #0b5eb4; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; display: block; margin-top: 1px;">Communications</span>
+                    </div>
+                </div>
+                <div style="flex: 1; max-width: 420px; position: relative; display: flex; align-items: center;">
+                    <input type="text" id="navbarGlobalSearchInput" placeholder="Search models, brands, accessories..." style="width: 100%; padding: 8px 35px 8px 12px; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 0.85rem; color: #0e1a24; box-sizing: border-box; background: #f8fafc; transition: all 0.2s ease;">
+                    <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 12px; color: #94a3b8; font-size: 0.85rem; pointer-events: none;"></i>
+                </div>
+                <nav class="nav-links" style="display: flex; align-items: center; flex-shrink: 0;">
+                    <a href="index.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Home</a>
+                    <div class="dropdown" style="margin-left: 20px;">
+                        <a href="#" style="color: #0b5eb4; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 4px;">Brand Showrooms <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; color:#0b5eb4;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="catalog.html?brand=kenwood"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Kenwood Catalog</a>
+                            <a href="catalog.html?brand=icom"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Icom Catalog</a>
+                            <a href="catalog.html?brand=hytera"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Hytera Catalog</a>
+                            <a href="catalog.html?brand=motorola"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Motorola Catalog</a>
+                            <a href="catalog.html?brand=ritron"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Ritron Catalog</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">Guide</span>
+      <h1>Digital Migration &amp; Push-to-Talk over Cellular</h1>
+      <p class="lead">
+        A practical overview of modern two-way radio options — from licensed digital LMR to nationwide PoC — so you can plan an upgrade that fits coverage, capacity, and budget.
+      </p>
+    </div>
+  </section>
+
+  <article class="article">
+
+    <p>
+      Clear, reliable communication keeps crews coordinated and safer on the job. Whether you run a single site or a multi-location operation, choosing the right radio platform affects everyday efficiency and long-term cost. This guide walks through today’s main Land Mobile Radio (LMR) options on licensed VHF/UHF spectrum, Push-to-Talk over Cellular (PoC) on 4G/5G/LTE, and how hybrid setups can bridge the two.
+    </p>
+
+    <h2>The LMR landscape</h2>
+    <p>
+      Land Mobile Radio systems use licensed narrowband channels (typically VHF or UHF). Modern digital LMR relies heavily on TDMA (Time Division Multiple Access) with 12.5 kHz channel spacing, which can roughly double capacity compared with older analog channels by splitting each frequency into time slots.
+    </p>
+
+    <h3>Common digital standards</h3>
+    <ul>
+      <li><strong>DMR</strong> — Widely used professional standard (ETSI). Strong capacity via TDMA, good audio at the edge of coverage, broad manufacturer support, and generally the most cost-effective professional option.</li>
+      <li><strong>NXDN</strong> — FDMA-based approach associated with Kenwood and Icom. Often attractive on price; infrastructure and channel packing differ from TDMA-based DMR.</li>
+      <li><strong>P25</strong> — Common in public safety for multi-agency interoperability. Higher infrastructure and radio cost than commercial DMR.</li>
+      <li><strong>TETRA</strong> — Strong in Europe and some utility niches; high feature consistency across vendors, denser infrastructure needs in many deployments.</li>
+    </ul>
+
+    <div class="callout">
+      <p>For most commercial and industrial fleets in the U.S., <strong>DMR</strong> is the practical sweet spot: capacity, range, battery life, and a clear migration path from analog.</p>
+    </div>
+
+    <h2>What digital DMR radios bring</h2>
+    <p>
+      Digital portables and mobiles deliver clearer audio in noisy environments, better battery life (TDMA transmits in bursts), and features that analog systems rarely match: emergency button, lone worker / man-down options, GPS for location, Bluetooth accessories, and strong encryption when required. Rugged ratings (e.g. MIL-STD, high IP) and intrinsically safe models are available for harsher or hazardous areas.
+    </p>
+
+    <h2>Migrating from analog to digital</h2>
+    <p>
+      A full “rip and replace” is rarely necessary. Many DMR radios operate in both analog and digital modes, so you can phase in new units alongside existing analog radios. As the fleet turns over, a DMR Tier II repeater can be added for better coverage and channel management — without forcing every radio to upgrade on day one.
+    </p>
+    <p>
+      That staged approach keeps capital spend predictable while you gain digital audio quality, longer shift life on a charge, and room to grow talkgroups later.
+    </p>
+
+    <h2>Repeater range and what actually limits it</h2>
+    <p>
+      A professional DMR Tier II site typically includes a repeater, antenna system, power, and monitoring. Coverage is often discussed in tens of miles, but real results depend on:
+    </p>
+    <ul>
+      <li>Terrain and obstacles (buildings, hills, dense foliage)</li>
+      <li>Antenna height and type</li>
+      <li>Radio power, sensitivity, and antenna performance</li>
+    </ul>
+    <p>
+      Line-of-sight helps; concrete and steel can shrink usable range dramatically indoors. A proper site survey and system design from an experienced dealer remain the reliable way to hit required coverage areas.
+    </p>
+
+    <h2>Extending range and capacity</h2>
+    <p>
+      Multiple repeater sites can be linked over IP so users at different locations stay on the same system. For higher group-call demand, trunking-style capacity options (including solutions built on DMR Tier II conventions) dynamically share channels so more simultaneous conversations are possible without jumping to a full Tier III investment unless you truly need it.
+    </p>
+    <p>
+      Licensed LMR infrastructure is a real investment — and it is also one of the most resilient tools available when commercial networks are congested or offline.
+    </p>
+
+    <h2>Push-to-Talk over Cellular (PoC)</h2>
+    <p>
+      PoC (sometimes called Radio over IP) uses the same cellular networks as smartphones — 4G/5G/LTE and often Wi-Fi — to deliver push-to-talk service through cloud servers. Devices use a data SIM rather than an FCC LMR frequency license. Coverage follows the carrier footprint, which is ideal when crews roam across a city, county, or multiple regions.
+    </p>
+
+    <h3>Why operations choose PoC</h3>
+    <ul>
+      <li>Wide-area / nationwide reach without building your own RF sites</li>
+      <li>No LMR frequency licensing for the PoC airtime itself</li>
+      <li>Fast deployment — devices can often go live with minimal setup</li>
+      <li>High capacity for groups and multimedia (text, image, video) depending on platform</li>
+    </ul>
+
+    <h3>Device types</h3>
+    <p>
+      PoC hardware ranges from purpose-built handhelds (similar durability and noise-canceling focus as professional LMR radios), to vehicle mobiles, to Android-based smart devices that combine PTT with apps, cameras, and scanners. Choice depends on whether the priority is glove-friendly PTT, in-cab use, or a single device for voice plus workflow apps.
+    </p>
+
+    <h2>Hybrid: adding PoC to an existing radio system</h2>
+    <p>
+      Gateways can bridge PoC users into analog or DMR channels so a mixed fleet still hears one another. That lets you extend coverage for drivers or remote sites with PoC while keeping proven LMR on campus or in the yard — without discarding the system you already own.
+    </p>
+
+    <h2>Dispatch and location</h2>
+    <p>
+      Both DMR and PoC ecosystems support dispatch consoles with group calling, messaging, and GPS tracking. Map views, history, and geofence alerts help supervisors see where units are and respond faster. LMR dispatch is often a dedicated workstation; many PoC platforms are browser-based for easier access from different locations.
+    </p>
+
+    <h2>Quick comparison</h2>
+    <table class="compare">
+      <thead>
+        <tr>
+          <th>Topic</th>
+          <th>Licensed LMR / DMR</th>
+          <th>PoC (cellular)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Spectrum</td>
+          <td>FCC-licensed VHF/UHF</td>
+          <td>Carrier LTE / 5G / Wi-Fi</td>
+        </tr>
+        <tr>
+          <td>Coverage model</td>
+          <td>Your sites, antennas, repeaters</td>
+          <td>Wherever the carrier has service</td>
+        </tr>
+        <tr>
+          <td>Licensing</td>
+          <td>Frequency coordination &amp; licenses</td>
+          <td>No LMR frequency license for PoC airtime</td>
+        </tr>
+        <tr>
+          <td>Infrastructure</td>
+          <td>Repeaters, links, power, monitoring</td>
+          <td>Cloud + devices + data plans</td>
+        </tr>
+        <tr>
+          <td>Best fit</td>
+          <td>Campus, plant, reliable local coverage, resilience</td>
+          <td>Wide geography, multi-site fleets, fast rollout</td>
+        </tr>
+        <tr>
+          <td>Hybrid option</td>
+          <td colspan="2">Gateways can connect PoC users into existing LMR talkpaths</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      There is no single “best” system — only the best fit for how and where your people work. Many organizations keep LMR for core sites and add PoC for wide-area mobility, or migrate analog fleets to DMR first and layer cellular PTT later.
+    </p>
+
+    <div class="cta-box">
+      <h3>Plan your migration with local experts</h3>
+      <p>T.A. Radio can assess coverage, licensing, and hybrid options for Brevard County and surrounding areas — from site surveys to staged digital upgrades.</p>
+      <a href="tel:3217254824" class="btn">Call (321) 725-4824</a>
+    </div>
+  </article>
+
+  <footer class="footer-strip">
+    <p>© 2026 T.A. Radio Communications · Melbourne, FL · (321) 725-4824</p>
+  </footer>
+
+</body>
+</html>
