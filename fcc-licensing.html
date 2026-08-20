@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FCC Licensing for Two-Way Radios | T.A. Radio Communications</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --topbar: #1a1a1a;
+      --navy: #0f172a;
+      --blue: #0066cc;
+      --blue-hover: #0052a3;
+      --blue-soft: #e8f1fb;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #fff;
+      --bg-alt: #f8fafc;
+      --ok: #166534;
+      --ok-bg: #dcfce7;
+      --warn: #9a3412;
+      --warn-bg: #ffedd5;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); line-height: 1.7; background: var(--bg); }
+    a { color: var(--blue); }
+    a:hover { color: var(--blue-hover); }
+
+    .top-bar { background: var(--topbar); color: #94a3b8; font-size: 0.8rem; padding: 0.45rem 1.25rem; }
+    .top-bar-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+    .top-bar a { color: #94a3b8; text-decoration: none; }
+    .top-bar a:hover { color: #fff; }
+
+    .site-header { background: #fff; border-bottom: 1px solid var(--border); padding: 0.75rem 1.25rem; position: sticky; top: 0; z-index: 40; }
+    .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 1.5rem; }
+    .logo { font-weight: 700; color: var(--navy); text-decoration: none; font-size: 1.05rem; line-height: 1.2; }
+    .logo span { display: block; font-size: 0.7rem; font-weight: 500; color: var(--muted); letter-spacing: 0.04em; }
+    .nav { margin-left: auto; display: flex; gap: 1.25rem; list-style: none; }
+    .nav a { color: var(--text); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+    .nav a:hover, .nav a.active { color: var(--blue); }
+
+    .page-hero {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      padding: 2.75rem 1.25rem 2.25rem;
+      text-align: center;
+    }
+    .page-hero-inner { max-width: 720px; margin: 0 auto; }
+    .eyebrow {
+      display: inline-block;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      margin-bottom: 0.9rem;
+    }
+    .page-hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    .page-hero .lead { color: var(--muted); font-size: 1.05rem; }
+
+    .article { max-width: 760px; margin: 0 auto; padding: 2.5rem 1.25rem 3.5rem; }
+    .article h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 2.25rem 0 0.85rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+    .article h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+    .article h3 { font-size: 1.05rem; font-weight: 600; color: var(--navy); margin: 1.4rem 0 0.5rem; }
+    .article p { margin-bottom: 1rem; }
+    .article ul, .article ol { margin: 0.5rem 0 1.25rem 1.35rem; }
+    .article li { margin-bottom: 0.4rem; }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.25rem 0 1.5rem;
+    }
+    @media (max-width: 600px) { .quick-grid { grid-template-columns: 1fr; } }
+
+    .quick-card {
+      border-radius: 10px;
+      padding: 1.15rem 1.25rem;
+      border: 1px solid var(--border);
+    }
+    .quick-card.need { background: var(--warn-bg); border-color: #fed7aa; }
+    .quick-card.none { background: var(--ok-bg); border-color: #bbf7d0; }
+    .quick-card h3 { margin: 0 0 0.5rem; font-size: 0.95rem; }
+    .quick-card.need h3 { color: var(--warn); }
+    .quick-card.none h3 { color: var(--ok); }
+    .quick-card p, .quick-card li { font-size: 0.92rem; color: var(--text); margin: 0; }
+    .quick-card ul { margin: 0.35rem 0 0 1.1rem; }
+
+    .callout {
+      background: var(--bg-alt);
+      border-left: 4px solid var(--blue);
+      padding: 1rem 1.2rem;
+      margin: 1.4rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .callout p { margin: 0; color: var(--muted); font-size: 0.98rem; }
+
+    .steps { counter-reset: step; list-style: none; margin: 1rem 0 1.5rem; padding: 0; }
+    .steps li {
+      position: relative;
+      padding: 0.85rem 0 0.85rem 3rem;
+      border-bottom: 1px solid var(--border);
+      counter-increment: step;
+    }
+    .steps li:last-child { border-bottom: none; }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0.85rem;
+      width: 1.75rem;
+      height: 1.75rem;
+      background: var(--blue);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .steps strong { color: var(--navy); }
+
+    .cta-box {
+      background: var(--navy);
+      color: #fff;
+      padding: 2rem 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .cta-box h3 { color: #fff; margin: 0 0 0.5rem; font-size: 1.2rem; }
+    .cta-box p { color: #94a3b8; margin-bottom: 1.25rem; }
+    .btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--navy);
+      padding: 0.7rem 1.4rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .btn:hover { background: #e2e8f0; color: var(--navy); }
+
+    .footer-strip {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    @media (max-width: 700px) { .nav { display: none; } }
+	 /* Essential Cleaned Brand Showrooms Dropdown Layout */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; top: 100%; left: 0; background-color: #ffffff; min-width: 210px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12); z-index: 2000; border-top: 3px solid #0b5eb4; border-radius: 0 0 6px 6px; overflow: hidden;
+        }
+        .dropdown-content a {
+            color: #0e1a24; padding: 12px 16px; text-decoration: none; display: block; font-weight: 700; font-size: 0.88rem;
+            border-bottom: 1px solid #f1f5f9; transition: background 0.15s ease;
+        }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: #f0f7ff; color: #0b5eb4; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <span>📍 30+ Years of Certified Wireless Expertise | 700 S John Rodes Blvd, Melbourne, FL 32904</span>
+      <a href="tel:3217254824">📞 (321) 725-4824</a>
+    </div>
+  </div>
+
+    <!-- =========================================================================
+         FIXED MASTER UNIFIED SYSTEM HEADER
+         ========================================================================= -->
+    <header class="main-header" style="position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.08); background-color: #ffffff !important; border-bottom: 3px solid #0b5eb4; display: flex; flex-direction: column;">
+        <div style="background-color: #0e1a24; color: rgba(255,255,255,0.85); font-size: 0.78rem; font-weight: 600; padding: 8px 0; border-bottom: 1px solid rgba(11, 94, 180, 0.3); width: 100%;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; box-sizing: border-box;">
+                <div><i class="fa-solid fa-location-dot" style="color: #00FF66; margin-right: 4px;"></i> 30+ Years of Certified Wireless Expertise | 700 S John Rodes Blvd, Melbourne, FL 32904</div>
+                <div><a href="tel:3217254824" style="color: #00FFFF; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 600;"><i class="fa-solid fa-phone-volume"></i> (321) 725-4824</a></div>
+            </div>
+        </div>
+        <div style="padding: 12px 0; width: 100%; background-color: #ffffff !important; box-sizing: border-box;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; gap: 20px; box-sizing: border-box;">
+                <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0;">
+                    <img src="tarc-logo.png" alt="T.A. Logo" style="height: 52px; width: auto; display: block; cursor: pointer;" onclick="window.location.href='index.html';">
+                    <div style="text-align: left; line-height: 1.15;">
+                        <h1 style="margin: 0; font-size: 1.15rem; font-weight: 900; color: #0e1a24; text-transform: uppercase; letter-spacing: -0.3px;">T.A. Radio</h1>
+                        <span style="font-size: 0.72rem; color: #0b5eb4; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; display: block; margin-top: 1px;">Communications</span>
+                    </div>
+                </div>
+                <div style="flex: 1; max-width: 420px; position: relative; display: flex; align-items: center;">
+                    <input type="text" id="navbarGlobalSearchInput" placeholder="Search models, brands, accessories..." style="width: 100%; padding: 8px 35px 8px 12px; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 0.85rem; color: #0e1a24; box-sizing: border-box; background: #f8fafc; transition: all 0.2s ease;">
+                    <i class="fa-solid fa-magnifying-glass" style="position: absolute; right: 12px; color: #94a3b8; font-size: 0.85rem; pointer-events: none;"></i>
+                </div>
+                <nav class="nav-links" style="display: flex; align-items: center; flex-shrink: 0;">
+                    <a href="index.html" style="color: #0e1a24; text-decoration: none; font-weight: 700; margin-left: 20px; font-size: 0.92rem;">Home</a>
+                    <div class="dropdown" style="margin-left: 20px;">
+                        <a href="#" style="color: #0b5eb4; text-decoration: none; font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 4px;">Brand Showrooms <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; color:#0b5eb4;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="catalog.html?brand=kenwood"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Kenwood Catalog</a>
+                            <a href="catalog.html?brand=icom"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Icom Catalog</a>
+                            <a href="catalog.html?brand=hytera"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Hytera Catalog</a>
+                            <a href="catalog.html?brand=motorola"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Motorola Catalog</a>
+                            <a href="catalog.html?brand=ritron"><i class="fa-solid fa-chevron-right" style="color:#0b5eb4; margin-right:4px;"></i> Ritron Catalog</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="eyebrow">Compliance Guide</span>
+      <h1>Do You Need an FCC License for Your Two-Way Radios?</h1>
+      <p class="lead">
+        A plain-language guide to when a license is required, when it isn’t, and how businesses in Florida can stay compliant.
+      </p>
+    </div>
+  </section>
+
+  <article class="article">
+
+    <p>
+      Two-way radios keep teams connected when phones aren’t practical. Because radio spectrum is shared and regulated, some systems need a Federal Communications Commission (FCC) license — and some don’t. The difference depends on the radio service, how the radios are programmed, and whether you’re using them for personal or business operations.
+    </p>
+
+    <h2>Quick answer</h2>
+    <div class="quick-grid">
+      <div class="quick-card need">
+        <h3>License usually required</h3>
+        <ul>
+          <li>Business / industrial systems (often FCC Part 90)</li>
+          <li>Radios programmed for dedicated frequencies to limit interference</li>
+          <li>GMRS (personal licensed service)</li>
+        </ul>
+      </div>
+      <div class="quick-card none">
+        <h3>Individual license usually not required</h3>
+        <ul>
+          <li>FRS (Family Radio Service)</li>
+          <li>MURS (Multi-Use Radio Service)</li>
+          <li>CB (Citizens Band)</li>
+        </ul>
+        <p style="margin-top:0.6rem">Still must use authorized gear and follow that service’s rules.</p>
+      </div>
+    </div>
+
+    <h2>Why the FCC licenses some radios</h2>
+    <p>
+      Licensing is mainly about controlling interference. When too many users transmit on the same channels without coordination, audio becomes unreliable. For schools, plants, fleets, security, and public-facing operations, that isn’t just an inconvenience — it can affect safety and response.
+    </p>
+    <p>
+      A license ties operation to an area, technical parameters, and (for business systems) frequency assignments so networks can scale without stepping on each other.
+    </p>
+
+    <h2>What typically needs a license — and what doesn’t</h2>
+    <p>
+      Radios can look identical on the shelf. The rules depend on the <strong>service</strong> and how the equipment is used.
+    </p>
+    <h3>Usually licensed</h3>
+    <ul>
+      <li><strong>Business and industrial systems</strong> — facilities, manufacturing, logistics, campuses, municipalities, multi-site teams (commonly under Part 90).</li>
+      <li><strong>GMRS</strong> — a personal radio service that requires an individual FCC license.</li>
+    </ul>
+    <h3>Often license-by-rule (no individual license)</h3>
+    <ul>
+      <li><strong>FRS</strong> — consumer handhelds under FRS rules</li>
+      <li><strong>MURS</strong> — VHF channels under MURS rules</li>
+      <li><strong>CB</strong> — 27 MHz service under CB rules</li>
+    </ul>
+    <div class="callout">
+      <p><strong>“License-by-rule” does not mean unregulated.</strong> Equipment must be authorized for that service, and power, channels, and operating practices still apply.</p>
+    </div>
+
+    <h2>Common misconception: “walkie-talkie” ≠ always license-free</h2>
+    <p>
+      Buying a radio does not automatically make every use legal. Compliance depends on:
+    </p>
+    <ul>
+      <li>Which radio service the unit is built and authorized for</li>
+      <li>How channels are programmed</li>
+      <li>Whether the equipment is FCC-authorized for that service</li>
+    </ul>
+    <p>
+      That matters even more for organizations, where radios are often coded for private channels and shared across shifts and locations.
+    </p>
+
+    <h2>How to figure out what you have</h2>
+    <ol class="steps">
+      <li>
+        <strong>Read the label and manuals.</strong>
+        Look for FRS, GMRS, MURS, or language that points to business / Part 90 use.
+      </li>
+      <li>
+        <strong>Review how the radios were programmed.</strong>
+        Consumer channel packs differ from organization-specific frequencies set up by a dealer.
+      </li>
+      <li>
+        <strong>Confirm FCC authorization for the intended service.</strong>
+        The right hardware on the wrong service (or the reverse) is a compliance problem.
+      </li>
+    </ol>
+    <p>
+      If you inherited a system, or run radios across a plant, campus, or fleet, a short licensing review is cheaper than discovering a gap after interference or a renewal notice.
+    </p>
+
+    <h2>Business and industrial licensing (what most organizations need)</h2>
+    <p>
+      When radios support daily operations — not casual personal chat — you may need a business or industrial license, especially if you use repeaters, higher power, or multiple sites.
+    </p>
+    <h3>What the license is tied to</h3>
+    <ul>
+      <li>Service area and site locations</li>
+      <li>Assigned frequencies</li>
+      <li>Station types (portable, mobile, base, repeater)</li>
+      <li>Coverage goals and interference protection</li>
+    </ul>
+    <h3>Good times to review licensing</h3>
+    <ul>
+      <li>You took over an existing system and don’t have clear records</li>
+      <li>You’re adding users, buildings, or repeaters</li>
+      <li>You’re hearing interference or coverage has degraded</li>
+      <li>You received a renewal notice or a third-party solicitation and want to verify what’s legitimate</li>
+    </ul>
+
+    <h2>GMRS in brief (personal / family use)</h2>
+    <p>
+      General Mobile Radio Service is aimed at individuals and families. An FCC license is required; there is no exam, applications are filed through the FCC’s systems (commonly Form 605), and licenses are typically issued for a multi-year term to an individual, with family operation under the rules that apply.
+    </p>
+    <p>
+      Businesses should not assume GMRS is the right path for operational fleets — Part 90 business licensing is usually the correct framework for commercial systems.
+    </p>
+
+    <h2>How to get the right license</h2>
+    <ol class="steps">
+      <li>
+        <strong>Identify the service.</strong>
+        Business/Part 90 vs GMRS vs license-by-rule (FRS, MURS, CB). Collect any existing call signs or paperwork if the system was inherited.
+      </li>
+      <li>
+        <strong>Apply through official FCC channels.</strong>
+        Most wireless applications and updates go through the FCC’s <a href="https://www.fcc.gov/wireless/universal-licensing-system" target="_blank" rel="noopener">Universal Licensing System (ULS)</a>.
+      </li>
+      <li>
+        <strong>Use FCC guidance for industrial/business systems.</strong>
+        Start with the FCC’s materials on industrial and business licensing, then match frequency and equipment to your real coverage needs.
+      </li>
+      <li>
+        <strong>Work with a local radio partner when helpful.</strong>
+        Dealers familiar with Florida coordination and Part 90 systems can reduce guesswork on applications, renewals, and system design.
+      </li>
+    </ol>
+
+    <div class="callout">
+      <p>
+        Official rules and forms live on <a href="https://www.fcc.gov" target="_blank" rel="noopener">fcc.gov</a>.
+        Avoid relying solely on unsolicited renewal letters — confirm call signs and status in ULS.
+      </p>
+    </div>
+
+    <div class="cta-box">
+      <h3>Need help sorting license vs license-free?</h3>
+      <p>
+        T.A. Radio Communications can review what you’re running, explain Part 90 vs consumer services, and point you toward the right next step for Brevard County and surrounding areas.
+      </p>
+      <a href="tel:3217254824" class="btn">Call (321) 725-4824</a>
+    </div>
+  </article>
+
+  <footer class="footer-strip">
+    <p>© 2026 T.A. Radio Communications · Melbourne, FL · (321) 725-4824</p>
+  </footer>
+
+</body>
+</html>
