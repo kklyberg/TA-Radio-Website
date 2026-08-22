@@ -8,6 +8,39 @@
     <link rel="stylesheet" href="calc-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">">
 </head>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const box = document.getElementById('tarcAdvisoryBox');
+  const text = document.getElementById('tarcAdvisoryText');
+  if (!box || !text) return;
+
+  // Better default readability
+  text.style.fontSize = '0.88rem';
+  text.style.lineHeight = '1.5';
+  box.style.minHeight = '90px';
+
+  let expanded = false;
+  box.style.cursor = 'pointer';
+  box.title = 'Click to enlarge / shrink advisory text';
+
+  box.addEventListener('click', () => {
+    expanded = !expanded;
+    if (expanded) {
+      text.style.fontSize = '1.1rem';
+      text.style.lineHeight = '1.6';
+      box.style.minHeight = '160px';
+      box.style.borderColor = 'rgba(0, 240, 255, 0.65)';
+      box.style.background = 'rgba(5, 8, 10, 0.95)';
+    } else {
+      text.style.fontSize = '0.88rem';
+      text.style.lineHeight = '1.5';
+      box.style.minHeight = '90px';
+      box.style.borderColor = 'rgba(11, 94, 180, 0.45)';
+      box.style.background = 'rgba(5, 8, 10, 0.85)';
+    }
+  });
+});
+</script>
 <body style="padding-top: 96px; background-color: #0b1116;">
 
     <!-- Professional Fixed Top Corporate Navigation Bar -->
